@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 设置映射的dao类 -->
+<mapper namespace="com.bcdbook.summer.wechat.dao.WechatDao">
+	<!-- 设置映射的数据模型 -->
+	
+	<resultMap id="BaseResultMap" type="com.bcdbook.summer.wechat.pojo.Wechat">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="access_token" property="accessToken" jdbcType="VARCHAR" />
+		<result column="refresh_token" property="refreshToken" jdbcType="VARCHAR" />
+		<result column="add_time" property="addTime" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />		
+	</resultMap>
+
+	<!-- 定义查询的所有参数 -->
+	<!-- 添加按照id获取，删除，和插入一条wechat记录的方法 -->
+	<sql id="Base_Column_List">
+		id, access_token, refresh_token,add_time,update_time
+	</sql>
+	
+	<sql id="Base_Column_ListRecent">
+		access_token,add_time
+	</sql>
+	
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from t_wechat
+		where id = #{id,jdbcType=INTEGER}
+	</select> 
+	
+	<select id="selectRecent" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_ListRecent" />
+		from t_wechat order by add_time desc
+		 limit 1
+	</select>
+
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from t_wechat
+		where id
+		= #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		insert into t_wechat (id,
+		access_token, refresh_token,
+		add_time,update_time)
+		values (#{id,jdbcType=INTEGER},
+		#{accessToken,jdbcType=VARCHAR},
+		#{refreshToken,jdbcType=VARCHAR},
+		#{addTime,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="refreshToken" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		update t_wechat
+		<set>
+			<if test="accessToken != null">
+				access_token = #{accessToken,jdbcType=VARCHAR},
+			</if>
+			<if test="refreshToken != null">
+				refresh_token = #{refreshToken,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				add_time = #{addTime,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

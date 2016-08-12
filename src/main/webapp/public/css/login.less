@@ -1,0 +1,90 @@
+@import "./include/theme.less";
+@import "./include/rewrite&main.less";
+
+div{
+//    border: solid red 1px;
+}
+
+.logo-padding{
+    padding: 15px @padding-side-size;
+}
+
+.logo-box {
+    text-align: center;
+    padding: 40px 0 20px;
+    .logo-a{
+        display: block;
+        margin: 0 auto;
+        img{
+            width: 50%;
+            height: 50%;
+        }
+    }
+}
+.input-cont{
+    .row{
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    margin-bottom: 20px;
+    .input-box{
+        border-bottom: solid @input-border-color 1px;
+        padding: 5px @padding-side-size;
+        &:first-child{
+            border-top: solid @input-border-color 1px;
+        }
+        
+        .input-input,.input-label-after{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 25px;
+            padding: 10px 0px;
+        }
+        .input-input{
+            outline: none;
+            border: none;
+            width: 65%;
+        }
+        .input-label-after{
+            float: right;
+        }
+        
+    }
+    .input_focus{
+        border-bottom-color: @input-focus-border-color;
+    }
+    .agreement-box{
+        padding: 15px @padding-side-size;
+        color: @agreement-color;
+        .agreement-checkbox,.agreement-span{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .agreement-checkbox{
+//                display: inline-block;
+            font-size: 18px;
+            color: @base-color;
+        }
+    }
+}
+.button-cont{
+    .ibutton-box{
+        padding: 8px @padding-side-size;
+        
+        .button{
+            width: 100%;
+            line-height: 45px;
+            height: 45px;
+            .button-inner-icon{
+                font-size: 24px;
+                vertical-align: sub;
+            }
+        }
+        .button-primary{
+//            background-color: @button-primary-color;
+        }
+        .button-action{
+//            background-color: @button-action-color;
+        }
+    }
+}

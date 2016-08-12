@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 设置映射的dao类 -->
+<mapper namespace="com.bcdbook.summer.system.menu.dao.MenuDao">
+	<!-- 设置映射的数据模型 -->
+	<resultMap id="BaseResultMap" type="com.bcdbook.summer.system.menu.pojo.Menu">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 定义查询的所有参数 -->
+	<sql id="Base_Column_List">
+		id, name, description
+	</sql>
+	<insert id="insert" parameterType="com.bcdbook.summer.system.menu.pojo.Menu">
+		insert into t_menu (id,name, description)
+		values (#{id,jdbcType=INTEGER},
+		#{name,jdbcType=VARCHAR},
+		#{description,jdbcType=VARCHAR})
+	</insert>
+	
+</mapper>

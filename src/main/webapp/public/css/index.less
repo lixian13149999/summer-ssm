@@ -1,0 +1,58 @@
+
+@import "./include/theme.less";
+@import "./include/rewrite&main.less";
+@import "./include/top.less";
+
+//全局参数定义位置
+@width:1200px;
+@min-width:1200px;//全局主显示区域最小宽度
+@top-height:65px;//头部最小高度
+@primary-min-height:600px;//主显示区域最小高度
+@bottom-min-height:130px;//底部最小高度
+
+@primary-margin-top:50px;//主显示区域距离顶部的距离
+@bottom-margin-primary:50px;//底部距离主显示区域的高度
+
+@top-background-color:#222;//头部背景色
+@a-default-color:#999;//a标签的默认颜色
+@font-color:#999;//字体的默认颜色
+@logo-color:#dedede;//logo的颜色
+@menu-list-color:#dedede;//头部栏目鼠标放上去的效果
+@sm-logo-hover-color:#dedede;//小屏幕时logo部分,鼠标放上去的效果
+    
+body{
+//    color: #aaa;
+}
+
+.top-container,.primary-container,.bottom-container{
+    margin: 0 4.16%;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.top{
+    height: @top-height;
+    background-color: @top-background-color;
+}
+
+
+.primary {
+    margin-top: @primary-margin-top;
+    min-height: @primary-min-height;
+    .menus,.main{
+        min-height: @primary-min-height;
+    }
+}
+.primary-container {
+    min-height: @primary-min-height;
+    
+}
+
+.bottom {
+    min-height: @bottom-min-height;
+    margin-top: @bottom-margin-primary;
+}
+.bottom-container {
+    min-height: @bottom-min-height;
+}
+
