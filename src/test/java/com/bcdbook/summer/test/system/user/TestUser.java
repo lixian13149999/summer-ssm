@@ -12,8 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
-import com.bcdbook.summer.system.user.pojo.User;
-import com.bcdbook.summer.system.user.service.UserService;
+import com.bcdbook.summer.system.pojo.User;
+import com.bcdbook.summer.system.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 // 表示继承了SpringJUnit4ClassRunner类

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bcdbook.summer.system.user.pojo.User;
+import com.bcdbook.summer.system.pojo.User;
 
 /**
  * 

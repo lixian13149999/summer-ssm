@@ -1,4 +1,4 @@
-package com.bcdbook.summer.system.menu.pojo;
+package com.bcdbook.summer.system.pojo;
 
 /**
  * 

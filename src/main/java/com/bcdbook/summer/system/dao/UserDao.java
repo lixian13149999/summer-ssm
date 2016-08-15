@@ -1,9 +1,9 @@
-package com.bcdbook.summer.system.user.dao;
+package com.bcdbook.summer.system.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.bcdbook.summer.system.user.pojo.User;
+import com.bcdbook.summer.system.pojo.User;
 
 @Repository(value="userDao")
 public interface UserDao {

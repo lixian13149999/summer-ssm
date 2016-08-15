@@ -1,4 +1,4 @@
-package com.bcdbook.summer.system.user.pojo;
+package com.bcdbook.summer.system.pojo;
 
 public class User {
 	private int id;// 用户id

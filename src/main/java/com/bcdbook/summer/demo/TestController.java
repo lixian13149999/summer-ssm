@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bcdbook.summer.system.user.pojo.User;
+import com.bcdbook.summer.system.pojo.User;
 
 /**
  * 

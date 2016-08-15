@@ -1,4 +1,4 @@
-package com.bcdbook.summer.system.user.service.impl;
+package com.bcdbook.summer.system.service;
 
 import java.util.List;
 
@@ -8,22 +8,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bcdbook.summer.common.enums.BaseEnum.BackMsg;
-import com.bcdbook.summer.system.user.dao.UserDao;
-import com.bcdbook.summer.system.user.pojo.User;
-import com.bcdbook.summer.system.user.service.UserService;
+import com.bcdbook.summer.system.dao.UserDao;
+import com.bcdbook.summer.system.pojo.User;
 
 @Service("userService")
-public class UserServiceImpl implements UserService {
+public class UserService {
 	@Resource
 	private UserDao userDao;
 
-	@Override
 	public User getUserById(int userId) {
 		return this.userDao.selectById(userId);
 	}
 	
 	@Transactional
-	@Override
 	public boolean addUsers(List<User> users) {
 		for (int i = 0; i < users.size(); i++) {
 			userDao.insert(users.get(i));
@@ -36,7 +33,6 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 	
-	@Override
 	public boolean addUser(User user) {
 		// TODO Auto-generated method stub
 		//根据要添加的用户名查询数据库，验证是否存在同名用户，如果存在则不可以添加用户
@@ -50,7 +46,6 @@ public class UserServiceImpl implements UserService {
 			}		
 	}
 	
-	@Override
 	public boolean updateUser(User user) {
 		// TODO Auto-generated method stub		
 		//根据传入的字段更新数据库，更新操作不验证用户
@@ -64,7 +59,7 @@ public class UserServiceImpl implements UserService {
 			return false;
 		}		
 	}
-	@Override
+
 	public boolean deleteUser(User user) {
 		// TODO Auto-generated method stub
 		//获取要删除记录的id即用户的id；
@@ -89,7 +84,6 @@ public class UserServiceImpl implements UserService {
 	    * @return     
 	    * @see com.bcdbook.summer.system.user.service.UserService#bindingWechat(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	@Override
 	public String bindingWechat(String username, String pwd, String openId) {
 		// TODO Auto-generated method stub
 
@@ -116,7 +110,7 @@ public class UserServiceImpl implements UserService {
 	
 
 	}
-	@Override
+
 	public String bindingEmail(String username, String pwd, String email) {
 		// TODO Auto-generated method stub
 

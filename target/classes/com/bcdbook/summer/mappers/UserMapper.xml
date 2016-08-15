@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- 设置映射的dao类 -->
-<mapper namespace="com.bcdbook.summer.system.user.dao.UserDao">
+<mapper namespace="com.bcdbook.summer.system.dao.UserDao">
 	<!-- 设置映射的数据模型 -->
-	<resultMap id="BaseResultMap" type="com.bcdbook.summer.system.user.pojo.User">
+	<resultMap id="BaseResultMap" type="com.bcdbook.summer.system.pojo.User">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="user_name" property="userName" jdbcType="VARCHAR" />
 		<result column="pwd" property="pwd" jdbcType="VARCHAR" />
@@ -61,7 +61,7 @@
 	</delete>
 	
 	<!-- 插入用户信息，暂时不用 -->
-	<insert id="insert" parameterType="com.bcdbook.summer.system.user.pojo.User">
+	<insert id="insert" parameterType="com.bcdbook.summer.system.pojo.User">
 		insert into t_user (id,
 		user_name, pwd,
 		age)
@@ -72,7 +72,7 @@
 	</insert>
 		
 	<!-- 选择性添加开始 -->
-	<insert id="insertSelective" parameterType="com.bcdbook.summer.system.user.pojo.User">
+	<insert id="insertSelective" parameterType="com.bcdbook.summer.system.pojo.User">
 		insert into t_user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -188,7 +188,7 @@
 	
 	<!-- 根据传入的user对象所携带的数据，根据id选择性更新user信息-->
 	<!-- 选择性更新开始-->	
-	<update id="updateByPrimaryKeySelective" parameterType="com.bcdbook.summer.system.user.pojo.User">
+	<update id="updateByPrimaryKeySelective" parameterType="com.bcdbook.summer.system.pojo.User">
 		update t_user
 		<set>
 			<if test="userName != null">
@@ -245,7 +245,7 @@
    <!-- 选择性更新结束-->	
 	
    <!-- 更新几个基本的user信息，暂时不用。。。-->		
-	<update id="updateByPrimaryKey" parameterType="com.bcdbook.summer.system.user.pojo.User">
+	<update id="updateByPrimaryKey" parameterType="com.bcdbook.summer.system.pojo.User">
 		update t_user
 		set
 		user_name = #{userName,jdbcType=VARCHAR},

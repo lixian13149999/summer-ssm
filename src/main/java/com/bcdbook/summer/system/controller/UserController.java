@@ -1,4 +1,4 @@
-package com.bcdbook.summer.system.user.controller;
+package com.bcdbook.summer.system.controller;
 
 import java.io.IOException;
 
@@ -11,7 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bcdbook.summer.system.user.service.UserService;
+import com.bcdbook.summer.system.service.UserService;
+
 
 /**
  * 
