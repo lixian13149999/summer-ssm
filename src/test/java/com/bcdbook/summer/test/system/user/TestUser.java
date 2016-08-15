@@ -1,4 +1,4 @@
-package com.bcdbook.test.user;
+package com.bcdbook.summer.test.system.user;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +24,11 @@ public class TestUser {
 	@Resource
 	private UserService userService = null;
 
-	// @Before
-	// public void before() {
-	// ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-	// userService = (IUserService) ac.getBean("userService");
-	// }
+//	 @Before
+//	 public void before() {
+//	 ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+//	 userService = (IUserService) ac.getBean("userService");
+//	 }
 
 	@Test
 	public void testGetUser() {

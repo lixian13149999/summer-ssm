@@ -1,4 +1,4 @@
-package com.bcdbook.test.user;
+package com.bcdbook.summer.test.demo.ienum;
 
 import org.junit.Test;
 

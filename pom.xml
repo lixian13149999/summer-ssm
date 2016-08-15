@@ -34,6 +34,14 @@
 			<!-- 表示开发的时候引入，发布的时候不会加载此包 -->
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- 谷歌的工具包 -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>18.0</version>
+		</dependency>
+		
 		<!-- spring核心包 -->
 		<dependency>
 			<groupId>org.springframework</groupId>

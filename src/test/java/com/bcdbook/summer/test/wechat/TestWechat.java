@@ -1,4 +1,4 @@
-package com.bcdbook.test.user;
+package com.bcdbook.summer.test.wechat;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +48,7 @@ public class TestWechat {
 	@Test
 	public void testGetAccessToken(){
 //		System.out.println(connectService.makeAccessToken());
+		logger.info("再测log");
 		connectService.updateAccessToken(1);
 	}
 	
@@ -218,10 +219,6 @@ public class TestWechat {
 			System.out.println(m.getName());
 			
 		}
-		
-		
-		
-		
 	}
 	@Test
 	public void testRenzheng(){
