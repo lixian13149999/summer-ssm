@@ -13,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSONObject;
-import com.bcdbook.summer.wechat.message.pojo.Message;
+import com.bcdbook.summer.wechat.pojo.message.Message;
 import com.bcdbook.summer.wechat.service.ConnectService;
 import com.bcdbook.summer.wechat.service.CoreService;
 import com.bcdbook.summer.wechat.service.EncapsulationService;

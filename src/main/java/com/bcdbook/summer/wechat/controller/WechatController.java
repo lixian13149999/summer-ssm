@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bcdbook.summer.common.enums.BaseEnum.BackMsg;
-import com.bcdbook.summer.wechat.message.pojo.Message;
+import com.bcdbook.summer.wechat.pojo.message.Message;
 import com.bcdbook.summer.wechat.service.ConnectService;
+import com.bcdbook.summer.wechat.service.CoreService;
 import com.bcdbook.summer.wechat.service.MaterialService;
 import com.bcdbook.summer.wechat.service.MessageService;
-import com.bcdbook.summer.wechat.service.impl.CoreServiceImpl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
@@ -32,7 +32,7 @@ public class WechatController {
 	@Resource
 	private ConnectService connectService;
 	@Resource
-	private CoreServiceImpl coreService;
+	private CoreService coreService;
 	@Resource
 	private MaterialService materialService;
 	@Resource

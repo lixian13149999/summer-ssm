@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.bcdbook.summer.wechat.message.pojo.Message;
+import com.bcdbook.summer.wechat.pojo.message.Message;
 
 
 @Repository(value = "wechatMsgDao")

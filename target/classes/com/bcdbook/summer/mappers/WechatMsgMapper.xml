@@ -3,7 +3,7 @@
 <!-- 设置映射的dao类 -->
 <mapper namespace="com.bcdbook.summer.wechat.dao.WechatMsgDao">
 	<!-- 设置映射的数据模型 -->
-	<resultMap id="BaseResultMap" type="com.bcdbook.summer.wechat.message.pojo.Message">
+	<resultMap id="BaseResultMap" type="com.bcdbook.summer.wechat.pojo.message.Message">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="keyword" property="keyword" jdbcType="VARCHAR" />
@@ -79,7 +79,7 @@
 		
 	</select>
 	<!-- 添加Message -->
-	<insert id="insert" parameterType="com.bcdbook.summer.wechat.message.pojo.Message">
+	<insert id="insert" parameterType="com.bcdbook.summer.wechat.pojo.message.Message">
 		insert into t_wx_msg (id,name, keyword,
 		msg_type,media_id,content,add_time,update_time,remark,title,description,music_url,hq_music_url)
 		
@@ -99,7 +99,7 @@
 	</insert>
 	
 	<!-- 更新Message-->
-	<update id="update" parameterType="com.bcdbook.summer.wechat.message.pojo.Message">
+	<update id="update" parameterType="com.bcdbook.summer.wechat.pojo.message.Message">
 		update t_wx_msg
 		set
 		name = #{name,jdbcType=VARCHAR},

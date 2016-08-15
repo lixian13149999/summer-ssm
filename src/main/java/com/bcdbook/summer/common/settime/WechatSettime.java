@@ -9,8 +9,6 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.bcdbook.summer.wechat.service.ConnectService;
 import com.bcdbook.summer.wechat.service.MaterialService;
-import com.bcdbook.summer.wechat.service.impl.ConnectServiceImpl;
-import com.bcdbook.summer.wechat.service.impl.MaterialServiceImpl;
 
 /**
  * 
@@ -32,7 +30,7 @@ public class WechatSettime {
 	 */
 	public void refreshAccessToken() {
 //		System.out.println("刷新accessToken的方法执行");
-		ConnectServiceImpl connectService = (ConnectServiceImpl) getConnectBean("connectService");
+		ConnectService connectService = (ConnectService) getConnectBean("connectService");
 		connectService.updateAccessToken(1);
 	}
 
@@ -61,7 +59,7 @@ public class WechatSettime {
 	 */
 	public void refreshMaterial(){
 //		System.out.println("刷新素材的方法执行");
-		MaterialServiceImpl materialService = (MaterialServiceImpl) getMaterialBean("materialService");
+		MaterialService materialService = (MaterialService) getMaterialBean("materialService");
 		materialService.refreshMaterialToLocal();
 	}
 	

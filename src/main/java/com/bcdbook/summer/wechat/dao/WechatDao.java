@@ -2,7 +2,7 @@ package com.bcdbook.summer.wechat.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.bcdbook.summer.wechat.common.pojo.Wechat;
+import com.bcdbook.summer.wechat.pojo.Wechat;
 
 
 @Repository(value="wechatDao")
