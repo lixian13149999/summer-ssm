@@ -1,4 +1,5 @@
-package com.bcdbook.summer.demo;
+package com.bcdbook.summer.demo.controller;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,15 +18,19 @@ import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.system.pojo.User;
 
 /**
- * 
-     * @Title: TestController.java    
-     * @Description: 测试类的主要控制器
-     * @author lason       
-     * @created 2016年7月8日 下午2:30:35
+ * 常用的Demo的控制器
+ * @author lason
+ *
  */
 @Controller
-@RequestMapping("/demo/test")
-public class TestController {
+@RequestMapping("/demo")
+public class CommonController {
+	@RequestMapping(value="/pathVariable/{username}", method=RequestMethod.GET)  
+    public String delete(@PathVariable String username){  
+        System.out.println(username);  
+        return "";  
+    }  
+	
 	/*
 	 * 获取test.jsp页面
 	 */
@@ -39,43 +45,6 @@ public class TestController {
 	@RequestMapping("/testAjax")
 	public String testAjaxJsp(HttpServletRequest request,Model model){
 		return "demo/testAjax";
-	}
-	
-	/*
-	 * 获取index.html页面
-	 */
-//	@RequestMapping("/index")
-//	public void getIndex(HttpServletRequest request,HttpServletResponse response,Model model){
-//		System.out.println("进入获取静态页面的方法");
-//		try {
-////			request.getRequestDispatcher("/WEB-INF/views/test/testhtml.html").forward(request, response);
-//			
-//			request.getRequestDispatcher("/static/demo/index.html").forward(request, response);
-//		} catch (ServletException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-	
-	/*
-	 * 获取testhtml.html页面
-	 */
-	@RequestMapping("/testhtml")
-	public void getHtml(HttpServletRequest request,HttpServletResponse response,Model model){
-		try {
-//			request.getRequestDispatcher("/WEB-INF/views/test/testhtml.html").forward(request, response);
-			
-			request.getRequestDispatcher("/static/demo/testhtml.html").forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	/*
