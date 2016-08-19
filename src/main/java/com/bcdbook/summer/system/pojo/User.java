@@ -26,6 +26,14 @@ public class User {
 	}
 
 	
+	public User(String userName, String pwd, int age) {
+		super();
+		this.userName = userName;
+		this.pwd = pwd;
+		this.age = age;
+	}
+
+
 	//全参构造
 	public User(int id, String userName, String pwd, int age, int gender,
 			String phone, String email, String openId, String addr,
