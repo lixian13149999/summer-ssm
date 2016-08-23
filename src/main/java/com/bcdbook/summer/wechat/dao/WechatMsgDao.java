@@ -16,12 +16,12 @@ public interface WechatMsgDao {
  	 
 	 int update(Message message);
 	//
-	 Message selectById(Integer id);
+	 Message selectById(String id);
 	// Message selectByKeyword(String keyword);
 	// Message selectByName(String name);
 	 
 	//根据传入的条件查询到对应的Message对象
-	Message selectByCondition(@Param("excludeId")Integer id,@Param("keyword")String keyword
+	Message selectByCondition(@Param("excludeId")String id,@Param("keyword")String keyword
 			,@Param("name")String name,@Param("msgType")String msgType );
 	
 	//此处为新添加 获取message列表

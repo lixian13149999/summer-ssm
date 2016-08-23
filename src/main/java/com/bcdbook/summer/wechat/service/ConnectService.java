@@ -143,7 +143,7 @@ public class ConnectService{
 		Date updateTime=new Date();
 		//<<===================以此为界,上方为创建或获取值的处理,下面为填充设置wechat对象的处理,所以此处应该加一行空格
 		wechat.setAccessToken(accessToken);
-		wechat.setAddTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSSS").format(addTime));
+		wechat.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSSS").format(addTime));
 		wechat.setUpdateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSSS").format(updateTime));
 		//<<===================以此为界,上方为填充设置wechat对象的处理,下面为输入插入的处理,所以此处应该加一行空格
 		wechatDao.insert(wechat);

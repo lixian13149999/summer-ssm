@@ -59,4 +59,12 @@ public class DateUtil {
 			return sf.format(new Date());
 		}
 	}
+	
+	public static String getTimeStr(){
+		return String.valueOf(getTime());
+	}
+	
+	public static long getTime(){
+		return (new Date()).getTime();
+	}
 }

@@ -13,9 +13,9 @@ public class MenuService{
 	@Resource
 	private MenuDao menuDao;
 	
-	public String addMenu(Menu menu) {
-		menuDao.insert(menu);
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public String addMenu(Menu menu) {
+//		menuDao.insert(menu);
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }

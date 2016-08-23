@@ -20,17 +20,17 @@ public class MenuController {
 	
 	@RequestMapping("/add")
 	public String addMenu(HttpServletRequest request,Model model){
-		int id = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("name");
-		String dis = request.getParameter("dis");
-		
-		Menu m = new Menu();
-		m.setId(id);
-		m.setName(name);
-		m.setDescription(dis);
-		
-		menuService.addMenu(m);
-		
+//		int id = Integer.parseInt(request.getParameter("id"));
+//		String name = request.getParameter("name");
+//		String dis = request.getParameter("dis");
+//		
+//		Menu m = new Menu();
+//		m.setId(id);
+//		m.setName(name);
+//		m.setDescription(dis);
+//		
+//		menuService.addMenu(m);
+//		
 		return "user/getUser";
 	}
 

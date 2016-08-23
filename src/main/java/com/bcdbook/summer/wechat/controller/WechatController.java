@@ -361,7 +361,7 @@ public class WechatController {
 		// 获取要修改的msg 的id 查询到该id对应的那条记录
 		String msgId = request.getParameter("id");
 
-		Message msg = messageService.getMsgById(Integer.parseInt(msgId));
+		Message msg = messageService.getMsgById(msgId);
 		request.setAttribute("msg", msg);
 		return "wechat/toModify";
 

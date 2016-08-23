@@ -5,17 +5,18 @@
 	<!-- 设置映射的数据模型 -->
 	
 	<resultMap id="BaseResultMap" type="com.bcdbook.summer.wechat.pojo.Wechat">
-		<id column="id" property="id" jdbcType="INTEGER" />
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
 		<result column="access_token" property="accessToken" jdbcType="VARCHAR" />
 		<result column="refresh_token" property="refreshToken" jdbcType="VARCHAR" />
-		<result column="add_time" property="addTime" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
 		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />		
 	</resultMap>
 
 	<!-- 定义查询的所有参数 -->
 	<!-- 添加按照id获取，删除，和插入一条wechat记录的方法 -->
 	<sql id="Base_Column_List">
-		id, access_token, refresh_token,add_time,update_time
+		id,del_flag, access_token, refresh_token,add_time,update_time
 	</sql>
 	
 	<sql id="Base_Column_ListRecent">

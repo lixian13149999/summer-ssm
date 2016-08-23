@@ -61,7 +61,7 @@ public class Global {
 		String value = map.get(key);
 		if (value == null){
 			value = loader.getProperty(key);
-			map.put(key, value != null ? value : StringUtils.EMPTY);
+			map.put(key, value != null ? value : org.apache.commons.lang3.StringUtils.EMPTY);
 		}
 		return value;
 	}

@@ -28,12 +28,12 @@ public class TestBackMsg {
 		
 		String msg = backMsg.getMsg(1, 2,list ,"error_msg");
 		System.out.println(msg);
-		System.out.println(backMsg.error());
-		System.out.println(backMsg.error("这是错误提示信息"));
-		System.out.println(backMsg.success());
-		System.out.println(backMsg.success("这是成功提示信息"));
-		System.out.println(backMsg.success(new Date()));
-		System.out.println(backMsg.success("",""));
+		System.out.println(BackMsg.error());
+		System.out.println(BackMsg.error("这是错误提示信息"));
+		System.out.println(BackMsg.success());
+		System.out.println(BackMsg.success("这是成功提示信息"));
+		System.out.println(BackMsg.success(new Date()));
+		System.out.println(BackMsg.success("",""));
 	}
 	
 //	public static void main(String[] args) {

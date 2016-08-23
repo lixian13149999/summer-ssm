@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- 设置映射的dao类 -->
+设置映射的dao类
 <mapper namespace="com.bcdbook.summer.system.dao.UserDao">
-	<!-- 设置映射的数据模型 -->
+	设置映射的数据模型
 	<resultMap id="BaseResultMap" type="com.bcdbook.summer.system.pojo.User">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="user_name" property="userName" jdbcType="VARCHAR" />
@@ -23,12 +23,12 @@
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
 	
-	<!-- 定义查询的所有参数 -->
+	定义查询的所有参数
 	<sql id="Base_Column_List">
 		id, user_name, pwd,
 		age,gender,phone,email,open_id,addr,company,department,position,user_type,is_lock,add_time,update_time,remark
 	</sql>
-	<!-- 根据用户id查找用户 -->
+	根据用户id查找用户
 	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
@@ -36,7 +36,7 @@
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	
-	<!-- 根据用户名userName查找用户 -->
+	根据用户名userName查找用户
 	<select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" />
@@ -44,7 +44,7 @@
 		where user_name = #{userName,jdbcType=VARCHAR}
 	</select>
 	
-	<!-- 根据用户名userName和密码password查找用户 -->	
+	根据用户名userName和密码password查找用户	
 	<select id="selectByNameAndPassword" resultMap="BaseResultMap" >
 		select
 		<include refid="Base_Column_List" />
@@ -53,14 +53,14 @@
 		pwd = #{password,jdbcType=VARCHAR}
 	</select>
 	
-	<!-- 根据根据主键id 删除用户 -->
+	根据根据主键id 删除用户
 	<delete id="deleteById" parameterType="java.lang.Integer">
 		delete from t_user
 		where id
 		= #{id,jdbcType=INTEGER}
 	</delete>
 	
-	<!-- 插入用户信息，暂时不用 -->
+	插入用户信息，暂时不用
 	<insert id="insert" parameterType="com.bcdbook.summer.system.pojo.User">
 		insert into t_user (id,
 		user_name, pwd,
@@ -71,7 +71,7 @@
 		#{age,jdbcType=INTEGER})
 	</insert>
 		
-	<!-- 选择性添加开始 -->
+	选择性添加开始
 	<insert id="insertSelective" parameterType="com.bcdbook.summer.system.pojo.User">
 		insert into t_user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -184,10 +184,10 @@
 			</if>
 		</trim>
 	</insert>
-	<!-- 选择性添加结束 -->	
+	选择性添加结束	
 	
-	<!-- 根据传入的user对象所携带的数据，根据id选择性更新user信息-->
-	<!-- 选择性更新开始-->	
+	根据传入的user对象所携带的数据，根据id选择性更新user信息
+	选择性更新开始	
 	<update id="updateByPrimaryKeySelective" parameterType="com.bcdbook.summer.system.pojo.User">
 		update t_user
 		<set>
@@ -242,9 +242,9 @@
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
-   <!-- 选择性更新结束-->	
+   选择性更新结束	
 	
-   <!-- 更新几个基本的user信息，暂时不用。。。-->		
+   更新几个基本的user信息，暂时不用。。。		
 	<update id="updateByPrimaryKey" parameterType="com.bcdbook.summer.system.pojo.User">
 		update t_user
 		set
@@ -254,4 +254,4 @@
 		where id =
 		#{id,jdbcType=INTEGER}
 	</update>
-</mapper>
+</mapper> -->

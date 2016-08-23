@@ -162,7 +162,7 @@ public class TestWechat {
 		
 		//根据id获取
 		System.out.println("===============根据id获取====================");
-		msg=messageService.getMsgById(1);
+		msg=messageService.getMsgById("1");
 		
 		System.out.println(msg);
 		
@@ -172,8 +172,8 @@ public class TestWechat {
 	@Test
 	public void testUpdateMsg(){
 		
-		Message msg=new Message(5, "56", "5", "6", "4","5", "2016-5-31", "2016-5-31", "记录", "2", "3", "4","5");
-	
+//		Message msg=new Message(5, "56", "5", "6", "4","5", "2016-5-31", "2016-5-31", "记录", "2", "3", "4","5");
+	Message msg = new Message();
 	System.out.println(messageService.updateMsg(msg));
 	System.out.println("更新完毕查看数据库。。。。。。。。。。。。。。。");
 	}
@@ -184,7 +184,7 @@ public class TestWechat {
 		Message msg=null;
 		//根据keyword 获取	
 		System.out.println("================ 根据名字和类型获取排除id 获取	====================");
-		msg=messageService.getMsgByNameAndType(1, "3", "3");
+		msg=messageService.getMsgByNameAndType("1", "3", "3");
 		
 		System.out.println(msg);
 		

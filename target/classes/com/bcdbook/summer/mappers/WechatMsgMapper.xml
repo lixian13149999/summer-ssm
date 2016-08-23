@@ -4,7 +4,8 @@
 <mapper namespace="com.bcdbook.summer.wechat.dao.WechatMsgDao">
 	<!-- 设置映射的数据模型 -->
 	<resultMap id="BaseResultMap" type="com.bcdbook.summer.wechat.pojo.message.Message">
-		<id column="id" property="id" jdbcType="INTEGER" />
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="keyword" property="keyword" jdbcType="VARCHAR" />
 		<result column="msg_type" property="msgType" jdbcType="VARCHAR" />
@@ -23,7 +24,7 @@
 	<!-- 定义查询的所有参数 -->
 	
 	 <sql id="Base_Column_List">
-		id, name, keyword,msg_type,media_id,content,add_time,update_time,remark,title,description,music_url,hq_music_url
+		id,del_flag, name, keyword,msg_type,media_id,content,add_time,update_time,remark,title,description,music_url,hq_music_url
 	</sql>
 	
 	<!-- 根据条件查询Message的sql映射 -->

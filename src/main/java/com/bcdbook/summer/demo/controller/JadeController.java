@@ -6,19 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.system.pojo.User;
 
 import de.neuland.jade4j.Jade4J;
@@ -39,9 +32,9 @@ public class JadeController {
 	@ResponseBody
 	public String getUser(HttpServletRequest request,Model imodel){
 		List<User> users = new ArrayList<User>();
-		users.add(new User("The Hitchhiker's Guide to the Galaxy","password", 5));
-		users.add(new User("Life, the Universe and Everything","password", 5));
-		users.add(new User("The Restaurant at the End of the Universe","password", 5));
+//		users.add(new User("The Hitchhiker's Guide to the Galaxy","password", 5));
+//		users.add(new User("Life, the Universe and Everything","password", 5));
+//		users.add(new User("The Restaurant at the End of the Universe","password", 5));
 
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("users", users);

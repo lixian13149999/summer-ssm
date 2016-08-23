@@ -1,29 +1,23 @@
 package com.bcdbook.summer.wechat.pojo;
 
-public class Wechat {
-	private int id;
+import com.bcdbook.summer.common.persistence.DateEntity;
+
+public class Wechat extends DateEntity<Wechat> {
+	
+	private static final long serialVersionUID = -8519260952571337692L;
+	
 	private String accessToken;
 	private String refreshToken;
-	private String addTime;
-	private String updateTime;
+	
 	public Wechat() {
 		super();
 	}
-	public Wechat(int id, String accessToken, String refreshToken,
-			String addTime, String updateTime) {
+	public Wechat(String accessToken, String refreshToken) {
 		super();
-		this.id = id;
 		this.accessToken = accessToken;
 		this.refreshToken = refreshToken;
-		this.addTime = addTime;
-		this.updateTime = updateTime;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getAccessToken() {
 		return accessToken;
 	}
@@ -35,17 +29,5 @@ public class Wechat {
 	}
 	public void setRefreshToken(String refreshToken) {
 		this.refreshToken = refreshToken;
-	}
-	public String getAddTime() {
-		return addTime;
-	}
-	public void setAddTime(String addTime) {
-		this.addTime = addTime;
-	}
-	public String getUpdateTime() {
-		return updateTime;
-	}
-	public void setUpdateTime(String updateTime) {
-		this.updateTime = updateTime;
 	}
 }

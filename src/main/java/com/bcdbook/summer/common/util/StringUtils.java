@@ -5,17 +5,12 @@ package com.bcdbook.summer.common.util;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.LocaleResolver;
-
 import com.google.common.collect.Lists;
 
 /**
@@ -368,4 +363,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     	return result.toString();
     }
     
+    public static boolean isNull(String value){
+    	return value==null||value.trim().equals("")?true:false;
+    }
 }

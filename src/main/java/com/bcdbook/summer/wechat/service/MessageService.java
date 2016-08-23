@@ -144,7 +144,7 @@ public class MessageService {
 	 * @return
 	 * @see com.bcdbook.summer.wechat.service.MessageService#getMsgByKeyword(java.lang.String)
 	 */
-	public Message getMsgByKeyword(int id, String keyword) {
+	public Message getMsgByKeyword(String id, String keyword) {
 		//按keyword查询message并排除给定id的记录
 		Message message =null;
 		message=wechatMsgDao.selectByCondition(id, keyword, null, null);
@@ -175,7 +175,7 @@ public class MessageService {
 	 * @return
 	 * @see com.bcdbook.summer.wechat.service.MessageService#getMsgById(int)
 	 */
-	public Message getMsgById(int id) {
+	public Message getMsgById(String id) {
 		Message message = null;
 		message = wechatMsgDao.selectById(id);
 		return message;
@@ -191,7 +191,7 @@ public class MessageService {
 	    * @param msgType
 	    * @return
 	 */
-	public Message getMsgByNameAndType(int id, String name, String msgType) {
+	public Message getMsgByNameAndType(String id, String name, String msgType) {
 		Message message=null;
 		
 		message=wechatMsgDao.selectByCondition(id,null,name, msgType);
@@ -231,7 +231,7 @@ public class MessageService {
 				 * 否则执行插入添加操作
 				 * 注意:这里传入的id为0
 				 */
-				if(!this.hasMsgByTypeAndName(0, message.getMsgType(), message.getName())){
+				if(!this.hasMsgByTypeAndName("0", message.getMsgType(), message.getName())){
 					//执行插入操作
 					wechatMsgDao.insert(message);
 					//返回成功信息
@@ -260,7 +260,7 @@ public class MessageService {
 		 * 根据传入的message对象,更新对应的数据 3. 更新依据keyword
 		 */
 		
-		int msgId=message.getId();
+		String msgId=message.getId();
 		Message msg = this.getMsgById(msgId);
 		// 这里如果修改关键字,则会报错,所以更新应该根据id获取msg对象
 		if(msg!=null){	
@@ -346,7 +346,7 @@ public class MessageService {
 	    * @return     
 	    * @see com.bcdbook.summer.wechat.service.MessageService#hasMsgByTypeAndName(int, java.lang.String, java.lang.String)
 	 */
-	public boolean hasMsgByTypeAndName(int msgId, String msgType, String name) {
+	public boolean hasMsgByTypeAndName(String msgId, String msgType, String name) {
 		if(this.getMsgByNameAndType(msgId,name,msgType)!=null){			
 			return true;
 		}else{

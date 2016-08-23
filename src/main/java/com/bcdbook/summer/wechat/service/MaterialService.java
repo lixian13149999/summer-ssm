@@ -195,7 +195,7 @@ public class MaterialService {
 			Message msg = null;
 			for (int j = 0; j < itemArray.size(); j++) {
 				item = itemArray.getJSONObject(j);
-				msg = messageService.getMsgByNameAndType(0, item.getString("name"), "voice");
+				msg = messageService.getMsgByNameAndType("0", item.getString("name"), "voice");
 				if(msg!=null){
 					//获取本地的消息更新时间
 					String msgUpdateTiem = DateUtil.toLongTimeString(msg.getUpdateTime());
@@ -234,7 +234,7 @@ public class MaterialService {
 			Message msg = null;
 			for (int j = 0; j < itemArray.size(); j++) {
 				item = itemArray.getJSONObject(j);
-				msg = messageService.getMsgByNameAndType(0, item.getString("name"), "video");
+				msg = messageService.getMsgByNameAndType("0", item.getString("name"), "video");
 				if(msg!=null){
 					//获取本地的消息更新时间
 					String msgUpdateTiem = DateUtil.toLongTimeString(msg.getUpdateTime());
@@ -273,7 +273,7 @@ public class MaterialService {
 			Message msg = null;
 			for (int j = 0; j < itemArray.size(); j++) {
 				item = itemArray.getJSONObject(j);
-				msg = messageService.getMsgByNameAndType(0, item.getString("name"), "image");
+				msg = messageService.getMsgByNameAndType("0", item.getString("name"), "image");
 				if(msg!=null){
 					//获取本地的消息更新时间
 					String msgUpdateTiem = DateUtil.toLongTimeString(msg.getUpdateTime());
@@ -333,7 +333,7 @@ public class MaterialService {
 						String name = articleArray.getJSONObject(0).getString("title");
 						
 						//根据NEWS中第一条article的title,和message类型,获取一条message对象
-						msg = messageService.getMsgByNameAndType(0,name,"news");
+						msg = messageService.getMsgByNameAndType("0",name,"news");
 						
 						if(msg!=null){
 							String mediaId = item.getString("media_id");//获取NEWS的id

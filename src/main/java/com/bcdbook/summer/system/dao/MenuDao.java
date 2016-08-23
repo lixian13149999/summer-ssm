@@ -7,5 +7,5 @@ import com.bcdbook.summer.system.pojo.Menu;
 
 @Repository(value="menuDao")
 public interface MenuDao {
-	int insert(Menu menu);
+//	int insert(Menu menu);
 }
