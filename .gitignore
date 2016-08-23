@@ -1,2 +1,10 @@
 
 target/classes/META-INF/maven/com.bcdbook/strom/pom.properties
+
+src/main/webapp/static/demo/index.jade
+
+*.jade
+
+src/main/java/com/bcdbook/summer/demo/controller/JadeController.java
+
+src/main/webapp/static/demo/index.jade

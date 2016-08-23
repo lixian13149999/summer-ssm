@@ -48,7 +48,7 @@ public class JadeController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(html);
 		return html;
 	}
 	

@@ -1,9 +1,4 @@
-doctype html
-html
-  head
-    title= pageName
-  body
-    ol#users
-      for user in users
-        //-if book.available
-        li #{user.userName} for #{user.pwd} €
+ol#users
+  for user in users
+    //-if book.available
+    li #{user.userName} for #{user.pwd} €
