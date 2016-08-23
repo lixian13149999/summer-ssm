@@ -1,12 +1,14 @@
 package com.bcdbook.summer.system.dao;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.bcdbook.summer.common.persistence.CrudDao;
 import com.bcdbook.summer.system.pojo.User;
 
 @Repository(value="userDao")
-public interface UserDao {
+public interface UserDao extends CrudDao<User> {
+	
+	
 	
 //	//根据主键删除
 //    int deleteById(Integer id);

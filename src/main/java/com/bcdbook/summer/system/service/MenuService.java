@@ -12,6 +12,12 @@ import com.bcdbook.summer.system.pojo.Menu;
 public class MenuService{
 	@Resource
 	private MenuDao menuDao;
+
+	public Menu getMenu(String id) {
+		menuDao.get2(id);
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 //	public String addMenu(Menu menu) {
 //		menuDao.insert(menu);

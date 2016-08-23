@@ -24,15 +24,16 @@ public class DateEntity<T> extends BaseEntity<T> {
 	 */
 	private static final long serialVersionUID = 2738342821838117314L;
 
-	private User createBy;	// 创建者
+	private String createBy;	// 创建者
 	private String createTime;	// 创建日期
-	private User updateBy;	// 更新者
+	private String updateBy;	// 更新者
 	private String updateTime;	// 更新日期
 	
 	public DateEntity() {
 		super();
 	}
-	public DateEntity(User createBy, String createTime, User updateBy,
+	
+	public DateEntity(String createBy, String createTime, String updateBy,
 			String updateTime) {
 		super();
 		this.createBy = createBy;
@@ -40,14 +41,14 @@ public class DateEntity<T> extends BaseEntity<T> {
 		this.updateBy = updateBy;
 		this.updateTime = updateTime;
 	}
-	
+
 	@Override
 	public void preInsert() {
 		setId(IdGen.uuid());
 		User user = UserUtil.getUser();
 		if (StringUtils.isNotBlank(user.getId())){
-			this.updateBy = user;
-			this.createBy = user;
+			this.updateBy = user.getId();
+			this.createBy = user.getId();
 		}
 		this.createTime = DateUtil.getTimeStr();
 		this.updateTime = this.createTime;
@@ -57,15 +58,15 @@ public class DateEntity<T> extends BaseEntity<T> {
 	public void preUpdate() {
 		User user = UserUtil.getUser();
 		if (StringUtils.isNotBlank(user.getId())){
-			this.updateBy = user;
+			this.updateBy = user.getId();
 		}
 		this.updateTime = DateUtil.getTimeStr();
 	}
 	
-	public User getCreateBy() {
+	public String getCreateBy() {
 		return createBy;
 	}
-	public void setCreateBy(User createBy) {
+	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
 	public String getCreateTime() {
@@ -74,10 +75,10 @@ public class DateEntity<T> extends BaseEntity<T> {
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
-	public User getUpdateBy() {
+	public String getUpdateBy() {
 		return updateBy;
 	}
-	public void setUpdateBy(User updateBy) {
+	public void setUpdateBy(String updateBy) {
 		this.updateBy = updateBy;
 	}
 	public String getUpdateTime() {

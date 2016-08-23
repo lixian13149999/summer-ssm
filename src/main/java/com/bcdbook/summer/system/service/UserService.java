@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,9 +13,21 @@ import com.bcdbook.summer.system.dao.UserDao;
 import com.bcdbook.summer.system.pojo.User;
 
 @Service("userService")
-public class UserService {
+public class UserService implements InitializingBean{
 	@Resource
 	private UserDao userDao;
+
+	public String addUser(User user) {
+		userDao.insert(user);
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 
 //	public User getUserById(int userId) {
 //		return this.userDao.selectById(userId);

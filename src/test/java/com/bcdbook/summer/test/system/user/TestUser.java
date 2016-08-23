@@ -1,8 +1,5 @@
 package com.bcdbook.summer.test.system.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -11,8 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.alibaba.fastjson.JSON;
-import com.bcdbook.summer.common.persistence.DateEntity;
 import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.system.service.UserService;
 
@@ -20,11 +15,18 @@ import com.bcdbook.summer.system.service.UserService;
 // 表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = { "classpath:spring-mybatis.xml" })
 public class TestUser {
-//	private static Logger logger = Logger.getLogger(TestUser.class);
-//	// private ApplicationContext ac = null;
-//	@Resource
-//	private UserService userService = null;
-//
+	private static Logger logger = Logger.getLogger(TestUser.class);
+	// private ApplicationContext ac = null;
+	@Resource
+	private UserService userService = null;
+	
+	@Test
+	public void testInsertUser(){
+		User user = new User();
+		user.preInsert();
+		String s = userService.addUser(user);
+	}
+
 ////	 @Before
 ////	 public void before() {
 ////	 ac = new ClassPathXmlApplicationContext("applicationContext.xml");

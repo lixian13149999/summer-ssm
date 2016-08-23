@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- 设置映射的dao类 -->
-<mapper namespace="com.bcdbook.summer.wechat.dao.WechatMsgDao">
+<mapper namespace="WechatMsg">
 	<!-- 设置映射的数据模型 -->
-	<resultMap id="BaseResultMap" type="com.bcdbook.summer.wechat.pojo.message.Message">
+	<resultMap id="WechatMsg" type="com.bcdbook.summer.wechat.pojo.message.Message">
 		<id column="id" property="id" jdbcType="VARCHAR" />
 		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
@@ -28,7 +28,7 @@
 	</sql>
 	
 	<!-- 根据条件查询Message的sql映射 -->
-	<select id="selectByCondition" resultMap="BaseResultMap" >
+	<select id="selectByCondition" resultMap="WechatMsg" >
 		select
 		<include refid="Base_Column_List" />
 		from t_wx_msg where 1=1 
@@ -46,7 +46,7 @@
 		</if>
 	</select>
 	<!-- 根据条件分页查询message-->
-	<select id="getMsgPageByCondition" resultMap="BaseResultMap" >
+	<select id="getMsgPageByCondition" resultMap="WechatMsg" >
 		select
 		<include refid="Base_Column_List" />
 		from (SELECT * FROM t_wx_msg WHERE 1=1 
@@ -61,7 +61,7 @@
 		
 	</select>
 	<!-- 根据ID查询Message的sql映射 -->
-	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	<select id="selectById" resultMap="WechatMsg" parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
 		from t_wx_msg
@@ -121,7 +121,7 @@
 	</update>
 	
 	<!-- 查询Message列表的sql映射 -->
-	<select id="selectAllMsg" resultMap="BaseResultMap" >
+	<select id="selectAllMsg" resultMap="WechatMsg" >
 		select
 		<include refid="Base_Column_List" />
 		from t_wx_msg		
