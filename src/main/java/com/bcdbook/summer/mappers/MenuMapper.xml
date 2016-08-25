@@ -23,8 +23,8 @@
 	</resultMap>
 
 	<!-- 定义查询的所有参数 -->
-	<sql id="Base_Column_List">
-		id, name, description
+	<sql id="MenuColumn">
+		id, del_flag, parent_id, name, description, href, target, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark
 	</sql>
 	<insert id="insert" parameterType="com.bcdbook.summer.system.pojo.Menu">
 		insert into t_menu (id,name, description)
@@ -34,16 +34,16 @@
 	</insert>
 	<select id="get" resultMap="Menu" parameterType="java.lang.Integer">
 		select
-		<include refid="Base_Column_List" />
+		<include refid="MenuColumn" />
 		from sys_menu
 		where id = #{id,jdbcType=VARCHAR}
 	</select>
 	
 	<select id="get2" resultMap="Menu" parameterType="java.lang.String">
 		select
-		<include refid="Base_Column_List" />
+		<include refid="MenuColumn" />
 		from sys_menu
-		where id like '%' #{id} '%'
+		where id = '123'
 	</select>
 	
 </mapper>

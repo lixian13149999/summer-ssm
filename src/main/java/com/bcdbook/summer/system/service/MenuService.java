@@ -14,9 +14,7 @@ public class MenuService{
 	private MenuDao menuDao;
 
 	public Menu getMenu(String id) {
-		menuDao.get2(id);
-		// TODO Auto-generated method stub
-		return null;
+		return menuDao.get2(id);
 	}
 	
 //	public String addMenu(Menu menu) {

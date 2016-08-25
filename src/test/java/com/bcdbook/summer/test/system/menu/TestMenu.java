@@ -25,5 +25,6 @@ public class TestMenu {
 		String id = "123";
 		logger.info("将要执行查询");
 		Menu menu = menuService.getMenu(id);
+		System.out.println(menu);
 	}
 }

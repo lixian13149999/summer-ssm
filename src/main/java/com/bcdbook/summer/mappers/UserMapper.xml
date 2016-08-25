@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- 设置映射的dao类 -->
-<mapper namespace="SysUser">
+<mapper namespace="com.bcdbook.summer.system.dao.UserDao">
 	<!-- 设置映射的数据模型 -->
 	<resultMap id="User" type="com.bcdbook.summer.system.pojo.User">
 		<id column="id" property="id" jdbcType="VARCHAR" />
