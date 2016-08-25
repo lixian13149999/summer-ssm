@@ -1,4 +1,4 @@
-package com.bcdbook.summer.common.persistence;
+package com.bcdbook.summer.common.persistence.pojo;
 
 import java.util.Date;
 
@@ -17,7 +17,7 @@ import com.bcdbook.summer.system.pojo.User;
  * @author lason
  * @date 2016年8月23日
  */
-public class DateEntity<T> extends BaseEntity<T> {
+public class DataEntity<T> extends BaseEntity<T> {
 
 	/**
 	 * 生成唯一的类识别码
@@ -29,11 +29,11 @@ public class DateEntity<T> extends BaseEntity<T> {
 	private String updateBy;	// 更新者
 	private String updateTime;	// 更新日期
 	
-	public DateEntity() {
+	public DataEntity() {
 		super();
 	}
 	
-	public DateEntity(String createBy, String createTime, String updateBy,
+	public DataEntity(String createBy, String createTime, String updateBy,
 			String updateTime) {
 		super();
 		this.createBy = createBy;
@@ -52,6 +52,7 @@ public class DateEntity<T> extends BaseEntity<T> {
 		}
 		this.createTime = DateUtil.getTimeStr();
 		this.updateTime = this.createTime;
+		setDelFlag(DEL_FLAG_NORMAL);
 	}
 	
 	@Override

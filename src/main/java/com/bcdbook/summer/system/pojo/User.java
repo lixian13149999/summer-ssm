@@ -1,8 +1,8 @@
 package com.bcdbook.summer.system.pojo;
 
-import com.bcdbook.summer.common.persistence.DateEntity;
+import com.bcdbook.summer.common.persistence.pojo.DataEntity;
 
-public class User extends DateEntity<User> {
+public class User extends DataEntity<User> {
 	
 	private static final long serialVersionUID = 3129813923604395110L;
 	

@@ -20,30 +20,107 @@
 		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
 		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		
+		<collection property="childs" column="id" select="getChilds" />
 	</resultMap>
 
 	<!-- 定义查询的所有参数 -->
-	<sql id="MenuColumn">
+	<sql id="MenuColumns">
 		id, del_flag, parent_id, name, description, href, target, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark
 	</sql>
-	<insert id="insert" parameterType="com.bcdbook.summer.system.pojo.Menu">
-		insert into t_menu (id,name, description)
-		values (#{id,jdbcType=INTEGER},
-		#{name,jdbcType=VARCHAR},
-		#{description,jdbcType=VARCHAR})
+	
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.system.pojo.Menu">
+		insert into sys_menu (id, del_flag, parent_id, name, description, href, target, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=INTEGER},
+			#{parentId,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{description,jdbcType=VARCHAR},
+			#{href,jdbcType=VARCHAR},
+			#{target,jdbcType=VARCHAR},
+			#{icon,jdbcType=VARCHAR},
+			#{sort,jdbcType=INTEGER},
+			#{permission,jdbcType=VARCHAR},
+			#{isShow,jdbcType=INTEGER},
+			#{createTime,jdbcType=VARCHAR},
+			#{createBy,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{updateBy,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR}
+		)
 	</insert>
-	<select id="get" resultMap="Menu" parameterType="java.lang.Integer">
+	
+	<select id="get" resultMap="Menu" parameterType="java.lang.String">
 		select
-		<include refid="MenuColumn" />
+		<include refid="MenuColumns" />
 		from sys_menu
 		where id = #{id,jdbcType=VARCHAR}
+		and del_flag = 1
 	</select>
 	
-	<select id="get2" resultMap="Menu" parameterType="java.lang.String">
+	<select id="getByCondition" resultMap="Menu" parameterType="com.bcdbook.summer.system.pojo.Menu">
 		select
-		<include refid="MenuColumn" />
+		<include refid="MenuColumns" />
 		from sys_menu
-		where id = '123'
+		<where>
+	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="1==1">
+		    	and del_flag = 1
+		    </if>
+		    <if test="parentId != null and !&quot;&quot;.equals(parentId.trim())">
+		    	and parent_id = #{parentId}
+		    </if>
+		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
+		    	and name = #{name}
+		    </if>
+		    <if test="description != null and !&quot;&quot;.equals(description.trim())">
+		    	and description = #{description}
+		    </if>
+		    <if test="href != null and !&quot;&quot;.equals(href.trim())">
+		    	and href = #{href}
+		    </if>
+		    <if test="target != null and !&quot;&quot;.equals(target.trim())">
+		    	and target = #{target}
+		    </if>
+		    <if test="icon != null and !&quot;&quot;.equals(icon.trim())">
+		    	and icon = #{icon}
+		    </if>
+		    <if test="sort != null and sort != 0">
+		    	and sort = #{sort}
+		    </if>
+		    <if test="permission != null and !&quot;&quot;.equals(permission.trim())">
+		    	and permission = #{permission}
+		    </if>
+		    <if test="isShow != null and isShow != 0">
+		    	and is_show = #{isShow}
+		    </if>
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+	    </where>
 	</select>
 	
+	<select id="getChilds" resultMap="Menu" parameterType="java.lang.String">
+		select
+		<include refid="MenuColumns" />
+		from sys_menu
+		where parent_id = #{id,jdbcType=VARCHAR}
+		and del_flag = 1
+		order by sort
+	</select>
 </mapper>

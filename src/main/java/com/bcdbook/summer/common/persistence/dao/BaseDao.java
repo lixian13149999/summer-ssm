@@ -1,4 +1,4 @@
-package com.bcdbook.summer.common.persistence;
+package com.bcdbook.summer.common.persistence.dao;
 
 /**
  * 

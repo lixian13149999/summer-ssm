@@ -1,6 +1,8 @@
-package com.bcdbook.summer.common.persistence;
+package com.bcdbook.summer.common.persistence.pojo;
 
 import java.io.Serializable;
+
+import com.bcdbook.summer.common.persistence.Page;
 
 /**
  * @Description: 创建基础的实体类,并实现可序列化接口
@@ -18,11 +20,11 @@ public abstract class BaseEntity<T> implements Serializable{
 	private static final long serialVersionUID = 7776824160890078311L;
 	
 	/**
-	 * 删除标记（0：正常；1：删除；2：审核；）
+	 * 删除标记（1：正常；2：删除；）
 	 */
-	public static final String DEL_FLAG_NORMAL = "0";
-	public static final String DEL_FLAG_DELETE = "1";
-	public static final String DEL_FLAG_AUDIT = "2";
+	public static final String DEL_FLAG_NORMAL = "1";
+	public static final String DEL_FLAG_DELETE = "2";
+//	public static final String DEL_FLAG_AUDIT = "3";
 	
 	private String id;//表中的id字段
 	private String delFlag;//表中表示删除的字段,用于伪删除操作

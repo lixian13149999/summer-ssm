@@ -20,11 +20,46 @@ public class TestMenu {
 	@Resource
 	private MenuService menuService = null;
 	
+	/**
+	 * 
+	 * @Description: 测试添加栏目的方法
+	 * @param    
+	 * @return void  
+	 * @throws
+	 * @author lason
+	 * @date 2016年8月25日
+	 */
 	@Test
-	public void testGetMenu(){
-		String id = "123";
-		logger.info("将要执行查询");
-		Menu menu = menuService.getMenu(id);
+	public void testAddMenu(){
+		Menu menu = new Menu("4713f725dcc7482ea257d6d0d779761a", "二级栏目1.2", "这是栏目的详细描述", "www.bcdbook.com", "_bank", "icon", 2, "user", 1);
+		menu.preInsert();
+		
+		System.out.println(menuService.add(menu));
+	}
+	
+	@Test
+	public void testGetMenuById(){
+		String id = "4713f725dcc7482ea257d6d0d779761a";
+//		logger.info("将要执行查询");
+		Menu menu = menuService.get(id);
 		System.out.println(menu);
+	}
+	
+	@Test
+	public void testGetMenuByEntity(){
+		String id = "4713f725dcc7482ea257d6d0d779761a";
+//		logger.info("将要执行查询");
+		Menu menu = new Menu();
+		menu.setId(id);
+//		menu.setIsShow(1);
+//		menu.setIcon("icon");
+		Menu menu2 = menuService.getByCondition(menu);
+		System.out.println(menu2);
+	}
+	
+	@Test
+	public void testGetChilds(){
+		String id = "4713f725dcc7482ea257d6d0d779761a";
+		System.out.println(menuService.getChilds(id));
 	}
 }

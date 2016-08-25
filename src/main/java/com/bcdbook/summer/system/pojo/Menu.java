@@ -2,7 +2,7 @@ package com.bcdbook.summer.system.pojo;
 
 import java.util.List;
 
-import com.bcdbook.summer.common.persistence.DateEntity;
+import com.bcdbook.summer.common.persistence.pojo.DataEntity;
 
 /**
  * 
@@ -11,11 +11,11 @@ import com.bcdbook.summer.common.persistence.DateEntity;
      * @author lason       
      * @created 2016年5月27日 下午1:23:51
  */
-public class Menu extends DateEntity<Menu> {
+public class Menu extends DataEntity<Menu> {
 
 	private static final long serialVersionUID = 1045257040316372693L;
 	
-	private String parent_id;
+	private String parentId;//父级菜单id
 	private String name;//栏目名字
 	private String description;//栏目的描述
 	private String href;//栏目跳转地址
@@ -30,11 +30,11 @@ public class Menu extends DateEntity<Menu> {
 		super();
 	}
 	
-	public Menu(String parent_id, String name, String description, String href,
+	public Menu(String parentId, String name, String description, String href,
 			String target, String icon, Integer sort, String permission,
 			Integer isShow, List<Menu> childs) {
 		super();
-		this.parent_id = parent_id;
+		this.parentId = parentId;
 		this.name = name;
 		this.description = description;
 		this.href = href;
@@ -46,12 +46,29 @@ public class Menu extends DateEntity<Menu> {
 		this.childs = childs;
 	}
 
-	public String getParent_id() {
-		return parent_id;
+	public Menu(String parentId, String name, String description, String href,
+			String target, String icon, Integer sort, String permission,
+			Integer isShow) {
+		super();
+		this.parentId = parentId;
+		this.name = name;
+		this.description = description;
+		this.href = href;
+		this.target = target;
+		this.icon = icon;
+		this.sort = sort;
+		this.permission = permission;
+		this.isShow = isShow;
 	}
-	public void setParent_id(String parent_id) {
-		this.parent_id = parent_id;
+
+	
+	public String getParentId() {
+		return parentId;
 	}
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -106,5 +123,13 @@ public class Menu extends DateEntity<Menu> {
 	public void setChilds(List<Menu> childs) {
 		this.childs = childs;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Menu [parentId=" + parentId + ", name=" + name
+				+ ", description=" + description + ", href=" + href
+				+ ", target=" + target + ", icon=" + icon + ", sort=" + sort
+				+ ", permission=" + permission + ", isShow=" + isShow
+				+ ", childs=" + childs + "]";
+	}
 }

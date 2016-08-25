@@ -1,8 +1,8 @@
 package com.bcdbook.summer.wechat.pojo.message;
 
-import com.bcdbook.summer.common.persistence.DateEntity;
+import com.bcdbook.summer.common.persistence.pojo.DataEntity;
 
-public class Message extends DateEntity<Message> {
+public class Message extends DataEntity<Message> {
 
 	private static final long serialVersionUID = 472956021907896157L;
 	
