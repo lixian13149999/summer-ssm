@@ -74,6 +74,22 @@ public class Global {
 	}
 	
 	/**
+	 * 获取分页的默认页码
+	 */
+	public static int getStartPage(){
+		String startPageStr = getConfig("page.startPage");
+		return startPageStr!=null&&!startPageStr.equals("")?Integer.parseInt(startPageStr):1;
+	}
+
+	/**
+	 * 获取分页的默认每页大小
+	 */
+	public static int getPageSize(){
+		String pageSizeStr = getConfig("page.pageSize");
+		return pageSizeStr!=null&&!pageSizeStr.equals("")?Integer.parseInt(pageSizeStr):1;
+	}
+	
+	/**
 	 * 获取管理端根路径
 	 */
 //	public static String getAdminPath() {

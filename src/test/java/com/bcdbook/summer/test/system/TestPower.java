@@ -1,5 +1,7 @@
 package com.bcdbook.summer.test.system;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -8,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.bcdbook.summer.common.persistence.Page;
 import com.bcdbook.summer.system.pojo.Power;
 import com.bcdbook.summer.system.service.PowerService;
 import com.bcdbook.summer.test.wechat.TestWechat;
@@ -29,8 +32,12 @@ public class TestPower {
 //	private int isShow;//是否显示
 	@Test
 	public void add(){
-		Power power = new Power("menuid","权限名称","权限简介","icon",1,"user:add",1);
-		System.out.println(powerService.add(power));
+		for (int i = 0; i < 100; i++) {
+			Power power = new Power("menuid"+i,"权限名称"+i,"权限简介"+i,"icon"+i,i,"user:add"+i,1);
+			powerService.add(power);
+		}
+//		System.out.println();
+		
 	}
 	
 	@Test 
@@ -62,20 +69,104 @@ public class TestPower {
 	@Test
 	public void update(){
 		Power p = new Power();
-		p.setId("2e3e70a280d74e569531ae937c84d6fa");
+		p.setId("288e74d0758445489e83338636e8c5ae");
 		p.setDelFlag(1);
 		p.setMenuId("menuId");
+		p.setName("name");
+		p.setDescription("description");
+		p.setIcon("icon");
+		p.setSort(1);
+		p.setPermission("permission");
+		p.setIsShow(1);
+		p.setCreateTime("createTime");
+		p.setCreateBy("createBy");
+		p.setUpdateTime("updateTime");
+		p.setUpdateBy("updateBy");
+		p.setRemark("remark");
+		
+		System.out.println(powerService.update(p));
+	}
+	
+	@Test
+	public void get(){
+		Power p = powerService.get("288e74d0758445489e83338636e8c5ae");
+		System.out.println(p);
+		
+	}
+	
+	@Test
+	public void getByCondition(){
+		Power p = new Power();
+		p.setId("288e74d0758445489e83338636e8c5ae");
+		p.setDelFlag(1);
+		p.setMenuId("menuId");
+		p.setName("name");
+		p.setDescription("description");
+		p.setIcon("icon");
+		p.setSort(1);
+		p.setPermission("permission");
+		p.setIsShow(1);
+		p.setCreateTime("createTime");
+		p.setCreateBy("createBy");
+//		p.setUpdateTime("updateTime");
+		p.setUpdateBy("updateBy");
+		p.setRemark("remark");
+		
+		Power p1 = powerService.getByCondition(p);
+		System.out.println(p1);
+	}
+	
+	
+	@Test
+	public void findList(){
+		Power p = new Power();
+//		p.setId("288e74d0758445489e83338636e8c5ae");
+		p.setDelFlag(1);
+//		p.setMenuId("menuid");
 //		p.setName("name");
 //		p.setDescription("description");
 //		p.setIcon("icon");
 //		p.setSort(1);
 //		p.setPermission("permission");
-		p.setIsShow(1);
+//		p.setIsShow(1);
 //		p.setCreateTime("createTime");
 //		p.setCreateBy("createBy");
 //		p.setUpdateTime("updateTime");
 //		p.setUpdateBy("updateBy");
 //		p.setRemark("remark");
-		System.out.println(powerService.update(p));
+		
+		List<Power> powers = powerService.findList(p);
+		System.out.println(powers.size());
+		
+		for (Power power : powers) {
+			System.out.println(power);
+		}
+	}
+	
+	@Test
+	public void findListPage(){
+		Power p = new Power();
+//		p.setId("288e74d0758445489e83338636e8c5ae");
+		p.setDelFlag(1);
+//		p.setMenuId("menuid");
+//		p.setName("name");
+//		p.setDescription("description");
+//		p.setIcon("icon");
+//		p.setSort(1);
+//		p.setPermission("permission");
+//		p.setIsShow(1);
+//		p.setCreateTime("createTime");
+//		p.setCreateBy("createBy");
+//		p.setUpdateTime("updateTime");
+//		p.setUpdateBy("updateBy");
+//		p.setRemark("remark");
+		
+		Page<Power> page = new Page<Power>();
+		page.setPageNum(5);
+		page.setPageSize(4);
+		page.setFunc("testFunction");
+		
+		Page<Power> page1 = powerService.findPage(page, p);
+		System.out.println(page1);
 	}
 }

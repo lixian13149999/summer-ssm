@@ -4,6 +4,8 @@ import com.bcdbook.summer.common.persistence.pojo.DataEntity;
 
 public class Addr extends DataEntity<Addr>{
 	
+	private static final long serialVersionUID = 7389351758269337339L;
+	
 	private String userId;//用户id外键
 	private int type;//地址类型
 	private int isDefault;//是否是默认地址

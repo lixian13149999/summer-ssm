@@ -78,4 +78,11 @@ public class Power extends DataEntity<Power> {
 		this.isShow = isShow;
 	}
 	
+	@Override
+	public String toString() {
+		return "Power [menuId=" + menuId + ", name=" + name + ", description="
+				+ description + ", icon=" + icon + ", sort=" + sort
+				+ ", permission=" + permission + ", isShow=" + isShow + "]";
+	}
+	
 }
