@@ -47,6 +47,60 @@
 		)
 	</insert>
 	
+	<delete id="delete" parameterType="java.lang.String">
+		delete from sys_power
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.bcdbook.summer.system.pojo.Power">
+		delete from sys_power
+		<where>
+	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="delFlag != null and delFlag != 0">
+		    	and del_flag = #{delFlag}
+		    </if>
+		    <if test="menuId != null and !&quot;&quot;.equals(menuId.trim())">
+		    	and menu_id = #{menuId}
+		    </if>
+		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
+		    	and name = #{name}
+		    </if>
+		    <if test="description != null and !&quot;&quot;.equals(description.trim())">
+		    	and description = #{description}
+		    </if>
+		    <if test="icon != null and !&quot;&quot;.equals(icon.trim())">
+		    	and icon = #{icon}
+		    </if>
+		    <if test="sort != null and sort != 0">
+		    	and sort = #{sort}
+		    </if>
+		    <if test="permission != null and !&quot;&quot;.equals(permission.trim())">
+		    	and permission = #{permission}
+		    </if>
+		    <if test="isShow != null and isShow != 0">
+		    	and is_show = #{isShow}
+		    </if>
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+	    </where>
+	</delete>
+	
+	
 	<select id="get" resultMap="Power" parameterType="java.lang.String">
 		select
 		<include refid="PowerColumns" />
@@ -67,7 +121,7 @@
 		    	and del_flag = 1
 		    </if>
 		    <if test="menuId != null and !&quot;&quot;.equals(menuId.trim())">
-		    	and menu_id = #{parentId}
+		    	and menu_id = #{menuId}
 		    </if>
 		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
 		    	and name = #{name}

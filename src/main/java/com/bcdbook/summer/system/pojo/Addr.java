@@ -1,6 +1,8 @@
 package com.bcdbook.summer.system.pojo;
 
-public class Addr {
+import com.bcdbook.summer.common.persistence.pojo.DataEntity;
+
+public class Addr extends DataEntity<Addr>{
 	
 	private String userId;//用户id外键
 	private int type;//地址类型

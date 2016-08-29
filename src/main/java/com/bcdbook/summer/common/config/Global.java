@@ -22,6 +22,13 @@ public class Global {
 	 */
 	private static PropertiesLoader loader = new PropertiesLoader("summer.properties");
 
+
+	/**
+	 * 删除标记（1：正常；2：删除；）
+	 */
+	public static final Integer DEL_FLAG_NORMAL = 1;
+	public static final Integer DEL_FLAG_DELETE = 2;
+	
 	/**
 	 * 显示/隐藏
 	 */

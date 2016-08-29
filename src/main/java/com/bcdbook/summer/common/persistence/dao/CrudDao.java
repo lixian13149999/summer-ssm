@@ -64,5 +64,5 @@ public interface CrudDao<T> extends BaseDao {
 	 * @param entity
 	 * @return
 	 */
-	public int delete(T entity);
+	public int deleteByCondition(T entity);
 }

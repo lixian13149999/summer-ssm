@@ -92,11 +92,17 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 //	}
 	
 	/**
-	 * 删除数据
+	 * 删除数据,根据实体类中的相关数据
 	 * @param entity
 	 */
-//	@Transactional(readOnly = false)
-	public int delete(T entity) {
-		return dao.delete(entity);
+	public int deleteByCondition(T entity) {
+		return dao.deleteByCondition(entity);
+	}
+	
+	/**
+	 * 根据id删除相关数据
+	 */
+	public int delete(String id){
+		return dao.delete(id);
 	}
 }

@@ -1,5 +1,6 @@
 package com.bcdbook.summer.common.persistence.pojo;
 
+import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.common.util.IdGen;
 import com.bcdbook.summer.common.util.StringUtils;
@@ -50,7 +51,7 @@ public class DataEntity<T> extends BaseEntity<T> {
 		}
 		this.createTime = DateUtil.getTimeStr();
 		this.updateTime = this.createTime;
-		setDelFlag(DEL_FLAG_NORMAL);
+		setDelFlag(Global.DEL_FLAG_NORMAL);
 	}
 	
 	@Override
