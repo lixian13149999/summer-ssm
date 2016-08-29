@@ -24,7 +24,9 @@ public class Menu extends DataEntity<Menu> {
 	private Integer sort;// 排序
 	private String permission;//权限标识
 	private Integer isShow;//是否显示
+	
 	private List<Menu> childs;//栏目的子集
+	private List<Power> powers;//栏目的权限子集
 	
 	public Menu() {
 		super();
@@ -122,6 +124,12 @@ public class Menu extends DataEntity<Menu> {
 	}
 	public void setChilds(List<Menu> childs) {
 		this.childs = childs;
+	}
+	public List<Power> getPowers() {
+		return powers;
+	}
+	public void setPowers(List<Power> powers) {
+		this.powers = powers;
 	}
 
 	@Override
