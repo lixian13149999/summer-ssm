@@ -3,8 +3,6 @@ package com.bcdbook.summer.common.persistence.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.bcdbook.summer.common.persistence.Page;
 import com.bcdbook.summer.common.persistence.dao.CrudDao;
 import com.bcdbook.summer.common.persistence.pojo.DataEntity;

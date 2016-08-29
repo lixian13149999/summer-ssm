@@ -3,7 +3,6 @@ package com.bcdbook.summer.common.config;
 import java.util.Map;
 
 import com.bcdbook.summer.common.util.PropertiesLoader;
-import com.bcdbook.summer.common.util.StringUtils;
 import com.google.common.collect.Maps;
 
 

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- 设置映射的dao类 -->
-<mapper namespace="com.bcdbook.summer.system.dao.PowerDao">
+<mapper namespace="com.bcdbook.summer.system.dao.MessageDao">
 	<!-- 设置映射的数据模型 -->
-	<resultMap id="Power" type="com.bcdbook.summer.system.pojo.Power">
+	<resultMap id="Message" type="com.bcdbook.summer.system.pojo.Message">
 		<id column="id" property="id" jdbcType="VARCHAR" />
 		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
 		
-		<result column="menu_id" property="menuId" jdbcType="VARCHAR" />
-		<result column="name" property="name" jdbcType="VARCHAR" />
-		<result column="description" property="description" jdbcType="VARCHAR" />
-		<result column="icon" property="icon" jdbcType="VARCHAR" />
-		<result column="sort" property="sort" jdbcType="INTEGER" />
-		<result column="permission" property="permission" jdbcType="VARCHAR" />
-		<result column="is_show" property="isShow" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="msg_from" property="msgFrom" jdbcType="VARCHAR" />
+		<result column="msg_to" property="msgTo" jdbcType="VARCHAR" />
+		<result column="read_type" property="readType" jdbcType="INTEGER" />
 		
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
 		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
@@ -23,22 +21,20 @@
 	</resultMap>
 
 	<!-- 定义查询的所有参数 -->
-	<sql id="PowerColumns">
-		id, del_flag, menu_id, name, description, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark
+	<sql id="MessageColumns">
+		id, del_flag, title, content, msg_from, msg_to, read_type, create_time, create_by, update_time, update_by, remark
 	</sql>
 	
-	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.system.pojo.Power">
-		insert into sys_power (id, del_flag, menu_id, name, description, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark)
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.system.pojo.Message">
+		insert into sys_message (id, del_flag, title, content, msg_from, msg_to, read_type, create_time, create_by, update_time, update_by, remark)
 		values (
 			#{id,jdbcType=VARCHAR},
 			#{delFlag,jdbcType=INTEGER},
-			#{menuId,jdbcType=VARCHAR},
-			#{name,jdbcType=VARCHAR},
-			#{description,jdbcType=VARCHAR},
-			#{icon,jdbcType=VARCHAR},
-			#{sort,jdbcType=INTEGER},
-			#{permission,jdbcType=VARCHAR},
-			#{isShow,jdbcType=INTEGER},
+			#{title,jdbcType=VARCHAR},
+			#{content,jdbcType=VARCHAR},
+			#{msgFrom,jdbcType=VARCHAR},
+			#{msgTo,jdbcType=VARCHAR},
+			#{readType,jdbcType=INTEGER},
 			#{createTime,jdbcType=VARCHAR},
 			#{createBy,jdbcType=VARCHAR},
 			#{updateTime,jdbcType=VARCHAR},
@@ -47,17 +43,17 @@
 		)
 	</insert>
 	
-	<select id="get" resultMap="Power" parameterType="java.lang.String">
+	<select id="get" resultMap="Message" parameterType="java.lang.String">
 		select
-		<include refid="PowerColumns" />
+		<include refid="MessageColumns" />
 		from sys_power
 		where id = #{id,jdbcType=VARCHAR}
 		and del_flag = 1
 	</select>
 	
-	<select id="getByCondition" resultMap="Power" parameterType="com.bcdbook.summer.system.pojo.Power">
+	<select id="getByCondition" resultMap="Message" parameterType="com.bcdbook.summer.system.pojo.Message">
 		select
-		<include refid="PowerColumns" />
+		<include refid="MessageColumns" />
 		from sys_power
 		<where>
 	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">

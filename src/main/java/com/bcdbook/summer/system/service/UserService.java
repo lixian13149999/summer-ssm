@@ -1,14 +1,9 @@
 package com.bcdbook.summer.system.service;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.bcdbook.summer.common.enums.BaseEnum.BackMsg;
 import com.bcdbook.summer.system.dao.UserDao;
 import com.bcdbook.summer.system.pojo.User;
 

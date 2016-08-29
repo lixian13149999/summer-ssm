@@ -1,7 +1,5 @@
 package com.bcdbook.summer.common.persistence.pojo;
 
-import java.util.Date;
-
 import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.common.util.IdGen;
 import com.bcdbook.summer.common.util.StringUtils;
@@ -46,7 +44,7 @@ public class DataEntity<T> extends BaseEntity<T> {
 	public void preInsert() {
 		setId(IdGen.uuid());
 		User user = UserUtil.getUser();
-		if (StringUtils.isNotBlank(user.getId())){
+		if (org.apache.commons.lang3.StringUtils.isNotBlank(user.getId())){
 			this.updateBy = user.getId();
 			this.createBy = user.getId();
 		}
@@ -58,7 +56,7 @@ public class DataEntity<T> extends BaseEntity<T> {
 	@Override
 	public void preUpdate() {
 		User user = UserUtil.getUser();
-		if (StringUtils.isNotBlank(user.getId())){
+		if (org.apache.commons.lang3.StringUtils.isNotBlank(user.getId())){
 			this.updateBy = user.getId();
 		}
 		this.updateTime = DateUtil.getTimeStr();

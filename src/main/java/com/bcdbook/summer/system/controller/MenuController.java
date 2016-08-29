@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.service.MenuService;
 
 
