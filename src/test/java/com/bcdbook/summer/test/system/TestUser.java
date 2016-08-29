@@ -1,4 +1,4 @@
-package com.bcdbook.summer.test.system.user;
+package com.bcdbook.summer.test.system;
 
 import javax.annotation.Resource;
 

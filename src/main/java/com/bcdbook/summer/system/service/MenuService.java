@@ -21,17 +21,4 @@ public class MenuService extends CrudService<MenuDao,Menu>{
 	public List<Menu> getChilds(String parentId){
 		return menuDao.getChilds(parentId);
 	}
-//	public Menu getMenu(String id) {
-//		return menuDao.get2(id);
-//	}
-
-//	public int addMenu(Menu menu) {
-//		return menuDao.insert(menu);
-//	}
-	
-//	public String addMenu(Menu menu) {
-//		menuDao.insert(menu);
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 }
