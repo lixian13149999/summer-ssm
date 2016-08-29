@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 设置映射的dao类 -->
+<mapper namespace="com.bcdbook.summer.system.dao.AddrDao">
+	<!-- 设置映射的数据模型 -->
+	<resultMap id="Addr" type="com.bcdbook.summer.system.pojo.Addr">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="INTEGER" />
+		<result column="p_code" property="pCode" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="level" property="level" jdbcType="INTEGER" />
+	</resultMap>
+
+	<!-- 定义查询的所有参数 -->
+	<sql id="AddrColumns">
+		id, code, p_code, name, level
+	</sql>
+	
+</mapper>
+	
+	
