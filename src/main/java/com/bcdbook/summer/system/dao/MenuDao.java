@@ -11,7 +11,7 @@ import com.bcdbook.summer.system.pojo.Menu;
 @Repository(value="menuDao")
 public interface MenuDao extends CrudDao<Menu> {
 
-	List<Menu> getChilds(String parentId);
+	List<Menu> listChilds(String parentId);
 	
 	Menu get2(String id);
 //	int insert(Menu menu);

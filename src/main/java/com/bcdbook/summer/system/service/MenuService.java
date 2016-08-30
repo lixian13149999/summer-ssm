@@ -16,7 +16,7 @@ public class MenuService extends CrudService<MenuDao,Menu>{
 	@Resource
 	private MenuDao menuDao;
 	
-	public List<Menu> getChilds(String parentId){
-		return menuDao.getChilds(parentId);
+	public List<Menu> listChilds(String parentId){
+		return menuDao.listChilds(parentId);
 	}
 }

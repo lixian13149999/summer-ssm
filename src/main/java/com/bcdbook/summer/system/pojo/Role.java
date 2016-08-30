@@ -16,6 +16,7 @@ public class Role extends DataEntity<Role> {
 	
 	private String name;//角色名称
 	private String enname;//角色的英文名称
+	private int sort;
 	
 	private List<Menu> menus;//角色所拥有的栏目
 	private List<Power> powers;//角色所拥有的权限
@@ -23,12 +24,14 @@ public class Role extends DataEntity<Role> {
 	public Role() {
 		super();
 	}
-	public Role(String name, String enname) {
+	public Role(String name, String enname, int sort) {
 		super();
 		this.name = name;
 		this.enname = enname;
+		this.sort = sort;
 	}
-	
+
+
 	public String getName() {
 		return name;
 	}
@@ -41,6 +44,12 @@ public class Role extends DataEntity<Role> {
 	public void setEnname(String enname) {
 		this.enname = enname;
 	}
+	public int getSort() {
+		return sort;
+	}
+	public void setSort(int sort) {
+		this.sort = sort;
+	}
 	public List<Menu> getMenus() {
 		return menus;
 	}
@@ -52,6 +61,13 @@ public class Role extends DataEntity<Role> {
 	}
 	public void setPowers(List<Power> powers) {
 		this.powers = powers;
+	}
+	@Override
+	public String toString() {
+		return "Role [" + (name != null ? "name=" + name + ", " : "")
+				+ (enname != null ? "enname=" + enname + ", " : "") + "sort="
+				+ sort + ", " + (menus != null ? "menus=" + menus + ", " : "")
+				+ (powers != null ? "powers=" + powers : "") + "]";
 	}
 	
 }

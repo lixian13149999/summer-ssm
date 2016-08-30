@@ -69,13 +69,13 @@ public class TestMenu {
 
 	@Test 
 	public void remove(){
-		menuService.delete("d01eada7099c40d8bef88c4ab77d8eab");
+		menuService.delete("36a5fe1f89134f1f9c8c2a2d2319a70f");
 	}
 	
 	@Test 
 	public void removeByCondition(){
 		Menu menu = new Menu();
-		menu.setParentId("123");
+		menu.setId("8784bc6e7ee14a8f832e53d4caca63c4");
 		menuService.deleteByCondition(menu);
 	}
 	
@@ -98,7 +98,7 @@ public class TestMenu {
 	
 	@Test
 	public void get(){
-		Menu menu = menuService.get("3557755892ae43d2a5c582091766a1f6");
+		Menu menu = menuService.get("b5ae64d474da40e3b5033ae4eeb48dbd");
 		System.out.println(menu);
 	}
 	

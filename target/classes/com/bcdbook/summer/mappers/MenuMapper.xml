@@ -23,8 +23,8 @@
 		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 		
-		<collection column="id" property="childs" select="getChilds" />
-		<collection column="id" property="powers" select="getPowers" />
+		<collection column="id" property="childs" select="listChilds" />
+		<collection column="id" property="powers" select="listPowers" />
 	</resultMap>
 
 	<!-- 定义查询的所有参数 -->
@@ -37,10 +37,15 @@
 	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
 		    	and id = #{id}
 		    </if>
+		    <if test="true">
+		    	and del_flag = 1
+		    </if>
+		    <!-- 
 		    <if test="delFlag != null and delFlag != 0">
 		    	and del_flag = #{delFlag}
 		    </if>
-		    
+		     -->
+		     
 		    <if test="parentId != null and !&quot;&quot;.equals(parentId.trim())">
 		    	and parent_id = #{parentId}
 		    </if>
@@ -110,16 +115,22 @@
 		)
 	</insert>
 	
-	<!-- 删除(根据id) -->
-	<delete id="delete" parameterType="java.lang.String">
-		delete from sys_menu
+	<!-- 伪删除(根据id) -->
+	<update id="delete" parameterType="java.lang.String">
+		update sys_menu
+		<set>
+			del_flag = 2
+		</set>
 		where id = #{id,jdbcType=VARCHAR}
-	</delete>
-	<!-- 删除(根据实体类条件) -->
-	<delete id="deleteByCondition" parameterType="com.bcdbook.summer.system.pojo.Menu">
-		delete from sys_menu
+	</update>
+	<!-- 伪删除(根据实体类条件) -->
+	<update id="deleteByCondition" parameterType="com.bcdbook.summer.system.pojo.Menu">
+		update sys_menu
+		<set>
+			del_flag = 2
+		</set>
 		<include refid="MenuCondition" />
-	</delete>
+	</update>
 	
 	<!-- 修改栏目 -->
 	<update id="update" parameterType="com.bcdbook.summer.system.pojo.Menu">
@@ -179,7 +190,8 @@
 		select
 		<include refid="MenuColumns" />
 		from sys_menu
-		where id = #{id,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=VARCHAR} 
+		and del_flag = 1
 	</select>
 	<!-- 根据动态条件获取相应的数据 -->
 	<select id="getByCondition" resultMap="Menu" parameterType="com.bcdbook.summer.system.pojo.Menu">
@@ -213,18 +225,21 @@
 	</select>
 	
 	<!-- 关联查询,获取栏目子类 -->
-	<select id="getChilds" resultMap="Menu" parameterType="java.lang.String">
+	<select id="listChilds" resultMap="Menu" parameterType="java.lang.String">
 		select
 		<include refid="MenuColumns" />
 		from sys_menu
 		where parent_id = #{id,jdbcType=VARCHAR}
+		and del_flag = 1 
 		order by sort
 	</select>
-	<select id="getPowers" resultMap="com.bcdbook.summer.system.dao.PowerDao.Power" parameterType="java.lang.String">
+	<!-- 关联查询,获取栏目中的权限 -->
+	<select id="listPowers" resultMap="com.bcdbook.summer.system.dao.PowerDao.Power" parameterType="java.lang.String">
 		select
 		<include refid="com.bcdbook.summer.system.dao.PowerDao.PowerColumns" />
 		from sys_power
 		where menu_id = #{id,jdbcType=VARCHAR}
+		and del_flag = 1 
 		order by sort
 	</select>
 </mapper>

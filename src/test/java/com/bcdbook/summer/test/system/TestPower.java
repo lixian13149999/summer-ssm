@@ -42,15 +42,15 @@ public class TestPower {
 	
 	@Test 
 	public void remove(){
-		System.out.println(powerService.delete("fb089243ea8d463b9d83e6dcc6a6ca36"));
+		System.out.println(powerService.delete("68f359dfff0445a5bde3448fa653877e"));
 	}
 	
 	@Test 
 	public void removeByCondition(){
 		Power p = new Power();
-		p.setId("2e3e70a280d74e569531ae937c84d6fa");
+		p.setId("f2541a354f0245949d0f1ce8387b4ad7");
 		p.setDelFlag(1);
-		p.setMenuId("menuId");
+//		p.setMenuId("menuId");
 //		p.setName("name");
 //		p.setDescription("description");
 //		p.setIcon("icon");
@@ -179,11 +179,11 @@ public class TestPower {
 		}
 	}
 	
-	@Test
-	public void findListByMenuId(){
-		List<Power> powers = powerService.findListByMenuId("b5ae64d474da40e3b5033ae4eeb48dbd");
-		for (Power power : powers) {
-			System.out.println(power);
-		}
-	}
+//	@Test
+//	public void findListByMenuId(){
+//		List<Power> powers = powerService.findListByMenuId("b5ae64d474da40e3b5033ae4eeb48dbd");
+//		for (Power power : powers) {
+//			System.out.println(power);
+//		}
+//	}
 }
