@@ -18,7 +18,6 @@ public class User extends DataEntity<User> {
 	private int emailState;//邮箱的绑定状态,1:绑定,2:未绑定
 	private String openId;// 用于微信绑定的openid
 	private int wechatState;//微信的绑定状态,1:绑定,2:未绑定
-	private String addrId;// 地址
 	private int company;// 所在公司
 	private int department;// 所在部门
 	private int position;// 职位
@@ -51,7 +50,7 @@ public class User extends DataEntity<User> {
 
 	public User(String userName, String pwd, int age, int gender, String phone,
 			int phoneState, String email, int emailState, String openId,
-			int wechatState, String addrId, int company, int department,
+			int wechatState, int company, int department,
 			int position, int isLock) {
 		super();
 		this.userName = userName;
@@ -64,7 +63,6 @@ public class User extends DataEntity<User> {
 		this.emailState = emailState;
 		this.openId = openId;
 		this.wechatState = wechatState;
-		this.addrId = addrId;
 		this.company = company;
 		this.department = department;
 		this.position = position;
@@ -151,14 +149,6 @@ public class User extends DataEntity<User> {
 		this.wechatState = wechatState;
 	}
 
-	public String getAddrIDd() {
-		return addrId;
-	}
-
-	public void setAddrId(String addrId) {
-		this.addrId = addrId;
-	}
-
 	public int getCompany() {
 		return company;
 	}
@@ -205,7 +195,7 @@ public class User extends DataEntity<User> {
 				+ ", gender=" + gender + ", phone=" + phone + ", phoneState="
 				+ phoneState + ", email=" + email + ", emailState="
 				+ emailState + ", openId=" + openId + ", wechatState="
-				+ wechatState + ", addrId=" + addrId + ", company=" + company
+				+ wechatState + ", company=" + company
 				+ ", department=" + department + ", position=" + position
 				+ ", isLock=" + isLock + "]";
 	}

@@ -25,7 +25,9 @@
 
 	<!-- 定义查询的所有参数 -->
 	<sql id="PowerColumns">
-		id, del_flag, menu_id, name, description, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark
+		id, del_flag,
+		menu_id, name, description, icon, sort, permission, is_show,
+		create_time, create_by, update_time, update_by, remark
 	</sql>
 	<!-- 定义所有条件 -->
 	<sql id="PowerCondition">
@@ -36,11 +38,6 @@
 		    <if test="true">
 		    	and del_flag = 1
 		    </if>
-		    <!-- 
-		    <if test="delFlag != null and delFlag != 0">
-		    	and del_flag = #{delFlag}
-		    </if>
-		     -->
 		     
 		    <if test="menuId != null and !&quot;&quot;.equals(menuId.trim())">
 		    	and menu_id = #{menuId}
@@ -89,6 +86,7 @@
 		values (
 			#{id,jdbcType=VARCHAR},
 			#{delFlag,jdbcType=INTEGER},
+			
 			#{menuId,jdbcType=VARCHAR},
 			#{name,jdbcType=VARCHAR},
 			#{description,jdbcType=VARCHAR},
@@ -96,6 +94,7 @@
 			#{sort,jdbcType=INTEGER},
 			#{permission,jdbcType=VARCHAR},
 			#{isShow,jdbcType=INTEGER},
+			
 			#{createTime,jdbcType=VARCHAR},
 			#{createBy,jdbcType=VARCHAR},
 			#{updateTime,jdbcType=VARCHAR},
@@ -128,6 +127,7 @@
 		    <if test="delFlag != null and delFlag != 0">
 		    	del_flag = #{delFlag},
 		    </if>
+		    
 		    <if test="menuId != null and !&quot;&quot;.equals(menuId.trim())">
 		    	menu_id = #{menuId},
 		    </if>
@@ -149,6 +149,7 @@
 		    <if test="isShow != null and isShow != 0">
 		    	is_show = #{isShow},
 		    </if>
+		    
 		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
 		    	create_time = #{createTime},
 		    </if>

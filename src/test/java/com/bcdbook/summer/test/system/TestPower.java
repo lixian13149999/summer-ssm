@@ -32,23 +32,25 @@ public class TestPower {
 //	private int isShow;//是否显示
 	@Test
 	public void add(){
-		for (int i = 1; i < 6; i++) {
-			Power power = new Power("b7db0192e52644b3935f65193fef57b6","权限名称2."+i,"权限简介2."+i,"icon"+i,i,"user:add"+i,1);
-			powerService.add(power);
-		}
+		Power power = new Power("b7db0192e52644b3935f65193fef57b6","权限名称2.","权限简介2.","icon",0,"user:add",1);
+		powerService.add(power);
+//		for (int i = 1; i < 6; i++) {
+//			Power power = new Power("b7db0192e52644b3935f65193fef57b6","权限名称2."+i,"权限简介2."+i,"icon"+i,i,"user:add"+i,1);
+//			powerService.add(power);
+//		}
 //		System.out.println();
 		
 	}
 	
 	@Test 
 	public void remove(){
-		System.out.println(powerService.delete("68f359dfff0445a5bde3448fa653877e"));
+		System.out.println(powerService.delete("2bcc839808824d8db664c9fce372ec41"));
 	}
 	
 	@Test 
 	public void removeByCondition(){
 		Power p = new Power();
-		p.setId("f2541a354f0245949d0f1ce8387b4ad7");
+		p.setId("2bcc839808824d8db664c9fce372ec41");
 		p.setDelFlag(1);
 //		p.setMenuId("menuId");
 //		p.setName("name");
@@ -69,7 +71,7 @@ public class TestPower {
 	@Test
 	public void update(){
 		Power p = new Power();
-		p.setId("288e74d0758445489e83338636e8c5ae");
+		p.setId("2bcc839808824d8db664c9fce372ec41");
 		p.setDelFlag(1);
 		p.setMenuId("menuId");
 		p.setName("name");
@@ -89,7 +91,7 @@ public class TestPower {
 	
 	@Test
 	public void get(){
-		Power p = powerService.get("288e74d0758445489e83338636e8c5ae");
+		Power p = powerService.get("2bcc839808824d8db664c9fce372ec41");
 		System.out.println(p);
 		
 	}
@@ -97,7 +99,7 @@ public class TestPower {
 	@Test
 	public void getByCondition(){
 		Power p = new Power();
-		p.setId("0013bce8f4744899b7d1d1ab4cc59437");
+		p.setId("2bcc839808824d8db664c9fce372ec41");
 //		p.setDelFlag(1);
 //		p.setMenuId("menuId");
 //		p.setName("name");

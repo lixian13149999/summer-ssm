@@ -65,7 +65,9 @@
 
 	<!-- 定义查询的所有参数 -->
 	<sql id="RoleColumns">
-		id, del_flag, name, enname, sort, create_time, create_by, update_time, update_by, remark
+		id, del_flag,
+		name, enname, sort,
+		create_time, create_by, update_time, update_by, remark
 	</sql>
 	<!-- 定义所有条件 -->
 	<sql id="RoleCondition">
@@ -112,9 +114,11 @@
 		values (
 			#{id,jdbcType=VARCHAR},
 			#{delFlag,jdbcType=INTEGER},
+			
 			#{name,jdbcType=VARCHAR},
 			#{enname,jdbcType=VARCHAR},
 			#{sort,jdbcType=INTEGER},
+			
 			#{createTime,jdbcType=VARCHAR},
 			#{createBy,jdbcType=VARCHAR},
 			#{updateTime,jdbcType=VARCHAR},
@@ -147,6 +151,7 @@
 		    <if test="delFlag != null and delFlag != 0">
 		    	del_flag = #{delFlag},
 		    </if>
+		    
 		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
 		    	name = #{name},
 		    </if>
@@ -156,6 +161,7 @@
 		    <if test="sort != null and sort != 0">
 		    	sort = #{sort},
 		    </if>
+		    
 		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
 		    	create_time = #{createTime},
 		    </if>
