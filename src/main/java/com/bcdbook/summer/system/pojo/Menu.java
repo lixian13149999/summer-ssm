@@ -134,10 +134,17 @@ public class Menu extends DataEntity<Menu> {
 
 	@Override
 	public String toString() {
-		return "Menu [parentId=" + parentId + ", name=" + name
-				+ ", description=" + description + ", href=" + href
-				+ ", target=" + target + ", icon=" + icon + ", sort=" + sort
-				+ ", permission=" + permission + ", isShow=" + isShow
-				+ ", childs=" + childs + "]";
+		return "Menu ["
+				+ (parentId != null ? "parentId=" + parentId + ", " : "")
+				+ (name != null ? "name=" + name + ", " : "")
+				+ (description != null ? "description=" + description + ", "
+						: "") + (href != null ? "href=" + href + ", " : "")
+				+ (target != null ? "target=" + target + ", " : "")
+				+ (icon != null ? "icon=" + icon + ", " : "")
+				+ (sort != null ? "sort=" + sort + ", " : "")
+				+ (permission != null ? "permission=" + permission + ", " : "")
+				+ (isShow != null ? "isShow=" + isShow + ", " : "")
+				+ (childs != null ? "childs=" + childs + ", " : "")
+				+ (powers != null ? "powers=" + powers : "") + "]";
 	}
 }

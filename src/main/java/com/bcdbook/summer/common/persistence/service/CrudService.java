@@ -90,14 +90,14 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	/**
 	 * 根据条件查询相关数据,不直接忽略伪删除字段
 	 */
-	public List<T> findListOverlookDel(T entity){
-		return dao.findListOverlookDel(entity);
-	}
+//	public List<T> findListOverlookDel(T entity){
+//		return dao.findListOverlookDel(entity);
+//	}
 	/**
 	 * 查询所有的数据
 	 */
-	public List<T> findAllList(T entity){
-		return dao.findAllList(entity);
+	public List<T> findAllList(){
+		return dao.findAllList();
 	}
 	/**
 	 * 查询分页数据

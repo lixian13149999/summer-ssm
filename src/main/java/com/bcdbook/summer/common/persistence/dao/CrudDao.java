@@ -68,13 +68,13 @@ public interface CrudDao<T> extends BaseDao {
 	 * @author lason
 	 * @date 2016年8月29日
 	 */
-	public List<T> findListOverlookDel(T entity);
+//	public List<T> findListOverlookDel(T entity);
 	/**
 	 * 查询所有数据列表
 	 * @param entity
 	 * @return
 	 */
-	public List<T> findAllList(T entity);
+	public List<T> findAllList();
 	/**
 	 * @Description: 根据条件查询出符合条件的总数据量
 	 * @param @param entity

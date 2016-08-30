@@ -26,36 +26,8 @@
 	<sql id="PowerColumns">
 		id, del_flag, menu_id, name, description, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark
 	</sql>
-	
-	<!-- 添加 -->
-	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.system.pojo.Power">
-		insert into sys_power (id, del_flag, menu_id, name, description, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark)
-		values (
-			#{id,jdbcType=VARCHAR},
-			#{delFlag,jdbcType=INTEGER},
-			#{menuId,jdbcType=VARCHAR},
-			#{name,jdbcType=VARCHAR},
-			#{description,jdbcType=VARCHAR},
-			#{icon,jdbcType=VARCHAR},
-			#{sort,jdbcType=INTEGER},
-			#{permission,jdbcType=VARCHAR},
-			#{isShow,jdbcType=INTEGER},
-			#{createTime,jdbcType=VARCHAR},
-			#{createBy,jdbcType=VARCHAR},
-			#{updateTime,jdbcType=VARCHAR},
-			#{updateBy,jdbcType=VARCHAR},
-			#{remark,jdbcType=VARCHAR}
-		)
-	</insert>
-	
-	<!-- 删除(根据id) -->
-	<delete id="delete" parameterType="java.lang.String">
-		delete from sys_power
-		where id = #{id,jdbcType=VARCHAR}
-	</delete>
-	<!-- 删除(根据实体类条件) -->
-	<delete id="deleteByCondition" parameterType="com.bcdbook.summer.system.pojo.Power">
-		delete from sys_power
+	<!-- 定义所有条件 -->
+	<sql id="PowerCondition">
 		<where>
 	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
 		    	and id = #{id}
@@ -100,6 +72,38 @@
 		    	and remark = #{remark}
 		    </if>
 	    </where>
+	</sql>
+	
+	<!-- 添加 -->
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.system.pojo.Power">
+		insert into sys_power (id, del_flag, menu_id, name, description, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=INTEGER},
+			#{menuId,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{description,jdbcType=VARCHAR},
+			#{icon,jdbcType=VARCHAR},
+			#{sort,jdbcType=INTEGER},
+			#{permission,jdbcType=VARCHAR},
+			#{isShow,jdbcType=INTEGER},
+			#{createTime,jdbcType=VARCHAR},
+			#{createBy,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{updateBy,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- 删除(根据id) -->
+	<delete id="delete" parameterType="java.lang.String">
+		delete from sys_power
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	<!-- 删除(根据实体类条件) -->
+	<delete id="deleteByCondition" parameterType="com.bcdbook.summer.system.pojo.Power">
+		delete from sys_power
+		<include refid="PowerCondition" />
 	</delete>
 	
 	<!-- 修改权限 -->
@@ -155,218 +159,43 @@
 		<include refid="PowerColumns" />
 		from sys_power
 		where id = #{id,jdbcType=VARCHAR}
-		and del_flag = 1
 	</select>
 	<!-- 查询(根据实体类条件) -->
 	<select id="getByCondition" resultMap="Power" parameterType="com.bcdbook.summer.system.pojo.Power">
 		select
 		<include refid="PowerColumns" />
 		from sys_power
-		<where>
-	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
-		    	and id = #{id}
-		    </if>
-		    <if test="1==1">
-		    	and del_flag = 1
-		    </if>
-		    <if test="menuId != null and !&quot;&quot;.equals(menuId.trim())">
-		    	and menu_id = #{menuId}
-		    </if>
-		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
-		    	and name = #{name}
-		    </if>
-		    <if test="description != null and !&quot;&quot;.equals(description.trim())">
-		    	and description = #{description}
-		    </if>
-		    <if test="icon != null and !&quot;&quot;.equals(icon.trim())">
-		    	and icon = #{icon}
-		    </if>
-		    <if test="sort != null and sort != 0">
-		    	and sort = #{sort}
-		    </if>
-		    <if test="permission != null and !&quot;&quot;.equals(permission.trim())">
-		    	and permission = #{permission}
-		    </if>
-		    <if test="isShow != null and isShow != 0">
-		    	and is_show = #{isShow}
-		    </if>
-		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
-		    	and create_time = #{createTime}
-		    </if>
-		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
-		    	and create_by = #{createBy}
-		    </if>
-		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
-		    	and update_time = #{updateTime}
-		    </if>
-		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
-		    	and update_by = #{updateBy}
-		    </if>
-		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
-		    	and remark = #{remark}
-		    </if>
-	    </where>
+		<include refid="PowerCondition" />
 	</select>
 	<!-- 查询(根据实体类条件) -->
 	<select id="findList" resultMap="Power" parameterType="com.bcdbook.summer.system.pojo.Power">
 		select
 		<include refid="PowerColumns" />
 		from sys_power
-		<where>
-	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
-		    	and id = #{id}
-		    </if>
-		    <if test="1==1">
-		    	and del_flag = 1
-		    </if>
-		    <if test="menuId != null and !&quot;&quot;.equals(menuId.trim())">
-		    	and menu_id = #{menuId}
-		    </if>
-		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
-		    	and name = #{name}
-		    </if>
-		    <if test="description != null and !&quot;&quot;.equals(description.trim())">
-		    	and description = #{description}
-		    </if>
-		    <if test="icon != null and !&quot;&quot;.equals(icon.trim())">
-		    	and icon = #{icon}
-		    </if>
-		    <if test="sort != null and sort != 0">
-		    	and sort = #{sort}
-		    </if>
-		    <if test="permission != null and !&quot;&quot;.equals(permission.trim())">
-		    	and permission = #{permission}
-		    </if>
-		    <if test="isShow != null and isShow != 0">
-		    	and is_show = #{isShow}
-		    </if>
-		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
-		    	and create_time = #{createTime}
-		    </if>
-		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
-		    	and create_by = #{createBy}
-		    </if>
-		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
-		    	and update_time = #{updateTime}
-		    </if>
-		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
-		    	and update_by = #{updateBy}
-		    </if>
-		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
-		    	and remark = #{remark}
-		    </if>
-		    order by sort
-		    <if test="page != null">
-		    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
-		    </if>
-	    </where>
-	</select>
-	<!-- 查询(根据实体类条件),不直接忽略伪删除字段 -->
-	<select id="findListOverlookDel" resultMap="Power" parameterType="com.bcdbook.summer.system.pojo.Power">
-		select
-		<include refid="PowerColumns" />
-		from sys_power
-		<where>
-	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
-		    	and id = #{id}
-		    </if>
-		    <if test="delFag != null and delFag != 0">
-		    	and del_flag = #{delFag}
-		    </if>
-		    <if test="menuId != null and !&quot;&quot;.equals(menuId.trim())">
-		    	and menu_id = #{menuId}
-		    </if>
-		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
-		    	and name = #{name}
-		    </if>
-		    <if test="description != null and !&quot;&quot;.equals(description.trim())">
-		    	and description = #{description}
-		    </if>
-		    <if test="icon != null and !&quot;&quot;.equals(icon.trim())">
-		    	and icon = #{icon}
-		    </if>
-		    <if test="sort != null and sort != 0">
-		    	and sort = #{sort}
-		    </if>
-		    <if test="permission != null and !&quot;&quot;.equals(permission.trim())">
-		    	and permission = #{permission}
-		    </if>
-		    <if test="isShow != null and isShow != 0">
-		    	and is_show = #{isShow}
-		    </if>
-		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
-		    	and create_time = #{createTime}
-		    </if>
-		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
-		    	and create_by = #{createBy}
-		    </if>
-		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
-		    	and update_time = #{updateTime}
-		    </if>
-		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
-		    	and update_by = #{updateBy}
-		    </if>
-		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
-		    	and remark = #{remark}
-		    </if>
-		    order by sort
-		    <if test="page != null">
-		    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
-		    </if>
-	    </where>
+		<include refid="PowerCondition" />
+	    order by sort
+	    <if test="page != null">
+	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
+	    </if>
 	</select>
 	<!-- 查询所有数据 -->
 	<select id="findAllList" resultMap="Power" parameterType="com.bcdbook.summer.system.pojo.Power">
 		select
 		<include refid="PowerColumns" />
-		from sys_power where 1=1;
+		from sys_power where 1=1 
+		order by sort
 	</select>
 	<!-- 根据实体类条件,符合数据的数量 -->
 	<select id="count" resultType="java.lang.Integer" parameterType="com.bcdbook.summer.system.pojo.Power">
 		select count(*) from sys_power
-		<where>
-	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
-		    	and id = #{id}
-		    </if>
-		    <if test="1==1">
-		    	and del_flag = 1
-		    </if>
-		    <if test="menuId != null and !&quot;&quot;.equals(menuId.trim())">
-		    	and menu_id = #{menuId}
-		    </if>
-		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
-		    	and name = #{name}
-		    </if>
-		    <if test="description != null and !&quot;&quot;.equals(description.trim())">
-		    	and description = #{description}
-		    </if>
-		    <if test="icon != null and !&quot;&quot;.equals(icon.trim())">
-		    	and icon = #{icon}
-		    </if>
-		    <if test="sort != null and sort != 0">
-		    	and sort = #{sort}
-		    </if>
-		    <if test="permission != null and !&quot;&quot;.equals(permission.trim())">
-		    	and permission = #{permission}
-		    </if>
-		    <if test="isShow != null and isShow != 0">
-		    	and is_show = #{isShow}
-		    </if>
-		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
-		    	and create_time = #{createTime}
-		    </if>
-		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
-		    	and create_by = #{createBy}
-		    </if>
-		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
-		    	and update_time = #{updateTime}
-		    </if>
-		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
-		    	and update_by = #{updateBy}
-		    </if>
-		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
-		    	and remark = #{remark}
-		    </if>
-	    </where>
+		<include refid="PowerCondition" />
+	</select>
+	<!-- 根据栏目id获取其栏目下的权限 -->
+	<select id="findListByMenuId" resultMap="Power" parameterType="java.lang.String">
+		select
+		<include refid="PowerColumns" />
+		from sys_power
+		where menu_id = #{menuId} 
+		order by sort
 	</select>
 </mapper>

@@ -32,8 +32,8 @@ public class TestPower {
 //	private int isShow;//是否显示
 	@Test
 	public void add(){
-		for (int i = 0; i < 100; i++) {
-			Power power = new Power("menuid"+i,"权限名称"+i,"权限简介"+i,"icon"+i,i,"user:add"+i,1);
+		for (int i = 1; i < 6; i++) {
+			Power power = new Power("b7db0192e52644b3935f65193fef57b6","权限名称2."+i,"权限简介2."+i,"icon"+i,i,"user:add"+i,1);
 			powerService.add(power);
 		}
 //		System.out.println();
@@ -97,20 +97,20 @@ public class TestPower {
 	@Test
 	public void getByCondition(){
 		Power p = new Power();
-		p.setId("288e74d0758445489e83338636e8c5ae");
-		p.setDelFlag(1);
-		p.setMenuId("menuId");
-		p.setName("name");
-		p.setDescription("description");
-		p.setIcon("icon");
-		p.setSort(1);
-		p.setPermission("permission");
-		p.setIsShow(1);
-		p.setCreateTime("createTime");
-		p.setCreateBy("createBy");
-//		p.setUpdateTime("updateTime");
-		p.setUpdateBy("updateBy");
-		p.setRemark("remark");
+		p.setId("0013bce8f4744899b7d1d1ab4cc59437");
+//		p.setDelFlag(1);
+//		p.setMenuId("menuId");
+//		p.setName("name");
+//		p.setDescription("description");
+//		p.setIcon("icon");
+//		p.setSort(1);
+//		p.setPermission("permission");
+//		p.setIsShow(1);
+//		p.setCreateTime("createTime");
+//		p.setCreateBy("createBy");
+////		p.setUpdateTime("updateTime");
+//		p.setUpdateBy("updateBy");
+//		p.setRemark("remark");
 		
 		Power p1 = powerService.getByCondition(p);
 		System.out.println(p1);
@@ -147,14 +147,14 @@ public class TestPower {
 	public void findListPage(){
 		Power p = new Power();
 //		p.setId("288e74d0758445489e83338636e8c5ae");
-		p.setDelFlag(1);
+		p.setDelFlag(0);
 //		p.setMenuId("menuid");
 //		p.setName("name");
 //		p.setDescription("description");
 //		p.setIcon("icon");
 //		p.setSort(1);
 //		p.setPermission("permission");
-//		p.setIsShow(1);
+		p.setIsShow(1);
 //		p.setCreateTime("createTime");
 //		p.setCreateBy("createBy");
 //		p.setUpdateTime("updateTime");
@@ -162,11 +162,28 @@ public class TestPower {
 //		p.setRemark("remark");
 		
 		Page<Power> page = new Page<Power>();
-		page.setPageNum(5);
+		page.setPageNum(1);
 		page.setPageSize(4);
 		page.setFunc("testFunction");
 		
 		Page<Power> page1 = powerService.findPage(page, p);
 		System.out.println(page1);
+	}
+	
+	@Test
+	public void findAllList(){
+//		Power p = new Power();
+		List<Power> list = powerService.findAllList();
+		for (Power power : list) {
+			System.out.println(power);
+		}
+	}
+	
+	@Test
+	public void findListByMenuId(){
+		List<Power> powers = powerService.findListByMenuId("b5ae64d474da40e3b5033ae4eeb48dbd");
+		for (Power power : powers) {
+			System.out.println(power);
+		}
 	}
 }
