@@ -19,4 +19,5 @@ public class MenuService extends CrudService<MenuDao,Menu>{
 	public List<Menu> listChilds(String parentId){
 		return menuDao.listChilds(parentId);
 	}
+	
 }

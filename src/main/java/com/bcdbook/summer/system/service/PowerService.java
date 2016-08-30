@@ -1,5 +1,7 @@
 package com.bcdbook.summer.system.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -13,4 +15,5 @@ import com.bcdbook.summer.system.pojo.Power;
 public class PowerService extends CrudService<PowerDao,Power>{
 	@Resource
 	private PowerDao powerDao;
+	
 }

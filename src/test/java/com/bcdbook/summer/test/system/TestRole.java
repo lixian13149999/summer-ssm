@@ -13,6 +13,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bcdbook.summer.common.persistence.Page;
+import com.bcdbook.summer.system.pojo.Menu;
+import com.bcdbook.summer.system.pojo.Power;
 import com.bcdbook.summer.system.pojo.Role;
 import com.bcdbook.summer.system.service.RoleService;
 import com.bcdbook.summer.test.wechat.TestWechat;
@@ -182,8 +184,15 @@ public class TestRole {
 	public void addMenu(){
 		Map<String, String> parameter = new HashMap<String, String>();
 		parameter.put("roleId", "58ad7298bbc04e6ba5c29310e62b5664");
-		parameter.put("menuId", "b7db0192e52644b3935f65193fef57b6");
+		parameter.put("menuId", "c800ea86d43d42feac57016f9ca9dccf");
 		roleService.addMenu(parameter);
+	}
+	@Test
+	public void deleteMenu(){
+		Map<String, String> parameter = new HashMap<String, String>();
+		parameter.put("roleId", "58ad7298bbc04e6ba5c29310e62b5664");
+		parameter.put("menuId", "b7db0192e52644b3935f65193fef57b6");
+		roleService.deleteMenu(parameter);
 	}
 	@Test
 	public void getMenu(){
@@ -193,14 +202,29 @@ public class TestRole {
 		int i = roleService.getMenu(parameter);
 		System.out.println(i);
 	}
+	@Test
+	public void listMenuByRole(){
+		String roleId = "58ad7298bbc04e6ba5c29310e62b5664";
+		List<Menu> menus = roleService.listMenuByRole(roleId);
+		for (Menu menu : menus) {
+			System.out.println(menu);
+		}
+	}
 	
 	//权限的设定
 	@Test
 	public void addPower(){
 		Map<String, String> parameter = new HashMap<String, String>();
 		parameter.put("roleId", "58ad7298bbc04e6ba5c29310e62b5664");
-		parameter.put("powerId", "b55d2d26fda445549d1212a58ecb7a6f");
+		parameter.put("powerId", "431fc6a685284ba78125ae0213db3627");
 		roleService.addPower(parameter);
+	}
+	@Test
+	public void deletePower(){
+		Map<String, String> parameter = new HashMap<String, String>();
+		parameter.put("roleId", "58ad7298bbc04e6ba5c29310e62b5664");
+		parameter.put("powerId", "b55d2d26fda445549d1212a58ecb7a6f");
+		roleService.deletePower(parameter);
 	}
 	@Test
 	public void getPower(){
@@ -209,5 +233,13 @@ public class TestRole {
 		parameter.put("powerId", "b55d2d26fda445549d1212a58ecb7a6f");
 		int i = roleService.getPower(parameter);
 		System.out.println(i);
+	}
+	@Test
+	public void listPowerByRole(){
+		String roleId = "58ad7298bbc04e6ba5c29310e62b5664";
+		List<Power> powers = roleService.listPowerByRole(roleId);
+		for (Power power : powers) {
+			System.out.println(power);
+		}
 	}
 }

@@ -3,6 +3,7 @@
 <!-- 设置映射的dao类 -->
 <mapper namespace="com.bcdbook.summer.system.dao.MenuDao">
 	<!-- 设置映射的数据模型 -->
+	<!-- 默认的数据模型 -->
 	<resultMap id="Menu" type="com.bcdbook.summer.system.pojo.Menu">
 		<id column="id" property="id" jdbcType="VARCHAR" />
 		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
@@ -242,4 +243,5 @@
 		and del_flag = 1 
 		order by sort
 	</select>
+	
 </mapper>

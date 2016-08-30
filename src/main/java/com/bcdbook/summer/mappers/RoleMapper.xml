@@ -22,6 +22,46 @@
 		<collection column="id" property="powers" select="getPowers" />
 		 -->
 	</resultMap>
+	<!-- 经过角色限制的数据模型,栏目的映射实体 -->
+	<resultMap id="RoleMenu" type="com.bcdbook.summer.system.pojo.Menu">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+		
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="href" property="href" jdbcType="VARCHAR" />
+		<result column="target" property="target" jdbcType="VARCHAR" />
+		<result column="icon" property="icon" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="permission" property="permission" jdbcType="VARCHAR" />
+		<result column="is_show" property="isShow" jdbcType="INTEGER" />
+		
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 权限的映射实体 -->
+	<resultMap id="RolePower" type="com.bcdbook.summer.system.pojo.Power">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+		
+		<result column="menu_id" property="menuId" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="icon" property="icon" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="permission" property="permission" jdbcType="VARCHAR" />
+		<result column="is_show" property="isShow" jdbcType="INTEGER" />
+		
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
 
 	<!-- 定义查询的所有参数 -->
 	<sql id="RoleColumns">
@@ -184,11 +224,25 @@
 			#{menuId,jdbcType=VARCHAR}
 		)
 	</insert>
+	<delete id="deleteMenu" parameterType="java.util.Map">
+		delete from sys_role_menu
+		where role_id = #{roleId,jdbcType=VARCHAR}
+		and menu_id = #{menuId,jdbcType=VARCHAR}
+	</delete>
 	<!-- 查询角色,栏目关系 -->
 	<select id="getMenu" resultType="java.lang.Integer" parameterType="java.util.Map">
 		select count(*) from sys_role_menu
 		where role_id = #{roleId,jdbcType=VARCHAR}
 		and menu_id = #{menuId,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据角色,查询出与之有关联的栏目的集合 -->
+	<select id="listMenuByRole" resultMap="RoleMenu" parameterType="java.lang.String">
+		select m.* 
+		from sys_menu m
+		left join sys_role_menu rm 
+		on m.id=rm.menu_id
+		where rm.role_id=#{roleId}
+		and m.del_flag = 1
 	</select>
 	
 	<!-- 添加角色,权限关系 -->
@@ -199,12 +253,25 @@
 			#{powerId,jdbcType=VARCHAR}
 		)
 	</insert>
+	<delete id="deletePower" parameterType="java.util.Map">
+		delete from sys_role_power
+		where role_id = #{roleId,jdbcType=VARCHAR}
+		and power_id = #{powerId,jdbcType=VARCHAR}
+	</delete>
 	<!-- 查询角色,权限关系 -->
 	<select id="getPower" resultType="java.lang.Integer" parameterType="java.util.Map">
 		select count(*) from sys_role_power
 		where role_id = #{roleId,jdbcType=VARCHAR}
 		and power_id = #{powerId,jdbcType=VARCHAR}
 	</select>
-	
+	<!-- 根据角色,查询出与之有关联的栏目的集合 -->
+	<select id="listPowerByRole" resultMap="RolePower" parameterType="java.lang.String">
+		select p.* 
+		from sys_power p
+		left join sys_role_power rp
+		on p.id=rp.power_id
+		where rp.role_id=#{roleId}
+		and p.del_flag = 1
+	</select>
 	
 </mapper>

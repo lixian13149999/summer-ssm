@@ -186,4 +186,5 @@ public class TestPower {
 //			System.out.println(power);
 //		}
 //	}
+	
 }
