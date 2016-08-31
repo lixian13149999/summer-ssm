@@ -15,6 +15,7 @@ public class Menu extends DataEntity<Menu> {
 
 	private static final long serialVersionUID = 1045257040316372693L;
 	
+	private Integer place;
 	private String parentId;//父级菜单id
 	private String name;//栏目名字
 	private String description;//栏目的描述
@@ -31,11 +32,31 @@ public class Menu extends DataEntity<Menu> {
 	public Menu() {
 		super();
 	}
-	
-	public Menu(String parentId, String name, String description, String href,
-			String target, String icon, Integer sort, String permission,
-			Integer isShow, List<Menu> childs) {
+	/**
+	 * @Description: 全参构造
+	 * @param @param place
+	 * @param @param parentId
+	 * @param @param name
+	 * @param @param description
+	 * @param @param href
+	 * @param @param target
+	 * @param @param icon
+	 * @param @param sort
+	 * @param @param permission
+	 * @param @param isShow
+	 * @param @param childs
+	 * @param @param powers   
+	 * @return Menu  
+	 * @throws
+	 * @author lason
+	 * @date 2016年8月31日
+	 */
+	public Menu(Integer place, String parentId, String name,
+			String description, String href, String target, String icon,
+			Integer sort, String permission, Integer isShow, List<Menu> childs,
+			List<Power> powers) {
 		super();
+		this.place = place;
 		this.parentId = parentId;
 		this.name = name;
 		this.description = description;
@@ -46,12 +67,32 @@ public class Menu extends DataEntity<Menu> {
 		this.permission = permission;
 		this.isShow = isShow;
 		this.childs = childs;
+		this.powers = powers;
 	}
 
-	public Menu(String parentId, String name, String description, String href,
-			String target, String icon, Integer sort, String permission,
-			Integer isShow) {
+
+	/**
+	 * @Description: 没有引入对象的全参构造
+	 * @param @param place
+	 * @param @param parentId
+	 * @param @param name
+	 * @param @param description
+	 * @param @param href
+	 * @param @param target
+	 * @param @param icon
+	 * @param @param sort
+	 * @param @param permission
+	 * @param @param isShow   
+	 * @return Menu  
+	 * @throws
+	 * @author lason
+	 * @date 2016年8月31日
+	 */
+	public Menu(Integer place, String parentId, String name,
+			String description, String href, String target, String icon,
+			Integer sort, String permission, Integer isShow) {
 		super();
+		this.place = place;
 		this.parentId = parentId;
 		this.name = name;
 		this.description = description;
@@ -62,8 +103,12 @@ public class Menu extends DataEntity<Menu> {
 		this.permission = permission;
 		this.isShow = isShow;
 	}
-
-	
+	public Integer getPlace() {
+		return place;
+	}
+	public void setPlace(Integer place) {
+		this.place = place;
+	}
 	public String getParentId() {
 		return parentId;
 	}

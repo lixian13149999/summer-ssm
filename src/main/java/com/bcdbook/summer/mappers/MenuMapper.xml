@@ -8,6 +8,7 @@
 		<id column="id" property="id" jdbcType="VARCHAR" />
 		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
 		
+		<result column="place" property="place" jdbcType="INTEGER" />
 		<result column="parent_id" property="parentId" jdbcType="VARCHAR" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="description" property="description" jdbcType="VARCHAR" />
@@ -31,7 +32,7 @@
 	<!-- 定义查询的所有参数 -->
 	<sql id="MenuColumns">
 		id, del_flag,
-		parent_id, name, description, href, target, icon, sort, permission, is_show,
+		place,parent_id, name, description, href, target, icon, sort, permission, is_show,
 		create_time, create_by, update_time, update_by, remark
 	</sql>
 	<!-- 定义所有的查询条件 -->
@@ -44,6 +45,9 @@
 		    	and del_flag = 1
 		    </if>
 		     
+		    <if test="place != null and place != 0">
+		    	and place = #{place}
+		    </if>
 		    <if test="parentId != null and !&quot;&quot;.equals(parentId.trim())">
 		    	and parent_id = #{parentId}
 		    </if>
@@ -92,11 +96,12 @@
 	
 	<!-- 插入语句 -->
 	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.system.pojo.Menu">
-		insert into sys_menu (id, del_flag, parent_id, name, description, href, target, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark)
+		insert into sys_menu (id, del_flag,place, parent_id, name, description, href, target, icon, sort, permission, is_show, create_time, create_by, update_time, update_by, remark)
 		values (
 			#{id,jdbcType=VARCHAR},
 			#{delFlag,jdbcType=INTEGER},
 			
+			#{place,jdbcType=INTEGER},
 			#{parentId,jdbcType=VARCHAR},
 			#{name,jdbcType=VARCHAR},
 			#{description,jdbcType=VARCHAR},
@@ -140,6 +145,9 @@
 		    	del_flag = #{delFlag},
 		    </if>
 		    
+		    <if test="place != null and place != 0">
+		    	place = #{place},
+		    </if>
 		    <if test="parentId != null and !&quot;&quot;.equals(parentId.trim())">
 		    	parent_id = #{parentId},
 		    </if>

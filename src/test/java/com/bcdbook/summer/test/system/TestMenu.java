@@ -34,20 +34,21 @@ public class TestMenu {
 	 */
 	@Test
 	public void add(){
-		for (int i = 1; i < 11; i++) {
+//		for (int i = 1; i < 11; i++) {
 			Menu menu = new Menu();
 			
-			menu.setName("一级栏目"+i);
-			menu.setDescription("一级栏目介绍"+i);
-			menu.setHref("一级栏目连接"+i);
-			menu.setTarget("_blank");
-			menu.setIcon("icon"+i);
-			menu.setSort(i);
-			menu.setPermission("item:"+i);
+			menu.setPlace(1);
+			menu.setName("一级栏目========");
+			menu.setDescription("一级栏目介绍========");
+			menu.setHref("一级栏目连接========");
+			menu.setTarget("_blank========");
+			menu.setIcon("icon");
+			menu.setSort(19);
+			menu.setPermission("item:");
 			menu.setIsShow(1);
 			
 			System.out.println(menuService.add(menu));
-		}
+//		}
 	}
 	@Test
 	public void addChild(){
@@ -69,22 +70,23 @@ public class TestMenu {
 
 	@Test 
 	public void remove(){
-		menuService.delete("36a5fe1f89134f1f9c8c2a2d2319a70f");
+		menuService.delete("311af29e8377410e91232f6a5cfad587");
 	}
 	
 	@Test 
 	public void removeByCondition(){
 		Menu menu = new Menu();
-		menu.setId("8784bc6e7ee14a8f832e53d4caca63c4");
+		menu.setId("311af29e8377410e91232f6a5cfad587");
 		menuService.deleteByCondition(menu);
 	}
 	
 	@Test
 	public void update(){
 		Menu menu = new Menu();
-		menu.setId("c800ea86d43d42feac57016f9ca9dccf");
+		menu.setId("311af29e8377410e91232f6a5cfad587");
 //		menu.setDelFlag(1);
-//		menu.setName("一级栏目7");
+		menu.setPlace(10);
+		menu.setName("===========一级栏目7");
 //		menu.setDescription("一级栏目介绍");
 //		menu.setHref("一级栏目连接");
 //		menu.setTarget("_blank");
@@ -98,16 +100,17 @@ public class TestMenu {
 	
 	@Test
 	public void get(){
-		Menu menu = menuService.get("b5ae64d474da40e3b5033ae4eeb48dbd");
+		Menu menu = menuService.get("311af29e8377410e91232f6a5cfad587");
 		System.out.println(menu);
 	}
 	
 	@Test
 	public void getByCondition(){
 		Menu menu = new Menu();
-		menu.setId("3557755892ae43d2a5c582091766a1f6");
+		menu.setId("311af29e8377410e91232f6a5cfad587");
+		menu.setPlace(10);
 //		menu.setDelFlag(1);
-		menu.setName("一级栏目7");
+//		menu.setName("一级栏目7");
 //		menu.setDescription("一级栏目介绍");
 //		menu.setHref("一级栏目连接");
 //		menu.setTarget("_blank");
