@@ -1,6 +1,9 @@
 package com.bcdbook.summer.test.system;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -11,10 +14,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bcdbook.summer.common.persistence.Page;
-import com.bcdbook.summer.system.pojo.User;
+import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.Power;
+import com.bcdbook.summer.system.pojo.Role;
+import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.system.service.UserService;
-import com.bcdbook.summer.test.wechat.TestWechat;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
@@ -174,6 +178,56 @@ public class TestUser {
 		List<User> users = userService.findAllList();
 		for (User user : users) {
 			System.out.println(user);
+		}
+	}
+	
+//	关联关系设定开始
+	//角色的设定
+	@Test
+	public void addRole(){
+		Map<String, String> parameter = new HashMap<String, String>();
+		parameter.put("userId", "96c0afebc32e450ebaf1a7a188914653");
+		parameter.put("roleId", "58ad7298bbc04e6ba5c29310e62b5664");
+		userService.addRole(parameter);
+	}
+	@Test
+	public void deleteRole(){
+		Map<String, String> parameter = new HashMap<String, String>();
+		parameter.put("userId", "96c0afebc32e450ebaf1a7a188914653");
+		parameter.put("roleId", "78a218d453f64a4baaef070b2d39fe62");
+		userService.deleteRole(parameter);
+	}
+	@Test
+	public void getRole(){
+		Map<String, String> parameter = new HashMap<String, String>();
+		parameter.put("userId", "96c0afebc32e450ebaf1a7a188914653");
+		parameter.put("roleId", "78a218d453f64a4baaef070b2d39fe62");
+		int i = userService.getRole(parameter);
+		System.out.println(i);
+	}
+	@Test
+	public void listRoleByUser(){
+		String userId = "96c0afebc32e450ebaf1a7a188914653";
+		List<Role> roles = userService.listRoleByUser(userId);
+		for (Role role : roles) {
+			System.out.println(role);
+		}
+	}
+	
+	@Test
+	public void listMenuByUser(){
+		String userId = "96c0afebc32e450ebaf1a7a188914653";
+		Set<Menu> menus = userService.listMenuByUser(userId);
+		for (Menu menu : menus) {
+			System.out.println(menu);
+		}
+	}
+	@Test
+	public void listPowerByUser(){
+		String userId = "96c0afebc32e450ebaf1a7a188914653";
+		Set<Power> powers = userService.listPowerByUser(userId);
+		for (Power power : powers) {
+			System.out.println(power);
 		}
 	}
 	

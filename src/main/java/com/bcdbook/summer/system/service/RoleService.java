@@ -29,6 +29,9 @@ public class RoleService extends CrudService<RoleDao,Role>{
 	 * @date 2016年8月30日
 	 */
 	public int addMenu(Map<String, String> parameter){
+		if(!checkParameter(parameter, "roleId", "menuId"))
+			return 0;
+		
 		return roleDao.getMenu(parameter)>0?0:roleDao.addMenu(parameter);
 	}
 	/**
@@ -41,6 +44,9 @@ public class RoleService extends CrudService<RoleDao,Role>{
 	 * @date 2016年8月30日
 	 */
 	public int deleteMenu(Map<String, String> parameter){
+		if(!checkParameter(parameter, "roleId", "menuId"))
+			return 0;
+		
 		return roleDao.deleteMenu(parameter);
 	}
 	/**
@@ -53,6 +59,9 @@ public class RoleService extends CrudService<RoleDao,Role>{
 	 * @date 2016年8月30日
 	 */
 	public int getMenu(Map<String, String> parameter){
+		if(!checkParameter(parameter, "roleId", "menuId"))
+			return 0;
+		
 		return roleDao.getMenu(parameter);
 	}
 	/**
@@ -65,6 +74,9 @@ public class RoleService extends CrudService<RoleDao,Role>{
 	 * @date 2016年8月30日
 	 */
 	public List<Menu> listMenuByRole(String roleId){
+		if(roleId==null||roleId.equals(""))
+			return null;
+		
 		return roleDao.listMenuByRole(roleId);
 	}
 	
@@ -79,6 +91,9 @@ public class RoleService extends CrudService<RoleDao,Role>{
 	 * @date 2016年8月30日
 	 */
 	public int addPower(Map<String, String> parameter){
+		if(!checkParameter(parameter, "roleId", "powerId"))
+			return 0;
+		
 		int count = roleDao.getPower(parameter);
 		return count>0?0:roleDao.addPower(parameter);
 	}
@@ -92,6 +107,9 @@ public class RoleService extends CrudService<RoleDao,Role>{
 	 * @date 2016年8月30日
 	 */
 	public int deletePower(Map<String, String> parameter){
+		if(!checkParameter(parameter, "roleId", "powerId"))
+			return 0;
+		
 		return roleDao.deletePower(parameter);
 	}
 	/**
@@ -104,8 +122,27 @@ public class RoleService extends CrudService<RoleDao,Role>{
 	 * @date 2016年8月30日
 	 */
 	public int getPower(Map<String, String> parameter){
+		if(!checkParameter(parameter, "roleId", "powerId"))
+			return 0;
+		
 		return roleDao.getPower(parameter);
 	}
+	
+	/*
+	 * 检查参数的公用方法,如果参数合法返回true,否则返回false
+	 */
+	private boolean checkParameter(Map<String, String> parameter,String parm1,String parm2){
+		if(parameter==null)
+			return false;
+		
+		String p1 = parameter.get(parm1);
+		String p2 = parameter.get(parm2);
+		if(p1==null||p1.equals("")||p2==null||p2.equals(""))
+			return false;
+		
+		return true;
+	}
+	
 	/**
 	 * @Description: 根据权限,获取与之对应的所有权限的集合
 	 * @param @param roleId
@@ -116,7 +153,10 @@ public class RoleService extends CrudService<RoleDao,Role>{
 	 * @date 2016年8月30日
 	 */
 	public List<Power> listPowerByRole(String roleId){
+		if(roleId==null||roleId.equals(""))
+			return null;
+		
 		return roleDao.listPowerByRole(roleId);
 	}
-
+	
 }

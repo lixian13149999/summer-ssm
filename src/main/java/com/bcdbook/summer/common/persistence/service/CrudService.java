@@ -30,6 +30,9 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	 * @date 2016年8月25日
 	 */
 	public int add(T entity){
+		if(entity==null)
+			return 0;
+		
 		entity.preInsert();
 		return dao.insert(entity);
 	}
@@ -38,6 +41,9 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	 * 根据id删除相关数据
 	 */
 	public int delete(String id){
+		if(id==null||id.equals(""))
+			return 0;
+		
 		return dao.delete(id);
 	}
 	/**
@@ -45,6 +51,9 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	 * @param entity
 	 */
 	public int deleteByCondition(T entity) {
+		if(entity==null)
+			return 0;
+		
 		return dao.deleteByCondition(entity);
 	}
 	
@@ -58,6 +67,9 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	 * @date 2016年8月29日
 	 */
 	public int update(T entity){
+		if(entity==null)
+			return 0;
+		
 		entity.preUpdate();
 		return dao.update(entity);
 	}
@@ -69,6 +81,9 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	 * @return
 	 */
 	public T get(String id) {
+		if(id==null||id.equals(""))
+			return null;
+		
 		return dao.get(id);
 	}
 	/**
@@ -77,6 +92,9 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	 * @return
 	 */
 	public T getByCondition(T entity) {
+		if(entity==null)
+			return null;
+		
 		return dao.getByCondition(entity);
 	}
 	/**
@@ -85,6 +103,9 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	 * @return
 	 */
 	public List<T> findList(T entity) {
+		if(entity==null)
+			return null;
+		
 		return dao.findList(entity);
 	}
 	/**
@@ -106,6 +127,9 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 	 * @return
 	 */
 	public Page<T> findPage(Page<T> page, T entity) {
+		if(page==null||entity==null)
+			return null;
+		
 		//调用分页查询前的方法
 		page.prePageList();
 		//为当前类设置分页查询的参数

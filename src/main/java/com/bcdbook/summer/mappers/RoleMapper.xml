@@ -279,5 +279,5 @@
 		where rp.role_id=#{roleId}
 		and p.del_flag = 1
 	</select>
-	
+	<!-- 关联关系的数据操作,结束 -->
 </mapper>
