@@ -1,9 +1,418 @@
+a{
+   text-decoration: none;
+   cursor: pointer;
+    
+   border-right: 1px solid #868282;
+   margin: 0px;
+   padding: 0px;
+    &:hover{
+//    background-color:#008fbf ;
+    text-decoration: none;
+    } 
+}
+
+/*定义公共类*/
+.top_title{
+    height: 50px;
+    z-index: 2;
+    position: relative;
+    font-size: 12px;
+    margin-left: 1px;
+    line-height: 50px;
+    color: #fff;
+}
+
+.title_btn{
+    padding: 0 10px;
+    height: 50px;
+    display: block;
+    z-index: 2;
+    background: #09c;
+    color: #fff;
+    font-size: 14px;
+    line-height: 50px;
+}
+.item_down{
+    margin: 0px;
+    background: #fff;
+    display: none;
+    color: #000;
+}
+.item_down_ul{
+    padding: 0px;
+    margin: 0px;
+    color: #000;
+}
+.item_down_li{
+    list-style-type: none;
+    width: 100%;
+    border: 1px solid #eaedf1;
+    height: 40px;
+    padding-left: 10px;
+    line-height: 40px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #000;
+}
+
+
+
 .viewFramework-topbar{
     position: relative;
-    z-index: 100;
+    z-index: 101;
     clear: both;
     height: 50px;
     background: #09C;
     font-size: 12px;
     min-width: 990px;
-}
+    .wrap_box{
+        .topbar_left{
+            float: left;
+            height: 50px;
+            position: relative;
+            width: 161px;
+            .topbar_logo{
+                background: #0087b4;
+                display: block;
+                width: 50px;
+                font-size: 28px;
+                color: #FFF;
+                text-align: center;
+                line-height: 46px;
+            }
+            .topbar_consol{
+                    font-size: 14px;
+                    color: #fff;
+                    line-height: 50px;
+                    position: absolute;
+                    top: 0px;
+                    left: 50px;
+                    padding:  0 20px;
+            
+            }
+
+        }
+        .navbar_product{
+            position: relative;
+            z-index: 2;
+            background: #09C;
+            float: left;
+            .navbar_btn{
+                padding: 0 20px;
+                display: inline-block;
+                height: 50px;
+                color: #fff;
+                font-size: 14px;
+                line-height: 50px;
+            }
+            .product_service{
+                font-size:12px;
+                padding: 10px;
+                border: none;/*先设置边框，等内容填充好后设置为与项目保持一致*/
+                margin-top: 0px;
+                white-space: nowrap;
+                position: absolute;
+                left: 0px;
+                top: 50px;
+                list-style: none;
+                background: #fff;
+                display: none;
+                .list_container{         /*可以设置为公共部分*/
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 0px 10px;
+                    
+                    .list_item{
+                        border-bottom: 1px solid #eaedf1;
+                        padding-top: 5px;
+                    .title_nav{            /*可以设置为公共部分*/
+                        margin: 0px 3px;
+                        color: #999;
+                        font-weight: 600;
+                    }
+                    ul{                   /*设置为公共部分*/
+                        list-style: none;
+                        padding: 0px;
+                        li{                /*设置为公共部分*/
+                            min-width: 160px;
+                            height: 28px;
+                            line-height: 28px;
+                            margin-bottom: 2px;
+                            
+                            a{
+                                    display: block;
+                                    height: 100%;
+                                    padding: 0 10px;
+                                    text-decoration: none;
+                                    color: #333;
+                                .icon_item_btn{
+                                    padding-right: 2px;
+                                    font-size: 16px;
+                                    vertical-align: middle;
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            }
+        }
+        
+        .topbar_right{
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            background: #008fbf;
+            z-index: 1px;
+            display: -webkit-inline-box;
+            .navbar_search{
+                padding: 0;
+                margin-left: 1px;
+                height: 50px;
+                background:#09c;
+                font-size: 14px;
+                line-height: 50px;
+                position: relative;
+                .search_box{
+                    .search_btn{
+                        color: #fff;
+                        display: block;
+                        height: 50px;
+                        line-height: 50px;
+                        padding: 0 10px;
+                    }
+                }
+                .search_input{
+                    position: absolute;
+                    right: -1px;
+                    height: 38px;
+                    border: 2px solid #008fbf;
+                    background: #fff;
+                    display: none;
+                    .srk{
+                        display: block;
+                        height: 34px;
+                        padding: 4px 6px;
+                        width: 250px;
+                        margin-right: 30px;
+                        border-width: 0px;
+                        outline: 0;
+                        color: #333;
+                        font-size: 12px;
+                        }
+                    a{
+                        border: 0px;
+                        position: absolute;
+                        top: 0px;
+                        right: 0px;
+                        height: 34px;
+                        width: 34px;
+                        line-height: 34px;
+                        text-align: -webkit-center;
+                    }
+                    
+                }
+            }
+            .navbar_mobileapp{
+                    position: relative;
+                    float: left;
+                .mobileapp_box{
+                    .mobileapp_btn{                   
+                        .title_btn;
+                    }
+                }
+                .downloadapp{
+                    position: absolute;
+                    left: 0px;
+                    top: 50px;
+                    width: 130px;
+                    padding: 12px 8px;
+                    background: #fff;
+                    border: 1px solid #eaedf1;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                    text-align: center;
+                    display: none;
+                }
+            }
+            .navbar_infor{
+
+                .top_title;
+                .infor_box{
+                    .infor_btn{
+
+                        .title_btn;
+                        .num_box{
+                            display: -webkit-inline-box;
+                            padding: 2px 5px;
+                            height: 25px;
+                            background: coral;
+                            border-radius: 6px;
+                            line-height: 25px;
+                        }
+                    }
+                }
+                .infor_item{
+                    position: absolute;
+                    z-index: 15;
+                    width: 440px;
+                    left: -196px;
+                    top: 50px;
+                    border: 1px solid #eaedf1;
+                    display: none;
+                    .arrow{
+                        background: url(/static/imgs/notice-arrow.png)0 0 no-repeat;
+                        width: 11px;
+                        height: 6px;
+                        position: absolute;
+                        top: -6px;
+                        left: 220px;
+                    }
+                    .infor_item_head{
+                        height: 50px;
+                        padding: 0 15px;
+                        line-height: 50px;
+                        background: #eaedf1;
+                        font-size: 14px;
+                        color:#333333;    
+                    }
+                    .infor_item_body{
+                        height: 300px;
+                        font-size: 12px;
+                        overflow-y: auto;
+                        background: #fff;
+                        li{
+                            height: 60px;
+                            border-bottom: 1px solid #eaedf1;
+                            line-height: 20px;
+                            a{
+                                display: block;
+                                height: 100%;
+                                padding: 10px 10px;
+                                color: #333;
+                                background: #fff;
+//                                &:hover{
+//                                background: #fff;
+//                                }
+                                .inner_block{
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                    .inneritem_link{
+                                        display: block;
+                                        max-width: 300px;
+                                        text-overflow: ellipsis;
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        color: #06c;
+                                    }
+                                }
+                                .message_btn{
+                                    padding: 2px 1px;
+                                    float: right;
+                                    background: #eaedf1;
+                                    border-radius: 2px;
+                                }
+                            }
+                        }
+                    }
+                    .infor_item_footer{
+                            height: 50px;
+                            line-height: 50px;
+                            background: #fff;
+                            text-align: center;
+                    }
+                }
+            }
+            .navbar_accesskeys{
+
+                .top_title;
+                .accesskeys_box{
+                    .accesskeys_btn{
+
+                    .title_btn;
+                    }
+                }
+            }
+            .navbar_order{     
+
+                .top_title;
+                .order_btn{
+
+                    .title_btn;
+                }
+                .order_down{
+
+                    .item_down;
+                     ul{
+
+                         .item_down_ul;
+                        li{
+
+                            .item_down_li;
+                        &:hover{
+                        background: #eaedf1;
+                        }
+                        }
+                    }
+                
+                }
+            }
+            .navbar_beian{
+
+                .top_title;
+                .beian_box{
+                    .beian_btn{
+
+                        .title_btn;
+                    }
+                }
+            }
+            .navbar_helpdocument{
+
+                .top_title;
+                .helpdocument_btn{
+
+                    .title_btn;
+                }
+                .helpdocument_down{
+
+                    .item_down;
+                     ul{
+
+                         .item_down_ul;
+                        li{
+
+                            .item_down_li;
+                        &:hover{
+                        background: #eaedf1;
+                        }
+                        }
+                    }
+                }
+            }
+            .navbar_userinfor{
+
+                 .top_title;
+                .userinfor_btn{
+
+                    .title_btn;
+                }
+                .user_down{
+
+                    .item_down;
+                    ul{
+
+                        .item_down_ul;
+                        li{
+
+                            .item_down_li;
+                        &:hover{
+                        background: #eaedf1;
+                        }
+                        }
+                    }
+                }
+            }
+        }/*topbar_right*/
+    }/*wrap_box*/
+}/*viewFramework-topbar*/
