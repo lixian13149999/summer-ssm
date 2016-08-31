@@ -14,9 +14,9 @@ import com.bcdbook.summer.system.dao.AddrDao;
 import com.bcdbook.summer.system.pojo.Addr;
 
 
-@Service("AddrService")
+@Service("addrService")
 public class AddrService extends CrudService<AddrDao,Addr>{
 	@Resource
-	private AddrDao AddrDao;
+	private AddrDao addrDao;
 	
 }

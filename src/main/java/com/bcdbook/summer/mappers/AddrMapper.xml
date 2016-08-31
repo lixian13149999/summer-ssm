@@ -39,8 +39,8 @@
 			<if test="id != null and !&quot;&quot;.equals(id.trim())">
 		    	and id = #{id}
 		    </if>
-		    <if test="delFlag != null and delFlag != 0">
-		    	and del_flag = #{delFlag}
+		    <if test="true">
+		    	and del_flag = 1
 		    </if>
 		    
 		    <if test="userId != null and !&quot;&quot;.equals(userId.trim())">
@@ -159,74 +159,68 @@
 		<include refid="AddrCondition" />
 	</update>
 
-	
-	
 	<!-- 修改权限 -->
 	<update id="update" parameterType="com.bcdbook.summer.system.pojo.Addr">
 		update sys_addr
 		<set>
-			<if test="id != null and !&quot;&quot;.equals(id.trim())">
-		    	and id = #{id}
-		    </if>
 		    <if test="delFlag != null and delFlag != 0">
-		    	and del_flag = #{delFlag}
-		    </if>	
+		    	del_flag = #{delFlag},
+		    </if>
 		    
-			<if test="userId != null and !&quot;&quot;.equals(userId.trim())">
-		    	and user_id = #{userId}
+		    <if test="userId != null and !&quot;&quot;.equals(userId.trim())">
+		    	user_id = #{userId},
 		    </if>
 		    <if test="sort != null and sort != 0">
-		    	and sort = #{sort}
+		    	sort = #{sort},
 		    </if>
 		    <if test="type != null and type != 0">
-		    	and type = #{type}
+		    	type = #{type},
 		    </if>
 		    <if test="isDefault != null and isDefault != 0">
-		    	and is_default = #{isDefault}
+		    	is_default = #{isDefault},
 		    </if>
 		    <if test="province != null and !&quot;&quot;.equals(province.trim())">
-		    	and province = #{province}
+		    	province = #{province},
 		    </if>
 		    <if test="provinceCode != null and provinceCode != 0">
-		    	and province_code = #{provinceCode}
+		    	province_code = #{provinceCode},
 		    </if>
 		    <if test="city != null and !&quot;&quot;.equals(city.trim())">
-		    	and city = #{city}
+		    	city = #{city},
 		    </if>
 		    <if test="cityCode != null and cityCode != 0">
-		    	and city_code = #{cityCode}
+		    	city_code = #{cityCode},
 		    </if>
 		    <if test="county != null and !&quot;&quot;.equals(county.trim())">
-		    	and county = #{county}
+		    	county = #{county},
 		    </if>
 		    <if test="countyCode != null and countyCode != 0">
-		    	and county_code = #{countyCode}
+		    	county_code = #{countyCode},
 		    </if>
 		    <if test="infoAddr != null and !&quot;&quot;.equals(infoAddr.trim())">
-		    	and info_addr = #{infoAddr}
+		    	info_addr = #{infoAddr},
 		    </if>
 		    <if test="addressee != null and !&quot;&quot;.equals(addressee.trim())">
-		    	and addressee = #{addressee}
+		    	addressee = #{addressee},
 		    </if>
 		    <if test="phone != null and !&quot;&quot;.equals(phone.trim())">
-		    	and phone = #{phone}
+		    	phone = #{phone},
 		    </if>
-
-		    		    
+		    
 		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
-		    	and create_time = #{createTime}
+		    	create_time = #{createTime},
 		    </if>
 		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
-		    	and create_by = #{createBy}
+		    	create_by = #{createBy},
 		    </if>
 		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
-		    	and update_time = #{updateTime}
+		    	update_time = #{updateTime},
 		    </if>
 		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
-		    	and update_by = #{updateBy}
+		    	update_by = #{updateBy},
 		    </if>
 		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
-		    	and remark = #{remark}
+		    	remark = #{remark},
 		    </if>
 		</set>
 		where id = #{id,jdbcType=VARCHAR}
@@ -240,6 +234,7 @@
 		where id = #{id,jdbcType=VARCHAR}
 		and del_flag = 1
 	</select>
+	
 	<!-- 查询(根据实体类条件) -->
 	<select id="getByCondition" resultMap="Addr" parameterType="com.bcdbook.summer.system.pojo.Addr">
 		select
@@ -247,6 +242,7 @@
 		from sys_addr
 		<include refid="AddrCondition" />
 	</select>
+	
 	<!-- 查询(根据集合) -->
 	<select id="findList" resultMap="Addr" parameterType="com.bcdbook.summer.system.pojo.Addr">
 		select
@@ -257,7 +253,8 @@
 		<if test="page != null">
 	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
 	    </if>
-	</select>	
+	</select>
+		
 	<!-- 查询所有数据 -->
 	<select id="findAllList" resultMap="Addr" parameterType="com.bcdbook.summer.system.pojo.Addr">
 		select
@@ -265,6 +262,7 @@
 		from sys_addr where 1=1 
 		order by sort 
 	</select>
+	
 	<!-- 根据实体类条件,符合数据的数量 -->
 	<select id="count" resultType="java.lang.Integer" parameterType="com.bcdbook.summer.system.pojo.Addr">
 		select count(*) from sys_addr
