@@ -1,0 +1,227 @@
+//主显示区域样式
+.viewFramework-body {
+    position: absolute;
+    width: 100%;
+    top: @top-nav-height;
+    bottom: 0px;
+    background-color: @body-base-color;
+    z-index: 100;
+    overflow:hidden;
+}
+
+//左菜单栏默认显示样式
+.viewFramework-sidebar {
+    position: fixed;
+    top: @top-nav-height;
+    padding-bottom:@top-nav-height;
+    height:100%;
+    background-color: @viewFramework-sidebar-basecolor;
+    overflow: hidden;
+    font-size:12px;
+    a {
+        color: #fff;
+    }
+    .sidebar-content {
+        width:@sidebar-content-fullwidth;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    .sidebar-fold {
+        height:@sidebar-fold-heigth;
+        width: 100%;
+        background: @sidebar-fold-basecolor;
+        color:@sidebar-fold-color;
+        line-height: @sidebar-fold-heigth !important;
+        font-size: 12px;
+        user-select: none;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        .iconright {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+        }
+        .iconleft {
+            display: inline-block;
+            margin-left:20px;
+        }
+        .invisible{
+            opacity:0;
+        }
+    }
+    .sidebar-nav {
+        width: 100%;
+        .sidebar-title {
+            height: @sidebar-nav-height;
+            background: @sidebar-fold-basecolor;
+            color: #fff;
+            line-height: @sidebar-nav-height;
+            position: relative;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            .iconup {
+                display: inline-block;
+                width: 50px;
+                text-align: center;
+                float: left;
+            }
+        }
+        .change{
+            background-color:@title-change-basecolor;
+        }
+        .icon {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+            float: left;
+        }
+        .hide{
+            display:none;
+        }
+        .sidebar-trans {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            overflow: hidden;
+            .item {
+                display: block;
+                width: 100%;
+                height: @sidebar-nav-height;
+                line-height: @sidebar-nav-height;
+                overflow: hidden;
+            }
+            .on{
+                background-color:@item-base-color;
+            }
+            .over{
+                background-color:@item-over-basecolor;
+            }
+        }
+    }
+}
+
+//左菜单栏展开时显示样式
+.viewFramework-sidebar-full {
+    .viewFramework-sidebar {
+        width:(@sidebar-content-fullwidth)-20;
+    }
+    .viewFramework-product {
+        left: (@sidebar-content-fullwidth)-20;
+    }
+}
+
+//左菜单栏收缩时展示样式
+.viewFramework-sidebar-mini {
+    .viewFramework-sidebar {
+        width:@viewFramework-sidebar-miniwidth;
+    }
+    .sidebar-content{
+        width:(@viewFramework-sidebar-miniwidth)+20;
+        .sidebar-nav span{
+            display:none;
+        }
+    }
+    .viewFramework-product {
+        left: @viewFramework-sidebar-miniwidth;
+    }
+}
+
+//右边主显示区域(容器框)默认显示样式
+.viewFramework-product {
+    width:auto;
+    height:100%;
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    .iconleft{
+        display:block;
+        width:15px;
+        height:35px;
+        border-radius: 5px 0 0 5px;
+        background-color:#f7f7f7;
+        line-height:35px;
+        position:absolute;
+        z-index:2;
+        cursor:pointer;
+    }
+    .iconright{
+        display:block;
+        width:15px;
+        height:35px;
+        border-radius: 0 5px 5px 0;
+        background-color:#f7f7f7;
+        opacity:0.9;
+        line-height:35px;
+        position:absolute;
+        left:0;
+        z-index:2;
+        cursor:pointer;
+    }
+    .conceal{
+        display:none;
+    }
+}
+
+//主显示区域伸缩栏样式
+.product-navbar-container{
+    width:0px;
+    height:100%;
+    overflow:hidden;
+    font-size:12px;
+    .viewFramework-product-navbar{
+        width:@product-navbar-width;
+        height:100%;
+        background-color:#eaedf1;
+        overflow-y:scroll; 
+        a{
+            color:#000;
+        }
+        .list-title{
+            font-weight: bolder;
+            height:70px;
+            line-height:70px;
+            padding-left:20px;
+        }
+        .list-content{
+            display:block;
+            height:40px;
+            line-height:40px;
+            padding-left:30px;
+            cursor:pointer;
+        }
+        .listchange{
+            background-color:#ffffff;
+        }
+        .listover{
+            background-color:#f4f6f8;
+        }
+    }
+}
+
+//右边主显示区域显示域样式
+.viewFramework-product-body {
+    width:auto;
+    height:100%;
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    background-color:aqua;
+}
+
+.sidebar-tips{
+    height:40px;
+    line-height:40px;
+    font-size:12px;
+    background-color:@sidebar-tips-basecolor;
+    color:#fff;
+    position:absolute;
+    left:@viewFramework-sidebar-miniwidth+3;
+    padding:0 3px;
+    display:none;
+    opacity:0.9;
+}
+
