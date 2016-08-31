@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 设置映射的dao类 -->
+<mapper namespace="com.bcdbook.summer.system.dao.AddrDao">
+	<!-- 设置映射的数据模型 -->
+	<resultMap id="Addr" type="com.bcdbook.summer.system.pojo.Addr">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+		
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="is_default" property="isDefault" jdbcType="INTEGER" />
+		<result column="province" property="province" jdbcType="VARCHAR" />
+		<result column="province_code" property="provinceCode" jdbcType="INTEGER" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="city_code" property="cityCode" jdbcType="INTEGER" />
+		<result column="county" property="county" jdbcType="VARCHAR" />
+		<result column="county_code" property="countyCode" jdbcType="INTEGER" />
+		<result column="info_addr" property="infoAddr" jdbcType="VARCHAR" />
+		<result column="addressee" property="addressee" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 定义查询的所有参数 -->
+	<sql id="AddrColumns">
+		id, del_flag, user_id,sort, type, is_default, province, province_code,city,city_code,county,county_code,info_addr,addressee,phone, create_time, create_by, update_time, update_by, remark
+	</sql>
+	
+	<!-- 定义所有条件 -->
+	<sql id="AddrCondition">	
+		<where>
+			<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="delFlag != null and delFlag != 0">
+		    	and del_flag = #{delFlag}
+		    </if>
+		    
+		    <if test="userId != null and !&quot;&quot;.equals(userId.trim())">
+		    	and user_id = #{userId}
+		    </if>
+		    <if test="sort != null and sort != 0">
+		    	and sort = #{sort}
+		    </if>
+		    <if test="type != null and type != 0">
+		    	and type = #{type}
+		    </if>
+		    <if test="isDefault != null and isDefault != 0">
+		    	and is_default = #{isDefault}
+		    </if>
+		    <if test="province != null and !&quot;&quot;.equals(province.trim())">
+		    	and province = #{province}
+		    </if>
+		    <if test="provinceCode != null and provinceCode != 0">
+		    	and province_code = #{provinceCode}
+		    </if>
+		    <if test="city != null and !&quot;&quot;.equals(city.trim())">
+		    	and city = #{city}
+		    </if>
+		    <if test="cityCode != null and cityCode != 0">
+		    	and city_code = #{cityCode}
+		    </if>
+		    <if test="county != null and !&quot;&quot;.equals(county.trim())">
+		    	and county = #{county}
+		    </if>
+		    <if test="countyCode != null and countyCode != 0">
+		    	and county_code = #{countyCode}
+		    </if>
+		    <if test="infoAddr != null and !&quot;&quot;.equals(infoAddr.trim())">
+		    	and info_addr = #{infoAddr}
+		    </if>
+		    <if test="addressee != null and !&quot;&quot;.equals(addressee.trim())">
+		    	and addressee = #{addressee}
+		    </if>
+		    <if test="phone != null and !&quot;&quot;.equals(phone.trim())">
+		    	and phone = #{phone}
+		    </if>
+
+		    	    
+			<if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+	    </where>
+	</sql>
+	
+	<!-- 添加 -->	
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.system.pojo.Addr">
+		insert into sys_addr (id, del_flag, user_id,sort, type, is_default, province, province_code,city,city_code,county,county_code,info_addr,addressee,phone, create_time, create_by, update_time, update_by, remark)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=INTEGER},
+			
+			#{userId,jdbcType=VARCHAR},
+			#{sort,jdbcType=INTEGER},
+			#{type,jdbcType=INTEGER},
+			#{isDefault,jdbcType=INTEGER},
+			#{province,jdbcType=VARCHAR},
+			#{provinceCode,jdbcType=INTEGER},
+			#{city,jdbcType=VARCHAR},
+			#{cityCode,jdbcType=INTEGER},
+			#{county,jdbcType=VARCHAR},
+			#{countyCode,jdbcType=INTEGER},
+			#{infoAddr,jdbcType=VARCHAR},
+			#{addressee,jdbcType=VARCHAR},
+			#{phone,jdbcType=VARCHAR},	
+			
+			#{createTime,jdbcType=VARCHAR},
+			#{createBy,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{updateBy,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- 删除(根据id) -->
+<!-- 	<delete id="delete" parameterType="java.lang.String">
+		delete from sys_addr
+		where id = #{id,jdbcType=VARCHAR}
+	</delete> -->
+	<!-- 删除(根据实体类条件) -->
+<!-- 	<delete id="deleteByCondition" parameterType="com.bcdbook.summer.system.pojo.Addr">
+		delete from sys_addr
+		<include refid="AddrCondition" />
+	</delete> -->
+	
+ 	<!-- 伪删除(根据id) -->
+	<update id="delete" parameterType="java.lang.String">
+		update sys_addr
+		<set>
+			del_flag = 2
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<!-- 伪删除(根据实体类条件) -->
+	<update id="deleteByCondition" parameterType="com.bcdbook.summer.system.pojo.Addr">
+		update sys_addr
+		<set>
+			del_flag = 2
+		</set>
+		<include refid="AddrCondition" />
+	</update>
+
+	
+	
+	<!-- 修改权限 -->
+	<update id="update" parameterType="com.bcdbook.summer.system.pojo.Addr">
+		update sys_addr
+		<set>
+			<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="delFlag != null and delFlag != 0">
+		    	and del_flag = #{delFlag}
+		    </if>	
+		    
+			<if test="userId != null and !&quot;&quot;.equals(userId.trim())">
+		    	and user_id = #{userId}
+		    </if>
+		    <if test="sort != null and sort != 0">
+		    	and sort = #{sort}
+		    </if>
+		    <if test="type != null and type != 0">
+		    	and type = #{type}
+		    </if>
+		    <if test="isDefault != null and isDefault != 0">
+		    	and is_default = #{isDefault}
+		    </if>
+		    <if test="province != null and !&quot;&quot;.equals(province.trim())">
+		    	and province = #{province}
+		    </if>
+		    <if test="provinceCode != null and provinceCode != 0">
+		    	and province_code = #{provinceCode}
+		    </if>
+		    <if test="city != null and !&quot;&quot;.equals(city.trim())">
+		    	and city = #{city}
+		    </if>
+		    <if test="cityCode != null and cityCode != 0">
+		    	and city_code = #{cityCode}
+		    </if>
+		    <if test="county != null and !&quot;&quot;.equals(county.trim())">
+		    	and county = #{county}
+		    </if>
+		    <if test="countyCode != null and countyCode != 0">
+		    	and county_code = #{countyCode}
+		    </if>
+		    <if test="infoAddr != null and !&quot;&quot;.equals(infoAddr.trim())">
+		    	and info_addr = #{infoAddr}
+		    </if>
+		    <if test="addressee != null and !&quot;&quot;.equals(addressee.trim())">
+		    	and addressee = #{addressee}
+		    </if>
+		    <if test="phone != null and !&quot;&quot;.equals(phone.trim())">
+		    	and phone = #{phone}
+		    </if>
+
+		    		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 查询(根据id) -->		
+	<select id="get" resultMap="Addr" parameterType="java.lang.String">
+		select
+		<include refid="AddrColumns" />
+		from sys_addr
+		where id = #{id,jdbcType=VARCHAR}
+		and del_flag = 1
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="getByCondition" resultMap="Addr" parameterType="com.bcdbook.summer.system.pojo.Addr">
+		select
+		<include refid="AddrColumns" />
+		from sys_addr
+		<include refid="AddrCondition" />
+	</select>
+	<!-- 查询(根据集合) -->
+	<select id="findList" resultMap="Addr" parameterType="com.bcdbook.summer.system.pojo.Addr">
+		select
+		<include refid="AddrColumns" />
+		from sys_addr
+		<include refid="AddrCondition" />
+  		order by sort 
+		<if test="page != null">
+	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
+	    </if>
+	</select>	
+	<!-- 查询所有数据 -->
+	<select id="findAllList" resultMap="Addr" parameterType="com.bcdbook.summer.system.pojo.Addr">
+		select
+		<include refid="AddrColumns" />
+		from sys_addr where 1=1 
+		order by sort 
+	</select>
+	<!-- 根据实体类条件,符合数据的数量 -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.bcdbook.summer.system.pojo.Addr">
+		select count(*) from sys_addr
+		<include refid="AddrCondition" />
+	</select>
+</mapper>
