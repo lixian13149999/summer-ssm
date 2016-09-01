@@ -59,8 +59,8 @@ public class WechatSettime {
 	 */
 	public void refreshMaterial(){
 //		System.out.println("刷新素材的方法执行");
-		MaterialService materialService = getMaterialBean("materialService");
-		materialService.refreshMaterialToLocal();
+//		MaterialService materialService = getMaterialBean("materialService");
+//		materialService.refreshMaterialToLocal();
 	}
 	
 	/**

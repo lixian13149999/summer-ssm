@@ -3,15 +3,17 @@ package com.bcdbook.summer.common.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
  * @author lason 拦截器的类,使用spring的AOP用来拦截事物处理相关的事项
  */
 public class CommonInterceptor extends HandlerInterceptorAdapter {
-	private final Logger log = LoggerFactory.getLogger(CommonInterceptor.class);
+	
+//	private final Logger logger = LoggerFactory.getLogger(CommonInterceptor.class);
+	private static Logger logger = Logger.getLogger(CommonInterceptor.class);
+	
 	public static final String LAST_PAGE = "com.alibaba.lastPage";
 
 	/*
@@ -30,7 +32,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		
+		logger.info("拦截器中加入日志");
 		
 		//拦截器中,可以直接获取request中的值
 //		System.out.println(request.getParameter("type"));
@@ -42,8 +44,8 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		System.out.println("====================="+aa);
 //		System.out.println("进入拦截器preHandle");
 //		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-//		return false;
-		return true;
+		return false;
+//		return true;
 ////		if ("GET".equalsIgnoreCase(request.getMethod())) {
 ////			RequestUtil.saveRequest();
 ////		}
