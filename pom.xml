@@ -20,6 +20,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- jade整合入spring的配置 -->
+		<dependency>
+		     <groupId>de.neuland-bfi</groupId>
+		     <artifactId>spring-jade4j</artifactId>
+		     <version>0.4.0</version>
+		</dependency>
 		<!-- jade引擎 -->
 		<dependency>
 			<groupId>de.neuland-bfi</groupId>

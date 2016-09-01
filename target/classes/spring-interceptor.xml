@@ -19,6 +19,8 @@
 	    <mvc:interceptor>    
 	        <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->  
 	        <mvc:mapping path="/**" />  
+	        <mvc:exclude-mapping path="/demo/**" />
+	        
 	        <!-- 拦截时过滤掉wechat/login -->
 	        <mvc:exclude-mapping path="/wechat/login" />
 	        <bean class="com.bcdbook.summer.common.interceptor.CommonInterceptor"></bean>    

@@ -51,15 +51,34 @@
 			</list>
 		</property>
 	</bean>
+	
 	<!-- 定义跳转的文件的前后缀 ，视图模式配置-->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
-		<!-- 设置前置名 -->
+	
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址
+		设置前置名
 		<property name="prefix" value="/WEB-INF/views/" />
-		<!-- 设置后缀 -->
+		设置后缀
 		<property name="suffix" value=".jsp" />
-		<!-- <property name="suffix" value=".html" /> -->
-	</bean>
+	</bean> -->
+	
+	<!-- jade模板引擎的解析=====开始 -->
+	<!--jade templateLoader 模板加载属性配置，默认后缀是jade，编码是UTF-8，这里可以不需要在配置了--> 
+    <bean id="templateLoader" class="de.neuland.jade4j.spring.template.SpringTemplateLoader">
+        <property name="basePath" value="/WEB-INF/jadeViews/"/>
+    </bean>
+    <!--jade configuaration 配置中心，可以配置缓存内容，美化输出格式等-->
+    <bean id="jadeConfiguration" class="de.neuland.jade4j.JadeConfiguration">
+        <property name="prettyPrint" value="false"/>
+        <property name="caching" value="false"/>
+        <property name="templateLoader" ref="templateLoader"/>
+    </bean>
+    <!--jade viewResolver 视图解析-->
+    <bean id="viewResolver" class="de.neuland.jade4j.spring.view.JadeViewResolver">
+        <property name="configuration" ref="jadeConfiguration"/>
+        <property name="renderExceptions" value="true"/>
+    </bean>
+	<!-- jade模板引擎的解析=====结束 -->
 	
 	<!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
 	<bean id="multipartResolver"  
