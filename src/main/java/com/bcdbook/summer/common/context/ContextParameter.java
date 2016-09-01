@@ -39,7 +39,6 @@ public class ContextParameter implements ServletContextListener {
 	 */
 	@Override
 	public void contextInitialized(ServletContextEvent context) {
-		// TODO Auto-generated method stub
 		ServletContext sc = context.getServletContext();
 		System.out.println(sc.getContextPath().toString());
 		sc.setAttribute("ctx", sc.getContextPath().toString());

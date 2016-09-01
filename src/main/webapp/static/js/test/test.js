@@ -1,12 +1,13 @@
 var test = new Object();
 
 $(function(){
+	console.log(ctx);
     var topViewContent = $("#view_top");
-    var topViewUrl = "/pages/pc/include/top.html";
+    var topViewUrl = ctx+"/pages/pc/include/top.html";
     test.pushHtml(topViewContent,topViewUrl);
     
     var bodyViewContent = $("#view_body");
-    var bodyViewUrl = "/pages/pc/include/body.html";
+    var bodyViewUrl = ctx+"/pages/pc/include/body.html";
     test.pushHtml(bodyViewContent,bodyViewUrl);
 });
 

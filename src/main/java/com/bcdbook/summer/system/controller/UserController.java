@@ -1,6 +1,7 @@
 package com.bcdbook.summer.system.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bcdbook.summer.system.pojo.Menu;
+import com.bcdbook.summer.system.service.MenuService;
 import com.bcdbook.summer.system.service.UserService;
 
 
@@ -26,6 +30,18 @@ import com.bcdbook.summer.system.service.UserService;
 public class UserController {
 	@Resource
 	private UserService userService;
+	@Resource
+	private MenuService menuService;
+	
+	@RequestMapping(value="",method={RequestMethod.GET})
+	public String testIndex(HttpServletRequest request,HttpServletResponse response,Model model){
+		Menu menu = new Menu();
+		menu.setParentId("first");
+		List<Menu> userMenus = menuService.findList(menu);
+		request.setAttribute("userMenus", userMenus);
+		return "index";
+	}
+	
 	
 	/**
 	 * 

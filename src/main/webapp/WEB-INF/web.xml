@@ -63,13 +63,13 @@
 	
   <!-- 设置欢迎页面 -->
   <welcome-file-list>
-    <welcome-file>/index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
   </welcome-file-list>
   <!-- 设置session的有效时长 -->
   <session-config>
     <session-timeout>20</session-timeout>
   </session-config>
-
+<!-- 
 	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/error/404.jsp</location>
@@ -78,4 +78,5 @@
 		<error-code>500</error-code>
 		<location>/WEB-INF/views/error/500.jsp</location>
 	</error-page>
+	 -->
 </web-app>
