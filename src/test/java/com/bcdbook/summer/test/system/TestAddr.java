@@ -46,38 +46,37 @@ public class TestAddr {
 	
 	@Test
 	public void add(){
-		Addr addr = new Addr("李四", 1, 1, "江苏省",
-				32, "苏州市", 320502, "工业园区",
-				100, "东振路", "张三", "0512-65966315",
-				2) ;
+		Addr addr = new Addr("李四1", 1, 1, "贵州省",
+				32, "沈阳市", 320502, "xxx区",
+				100, "xxx路", "张三1", "xxxx-65966316",
+				1) ;
 		addrService.add(addr);
 //		System.out.println();		
 	}
 	
 	@Test 
 	public void remove(){
-		addrService.delete("16033c3230894dc0aa5b98d005d039a4");
-
+		addrService.delete("e3705ce00ef1492da9aa32f72fdc8603");
 	}
 	
 	@Test 
 	public void removeByCondition(){
 		Addr addr = new Addr();
 //		addr.setId("fbfcf06b35f94ca0af6769f073d1f39b");
-		addr.setDelFlag(1);
-//		addr.setUserId("李四1");
+//		addr.setDelFlag(1);
+		addr.setUserId("李四5");
 //		addr.setType(1);
 //		addr.setIsDefault(1);
-//		addr.setprovince("江苏省1");
-//		addr.setprovinceCode(32);
-//		addr.setcity("苏州市1");
-//		addr.setcityCode(320502);
-//		addr.setcounty("工业园区1");
-//		addr.setcountyCode(100);
-//		addr.setinfoAddr("东振路1");
-//		addr.setaddressee("张三1");
+//		addr.setProvince("江苏省1");
+//		addr.setProvinceCode(32);
+//		addr.setCity("苏州市1");
+//		addr.setCityCode(320502);
+//		addr.setCounty("工业园区1");
+//		addr.setCountyCode(100);
+//		addr.setInfoAddr("东振路1");
+//		addr.setSddressee("张三1");
 //		addr.setPhone("0512-65966315");
-//		addr.setsort(2);
+//		addr.setSort(1);
 		
 		System.out.println(addrService.deleteByCondition(addr));
 	}
@@ -86,20 +85,20 @@ public class TestAddr {
 	@Test
 	public void update(){	
 		Addr addr = new Addr();
-		addr.setId("1d887bd9ee714f6d980701b3c1428ad6");
+		addr.setId("5c4c7060f4bc461da1ef83496ca78d08");
 		addr.setDelFlag(1);
-		addr.setUserId("李四1");
-		addr.setSort(2);
-		addr.setType(1);
+		addr.setUserId("李四3");
+		addr.setSort(1);
+		addr.setType(2);
 		addr.setIsDefault(1);
-		addr.setProvince("江苏省1");
+		addr.setProvince("江苏省");
 		addr.setProvinceCode(32);
-		addr.setCity("苏州市1");
+		addr.setCity("苏州市");
 		addr.setCityCode(320502);
-		addr.setCounty("工业园区1");
+		addr.setCounty("工业园区");
 		addr.setCountyCode(100);
 		addr.setInfoAddr("东振路1");
-		addr.setAddressee("张三1");
+		addr.setAddressee("张三3");
 		addr.setPhone("0512-65966315");
 		
 		addr.setCreateTime("createTime");
@@ -113,29 +112,28 @@ public class TestAddr {
 	
 	@Test
 	public void get(){
-		Addr addr = addrService.get("6f67ee4b39854164924b9a2e437a8b70");
-		System.out.println(addr);
-		
+		Addr addr = addrService.get("94f30fa8423d4bbebabed3e0bac09896");
+		System.out.println(addr);	
 	}
 	
 	@Test
 	public void getByCondition(){
 		Addr addr = new Addr();
-		addr.setId("fbfcf06b35f94ca0af6769f073d1f39b");
-		addr.setDelFlag(1);
-		addr.setUserId("李四1");
+//		addr.setId("fbfcf06b35f94ca0af6769f073d1f39b");
+//		addr.setDelFlag(1);
+		addr.setUserId("李四3");
 //		addr.setType(1);
 //		addr.setIsDefault(1);
-//		addr.setprovince("江苏省1");
-//		addr.setprovinceCode(32);
-//		addr.setcity("苏州市1");
-//		addr.setcityCode(320502);
-//		addr.setcounty("工业园区1");
-//		addr.setcountyCode(100);
-//		addr.setinfoAddr("东振路1");
-//		addr.setaddressee("张三1");
-		addr.setPhone("0512-65966315");
-//		addr.setsort(2);
+//		addr.setProvince("江苏省1");
+//		addr.setProvinceCode(32);
+//		addr.setCity("苏州市1");
+//		addr.setCityCode(320502);
+//		addr.setCounty("工业园区1");
+//		addr.setCountyCode(100);
+//		addr.setInfoAddr("东振路1");
+//		addr.setAddressee("张三1");
+//		addr.setPhone("0512-65966315");
+//		addr.setSort(2);
 		
 		Addr addr2 = addrService.getByCondition(addr);
 		System.out.println(addr2);
@@ -145,21 +143,21 @@ public class TestAddr {
 	@Test
 	public void findList(){
 		Addr addr = new Addr();
-		addr.setId("fbfcf06b35f94ca0af6769f073d1f39b");
-		addr.setDelFlag(1);
-		addr.setUserId("李四1");
+//		addr.setId("fbfcf06b35f94ca0af6769f073d1f39b");
+//		addr.setDelFlag(1);
+		addr.setUserId("李四2");
 //		addr.setType(1);
 //		addr.setIsDefault(1);
-//		addr.setprovince("江苏省1");
-//		addr.setprovinceCode(32);
-//		addr.setcity("苏州市1");
-//		addr.setcityCode(320502);
-//		addr.setcounty("工业园区1");
-//		addr.setcountyCode(100);
-//		addr.setinfoAddr("东振路1");
-//		addr.setaddressee("张三1");
-		addr.setPhone("0512-65966315");
-//		addr.setsort(2);
+//		addr.setProvince("江苏省1");
+//		addr.setProvinceCode(32);
+//		addr.setCity("苏州市1");
+//		addr.setCityCode(320502);
+//		addr.setCounty("工业园区1");
+//		addr.setCountyCode(100);
+//		addr.setInfoAddr("东振路1");
+//		addr.setAddressee("张三1");
+//		addr.setPhone("0512-65966315");
+//		addr.setSort(2);
 		
 		List<Addr> list = addrService.findList(addr);
 		System.out.println(list.size());
@@ -172,25 +170,25 @@ public class TestAddr {
 	@Test
 	public void findListPage(){
 		Addr addr = new Addr();
-		addr.setId("fbfcf06b35f94ca0af6769f073d1f39b");
-		addr.setDelFlag(1);
-		addr.setUserId("李四");
+//		addr.setId("fbfcf06b35f94ca0af6769f073d1f39b");
+//		addr.setDelFlag(2);
+//		addr.setUserId("李四2");
 //		addr.setType(1);
 //		addr.setIsDefault(1);
-//		addr.setprovince("江苏省1");
-//		addr.setprovinceCode(32);
-//		addr.setcity("苏州市1");
-//		addr.setcityCode(320502);
-//		addr.setcounty("工业园区1");
-//		addr.setcountyCode(100);
-//		addr.setinfoAddr("东振路1");
-//		addr.setaddressee("张三1");
-		addr.setPhone("0512-65966315");
-//		addr.setsort(2);
+//		addr.setProvince("江苏省1");
+//		addr.setProvinceCode(32);
+//		addr.setCity("苏州市1");
+//		addr.setCityCode(320502);
+//		addr.setCounty("工业园区1");
+//		addr.setCountyCode(100);
+//		addr.setInfoAddr("东振路1");
+//		addr.setAddressee("张三1");
+//		addr.setPhone("0512-65966315");
+		addr.setSort(2);
 		
 		Page<Addr> page = new Page<Addr>();
 		page.setPageNum(1);
-		page.setPageSize(4);
+		page.setPageSize(5);
 		page.setFunc("testFunction");
 		
 		Page<Addr> page2 = addrService.findPage(page, addr);
