@@ -1,0 +1,36 @@
+html
+	head
+		title= pageName
+	body
+		include ./header.jade
+		ol#books
+			p session: 
+			p #{session}
+			hr
+			p session.creationTime: 
+			p #{session.creationTime}
+			hr
+			p session.id: 
+			p #{session.id}
+			hr
+			p session.isNew: 
+			p #{session.isNew}
+			hr
+			p session.isValid: 
+			p #{session.isValid}
+			hr
+			p session.lastAccessedTime: 
+			p #{session.lastAccessedTime}
+			hr
+			p session.attributeNames: 
+			p #{session.attributeNames}
+			hr
+			p session.attributes: 
+			p #{session.attributes}
+			hr
+			p session.attributes.users: 
+			p #{session.attributes.users}
+			//- for user in users
+				//- if user.available
+				//- li #{user.userName} for #{user.pwd} €
+		include ./footer.jade
