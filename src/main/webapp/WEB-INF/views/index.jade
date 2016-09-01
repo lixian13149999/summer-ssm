@@ -1,6 +1,6 @@
-extends ./includes/layout.jade
+extends ./common/includes/layout.jade
 block content
-	include ./includes/modals.jade
+	include ./common/includes/modals.jade
 	.top_box
 		.top#top
 			.logo
@@ -23,7 +23,7 @@ block content
 		//- span #{onlineUser.username}
 		.left#left
 			.menu_box
-				//- include ./menu/list.jade
+				include ./system/menu/list.jade
 		.main#main
 			| #{staticCtx}
 			//- include ./user/edit.jade

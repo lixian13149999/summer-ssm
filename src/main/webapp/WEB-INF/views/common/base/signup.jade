@@ -4,7 +4,7 @@ html
 		title 注册
 		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
 
-		include ../includes/libs.jade
+		include ./signin_up_static.jade
 	body
 		div.background_div
 		//- .step_index
@@ -21,7 +21,7 @@ html
 			.signin_title
 				span 用户注册
 				span.to_signin_box 已有账号? 请
-					a(href="/signin") 登陆
+					a(href="signin") 登陆
 			//- form(method="POST", action="javascript:void(0)")
 			form(method="POST", action="/signup",id='signin_form')
 				.signin_input
