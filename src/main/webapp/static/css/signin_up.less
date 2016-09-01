@@ -1,0 +1,190 @@
+@import "./base/style.less";
+@import "./base/rebootstrap.less";
+
+//定义logo的大小
+@signin_logo_size:120px;
+//登陆页面背景样式
+.background_div{
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    // min-width: 700px;
+    min-height: 600px;
+	// background-color: red;
+	background-image: url('../img/signin.jpg');
+	// background:#fff none no-repeat center center;
+	background-size: cover;
+	overflow: hidden;
+	.blur(5px);
+}
+
+.signin_box_base{
+	//登陆框的基本样式
+    width: 450px;
+    height: 420px;
+    border: solid #666 1px;//边框
+    .box_shadow(0,0,10px,3px,#adadad);//阴影
+}
+.verify_box_base{
+	//登陆框的基本样式
+    width: 450px;
+    height: 230px;
+    border: solid #666 1px;//边框
+    .box_shadow(0,0,10px,3px,#adadad);//阴影
+}
+//登陆框样式开始-------------------
+// .step_index{
+// 	position: absolute;
+//     display: block;
+//     margin: auto;
+//     // top: 150px;
+//     left: 0;
+//     right: 0;
+//     width:600px;
+//     height:30px;
+//     // background-color: #fff;
+//     top:100px;
+
+// 	.paces_points{
+// 		.paces_point {
+// 		    width: 18px;
+// 		    height: 18px;
+// 		    border: solid 1px;
+// 		    border-radius: 9px;
+// 		}
+// 	}
+
+//     .paces{
+//     	// position
+//     	position: relative;
+//     	width:600px;
+//     	height:8px;
+//     	background-color: #fff;
+//     	border-radius: 4px;
+//     	border:solid #999 1px;
+//     }
+//     .paces_down{
+//     	position: relative;
+//     	width:400px;
+//     	height:8px;
+//     	top:-8px;
+//     	background-color: #4cb0f9;
+//     	border-radius: 4px;
+//     }
+// }
+
+.signin_box{
+	
+    //这段代码控制其居中 start
+	position: absolute;
+    display: block;
+    margin: auto;
+    top: 150px;
+    left: 0;
+    right: 0;
+	//这段代码控制其居中 end
+    background-color: #fff;
+    padding: 20px 30px;
+    //logo的样式
+    .signin_logo{
+    	width: @signin_logo_size;
+	    height: @signin_logo_size;
+	    // border: solid red 1px;
+	    display: block;
+	    margin-left: auto;
+	    margin-right: auto;
+	    .signin_logo_i{
+	    	font-size: @signin_logo_size;
+	    	line-height: @signin_logo_size;
+	    }
+    }
+
+    //输入框的样式开始 ----------------------
+    .signin_input{
+    	padding-top: 20px;
+		//自定义效果的input输入框
+		
+    }
+    //输入框的样式结束 ----------------------
+
+    //底部按钮的样式
+	.signin_button{
+		text-align: center;
+		.button{
+			font-size: 14px;
+			line-height: 36px;
+		    height: 36px;
+		    padding: 0px 50px;
+		}
+	}
+	//底部按钮的样式
+	.signup_button{
+		padding: 20px 0px;
+		text-align: center;
+		.button{
+			font-size: 14px;
+			line-height: 36px;
+		    height: 36px;
+		    padding: 0px 50px;
+		}
+	}
+}
+
+//输入框代码快的样式开始-----------------
+.l_input_div{
+	//属性信息的样式
+	.l_label{
+		position: relative;
+		top: -27px;
+		background-color: #fff;
+		left: 5px;
+		margin-bottom: 0px;
+		padding: 0px 8px;
+		font-weight: 500;
+		-webkit-font-smoothing: antialiased;
+		.transition;
+	}
+	//输入框获取到焦点后,属性信息的变化
+	// 注:这里的样式变化需要结合js处理,当输入框中有内容时,则不让属性值覆盖下去
+	// 这里的处理会跟js的处理发生冲突,所以,直接提到js部分进行处理
+	.l_input:focus{
+		& + .l_label{
+			color:#333;
+			// top:-47px;
+		}
+	}
+	//提示信息的样式
+	.l_span{
+		display: block;
+	    margin-top: -12px;
+	    padding-left: 14px;
+	}
+	padding-bottom: 15px;
+}
+//属性名的默认颜色
+.l_label{
+	color:#7A7C76;
+}
+//提示信息的默认颜色
+ .l_span{
+	color:#bebebe;
+ }
+//出现错误时颜色的变化
+.has-error .l_label,.has-error .l_span{
+	color:@error_color;
+}
+//输入框代码快的样式结束-----------------
+.to_sigup_box{
+	span{
+		float: right;
+	    line-height: 34px;
+	    color: #aaa;
+	}
+}
+.to_signin_box {
+    float: right;
+    color:#aaa;
+}
+

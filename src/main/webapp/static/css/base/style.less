@@ -1,0 +1,192 @@
+@out_border_color:#d9dadc;
+@inner_border_color:#e7e7eb;
+@menu_title_color:#8d8d8d;
+@menu_icon_color:#8d8d8d;
+@menu_item_hover_color:#f4f5f9;
+@input-attr-color:#7A7C76;
+@input-msg-color:#bebebe;
+// 基础的样式封装
+//字体样式封装
+.font{
+	font-size: 14px;
+	color:#222;
+	font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+//a标签其除其默认样式
+a,a:link,a:hover,a:active,a:visited{
+	text-decoration:none;
+	cursor:pointer;
+}
+//字体阴影效果
+.text-shadow(@x:0,@y:0,@blur:3px,@color:#ccc){
+	text-shadow:@x @y @blur @color;
+}
+.box_shadow(@x:0,@y:0,@blur:7px,@spread:1px,@color:#888){  
+	-webkit-box-shadow:@x @y @blur @spread @color;
+	-moz-box-shadow:@x @y @blur @spread @color;
+	box-shadow:@x @y @blur @spread @color;
+}
+.box_shadow(inset,@x:0,@y:0,@blur:7px,@spread:1px,@color:#888){  
+	-webkit-box-shadow:@x @y @blur @spread @color inset;
+	-moz-box-shadow:@x @y @blur @spread @color inset;
+	box-shadow:@x @y @blur @spread @color inset;
+}
+//定义透明度
+.opacity(@val1:60,@val2:0.6){
+	filter:alpha(opacity=@val1);  /* ie 有效*/
+	-moz-opacity:@val2; /* Firefox  有效*/
+	opacity: @val2; /* 通用，其他浏览器  有效*/
+}
+//毛玻璃处理
+.blur(@blur_size:10px){   
+	-webkit-filter: blur(@blur_size);
+	-moz-filter: blur(@blur_size);
+	-ms-filter: blur(@blur_size);
+	filter: blur(@blur_size);
+}
+// 定义过度效果的样式
+.transition{
+	transition: height 1s, width 1s, box-shadow 1000ms, -moz-box-shadow 1000ms, -webkit-box-shadow 1000ms,color 1000ms,border-color 1000ms,background-color 1000ms,top 500ms,opacity 500ms;
+	-webkit-transition: height 1s, width 1s, box-shadow 1000ms, -moz-box-shadow 1000ms, -webkit-box-shadow 1000ms,color 1000ms,border-color 1000ms,background-color 1000ms,top 500ms,opacity 500ms;
+	-moz-transition: height 1s, width 1s, box-shadow 1000ms, -moz-box-shadow 1000ms, -webkit-box-shadow 1000ms,color 1000ms,border-color 1000ms,background-color 1000ms,top 500ms,opacity 500ms;
+}
+
+
+
+//获得鼠标字体样式改变的方法的定义 start------------------------
+.hover_default{
+	.transition;
+	.opacity();
+	&:hover{
+		.opacity(100,1);
+		.text-shadow();
+	}
+	&:active{
+		.opacity(50,0.5);
+		.text-shadow();
+	}
+}
+// .text-shadow(@x:0,@y:0,@blur:3px,@color:#ccc){
+.hover_danger{
+	&:hover{
+		color:#ff7473;
+		.text-shadow(0px, 0px, 3px, #ff7473);
+	}
+}
+.hover_warning{
+	&:hover{
+		color:#ffc952;
+		.text-shadow(0px, 0px, 3px, #ffc952);
+	}
+}
+.hover_primary{
+	&:hover{
+		color:#47b8e0;
+		.text-shadow(0px, 0px, 3px, #47b8e0);
+	}
+}
+.hover_success{
+	&:hover{
+		color:#5cb85c;
+		.text-shadow(0px, 0px, 3px, #5cb85c);
+	}
+}
+//获得鼠标字体样式改变的方法的定义 end------------------------
+
+// 边框样式 start------------------------
+.border(out,@style:solid,@color:@out_border_color,@width:1px){
+	border:@style @color @width;
+}
+.border(inner,@style:solid,@color:@inner_border_color,@width:1px){
+	border:@style @color @width;
+}
+.border(top,@style:solid,@color:@inner_border_color,@width:1px){
+	border-top:@style @color @width;
+}
+.border(right,@style:solid,@color:@inner_border_color,@width:1px){
+	border-right:@style @color @width;
+}
+.border(bottom,@style:solid,@color:@inner_border_color,@width:1px){
+	border-bottom:@style @color @width;
+}
+.border(left,@style:solid,@color:@inner_border_color,@width:1px){
+	border-left:@style @color @width;
+}
+// 边框样式 end------------------------
+//栏目的高度提取
+.menu_height(@height:34px){
+	height:@height;
+	line-height: @height;
+}
+//栏目的样式提取
+.menu(){
+	.border(top);
+	&:first-child{
+		border-top:0px;
+	}
+	margin-bottom: 0px;
+	padding:6px 0px;
+	.menu_title{
+		font-weight: 500;
+		padding:0px 0px 0px 30px;
+		.menu_height();
+		.font;
+		color:@menu_title_color;
+		.menu_icon{
+			font-size: 22px;
+			color:@menu_icon_color;
+			margin-right: 10px;
+		}
+	}
+	.menu_item{
+		a{
+			width:100%;
+			display:inline-block;
+			vertical-align:top;
+			padding-left: 62px;
+			text-decoration: none;
+			.menu_height();
+			&:hover{
+				text-decoration: none;
+				background-color: @menu_item_hover_color;
+			}
+			.font;
+		}
+	}
+}
+
+
+//输入框的样式
+.input-box{
+	padding-bottom: 10px;
+	.input-item{
+		// div{
+		.input-attr{
+			float: right;
+			line-height: 34px;
+			padding-right: 15px;
+			color:@input-attr-color;
+		}
+		// }
+	}
+	.input-pro{
+		padding-top: 5px;
+		height:21px;
+			// line-height: 16px;
+		.input-msg{
+			color:@input-msg-color;
+			
+		}
+	}
+}
+.sortable_start {
+    background-color: #f4f5f9;
+    border-top: solid #e7e7eb 1px;
+    border-bottom: solid #e7e7eb 1px;
+    // border: solid #e7e7eb 1px;
+    // border-top: solid #e7e7eb 1px;
+}
+
+
+

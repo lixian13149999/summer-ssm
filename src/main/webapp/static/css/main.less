@@ -1,0 +1,972 @@
+//引入其他的less文件,用于分包管理,避免单包文件过大
+@import "./base/rebootstrap.less";
+@import "./base/style.less";
+@import "./base/test.less";
+@import "./base/default_theme.less";
+
+//各种大小的定义 size
+@body_width:1200px;//主题最小宽度
+@body_min_height:600px;//body部分最小高度
+@top_height:66px;//头部高度
+@top_icon_tiny_size:22px;//头部提示图标的大小
+@left_width:208px;//左边栏目列表的宽度
+@main_width:990px;//右边主区域的宽度
+
+//各种颜色的定义 color
+@top_background_color:#363636;//头部背景色
+@top_font_color:#fff;//头部字体颜色
+@msg_tip_color:#ddd;//消息提示的.的颜色
+@foot_background_color:#b8b9b9;//底部背景色
+
+@menu_title_tab_color:#f4f5f9;
+@out_border_color:#d9dadc;//外边框颜色
+@inner_border_color:#e7e7eb;//内边框颜色
+@menu_item_checked_color:#f4f5f9;//被选中的栏目的背景色
+@auths_tip_color:#2b90d9;
+
+//各种连接地址 url
+@wechat_2d_barcode_url:'../img/wechat_2d_barcode.jpg';//微信二维码的地址
+
+body{
+	background-color: #e7e8eb;
+}
+div{
+
+// .b;
+}
+.hide_datas{
+	display:none;
+}
+//top start ================================
+.top_box{
+	height: @top_height;
+	background-color: @top_background_color;
+	min-width: @body_width;
+	a{
+		color:@top_font_color;
+	}
+}
+.top{
+	// 头部样式基本定义------------------------
+	height:@top_height;
+	width: @body_width;
+	min-width: @body_width;
+	margin-left: auto;
+	margin-right: auto;
+	.logo,.nav_box,.user{
+		height:@top_height;
+		display:inline-block;
+		vertical-align:top;
+	}
+	// logo 部分样式开始------------------------
+	.logo{
+		width:260px;
+		.icon{
+			height:@top_height;
+			
+			i{
+				.opacity(90,0.9);
+				font-size: 42px;
+				display:inline-block;
+				padding-right: 10px;
+			}
+			span{
+				font-size: 23px;
+				display:inline-block;
+			}
+		}
+	}
+	// logo 部分样式结束------------------------
+	// 中间菜单栏样式开始------------------------
+	.nav_box{
+		width:90px;
+	}
+	// 中间菜单栏样式结束------------------------
+	// 用户区域样式开始------------------------
+	.user{
+		//用户区域,主样式控制
+		float: right;
+		width:320px;
+		min-width: 320px;
+		//图标公用样式
+		.icon_tiny{
+			display:inline-block;
+			vertical-align:top;
+			padding:20px 10px 0px 10px;
+			i{
+				font-size: @top_icon_tiny_size;
+			}
+		}
+		//未读信息提示样式
+		.msg_tip{
+		    background-color: @msg_tip_color;
+			height: 8px;
+			width:8px;
+			border-radius: 4px;
+			position: relative;
+			top: -27px;
+			left: 16px;
+		}
+		//微信二维码弹出框的样式
+		.wechat_2d_barcode{
+			margin:2px 5px;
+			width:90px;
+			height:90px;
+			background-image: url(@wechat_2d_barcode_url);
+			background-size: contain;
+		}
+		//用户头像样式
+		.iphoto{
+			display:inline-block;
+			width:40px;
+			height:40px;
+			border-radius: 20px;
+			margin-top: 12px;
+			margin-left: 20px;
+			background-size: contain;
+		}
+		//用户内部用于控制右对齐的样式
+		.user_tool_icon{
+			float:right;
+			//此样式仅用于用户简介信息弹出框中,上方三角形的颜色改写
+			#user_intro_out_div{
+				display:inline-block;
+				.popover.bottom>.arrow:after{
+					border-bottom-color:@top_background_color;
+				}
+			}
+		}
+		//用户简介信息弹出框的样式开始------------------------
+		.user_intd_box{
+			//基础样式控制
+			width:325px;
+			display:block;
+			.intd_top,.intd_body,.intd_foot{
+				padding:8px 16px;
+			}
+			// 弹出框头部样式
+			.intd_top{
+				// 基础样式控制
+				.intd_photo,.intd_info,.intd_top_icon{
+					display:inline-block;
+					vertical-align:top;
+				}
+				background-color: @top_background_color;
+				.font;
+				color:@user_intd_font_color;
+				// 放大的照片的样式
+				.intd_photo{
+					width: 72px;
+					height: 72px;
+					border-radius: 36px;
+					background-size: contain;
+				}
+				//中间用户的简要信息的样式
+				.intd_info{
+					.opacity(80,0.8);
+					padding-top: 6px;
+					.intd_info_msg{
+						margin-bottom: 3px;
+						padding-left: 15px;
+						&:last-child{
+							margin-bottom: 0px;
+						}
+					}
+				}
+				//用户编辑按钮(小齿轮)的样式
+				.intd_top_icon{
+					.inner_icon_tiny{
+						display:inline-block;
+						vertical-align:top;
+						padding:0px 0px 0px 0px;
+						i{
+							font-size: @top_icon_tiny_size;
+						}
+					}
+					margin-left: 10px;
+					float:right;
+					i{
+						color:@user_intd_font_color;
+						font-size: 18px;
+					}
+				}
+			}
+			// 用户弹出框中间部分样式
+			.intd_body{
+
+			}
+			//用户弹出框底部样式
+			.intd_foot{
+				.intd_foot_msg{
+					.font;
+				}
+				.intd_foot_icon{
+					float:right;
+					.font;
+				}
+			}
+		}
+		//用户简介信息弹出框的样式结束------------------------
+	}
+	// 用户区域样式结束------------------------
+}
+
+
+
+//top end ================================
+
+//body start ================================
+.body{
+	// height: @body_min_height;
+	min-height: @body_min_height;
+	width:@body_width;
+	min-width: @body_width;
+	margin:45px auto 70px auto;
+	.border(out);
+	background-color: @body_background_color;
+}
+.left,.main{
+	display: table-cell;
+	vertical-align:top;
+	height: @body_min_height;
+	min-height: @body_min_height;
+}
+//left start------------------------
+
+.left{
+	width:@left_width;
+	.border(right);
+	.menu_box{
+		margin-top: 13px;
+		margin-bottom: 150px;
+		.menu{
+			.menu();
+		}
+	}
+	.item_checked{
+		background-color: @menu_item_checked_color;
+	}
+}
+//left end------------------------
+
+
+//main start------------------------
+.default_color{
+	color:#8d8d8d;
+}
+
+
+.main{
+	width:@main_width;
+	// height:1200px;
+	.main_hd{
+		.font;
+		margin-top: 0px;
+	    margin-bottom: 0px;
+	    font-size: 16px;
+	    font-weight: 400;
+	    // -webkit-font-smoothing: antialiased;
+	    line-height: 75px;
+	    padding-left: 30px;
+	}
+	.main_hd_notap{
+		.font;
+		margin-top: 0px;
+	    margin-bottom: 0px;
+	    font-size: 16px;
+	    font-weight: 400;
+	    // -webkit-font-smoothing: antialiased;
+	    line-height: 75px;
+	    padding-left: 30px;
+		border-bottom: solid @inner_border_color 1px;
+	}
+	.title_tab{
+		margin-top: -5px;
+		border-bottom: solid @inner_border_color 1px;
+	    height: 30px;
+		.tab_navs{
+			padding-left: 0px;
+			margin-bottom: 0px;
+			.tab_nav{
+				list-style:none;
+				display:table-cell;
+				a{
+					.font;
+					padding:0px 18px 8px 18px;
+					&:hover{
+						border-bottom:solid #ccc 3px;
+					}
+				}
+			}
+			.select{
+				a{
+					border-bottom:solid #666 3px;
+				}
+			}
+			.first{
+				a{
+					padding-left: 30px;
+				}
+			}
+		}
+	}
+	.inner_body{
+		// border: solid red 1px;
+		.border(inner);
+	    margin: 30px;
+	    display: block;
+	    min-height: 600px;
+	    .item_checked{
+			background-color: @menu_item_checked_color;
+		}
+
+		// 栏目编辑的样式
+	    .edit_menu_box{
+	    	width:250px;
+	    	.border(right);
+	    	display:table-cell;
+	    	vertical-align:top;
+	    	.menu_title_tab{
+	    		display: block;
+			    background-color: @menu_title_tab_color;
+			    height: 40px;
+			    line-height: 40px;
+			    padding: 0px 0px 0px 20px;
+			    .column_icon_span{
+					float:right;
+					padding-right: 20px;
+					i{
+						padding-left: 8px;
+						cursor:pointer;
+						font-size: 16px;
+						// color:#8d8d8d;
+					}
+				}
+	    	}
+	    	.menu{
+				.menu();
+				.menu_title{
+					line-height: 33px;
+					height:33px;
+					.menu_icon{
+						font-size: 18px;
+					}
+					.column_icon_span{
+						float:right;
+						padding-right: 20px;
+						i{
+							padding-left: 8px;
+							cursor:pointer;
+							font-size: 16px;
+							// color:#8d8d8d;
+						}
+					}
+				}
+				.menu_item{
+					&:hover{
+						background-color:@menu_item_hover_color;
+					}
+					a{
+						// width:30px;
+						width: 155px;
+						color:#666;
+						padding-left: 58px;
+					}
+					// a{
+					.column_icon_span{
+						float:right;
+						padding-right: 20px;
+						display:inline-block;
+						line-height: 33px;
+						i{
+							padding-left: 8px;
+							cursor:pointer;
+							font-size: 16px;
+							// color:#8d8d8d;
+						}
+					}
+					// }
+				}
+			}
+	    }
+
+		//权限编辑的样式
+	    .edit_auth_box{
+	    	display:table-cell;
+	    	vertical-align:top;
+    	    width: 678px;
+    	    .menu_title_tab{
+	    		display: block;
+			    background-color: @menu_title_tab_color;
+			    height: 40px;
+			    line-height: 40px;
+			    padding: 0px 0px 0px 20px;
+			    .column_icon_span{
+					float:right;
+					padding-right: 20px;
+					i{
+						padding-left: 8px;
+						cursor:pointer;
+						font-size: 16px;
+						// color:#8d8d8d;
+					}
+				}
+	    	}
+	    	.menu{
+				.menu();
+				// padding: 0px;
+				padding: 6px 0px;
+				border-top: 0px;
+				.menu_title{
+					.menu_icon{
+						font-size: 18px;
+					}
+					.column_icon_span{
+						float:right;
+						padding-right: 20px;
+						i{
+							padding-left: 8px;
+							cursor:pointer;
+							font-size: 16px;
+							// color:#8d8d8d;
+						}
+					}
+				}
+				.menu_item{
+					border-bottom: dashed @inner_border_color 1px;
+					&:hover{
+						background-color:@menu_item_hover_color;
+					}
+					a{
+						// width:30px;
+						width: 155px;
+						color:#666;
+						padding-left: 30px;
+						i{
+							padding-right: 10px;
+						}
+					}
+					.auth_item_attr{
+						line-height: 33px;
+					    display: inline-block;
+					    color: #ccc;
+					    // color:#8d8d8d;
+					    -webkit-font-smoothing: antialiased;
+					    font-size: 14px;
+					}
+					// a{
+					.column_icon_span{
+						float:right;
+						padding-right: 20px;
+						display:inline-block;
+						line-height: 33px;
+						i{
+							padding-left: 8px;
+							cursor:pointer;
+							font-size: 16px;
+							// color:#8d8d8d;
+						}
+					}
+					// }
+				}
+			}
+	    	// .b();
+	    }
+
+		//角色编辑的样式
+	    .edit_role_box{
+	    	width:225px;
+	    	.border(right);
+	    	display:table-cell;
+	    	vertical-align:top;
+	    	.menu_title_tab{
+	    		display: block;
+			    background-color: @menu_title_tab_color;
+			    height: 40px;
+			    line-height: 40px;
+			    padding: 0px 0px 0px 20px;
+			    .column_icon_span{
+					float:right;
+					padding-right: 20px;
+					i{
+						padding-left: 8px;
+						cursor:pointer;
+						font-size: 16px;
+						// color:#8d8d8d;
+					}
+				}
+	    	}
+	    	.menu{
+				.menu();
+	    		border-top: 0px;
+	    		min-height: 600px;
+				.menu_title{
+					.menu_icon{
+						font-size: 18px;
+					}
+					.column_icon_span{
+						float:right;
+						padding-right: 20px;
+						i{
+							padding-left: 8px;
+							cursor:pointer;
+							font-size: 16px;
+							// color:#8d8d8d;
+						}
+					}
+				}
+				.menu_item{
+					border-bottom: dashed @inner_border_color 1px;
+					&:hover{
+						background-color:@menu_item_hover_color;
+					}
+					a{
+						// width:30px;
+						width: 125px;
+						color:#666;
+						// padding-left: 20px;
+						padding-left: 30px;
+						i{
+							padding-right: 10px;
+						}
+					}
+					// a{
+					.column_icon_span{
+						float:right;
+						padding-right: 20px;
+						display:inline-block;
+						line-height: 33px;
+						i{
+							padding-left: 8px;
+							cursor:pointer;
+							font-size: 16px;
+							// color:#8d8d8d;
+						}
+					}
+					// }
+				}
+			}
+	    }
+	}
+
+	//角色授权的样式编辑的样式
+	.edit_auths_box{
+    	display:table-cell;
+    	vertical-align:top;
+	    width: 703px;
+	    .menu_title_tab{
+    		display: block;
+		    background-color: @menu_title_tab_color;
+		    height: 40px;
+		    line-height: 40px;
+		    padding: 0px 0px 0px 20px;
+		    .column_icon_span{
+				float:right;
+				padding-right: 20px;
+				i{
+					padding-left: 8px;
+					cursor:pointer;
+					font-size: 16px;
+					// color:#8d8d8d;
+				}
+			}
+    	}
+    	.menu{
+			.menu();
+			// padding: 0px;
+			padding: 6px 0px;
+			// border-top: 0px;
+			.menu_title{
+				padding-left: 20px;
+				.menu_icon{
+					// padding-left: 5px;
+					font-size: 16px;
+				}
+				.column_icon_span{
+					float:right;
+					// padding-right: 20px;
+					line-height: 33px;
+					width: 530px;
+				    // display: inline-block;
+				    height: 33px;
+				    border-left: dashed @inner_border_color 1px;
+					i{
+						padding-left: 8px;
+						cursor:pointer;
+						font-size: 16px;
+						// color:#8d8d8d;
+					}
+				}
+			}
+			.menu_item{
+				// border-bottom: dashed @inner_border_color 1px;
+				padding-left: 35px;
+			    line-height: 34px;
+			    color:#666;
+				&:hover{
+					background-color:@menu_item_hover_color;
+				}
+				// padding-left: 20px;
+				.menu_icon{
+					font-size: 16px;
+					margin-right: 10px;
+				}
+				.column_icon_span{
+					float:right;
+					// padding-right: 20px;
+					display:inline-block;
+					line-height: 33px;
+					width: 530px;
+				    height: 33px;
+				    border-left: dashed @inner_border_color 1px;
+					a{
+						display: inline;
+					    padding-left: 0px;
+					    line-height: 34px;
+					    border: solid @inner_border_color 1px;
+					    margin-left: 20px;
+					    padding: 5px 8px;
+					    color: #666;
+					    &:hover{
+							border:solid #999 1px;
+					    }
+					}
+					.auth_checked{
+						border:solid @auths_tip_color 1px;
+						color:@auths_tip_color;
+					}
+				}
+			}
+		}
+    }
+
+    //用户编辑的样式
+	.edit_user_box{
+    	// display:table-cell;
+    	// vertical-align:top;
+	    width: 100%;
+	    // background-color: red;
+	    .menu_title_tab{
+    		display: block;
+		    background-color: @menu_title_tab_color;
+		    height: 40px;
+		    line-height: 40px;
+		    padding: 0px 0px 0px 20px;
+		    .column_icon_span{
+				float:right;
+				padding-right: 20px;
+				i{
+					padding-left: 8px;
+					cursor:pointer;
+					font-size: 16px;
+					// color:#8d8d8d;
+				}
+			}
+    	}
+    	.table-bordered{
+    		border:0px;
+    		thead{
+    			tr{
+	    			th{
+		    			border-width: 1px;
+		    			border-color: @inner_border_color;
+		    			text-align: center;
+		    			padding: 0px;
+					    line-height: 34px;
+					    font-weight: 400;
+		    		}
+		    		th.th_first{
+		    			border-left: 0px;
+		    		}
+		    		th.th_last{
+		    			border-right: 0px;
+		    		}
+    			}
+    			tr.active{
+    				th{
+    					background-color: @menu_title_tab_color;
+    				}
+    			}
+    		}
+			tbody{
+				tr{
+					td{
+						border-color: @inner_border_color;
+						text-align: center;
+						padding: 0px;
+					    line-height: 34px;
+						i{
+							padding-left: 10px;
+						}
+					}
+		    		td.td_first{
+		    			border-left: 0px;
+		    		}
+		    		td.td_last{
+		    			border-right: 0px;
+		    		}
+
+				}
+				tr.active{
+    				td{
+    					background-color: @menu_title_tab_color;
+
+    				}
+    			}
+			}
+    	}
+    	.table-hover{
+    		tbody{
+    			tr{
+    				&:hover{
+    					background-color: @menu_title_tab_color;
+    				}
+    			}
+    		}
+    	}
+    }
+
+    .edit_company_box{
+	
+    	width:250px;
+	    	// width:225px;
+    	.border(right);
+    	display:table-cell;
+    	vertical-align:top;
+    	.menu_title_tab{
+    		display: block;
+		    background-color: @menu_title_tab_color;
+		    height: 40px;
+		    line-height: 40px;
+		    padding: 0px 0px 0px 20px;
+		    .column_icon_span{
+				float:right;
+				padding-right: 20px;
+				i{
+					padding-left: 8px;
+					cursor:pointer;
+					font-size: 16px;
+					// color:#8d8d8d;
+				}
+			}
+    	}
+    	.menu{
+			.menu();
+    		border-top: 0px;
+    		min-height: 600px;
+			.menu_title{
+				.menu_icon{
+					font-size: 18px;
+				}
+				.column_icon_span{
+					float:right;
+					padding-right: 20px;
+					i{
+						padding-left: 8px;
+						cursor:pointer;
+						font-size: 16px;
+						// color:#8d8d8d;
+					}
+				}
+			}
+			.menu_item{
+				border-bottom: dashed @inner_border_color 1px;
+				&:hover{
+					background-color:@menu_item_hover_color;
+				}
+				a{
+					// width:30px;
+					width: 160px;
+					color:#666;
+					// padding-left: 20px;
+					padding-left: 30px;
+					i{
+						padding-right: 10px;
+					}
+				}
+				// a{
+				.column_icon_span{
+					float:right;
+					padding-right: 20px;
+					display:inline-block;
+					line-height: 33px;
+					i{
+						padding-left: 8px;
+						cursor:pointer;
+						font-size: 16px;
+						// color:#8d8d8d;
+					}
+				}
+				// }
+			}
+		}
+    }
+
+    //权限编辑的样式
+    .edit_departs_box{
+    	display:table-cell;
+    	vertical-align:top;
+	    width: 678px;
+	    .menu_title_tab{
+    		display: block;
+		    background-color: @menu_title_tab_color;
+		    height: 40px;
+		    line-height: 40px;
+		    padding: 0px 0px 0px 20px;
+		    .column_icon_span{
+				float:right;
+				padding-right: 20px;
+				i{
+					padding-left: 8px;
+					cursor:pointer;
+					font-size: 16px;
+					// color:#8d8d8d;
+				}
+			}
+    	}
+    	.menu{
+			.menu();
+			// padding: 0px;
+			padding: 6px 0px;
+			border-top: 0px;
+			.menu_title{
+				.menu_icon{
+					font-size: 18px;
+				}
+				.column_icon_span{
+					float:right;
+					padding-right: 20px;
+					i{
+						padding-left: 8px;
+						cursor:pointer;
+						font-size: 16px;
+						// color:#8d8d8d;
+					}
+				}
+			}
+			.menu_item{
+				border-bottom: dashed @inner_border_color 1px;
+				&:hover{
+					background-color:@menu_item_hover_color;
+				}
+				a{
+					// width:30px;
+					width: 550px;
+					color:#666;
+					padding-left: 30px;
+					i{
+						padding-right: 10px;
+					}
+				}
+				.auth_item_attr{
+					line-height: 33px;
+				    display: inline-block;
+				    color: #ccc;
+				    // color:#8d8d8d;
+				    -webkit-font-smoothing: antialiased;
+				    font-size: 14px;
+				}
+				// a{
+				.column_icon_span{
+					float:right;
+					padding-right: 20px;
+					display:inline-block;
+					line-height: 33px;
+					i{
+						padding-left: 8px;
+						cursor:pointer;
+						font-size: 16px;
+						// color:#8d8d8d;
+					}
+				}
+				// }
+			}
+		}
+    	// .b();
+    }
+
+    .edit_user_info_box{
+    	margin-top: 30px;
+    	.edit_user_info_left{
+    		display:inline-block;
+    		width:460px;
+    		vertical-align:top;
+    	}
+    	.edit_user_info_right{
+    		display:inline-block;
+    		width:460px;
+    		vertical-align:top;
+    	}
+    	.user_edit_button_middle{
+    		text-align: center;
+    	}
+    }
+}
+
+
+.au_menu{
+	.modal-dialog{
+		width:500px;
+	}
+}
+
+.modal-footer{
+	button{
+		margin-left: 20px;
+	}
+}
+#remove_confirm{
+	.modal-dialog{
+		width:450px;
+	}
+}
+#user_set_role{
+	.user-set-role-roles {
+	    border-top: dashed @inner_border_color 1px;
+	    /* border-top-style: dashed; */
+	    margin: 15px 0px 0px 0px;
+	    padding-top: 20px;
+	    // padding-left: 20px;
+	    // padding-right: 20px;
+
+
+	    a{
+		    display: inline-block;
+		    padding-left: 0px;
+		    line-height: 34px;
+		    border: solid #e7e7eb 1px;
+		    margin-left: 20px;
+		    padding: 0px 8px;
+		    color: #666;
+		    margin-bottom: 15px;
+		    &:hover{
+				border:solid #999 1px;
+		    }
+		}
+		.auth_checked{
+			border:solid @auths_tip_color 1px;
+			color:@auths_tip_color;
+		}
+	}
+}
+.column_icon_move{
+	display:none;
+}
+
+//body end ================================
+
+//bottom start ================================
+.foot_box{
+	height:67px;
+	background-color: @foot_background_color;
+	min-width: @body_width;
+}
+.foot{
+	width:@body_width;
+	min-width: @body_width;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+//bottom end ================================

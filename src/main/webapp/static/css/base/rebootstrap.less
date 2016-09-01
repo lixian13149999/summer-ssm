@@ -1,0 +1,48 @@
+@error_color:#E53A40;
+@error_box_shadow:#ff7473;
+// bootstrap重写的样式文件
+.popover{
+	border-radius: 0px;
+	max-width: 600px;
+	padding:0;
+	// padding: 6px;
+}
+.popover-content{
+	// padding:6px;
+	padding: 0px;
+}
+.form-control{
+	border-radius: 0px;
+	// .transition;
+	&:focus{
+		border:solid #666 1px;
+		.box_shadow();
+	}
+}
+.has-error .form-control{
+	border-color: @error_color;
+	&:focus{
+		border:solid @error_color 1px;
+		.box_shadow(0px,0px,4px,1px,@error_box_shadow);
+		// .box_shadow();
+	}
+}
+
+.has-error .i_label,.has-error .i_span{
+	color:@error_color;
+}
+.btn{
+	border-radius: 0px;
+}
+.modal-content{
+	border-radius: 0px;
+}
+.modal-dialog{
+	margin: 120px auto;
+}
+.modal-header{
+	h4{
+		font-size: 16px;
+	    font-weight: 400;
+	}
+}
