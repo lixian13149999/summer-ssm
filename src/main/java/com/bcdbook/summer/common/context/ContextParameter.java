@@ -14,7 +14,7 @@ import javax.servlet.ServletContextListener;
      * @created 2016年5月19日 下午2:11:48
  */
 public class ContextParameter implements ServletContextListener {
-	
+	public static String ctx = null;
 	/**
 	    * @Discription 项目注销是的方法重写
 	    * @author lason       
@@ -41,7 +41,13 @@ public class ContextParameter implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent context) {
 		ServletContext sc = context.getServletContext();
 		System.out.println(sc.getContextPath().toString());
-		sc.setAttribute("ctx", sc.getContextPath().toString());
+		
+		String icontext = sc.getContextPath().toString();
+		ctx = icontext;
+		sc.setAttribute("ctx", context);
 	}
 
+	public static String getContextPath(){
+		return ctx;
+	}
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bcdbook.summer.common.config.Global;
+import com.bcdbook.summer.common.context.ContextParameter;
 import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.Power;
 import com.bcdbook.summer.system.pojo.User;
@@ -23,6 +24,19 @@ import de.neuland.jade4j.exceptions.JadeCompilerException;
  * @date 2016年9月1日
  */
 public class JadeUtil {
+	
+	/*
+	 * 给jade模板设置项目全局变量的方法
+	 */
+	public static boolean setContext(ModelAndView mv){
+		if(mv==null)
+			return false;
+		
+		String ctx = ContextParameter.getContextPath();
+		String staticCtx = ctx+"/static";
+		mv.addObject("staticCtx", staticCtx);
+		return true;
+	}
 	/**
 	 * @Description: 通过地址直接获取jade视图的方法
 	 * @param @param src
@@ -33,7 +47,13 @@ public class JadeUtil {
 	 * @date 2016年9月1日
 	 */
 	public static ModelAndView getView(String src){
-		return src==null?null:(new ModelAndView(src));
+		if(src==null)
+			return null;
+		
+		ModelAndView mv = new ModelAndView(src);
+		setContext(mv);
+		
+		return mv;
 	}
 	/**
 	 * @Description: 通过传入的地址和model数据值,封装jade视图
@@ -46,7 +66,13 @@ public class JadeUtil {
 	 * @date 2016年9月1日
 	 */
 	public static ModelAndView getView(String src,Map<String, ?> model){
-		return src!=null&&model!=null ? (new ModelAndView(src, model)):null;
+		if(src==null||model==null)
+			return null;
+		
+		ModelAndView mv = new ModelAndView(src, model);
+		setContext(mv);
+		
+		return mv;
 	}
 	
 	/**
@@ -109,6 +135,21 @@ public class JadeUtil {
 		return true;
 	}
 	
+	
+	//====================body返回方式的处理=================================
+	/*
+	 * 给jade模板设置项目全局变量的方法
+	 */
+	public static boolean setContext(Map<String, Object> model){
+		if(model==null)
+			return false;
+		
+		String ctx = ContextParameter.getContextPath();
+		String staticCtx = ctx+"/static";
+		model.put("staticCtx", staticCtx);
+		
+		return true;
+	}
 	/**
 	 * @Description: 当视图返回值为html页面时,需要执行的封装方法
 	 * @param @param req
@@ -132,6 +173,7 @@ public class JadeUtil {
 		
 		String html = null;
 		try {
+			setContext(model);
 			html = Jade4J.render(fileName, model);
 		} catch (JadeCompilerException e) {
 			e.printStackTrace();

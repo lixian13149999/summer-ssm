@@ -57,7 +57,6 @@
 	    <url-pattern>/public/*</url-pattern>  
 	    <url-pattern>/static/*</url-pattern>  
 	    <url-pattern>/ifiles/*</url-pattern>
-	    <!-- <url-pattern>/proj/</url-pattern> -->  
 	</servlet-mapping>  
 	
 	

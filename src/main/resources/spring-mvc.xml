@@ -65,7 +65,7 @@
 	<!-- jade模板引擎的解析=====开始 -->
 	<!--jade templateLoader 模板加载属性配置，默认后缀是jade，编码是UTF-8，这里可以不需要在配置了--> 
     <bean id="templateLoader" class="de.neuland.jade4j.spring.template.SpringTemplateLoader">
-        <property name="basePath" value="/WEB-INF/jadeViews/"/>
+        <property name="basePath" value="/WEB-INF/views/"/>
     </bean>
     <!--jade configuaration 配置中心，可以配置缓存内容，美化输出格式等-->
     <bean id="jadeConfiguration" class="de.neuland.jade4j.JadeConfiguration">

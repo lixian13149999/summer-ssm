@@ -44,8 +44,8 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		System.out.println("====================="+aa);
 //		System.out.println("进入拦截器preHandle");
 //		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-		return false;
-//		return true;
+//		return false;
+		return true;
 ////		if ("GET".equalsIgnoreCase(request.getMethod())) {
 ////			RequestUtil.saveRequest();
 ////		}
