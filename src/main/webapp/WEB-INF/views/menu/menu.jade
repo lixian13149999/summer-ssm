@@ -1,0 +1,27 @@
+h2.main_hd 栏目管理
+.title_tab
+	ul.tab_navs
+		li.tab_nav.first.select
+			a 前台栏目
+		li.tab_nav
+			a 后台栏目
+.inner_body#inner_box
+	.edit_menu_box
+		.menu_box
+			span.menu_title_tab 栏目编辑
+				span.column_icon_span
+					i.iconfont.hover_primary.default_color.add_menu_modal.icon-class-add
+						//- (data-toggle="modal" data-target=".au_menu")
+					i.iconfont.hover_warning.default_color.icon-class-tuodong1#menu_handle_contorler(data-hide-type='0')
+			#menu_au_container_box
+				include ./au_list.jade
+	.edit_auth_box
+		.auth_box
+			span.menu_title_tab 权限管理
+				span.column_icon_span
+					span.hide_datas#au_auth_hide_datas(data-para-mid='')
+					i.iconfont.hover_primary.default_color.add_auth_modal.icon-class-add
+						//- (data-toggle="modal" data-target=".au_menu")
+					i.iconfont.hover_warning.default_color.icon-class-tuodong1#auth_handle_contorler(data-hide-type='0')
+			#auth_au_container_box
+				//- include ../auth/au_list.jade

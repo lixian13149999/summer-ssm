@@ -1,0 +1,63 @@
+extends ../includes/layout.jade
+block content
+	input(name='btnUp', type='button',value='解析',onclick='pathExcel()')
+	input(name='btnUp', type='button',value='生成excel',onclick='exportExcel()')
+
+	script.
+		function pathExcel(){
+			//- console.log('formData:')
+			//- console.log(formData);
+			//- var formData = new FormData($("#frmUploadFile")[0]);
+			$.ajax({
+				url: '/pathexcel',
+				type: 'POST',
+				data: 1,
+				async: false,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(data){
+					if(200 === data.code) {
+						//- $("#imgShow").attr('src', data.msg.url);
+						//- $("#spanMessage").html("上传成功");
+						console.log('pathExcel success')
+					} else {
+						//- $("#spanMessage").html("上传失败");
+						console.log('pathExcel error1')
+					}
+					console.log('pathExcel success, data:', data);
+				},
+				error: function(){
+					console.log('pathExcel error2')
+					//- $("#spanMessage").html("与服务器通信发生错误");
+				}
+			});
+
+		}
+		function exportExcel(){
+			$.ajax({
+				url: '/exportexcel',
+				type: 'POST',
+				data: 1,
+				async: false,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(data){
+					if(200 === data.code) {
+						//- $("#imgShow").attr('src', data.msg.url);
+						//- $("#spanMessage").html("上传成功");
+						console.log('pathExcel success')
+					} else {
+						//- $("#spanMessage").html("上传失败");
+						console.log('pathExcel error1')
+					}
+					console.log('pathExcel success, data:', data);
+				},
+				error: function(){
+					console.log('pathExcel error2')
+					//- $("#spanMessage").html("与服务器通信发生错误");
+				}
+			});
+
+		}

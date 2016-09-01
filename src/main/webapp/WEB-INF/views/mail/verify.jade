@@ -1,0 +1,44 @@
+doctype html
+html
+	head
+		title 邮箱验证
+		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
+
+		include ../includes/libs.jade
+	body
+		div.background_div
+		.signin_box.verify_box_base
+			input(style="display:none" id="username" value="#{user.username}")
+			input(style="display:none" id="user_id" value="#{user._id}")
+			.signin_title
+				span 邮箱验证
+			.signin_input.verify_input
+				.l_input_div
+					input.l_input.form-control#verifyemail(type="text")
+					label.l_label 邮箱
+					span.l_span#verifymsg 请输入邮箱
+					//- span.l_span 验证信息已经发送到您邮箱, 请登录邮箱, 进行验证
+			.signin_button
+				button.button.button-primary#verifybtn(type="button" onclick="javascript:signin_up.getMail()") 发送
+	script.
+		$(function(){
+			var id = $("#user_id").val();
+			$.ajax({
+				url: '/mail/canresend',
+				type: 'GET',
+				// dataType: 'json',
+				data: {
+					id:id
+				},
+				async: false,
+				success: function(data) {
+					if(data.code!=200||data.data==0){
+						signin_up.toLock();
+					}
+				},
+				error: function() {
+					signin_up.toLock();
+					//- console.log('pathExcel error2')
+				}
+			});
+		})

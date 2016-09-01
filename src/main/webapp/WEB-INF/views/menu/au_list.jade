@@ -1,0 +1,28 @@
+script(type='text/javascript',src='/js/order_menu.js')
+each menu,index in menus
+	dl.menu
+		dt.menu_title
+			i.iconfont.menu_icon(class='#{menu.icon}')
+			//- i.iconfont.menu_icon &#xe61d
+			|#{menu.name}
+			//- #{menu.order}
+			span.column_icon_span
+				span.hide_datas(data-para-_id='#{menu._id}',data-para-name=menu.name,data-para-icon=menu.icon,data-para-order=menu.order,data-para-rank=menu.rank,data-para-url=menu.url)
+					//- ,data-para-meta-createAt=menu.meta.createAt,data-para-meta-updateAt=menu.meta.updateAt
+				i.iconfont.hover_primary.default_color.add_menu_modal_child.icon-class-add
+				i.iconfont.hover_warning.default_color.edit_menu_modal.icon-class-edit1
+				i.iconfont.hover_danger.default_color.remove_menu_modal.icon-class-delete2
+				i.iconfont.hover_warning.default_color.icon-class-move4.column_icon_move
+				//- i.iconfont.hover_warning &#xe60d
+		.column_items
+			each item,index2 in menu.childs
+				dd.menu_item
+					a(onclick="auth.getAuths('#{item._id}')") #{item.name}
+					//- #{item.order}
+					span.column_icon_span
+						span.hide_datas(data-para-pid='#{menu._id}',data-para-_id='#{item._id}',data-para-name=item.name,data-para-icon=item.icon ,data-para-order=item.order ,data-para-rank=item.rank,data-para-url=item.url)
+							//- ,data-para-meta-createAt=item.meta.createAt,data-para-meta-updateAt=item.meta.updateAt
+						i.iconfont.hover_primary.default_color.edit_menu_modal_child.icon-class-edit1
+						i.iconfont.hover_danger.default_color.remove_menu_modal_child.icon-class-delete2
+						i.iconfont.hover_warning.default_color.icon-class-move4.column_icon_move
+	//- link(rel='stylesheet',type='text/less',href='/iconfont/iconfont.css')

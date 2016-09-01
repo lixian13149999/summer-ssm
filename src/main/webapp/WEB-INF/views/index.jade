@@ -1,0 +1,39 @@
+extends ./includes/layout.jade
+block content
+	include ./includes/modals.jade
+	.top_box
+		.top#top
+			.logo
+				a.icon
+					i.iconfont.icon-class-logo
+					span.hover_default 业务·管理平台
+			.nav_box
+
+			.user
+				span.user_tool_icon
+					a.icon_tiny.icon_msg
+						i.iconfont.hover_default.icon-class-messages2
+						div.msg_tip#imsg_tip
+					a.icon_tiny.icon_wechat#wechat_2d_barcode(data-toggle="popover")
+						i.iconfont.hover_default.icon-class-weixin
+					#user_intro_out_div
+						span#user_info_msg_hide_datas(data-para-_id='#{onlineUser._id}',data-para-username='#{onlineUser.username}',data-para-realname='#{onlineUser.realname}',data-para-photo='#{onlineUser.photo}',data-para-position='#{onlineUser.position}',data-para-email='#{onlineUser.email}',data-para-phone='#{onlineUser.phone}',data-para-depart_remark='#{onlineUser.depart_remark}')
+						a.iphoto#user_introduction(style="background-image: url('#{onlineUser.photo}');",data-toggle="popover")
+	.body#body
+		//- span #{onlineUser.username}
+		.left#left
+			.menu_box
+				//- include ./menu/list.jade
+		.main#main
+			| #{staticCtx}
+			//- include ./user/edit.jade
+			//- include ./menu/menu.jade
+			//- include ./role/role.jade	
+	.foot_box
+		.foot#foot
+	script(type='text/javascript',src='#{staticCtx}/js/menu.js')
+	script(type='text/javascript',src='#{staticCtx}/js/auth.js')
+	script(type='text/javascript',src='#{staticCtx}/js/role.js')
+	script(type='text/javascript',src='#{staticCtx}/js/user.js')
+	script(type='text/javascript',src='#{staticCtx}/js/company.js')
+	script(type='text/javascript',src='#{staticCtx}/js/depart.js')

@@ -1,0 +1,15 @@
+extends ./includes/layout.jade
+block content
+	include ./includes/modals.jade
+	.body#body
+		.left#left
+			.menu_box
+				include ./menu/list.jade
+		.main#main
+			include ./menu/menu.jade
+	.foot_box
+		.foot#foot
+	script(type='text/javascript',src='/js/menu.js')
+	script(type='text/javascript',src='/js/auth.js')
+	script(type='text/javascript',src='/js/role.js')
+	script(type='text/javascript',src='/js/user.js')

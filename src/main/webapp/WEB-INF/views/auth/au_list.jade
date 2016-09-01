@@ -1,0 +1,14 @@
+script(type='text/javascript',src='/js/order_auth.js')
+dl.auth_au_order_box.menu
+	each auth,index in auths
+		dd.menu_item
+			a 
+				i.iconfont.default_color(class="#{auth.icon}")
+				|#{auth.name}
+			span.auth_item_attr #{auth.remark}
+			span.column_icon_span
+				span.hide_datas(data-para-mid=auth.menu,data-para-_id='#{auth._id}',data-para-uuname=auth.uuname,data-para-name=auth.name,data-para-icon=auth.icon ,data-para-order=auth.order ,data-para-url=auth.url,data-para-remark=auth.remark)
+				i.iconfont.hover_primary.default_color.edit_auth_modal.icon-class-edit1
+				i.iconfont.hover_danger.default_color.remove_auth_modal.icon-class-delete2
+				i.iconfont.hover_warning.default_color.icon-class-move4.column_icon_move
+		

@@ -1,0 +1,21 @@
+extends ../includes/layout.jade
+block content
+	//- |- index
+	form(method="POST", action="/role/add")
+		.modal-header
+			//- button.close(data-dismiss="modal", aria-label="Close")
+				span(aria-hidden="true") &times;
+			h4.modal-title 添加角色
+		.modal-body
+			//- form.form-horizontal
+			.form-group
+				label.col-sm-2 角色名称
+				.col-sm-2
+					input.form-control#username(type="text",name="role[name]",value="admin")
+			//- .form-group
+				label.col-sm-2 密码
+				.col-sm-2
+					input.form-control#pwd(type="text",name="user[pwd]",value="123")
+		.modal-footer
+			button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+			button.btn.btn-success(type="submit") 登陆

@@ -1,0 +1,37 @@
+doctype html
+html
+	head
+		title 登陆
+		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
+
+		include ../includes/libs.jade
+		- var username = user?user.username:''
+	body
+		div.background_div
+		.signin_box.signin_box_base
+			.signin_logo
+				i.iconfont.signin_logo_i.icon-class-logo
+			//- form(method="POST", action="javascript:signin_up.mailIsExist")
+			//- form(method="POST", action="/signin",id='sigin_form')
+			.signin_input
+				.l_input_div.to_sigup_box
+					span 没有账号? 请
+						a(href='signup') 注册
+				.l_input_div
+					input.l_input.form-control#username_in(type="text",value=username)
+					label.l_label 用户名
+					span.l_span 请输入用户名
+				.l_input_div
+					input.l_input.form-control#pwd_in(type="password",placeholder="")
+					label.l_label 密码
+					span.l_span 请输入密码
+			.signin_button
+				a.button.button-primary#signin_form_submint_button(href='javascript:signin_up.signin()') 登陆
+	script.
+		$(document).ready(function() {
+			$(this).keydown(function(event){
+				if(event.keyCode==13){
+					document.getElementById('signin_form_submint_button').click()
+				}
+			});
+		})

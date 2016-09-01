@@ -1,0 +1,428 @@
+//- 添加,修改栏目的模态框==============================================
+.modal.fade#au_menu(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+	div(class="modal-dialog",role="document")
+		.modal-content
+			.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+					i.iconfont.hover_danger.icon-class-delete2
+				h4.modal-title 栏目添加/编辑
+			.modal-body
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 栏目id
+						.w-220
+							input.form-control#menu_id(type="text",placeholder="栏目id")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 出去干嘛
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 执行操作
+						.w-220
+							input.form-control#menu_todo(type="text",placeholder="1表示添加,2表示修改")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 出去干嘛
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 栏目级别
+						.w-220
+							input.form-control#menu_rank(type="text",placeholder="1表示一级栏目,2表示二级栏目")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 栏目父级ID
+						.w-220
+							input.form-control#menu_parent(type="text",placeholder="请输入父级id")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg  
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 栏目顺序
+						.w-220
+							input.form-control#menu_order(type="text",placeholder="一级和二级的栏目顺序是分开控制")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 栏目名称
+						.w-220
+							input.form-control#menu_name(type="text",placeholder="请输入栏目名称")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 栏目图标
+						.w-220
+							input.form-control#menu_icon(type="text",placeholder="请输入对应图标的代码")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 连接地址
+						.w-220
+							input.form-control#menu_url(type="text",placeholder="请输入点击栏目后的请求跳转路径")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				
+			.modal-footer
+				//- button(type="button",class="btn btn-default",data-dismiss="modal") 关闭
+				button(type="button",class="button button-primary button-small",data-dismiss="modal",onclick="menu.auMenus()") 提交
+
+
+//- 添加编辑权限的模态框==============================================
+.modal.fade#au_auth(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+	div(class="modal-dialog",role="document")
+		.modal-content
+			.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+					i.iconfont.hover_danger.default_color.icon-class-delete2
+				h4.modal-title 权限添加/编辑
+			.modal-body
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 执行操作
+						.w-220
+							input.form-control#auth_todo(type="text",placeholder="1表示添加,2表示修改")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 出去干嘛
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 栏目id
+						.w-220
+							input.form-control#auth_menu_id(type="text",placeholder="栏目id")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 用来设定此权限是属于哪个栏目的
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 权限ID
+						.w-220
+							input.form-control#auth_id(type="text",placeholder="自动获取的对应权限的id")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr uuname
+						.w-220
+							input.form-control#auth_uuname(type="text",placeholder="权限的唯一标识名")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg  
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 权限顺序
+						.w-220
+							input.form-control#auth_order(type="text",placeholder="权限的顺序")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 权限名称
+						.w-220
+							input.form-control#auth_name(type="text",placeholder="请输入权限名称")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 权限图标
+						.w-220
+							input.form-control#auth_icon(type="text",placeholder="请输入对应图标的代码")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 连接地址
+						.w-220
+							input.form-control#auth_url(type="text",placeholder="请输入点击权限后的请求跳转路径")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 备注信息
+						.w-220
+							input.form-control#auth_remark(type="text",placeholder="权限的备注信息")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				
+			.modal-footer
+				//- button(type="button",class="btn btn-default",data-dismiss="modal") 关闭
+				button(type="button",class="button button-primary button-small",data-dismiss="modal",onclick="auth.auAuths()") 提交
+
+
+//- 添加,编辑角色的模态框==============================================
+.modal.fade#au_role(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+	div(class="modal-dialog",role="document")
+		.modal-content
+			.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+					i.iconfont.hover_danger.default_color.icon-class-delete2
+				h4.modal-title 角色添加/编辑
+			.modal-body
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 执行操作
+						.w-220
+							input.form-control#role_todo(type="text",placeholder="1表示添加,2表示修改")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 出去干嘛
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 角色ID
+						.w-220
+							input.form-control#role_id(type="text",placeholder="自动获取的对应角色的id")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg  
+				.input-box.hide_datas
+					.input-item
+						.w-90
+							lable.input-attr 角色顺序
+						.w-220
+							input.form-control#role_order(type="text",placeholder="角色的顺序")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 角色名称
+						.w-220
+							input.form-control#role_name(type="text",placeholder="请输入角色名称")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 备注信息
+						.w-220
+							input.form-control#role_remark(type="text",placeholder="角色的备注信息")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+			.modal-footer
+				button(type="button",class="button button-primary button-small",data-dismiss="modal",onclick="role.auRoles()") 提交
+
+//- 编辑----公司的模态框==============================================
+.modal.fade#au_company(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+	div(class="modal-dialog",role="document")
+		.modal-content
+			.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+					i.iconfont.hover_danger.default_color.icon-class-delete2
+				h4.modal-title 公司添加/编辑
+			.modal-body
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 执行操作
+						.w-220
+							input.form-control#company_todo(type="text",placeholder="1表示添加,2表示修改")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 出去干嘛
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 公司ID
+						.w-220
+							input.form-control#company_id(type="text",placeholder="自动获取的对应公司的id")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg  
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 公司顺序
+						.w-220
+							input.form-control#company_order(type="text",placeholder="公司的顺序")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 公司名称
+						.w-220
+							input.form-control#company_name(type="text",placeholder="请输入公司名称")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+			.modal-footer
+				button(type="button",class="button button-primary button-small",data-dismiss="modal",onclick="company.auCompany()") 提交
+
+
+//- 编辑----部门的模态框==============================================
+.modal.fade#au_depart(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+	div(class="modal-dialog",role="document")
+		.modal-content
+			.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+					i.iconfont.hover_danger.default_color.icon-class-delete2
+				h4.modal-title 部门添加/编辑
+			.modal-body
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 执行操作
+						.w-220
+							input.form-control#depart_todo(type="text",placeholder="1表示添加,2表示修改")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 出去干嘛
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 公司id
+						.w-220
+							input.form-control#depart_company_id(type="text",placeholder="公司id")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg 出去干嘛
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 部门ID
+						.w-220
+							input.form-control#depart_id(type="text",placeholder="自动获取的对应部门的id")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg  
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 部门顺序
+						.w-220
+							input.form-control#depart_order(type="text",placeholder="部门的顺序")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+				.input-box
+					.input-item
+						.w-90
+							lable.input-attr 部门名称
+						.w-220
+							input.form-control#depart_name(type="text",placeholder="请输入部门名称")
+					.input-pro
+						.w-90
+						.w-220
+							span.input-msg
+			.modal-footer
+				button(type="button",class="button button-primary button-small",data-dismiss="modal",onclick="depart.auDepart()") 提交
+
+
+//- 用来删除确认的模态框==============================================
+.modal.fade#remove_confirm(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+	div(class="modal-dialog",role="document")
+		.modal-content
+			.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+					i.iconfont.hover_danger.default_color.icon-class-delete2
+				h4.modal-title 删除确认
+			.modal-body
+				lable 您确定删除此栏目吗?
+				.w-220.hide_datas
+					input.form-control#remove_modal_id(type="text",placeholder="对象的id")
+					input.form-control#remove_modal_url(type="text",placeholder="进行操作的地址")
+					input.form-control#remove_modal_data1(type="text",placeholder="备用字段1")
+					input.form-control#remove_modal_data2(type="text",placeholder="备用字段2")
+					//- input.form-control#remove_modal_data3(type="text",placeholder="")
+					//- input.form-control#remove_modal_data4(type="text",placeholder="")
+			.modal-footer
+				button(type="button",class="button button-primary button-small",data-dismiss="modal") 取消
+				button#i_remove_modal_form_submit(type="button",class="button button-caution button-small",data-dismiss="modal",onclick="") 确定
+
+//- 用来警告框的模态框==============================================
+.modal.fade#modal_danger_msg(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+	div(class="modal-dialog",role="document")
+		.modal-content
+			.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+					i.iconfont.hover_danger.default_color.icon-class-delete2
+				h4.modal-title 警告
+			.modal-body
+				lable#error_modal_msg_lable 此栏目下有子栏目,不能直接删除!
+
+
+//- 用户设置角色的模态框==============================================
+.modal.fade#user_set_role(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+	div(class="modal-dialog",role="document")
+		.modal-content
+			.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+					i.iconfont.hover_danger.icon-class-delete2
+				h4.modal-title 角色设定
+			.modal-body
+				span#user_set_role_hide_datas
+				.input-box
+					.input-item
+						.w-80
+							lable.input-attr 用户名
+						.w-160
+							input.form-control#user_username(type="text",placeholder="用户名",readonly)
+				.input-box.user-set-role-roles#user_roles_list

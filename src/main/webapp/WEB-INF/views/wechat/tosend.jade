@@ -1,0 +1,94 @@
+extends ../includes/layout.jade
+block content
+	input(type='text',id='openid',placeholder='openid',value='ohCXWslf0xWVK4jumLYNMen8Sv6o')
+	input(type='text',id='msg',placeholder='msg',value='推送的文本消息')
+	input(type='text',id='access_token',placeholder='access_token',value='123')
+	input(type='text',id='refresh_token',placeholder='refresh_token',value='123')
+	input(type='button',value='推送文本消息',id='but')
+	input(type='button',value='推送模板消息',id='but1')
+	script.
+		$(function(){
+			$(document).on('click','#but',function(){
+				var openid = $("#openid").val();
+				var msg = $("#msg").val();
+				var access_token = $("#access_token").val();
+				var refresh_token = $("#refresh_token").val();
+				wechat={openid:openid,msg:msg,access_token:access_token,refresh_token:refresh_token}
+				console.log(wechat);
+				//- var val = $(this).val();
+
+				//- 这里是通过后台处理的方式,不建议使用,因为这样服务器压力太大了
+				$.ajax({
+					url: '/wechat/sendtext',
+					type: 'POST',
+					data: {wechat:wechat},
+					//- async: false,
+					//- cache: false,
+					//- contentType: false,
+					//- processData: false,
+					success: function(data){
+						if(200 === data.code) {
+							//- $("#imgShow").attr('src', data.msg.url);
+							//- $("#spanMessage").html("上传成功");
+							console.log('pathExcel success');
+							//- $("#content").html(data.imarkedval);
+							//- document.getElementById('content').innerHTML = data.imarkedval;
+						} else {
+							//- $("#spanMessage").html("上传失败");
+							console.log('pathExcel error1')
+						}
+
+						//- console.log('pathExcel success, data:', data);
+					},
+					error: function(){
+						console.log('pathExcel error2')
+						//- $("#spanMessage").html("与服务器通信发生错误");
+					}
+				});
+
+
+				//- $("#content2").html(marked(val));
+			})
+			$(document).on('click','#but1',function(){
+				var openid = $("#openid").val();
+				var msg = $("#msg").val();
+				var access_token = $("#access_token").val();
+				var refresh_token = $("#refresh_token").val();
+				wechat={openid:openid,msg:msg,access_token:access_token,refresh_token:refresh_token}
+				console.log(wechat);
+				//- var val = $(this).val();
+
+				//- 这里是通过后台处理的方式,不建议使用,因为这样服务器压力太大了
+				$.ajax({
+					url: '/wechat/sendtemplate',
+					type: 'POST',
+					data: {wechat:wechat},
+					//- async: false,
+					//- cache: false,
+					//- contentType: false,
+					//- processData: false,
+					success: function(data){
+						if(200 === data.code) {
+							//- $("#imgShow").attr('src', data.msg.url);
+							//- $("#spanMessage").html("上传成功");
+							console.log('pathExcel success');
+							//- $("#content").html(data.imarkedval);
+							//- document.getElementById('content').innerHTML = data.imarkedval;
+						} else {
+							//- $("#spanMessage").html("上传失败");
+							console.log('pathExcel error1')
+						}
+
+						//- console.log('pathExcel success, data:', data);
+					},
+					error: function(){
+						console.log('pathExcel error2')
+						//- $("#spanMessage").html("与服务器通信发生错误");
+					}
+				});
+
+
+				//- $("#content2").html(marked(val));
+			})
+
+		})

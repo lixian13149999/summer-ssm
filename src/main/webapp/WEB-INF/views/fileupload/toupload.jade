@@ -1,0 +1,41 @@
+extends ../includes/layout.jade
+block content
+	form(method='post', action='/upload', enctype='multipart/form-data')
+		input(name='inputFile', type='file', multiple='mutiple',id='ajaxUpload',accept='.xls,.pdf,.xlsx')
+		input(name='btnUp', type='submit',value='上传')
+
+	form(enctype='multipart/form-data',method='post',action='javascript:void(0)',role="form",id="frmUploadFile")
+		input(name='inputFile', type='file', multiple='mutiple',id='')
+		input(name='btnUp', type='button',value='上传',onclick='ajaxUpload()')
+
+	script.
+		function ajaxUpload(){
+			console.log('formData:')
+			console.log(formData);
+			var formData = new FormData($("#frmUploadFile")[0]);
+			$.ajax({
+				url: '/ajaxupload',
+				type: 'POST',
+				data: formData,
+				async: false,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(data){
+					if(200 === data.code) {
+						//- $("#imgShow").attr('src', data.msg.url);
+						//- $("#spanMessage").html("上传成功");
+						console.log('upload success')
+					} else {
+						//- $("#spanMessage").html("上传失败");
+						console.log('upload error1')
+					}
+					console.log('imgUploader upload success, data:', data);
+				},
+				error: function(){
+					console.log('upload error2')
+					//- $("#spanMessage").html("与服务器通信发生错误");
+				}
+			});
+
+		}
