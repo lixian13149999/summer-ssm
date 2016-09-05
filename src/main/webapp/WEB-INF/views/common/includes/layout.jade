@@ -12,15 +12,15 @@ html
 		//- bootstrap时间插件样式
 		link(rel='stylesheet',type='text/css',href='#{staticCtx}/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
 		//- bootstrap的按钮样式
-		link(rel='stylesheet',type='text/css',href='#{staticCtx}/css/base/buttons.css')
+		link(rel='stylesheet',type='text/css',href='#{staticCtx}/libs/bootstrap-buttons/buttons.css')
 		//- 引入阿里的图标
-		link(rel='stylesheet',type='text/less',href='#{staticCtx}/iconfont/iconfont.css')
+		link(rel='stylesheet',type='text/less',href='#{staticCtx}/backup/iconfont/iconfont.css')
 		
 		//- 引入图标
-		link(rel='shortcut icon',href='#{staticCtx}/img/logo32.png')
+		link(rel='shortcut icon',href='#{staticCtx}/backup/img/logo32.png')
 		//- 自设定样式的引入
-		link(rel='stylesheet',type='text/less',href='#{staticCtx}/css/main.less')
-		link(rel='stylesheet',type='text/less',href='#{staticCtx}/css/base/width.less')
+		link(rel='stylesheet',type='text/less',href='#{staticCtx}/backup/css/main.less')
+		link(rel='stylesheet',type='text/less',href='#{staticCtx}/backup/css/base/width.less')
 
 
 
@@ -36,9 +36,9 @@ html
 
 
 		//- 引入自设定的js文件
-		script(type='text/javascript',src='#{staticCtx}/js/util.js')
-		script(type='text/javascript',src='#{staticCtx}/js/modal.js')
-		script(type='text/javascript',src='#{staticCtx}/js/main.js')
+		script(type='text/javascript',src='#{staticCtx}/backup/js/common/util.js')
+		script(type='text/javascript',src='#{staticCtx}/backup/js/common/modal.js')
+		script(type='text/javascript',src='#{staticCtx}/backup/js/common/main.js')
 		
 	body
 		block content	

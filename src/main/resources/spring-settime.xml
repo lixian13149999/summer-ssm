@@ -36,7 +36,7 @@
 		<!-- 首次执行的时候推辞的时间(时间均已毫秒计算) -->
 		<!-- 每隔15分钟执行一次 -->
 		<!-- <property name="repeatInterval" value="900000" /> -->
-		<property name="repeatInterval" value="30000" />
+		<property name="repeatInterval" value="900000" />
 	</bean>
 	<!-- 刷新素材的定时器的执行时间配置 -->
 	<bean id="refreshMaterialSettime" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
@@ -63,39 +63,6 @@
 		</property>
 	</bean>
 	
-	
-	<!-- ========================用来测试的定时器++++start======================== -->
-	<bean id="businessObject" class="com.bcdbook.summer.demo.settime.ThisTimeTodo" />
-	
-	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<!-- 执行的类(映射) -->
-		<property name="targetObject" ref="businessObject" />
-		<!-- 执行的方法 -->
-		<property name="targetMethod" value="doSome" />
-		<!-- 实例化后是否立即执行 -->
-		<property name="concurrent" value="false" />
-	</bean>
-	<bean id="jobDetail2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<!-- 执行的类(映射) -->
-		<property name="targetObject" ref="businessObject" />
-		<!-- 执行的方法 -->
-		<property name="targetMethod" value="doSome2" />
-		<!-- 实例化后是否立即执行 -->
-		<property name="concurrent" value="false" />
-	</bean>
-
-	<!-- 定义到时间点的配置 -->
-	<!-- <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-    	<property name="jobDetail" ref="jobDetail" />
-    	<property name="cronExpression" value="0 31 09 * * ?" />每天12:00运行一次
-    </bean> -->
-    <!-- 另一种触发器是CornTrigger,每隔多久执行一次 -->
-     <bean id="cornTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-       <property name="jobDetail" ref="jobDetail2"/>
-       <!-- 每个10秒触发 -->
-       <property name="cronExpression" value="0 09 11 * * ?"/>
-    </bean>
-    <!-- ========================用来测试的定时器++++end======================== -->
     <!-- 
 	    0 0 10,14,16 * * ? 每天上午10点，下午2点，4点 
 		0 0/30 9-17 * * ? 朝九晚五工作时间内每半小时 
