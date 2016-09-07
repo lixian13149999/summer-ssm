@@ -44,7 +44,7 @@
 		<!-- 映射执行的方法 -->
 		<property name="jobDetail" ref="refreshMaterial" />
 		<!-- 首次执行的时候推辞5分钟时间(时间均已毫秒计算) -->
-		<property name="startDelay" value="300000" />
+		<property name="startDelay" value="3000" />
 		<!-- 每隔两小时执行一次 -->
 		<property name="repeatInterval" value="7200000" />
 	</bean>

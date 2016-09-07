@@ -1,0 +1,86 @@
+/**
+ * 用于抽取,全局中公用样式的文件
+ *
+ */
+body {
+    line-height: 1.5;
+    font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+    color: @font-color-default;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+//字体阴影效果
+.text-shadow(@x:0,@y:0,@blur:3px,@color:#ccc){
+	text-shadow:@x @y @blur @color;
+}
+//边框阴影效果
+.box-shadow(@x:0,@y:0,@blur:7px,@spread:1px,@color:#888){  
+	-webkit-box-shadow:@x @y @blur @spread @color;
+	-moz-box-shadow:@x @y @blur @spread @color;
+	box-shadow:@x @y @blur @spread @color;
+}
+//内边框阴影效果
+.box-shadow(inset,@x:0,@y:0,@blur:7px,@spread:1px,@color:#888){  
+	-webkit-box-shadow:@x @y @blur @spread @color inset;
+	-moz-box-shadow:@x @y @blur @spread @color inset;
+	box-shadow:@x @y @blur @spread @color inset;
+}
+//定义透明度
+.opacity(@val1:60,@val2:0.6){
+	filter:alpha(opacity=@val1);  /* ie 有效*/
+	-moz-opacity:@val2; /* Firefox  有效*/
+	opacity: @val2; /* 通用，其他浏览器  有效*/
+}
+//毛玻璃处理
+.blur(@blur_size:10px){   
+	-webkit-filter: blur(@blur_size);
+	-moz-filter: blur(@blur_size);
+	-ms-filter: blur(@blur_size);
+	filter: blur(@blur_size);
+}
+// 定义过度效果的样式
+.transition{
+	transition: all 600ms ease;
+	-webkit-transition: all 600ms ease;
+	-moz-transition: all 600ms ease;
+}
+
+//获得鼠标字体样式改变的方法的定义 start------------------------
+.hover-default{
+	.transition;
+	.opacity();
+	&:hover{
+		.opacity(100,1);
+		.text-shadow();
+	}
+	&:active{
+		.opacity(50,0.5);
+		.text-shadow();
+	}
+}
+// .text-shadow(@x:0,@y:0,@blur:3px,@color:#ccc){
+.hover-danger{
+	&:hover{
+		color:#ff7473;
+		.text-shadow(0px, 0px, 3px, #ff7473);
+	}
+}
+.hover-warning{
+	&:hover{
+		color:#ffc952;
+		.text-shadow(0px, 0px, 3px, #ffc952);
+	}
+}
+.hover-primary{
+	&:hover{
+		color:#47b8e0;
+		.text-shadow(0px, 0px, 3px, #47b8e0);
+	}
+}
+.hover-success{
+	&:hover{
+		color:#5cb85c;
+		.text-shadow(0px, 0px, 3px, #5cb85c);
+	}
+}

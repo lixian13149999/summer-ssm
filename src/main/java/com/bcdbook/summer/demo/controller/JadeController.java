@@ -7,15 +7,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bcdbook.summer.common.util.JadeUtil;
+import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.User;
 
 import de.neuland.jade4j.Jade4J;
@@ -29,6 +32,19 @@ import de.neuland.jade4j.exceptions.JadeCompilerException;
 @Controller
 @RequestMapping("/demo/jade")
 public class JadeController {
+	
+	@RequestMapping(method = {RequestMethod.GET}) 
+	public ModelAndView getLoginPage(HttpServletRequest req,HttpServletResponse resp,Model model){
+//		Menu menu = new Menu();
+//		menu.setParentId("first");
+//		List<Menu> userMenus = menuService.findList(menu);
+		
+		ModelAndView mv = JadeUtil.getView("index.jade");
+		mv.addObject("key", "这是key的value值");
+//		mv.addObject("onlineMenus", userMenus);
+		
+		return mv;
+	}
 	/*
 	 * 获取index.jade页面
 	 */

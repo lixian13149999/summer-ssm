@@ -1,0 +1,110 @@
+/**
+ * 主页面的less文件
+ *
+ */
+
+//引入主题定义文件
+@import "./include/theme.less";
+//引入重写标签/样式的文件
+@import "./include/reset.less";
+//引入定义全局公用样式的文件
+@import "./include/main.less";
+
+div{
+    border: solid red 1px;
+}
+
+//头部样式开始
+//头部最外层框样式
+.viewFramework-topbar{
+    background-color: @top-bg-color;
+    a{
+        color: @font-color-default-reversal;
+    }
+    .view-top-cont{
+        width: @base-width;
+        height: @top-height;
+        margin: 0 auto;
+        //头部样式排版
+        .top-logo-box,.top-menu-box,.top-user-box{
+            display: inline-block;
+        }
+        //logo部分样式
+        .top-logo-box{
+            .logo-icon,.logo-title{
+                display: inline-block;
+                vertical-align: bottom;
+            }
+            .logo-icon{
+                .opacity(80,0.8);
+                font-size: 42px;
+                padding-right: 10px;
+            }
+            .logo-title{
+                -webkit-font-smoothing: auto;
+                font-size: 23px;
+                line-height: 58px;
+            }
+        }
+        //预留的栏目部分的div
+        .top-menu-box{
+            min-width: 90px;
+            min-height: 60px;
+        }
+        //user部分样式
+        .top-user-box{
+            float: right;
+            padding-top: 15px;
+            .tools-icon,.user-photo{
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .tools-icon{
+                padding: 0px 10px;
+                i{
+                    font-size: 22px;
+                }
+            }
+            .user-photo{
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-left: 20px;
+                background-size: contain;
+            }
+            
+            .wechat_2d_barcode{
+                margin: 2px 5px;
+                width: 90px;
+                height: 90px;
+                background-size: contain;
+            }
+        }
+    }
+}
+
+
+//body部分样式开始
+//body框部分样式
+.viewFramework-body{
+//    margin-top: 60px;
+    .view-body-cont{
+        width: @base-width;
+        min-height: 600px;
+        margin:45px auto 70px auto;
+    }
+}
+
+
+//fooler部分样式开始
+//footer框样式
+.viewFramework-footer{
+    background-color: @footer-bg-color;
+    position: relative;
+    .view-footer-cont{
+        width: @base-width;
+        height: @footer-height;
+        margin: 0 auto;
+    }
+}

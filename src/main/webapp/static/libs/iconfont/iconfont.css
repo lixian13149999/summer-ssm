@@ -1,0 +1,55 @@
+
+@font-face {font-family: "icon";
+  src: url('iconfont.eot?t=1473212421'); /* IE9*/
+  src: url('iconfont.eot?t=1473212421#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1473212421') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1473212421') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1473212421#icon') format('svg'); /* iOS 4.1- */
+}
+
+.icon {
+  font-family:"icon" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-user:before { content: "\e600"; }
+.icon-delete2:before { content: "\e602"; }
+.icon-txt:before { content: "\e603"; }
+.icon-move:before { content: "\e604"; }
+.icon-key:before { content: "\e605"; }
+.icon-tool:before { content: "\e606"; }
+.icon-apps:before { content: "\e607"; }
+.icon-unlock:before { content: "\e608"; }
+.icon-rollback:before { content: "\e609"; }
+.icon-key2:before { content: "\e60a"; }
+.icon-role:before { content: "\e60b"; }
+.icon-wechat:before { content: "\e60c"; }
+.icon-lock:before { content: "\e60d"; }
+.icon-pdf:before { content: "\e60e"; }
+.icon-edit:before { content: "\e60f"; }
+.icon-add:before { content: "\e610"; }
+.icon-grip:before { content: "\e611"; }
+.icon-word:before { content: "\e612"; }
+.icon-info:before { content: "\e613"; }
+.icon-search:before { content: "\e614"; }
+.icon-logo:before { content: "\e615"; }
+.icon-exit:before { content: "\e616"; }
+.icon-eye-close:before { content: "\e618"; }
+.icon-excel:before { content: "\e619"; }
+.icon-delete:before { content: "\e61a"; }
+.icon-message:before { content: "\e61b"; }
+.icon-organizations:before { content: "\e61c"; }
+.icon-records:before { content: "\e61d"; }
+.icon-info2:before { content: "\e61e"; }
+.icon-menu:before { content: "\e61f"; }
+.icon-msg:before { content: "\e620"; }
+.icon-eye-open:before { content: "\e621"; }
+.icon-role-edit:before { content: "\e622"; }
+.icon-notify:before { content: "\e623"; }
+.icon-approve:before { content: "\e624"; }
+.icon-img:before { content: "\e625"; }
+.icon-wait:before { content: "\e626"; }
+.icon-move2:before { content: "\e627"; }
