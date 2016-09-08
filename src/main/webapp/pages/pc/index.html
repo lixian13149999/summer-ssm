@@ -41,7 +41,10 @@
                 <a data-toggle="prompt-cont" data-content-func-mapping="itop.getWechatBarcode" href="javascript:void(0)" class="tools-icon tools-wechat">
                     <i class="icon icon-wechat hover-default"></i>
                 </a>
-                <a href="javascript:void(0)" class="user-photo" style="background-image:url('../../static/pc/imgs/user.png')"></a>
+                <div class="user-photo-cont">
+                    <span id="user_info_hide_datas" data-para-_id="id" data-para-username="lixian13149999@163.com" data-para-realname="李显" data-para-photo="../../static/pc/imgs/user.png" data-para-position="position" data-para-email="lixian13149999@163.com" data-para-phone="phone}" data-para-depart_remark="产品技术部"></span>
+                    <a data-toggle="prompt-cont" data-content-func-mapping="itop.getUserIntd" href="javascript:void(0)" class="user-photo" style="background-image:url('../../static/pc/imgs/user.png')"></a>
+                </div>
 <!--                </div>-->
 <!--                <div class="user-info-box">-->
 <!--                </div>-->
@@ -51,7 +54,51 @@
     
     <!--body部分开始-->
     <div class="viewFramework-body">
-        <div class="view-body-cont"></div>
+        <div class="view-body-cont">
+            <div class="view-sidebar-cont">
+               <div class="sidebar-cont">
+                    <div class="menu-box">
+                        <dl class="menu">
+                            <dt class="menu-title">
+                                <i class="menu-icon icon icon-tool"></i>
+                                <a href="javascript:void(0)" class="title-cont">用户管理</a>
+<!--
+                                <span class="menu-tools">
+                                    <a href="">
+                                        <i class="icon icon-add hover-danger light-color"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="icon icon-add hover-danger light-color"></i>
+                                    </a>
+                                </span>
+-->
+                            </dt>
+                            <dd class="menu-item activ">
+                                <a href="javascript:void(0)" class="item-cont">用户列表</a>
+<!--
+                                <span class="menu-tools">
+                                    <a href="">
+                                        <i class="icon icon-add hover-danger light-color"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="icon icon-add hover-danger light-color"></i>
+                                    </a>
+                                </span>
+-->
+                            </dd>
+                        </dl>
+                    </div>
+               </div>
+            </div>
+            
+            <div class="view-product-body">
+               <div class="has-error">
+                   
+                <input type="email" class="form-control" id="" placeholder="Enter email">
+               </div>
+                <input type="email" class="form-control" id="" placeholder="Enter email">
+            </div>
+        </div>
     </div>
     
     

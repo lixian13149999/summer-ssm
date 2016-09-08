@@ -3,8 +3,42 @@
  * 原始标签样式的文件
  */
 
+//页面元素样式重写
+//a标签重写
 a,a:link,a:hover,a:active,a:visited{
     color: @font-color-default;
 	text-decoration:none;
 	cursor:pointer;
+}
+dl{
+    margin-bottom: 0px;
+}
+
+//bootstrap样式重写
+//弹出框重写
+.popover{
+    padding: 0px;
+    border-radius: 0px;
+    max-width: 600px;
+}
+//弹出框内容样式重写
+.popover-content{
+    padding: 0px 0px;
+}
+//输入框的样式重写
+.form-control{
+	border-radius: 0px;
+	// .transition;
+	&:focus{
+		border:solid #666 1px;
+		.box-shadow();
+	}
+}
+.has-error .form-control{
+	border-color: @base-error-border-color;
+	&:focus{
+		border:solid @base-error-border-color 1px;
+		.box-shadow(0px,0px,4px,1px,@base-error-box-shadow-color);
+		// .box_shadow();
+	}
 }

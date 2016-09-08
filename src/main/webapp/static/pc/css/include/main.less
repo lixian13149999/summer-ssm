@@ -8,6 +8,7 @@ body {
     color: @font-color-default;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
+    background-color: @base-bg-color;
 }
 
 //字体阴影效果
@@ -47,6 +48,9 @@ body {
 }
 
 //获得鼠标字体样式改变的方法的定义 start------------------------
+.light-color{
+    color: @font-color-light;
+}
 .hover-default{
 	.transition;
 	.opacity();
