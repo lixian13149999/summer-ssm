@@ -56,35 +56,21 @@
     <div class="viewFramework-body">
         <div class="view-body-cont">
             <div class="view-sidebar-cont">
-               <div class="sidebar-cont">
+               <div data-cont="menu-cont" class="sidebar-cont">
                     <div class="menu-box">
                         <dl class="menu">
                             <dt class="menu-title">
                                 <i class="menu-icon icon icon-tool"></i>
                                 <a href="javascript:void(0)" class="title-cont">用户管理</a>
-<!--
-                                <span class="menu-tools">
-                                    <a href="">
-                                        <i class="icon icon-add hover-danger light-color"></i>
-                                    </a>
-                                    <a href="">
-                                        <i class="icon icon-add hover-danger light-color"></i>
-                                    </a>
-                                </span>
--->
                             </dt>
-                            <dd class="menu-item activ">
-                                <a href="javascript:void(0)" class="item-cont">用户列表</a>
-<!--
-                                <span class="menu-tools">
-                                    <a href="">
-                                        <i class="icon icon-add hover-danger light-color"></i>
-                                    </a>
-                                    <a href="">
-                                        <i class="icon icon-add hover-danger light-color"></i>
-                                    </a>
-                                </span>
--->
+                            <dd data-page-click="menu-item" class="menu-item activ">
+                                <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                            </dd>
+                            <dd data-page-click="menu-item" class="menu-item">
+                                <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                            </dd>
+                            <dd data-page-click="menu-item" class="menu-item">
+                                <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
                             </dd>
                         </dl>
                     </div>
@@ -123,6 +109,7 @@
     <script type="text/javascript" src="../../static/pc/js/common/itools.js"></script>
     <script type="text/javascript" src="../../static/pc/js/common/ipopover.js"></script>
     <script type="text/javascript" src="../../static/pc/js/common/itop.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/common/imenu.js"></script>
     <script type="text/javascript" charset="utf-8">
         
     </script>
