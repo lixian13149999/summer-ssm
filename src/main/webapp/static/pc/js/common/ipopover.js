@@ -23,7 +23,7 @@ ipopover.listenerPromptCont = function(){
 			$(this).popover("show"); //显示当前的提示
 			//当遍历弹出框有穿出事件时,隐藏当前的弹出框
 			$(this).siblings(".popover").on("mouseleave", function() {
-				$(_this).popover('hide');
+//				$(_this).popover('hide');
 			});
 			//当鼠标穿出当前按钮时
 			// }).on("click", function() {
@@ -33,7 +33,7 @@ ipopover.listenerPromptCont = function(){
 			setTimeout(function() {
 				// console.log($(".popover:hover"));
 				if (!$(".popover:hover").length) {
-					$(_this).popover("hide")
+//					$(_this).popover("hide")
 				}
 			}, 100);
 		});
