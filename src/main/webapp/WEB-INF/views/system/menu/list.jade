@@ -1,8 +1,0 @@
-each menu,index in onlineMenus
-	dl.menu
-		dt.menu_title
-			i.iconfont.menu_icon(class=menu.icon)
-			|#{menu.name}
-		each item,index2 in menu.childs
-			dd.menu_item
-				a.item_change_menu(data-item-id="#{item.id}",data-item-url="#{item.href}") #{item.name}

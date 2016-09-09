@@ -1,5 +1,0 @@
-//- var has_checked = false;
-each auth,index in auths
-	//- if("#{auth.role_remark}"){}
-	- var is_check = auth.role_remark ? 'auth_checked' : ''
-	a(id="role_auths_#{auth._id}",data-role_id="#{auth._id}",data-has_checked='#{auth.role_remark}',class=is_check) #{auth.name}

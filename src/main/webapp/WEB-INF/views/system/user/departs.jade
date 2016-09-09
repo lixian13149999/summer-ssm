@@ -1,6 +1,0 @@
-option 请选择部门
-	each depart,index in departs
-		- if(depart.depart_remark)
-			option(value="#{depart._id}" selected) #{depart.name}
-		- else
-			option(value="#{depart._id}") #{depart.name}
