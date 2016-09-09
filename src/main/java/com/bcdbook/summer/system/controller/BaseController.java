@@ -94,12 +94,12 @@ public class BaseController {
 	
 	@RequestMapping(method = {RequestMethod.GET}) 
 	public ModelAndView getLoginPage(HttpServletRequest req,HttpServletResponse resp,Model model){
-		Menu menu = new Menu();
-		menu.setParentId("first");
-		List<Menu> userMenus = menuService.findList(menu);
+//		Menu menu = new Menu();
+//		menu.setParentId("first");
+//		List<Menu> userMenus = menuService.findList(menu);
 		
 		ModelAndView mv = JadeUtil.getView("index.jade");
-		mv.addObject("onlineMenus", userMenus);
+//		mv.addObject("onlineMenus", userMenus);
 		
 		return mv;
 	}
@@ -108,5 +108,14 @@ public class BaseController {
 	@ResponseBody
 	public String toLogin(){
 		return "SUCCESS";
+	}
+	
+	@RequestMapping(value="/userIsExist",method = {RequestMethod.GET}) 
+	@ResponseBody
+	public String userIsExist(HttpServletRequest req,HttpServletResponse resp,Model model){
+		String username = req.getParameter("username");
+		System.out.println("username");
+		System.out.println(username);
+		return "false";
 	}
 }

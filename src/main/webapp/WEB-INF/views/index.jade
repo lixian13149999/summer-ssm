@@ -1,36 +1,23 @@
 extends ./common/includes/layout.jade
 block content
-	include ./common/includes/modals.jade
-	.top_box
-		.top#top
-			.logo
-				a.icon
-					i.iconfont.icon-class-logo
-					span.hover_default 业务·管理平台
-			.nav_box
+	//- 头部页面块
+	.viewFramework-topbar
+		include ./common/includes/topbar.jade
 
-			.user
-				span.user_tool_icon
-					a.icon_tiny.icon_msg
-						i.iconfont.hover_default.icon-class-messages2
-						div.msg_tip#imsg_tip
-					a.icon_tiny.icon_wechat#wechat_2d_barcode(data-toggle="popover")
-						i.iconfont.hover_default.icon-class-weixin
-					#user_intro_out_div
-						span#user_info_msg_hide_datas(data-para-_id='#{onlineUser._id}',data-para-username='#{onlineUser.username}',data-para-realname='#{onlineUser.realname}',data-para-photo='#{onlineUser.photo}',data-para-position='#{onlineUser.position}',data-para-email='#{onlineUser.email}',data-para-phone='#{onlineUser.phone}',data-para-depart_remark='#{onlineUser.depart_remark}')
-						a.iphoto#user_introduction(style="background-image: url('#{onlineUser.photo}');",data-toggle="popover")
-	.body#body
-		//- span #{onlineUser.username}
-		.left#left
-			.menu_box
-				include ./system/menu/list.jade
-		.main#main
-			| #{staticCtx}
-			//- include ./user/edit.jade
-			//- include ./menu/menu.jade
-			//- include ./role/role.jade	
-	.foot_box
-		.foot#foot
+	//- body部分页面块
+	.viewFramework-body
+		.view-body-cont
+			//- 栏目部分页面块
+			.view-sidebar-cont
+				include ./common/includes/sidebar.jade
+			//- 主显示区域页面块
+			.view-product-body
+				include ./demo/testValidate.jade
+
+	//- 脚部页面块
+	.viewFramework-footer
+		include ./common/includes/footer.jade
+		
 	script(type='text/javascript',src='#{staticCtx}/backup/js/system/menu.js')
 	script(type='text/javascript',src='#{staticCtx}/backup/js/system/auth.js')
 	script(type='text/javascript',src='#{staticCtx}/backup/js/system/role.js')

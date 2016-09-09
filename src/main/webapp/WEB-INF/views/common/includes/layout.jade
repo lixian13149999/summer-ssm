@@ -7,20 +7,19 @@ html
 		//- 框架样式引入
 		//- bootstrap基础样式
 		link(rel='stylesheet',type='text/css',href='#{staticCtx}/libs/bootstrap/dist/css/bootstrap.min.css')
-		//- bootstrap扩展字体图标库样式
-		//- link(rel='stylesheet',type='text/css',href='/css/font-awesome.min.css')
 		//- bootstrap时间插件样式
 		link(rel='stylesheet',type='text/css',href='#{staticCtx}/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
 		//- bootstrap的按钮样式
 		link(rel='stylesheet',type='text/css',href='#{staticCtx}/libs/bootstrap-buttons/buttons.css')
 		//- 引入阿里的图标
-		link(rel='stylesheet',type='text/less',href='#{staticCtx}/backup/iconfont/iconfont.css')
+		link(rel='stylesheet',type='text/css',href='#{staticCtx}/libs/iconfont/iconfont.css')
 		
 		//- 引入图标
-		link(rel='shortcut icon',href='#{staticCtx}/backup/img/logo32.png')
+		link(rel='shortcut icon',href='#{staticCtx}/pc/imgs/logo32.png')
+
 		//- 自设定样式的引入
-		link(rel='stylesheet',type='text/less',href='#{staticCtx}/backup/css/main.less')
-		link(rel='stylesheet',type='text/less',href='#{staticCtx}/backup/css/base/width.less')
+		link(rel='stylesheet/less',type='text/css',href='#{staticCtx}/pc/css/index.less')
+		//- link(rel='stylesheet/less',type='text/css',href='#{staticCtx}/backup/css/base/width.less')
 
 
 		//- 框架js文件的引入
@@ -37,9 +36,14 @@ html
 
 
 		//- 引入自设定的js文件
-		script(type='text/javascript',src='#{staticCtx}/backup/js/common/util.js')
-		script(type='text/javascript',src='#{staticCtx}/backup/js/common/modal.js')
-		script(type='text/javascript',src='#{staticCtx}/backup/js/common/main.js')
+		script.
+			var ctx = '#{ctx}';
+			var staticCtx = '#{staticCtx}';
+			console.log(ctx);
+		script(type='text/javascript',src='#{staticCtx}/pc/js/common/itools.js')
+		script(type='text/javascript',src='#{staticCtx}/pc/js/common/ipopover.js')
+		script(type='text/javascript',src='#{staticCtx}/pc/js/common/itop.js')
+		script(type='text/javascript',src='#{staticCtx}/pc/js/common/imenu.js')
 		
 	body
 		block content	

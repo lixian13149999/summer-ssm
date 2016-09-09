@@ -46,9 +46,6 @@
                     <span id="user_info_hide_datas" data-para-_id="id" data-para-username="lixian13149999@163.com" data-para-realname="李显" data-para-photo="../../static/pc/imgs/user.png" data-para-position="position" data-para-email="lixian13149999@163.com" data-para-phone="phone}" data-para-depart_remark="产品技术部"></span>
                     <a data-toggle="prompt-cont" data-content-func-mapping="itop.getUserIntd" href="javascript:void(0)" class="user-photo" style="background-image:url('../../static/pc/imgs/user.png')"></a>
                 </div>
-                <!--                </div>-->
-                <!--                <div class="user-info-box">-->
-                <!--                </div>-->
             </div>
         </div>
     </div>
@@ -119,59 +116,7 @@
     <script type="text/javascript" src="../../static/pc/js/common/itop.js"></script>
     <script type="text/javascript" src="../../static/pc/js/common/imenu.js"></script>
     <script type="text/javascript" charset="utf-8">
-        function formAction(){
-            console.log("formAction");
-        }
-//        $().ready(function() {
-//            console.log("页面校验执行了初始化");
-//            $("#signupForm").validate();
-//        });
-        $(function(){
-            var testValidate = $("#signupForm").validate({
-                debug: true, //调试模式取消submit的默认提交功能   
-                //errorClass: "label.error", //默认为错误的样式类为：error   
-                focusInvalid: false, //当为false时，验证无效时，没有焦点响应  
-                onkeyup: false,   
-                submitHandler: function(form){   //表单提交句柄,为一回调函数，带一个参数：form   
-                    alert("提交表单");   
-                    console.log(form);
-                    form.submit();   //提交表单   
-                },   
-                
-                rules:{
-                    myname:{
-                        required:true
-                    },
-                    email:{
-                        required:true,
-                        email:true
-                    },
-                    password:{
-                        required:true,
-                        rangelength:[3,10]
-                    },
-                    confirm_password:{
-                        equalTo:"#password"
-                    }                    
-                },
-                messages:{
-                    myname:{
-                        required:"必填"
-                    },
-                    email:{
-                        required:"必填",
-                        email:"E-Mail格式不正确"
-                    },
-                    password:{
-                        required: "不能为空",
-                        rangelength:"长度限制"
-                    },
-                    confirm_password:{
-                        equalTo:"两次密码输入不一致"
-                    }                                    
-                }
-            });
-        })
+        
     </script>
 </body>
 </html>

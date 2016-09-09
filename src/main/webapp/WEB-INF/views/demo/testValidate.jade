@@ -1,0 +1,9 @@
+form#signupForm(method="get" action="javascript:formAction()")
+	.has-error
+		input#username.form-control(type="text" name="username" placeholder="Enter email")
+		label(for="username") 用来显示用户名错误信息的位置
+	input#password.form-control(type="password" name="password" placeholder="Enter email")
+	label(for="password") 用来显示密码错误信息的位置
+	br
+	input.submit(type="submit" value="提交")
+script(type='text/javascript',src='#{staticCtx}/pc/js/demo/testValidate.js')
