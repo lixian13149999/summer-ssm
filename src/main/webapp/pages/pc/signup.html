@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
+    <!-- Bootstrap样式表引入-->
+    <link rel="stylesheet" href="../../static/libs/bootstrap-buttons/buttons.css" />
+    <!-- 页面自定义样式引入-->
+    <link rel="stylesheet" href="../../static/pc/css/include/sign.css">
 </head>
 <body>
+    <div class="background_layer"></div>
+    <div class="sign_box sign_window">
+        <div class="sign_title">
+            <span>用户注册</span>
+            <span class="to_signin">
+                已有账号？请
+                <a href="../pc/signin.html">登录</a>
+            </span>
+        </div>
+        <form mesthod="post" action="#" id="sign_form">
+            <div class="sign_input">
+                <div class="sign_input_div">
+                    <input type="text" id="username" name="user[username]" class="form-control"/>
+                    <label class="box_tips" for="#username">用户名</label>
+                    <span class="message">请输入用户名</span>       
+                </div>
+                
+                <div class="sign_input_div">
+                    <input type="text" id="passworda" name="user[username]" class="form-control"/>
+                    <label class="box_tips" for="#passworda">密码</label>
+                    <span class="message">请输入密码</span>
+                </div>
+                
+                <div class="sign_input_div">
+                    <input type="text" id="passwordb" name="user[username]" class="form-control"/>
+                    <label class="box_tips" for="passwordb">密码</label>
+                    <span class="message">请再次输入密码</span>         
+                </div>
+            </div>
     
+            <div class="sign_bottom">
+                <button type="button" class="button button-primary input_button">下一步</button>
+            </div>            
+        </form>
+    </div>
 </body>
 </html>

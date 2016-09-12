@@ -8,6 +8,10 @@
  *
  */
 /**
+ * 登录注册页面相关定义
+ *
+ */
+/**
  * 用于重写bootstrap
  * 原始标签样式的文件
  */
@@ -20,6 +24,35 @@ a:visited {
   text-decoration: none;
   cursor: pointer;
 }
+dl {
+  margin-bottom: 0px;
+}
+.popover {
+  padding: 0px;
+  border-radius: 0px;
+  max-width: 600px;
+}
+.popover-content {
+  padding: 0px 0px;
+}
+.form-control {
+  border-radius: 0px;
+}
+.form-control:focus {
+  border: solid #666 1px;
+  -webkit-box-shadow: 0 0 7px 1px #888888;
+  -moz-box-shadow: 0 0 7px 1px #888888;
+  box-shadow: 0 0 7px 1px #888888;
+}
+.has-error .form-control {
+  border-color: #e53a40;
+}
+.has-error .form-control:focus {
+  border: solid #e53a40 1px;
+  -webkit-box-shadow: 0px 0px 4px 1px #ff7473;
+  -moz-box-shadow: 0px 0px 4px 1px #ff7473;
+  box-shadow: 0px 0px 4px 1px #ff7473;
+}
 /**
  * 用于抽取,全局中公用样式的文件
  *
@@ -30,11 +63,15 @@ body {
   color: #666666;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
+  background-color: #e7e7eb;
 }
 .transition {
   transition: all 600ms ease;
   -webkit-transition: all 600ms ease;
   -moz-transition: all 600ms ease;
+}
+.light-color {
+  color: #8d8d8d;
 }
 .hover-default {
   transition: all 600ms ease;
@@ -81,8 +118,32 @@ body {
   color: #5cb85c;
   text-shadow: 0px 0px 3px #5cb85c;
 }
-div {
-  border: solid red 1px;
+.input_container {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.input_container .form-control {
+  width: 100%;
+  display: block;
+  height: 20px;
+  padding: 6px 0;
+  text-indent: 1em;
+}
+.input_container .input_placeholder {
+  position: relative;
+  top: -27px;
+  left: 5px;
+}
+.input_container .input_message {
+  display: block;
+  color: #bebebe;
+  margin-top: -12px;
+  padding-left: 14px;
+}
+.input_button {
+  width: 142px;
+  height: 36px;
+  font-size: 14px;
 }
 .viewFramework-topbar,
 .viewFramework-body,
@@ -134,7 +195,7 @@ div {
   padding-top: 15px;
 }
 .viewFramework-topbar .view-top-cont .top-user-box .tools-icon,
-.viewFramework-topbar .view-top-cont .top-user-box .user-photo {
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont {
   display: inline-block;
   vertical-align: middle;
 }
@@ -152,16 +213,154 @@ div {
   margin-left: 20px;
   background-size: contain;
 }
-.viewFramework-topbar .view-top-cont .top-user-box .wechat_2d_barcode {
+.viewFramework-topbar .view-top-cont .top-user-box .wechat-2d-barcode {
   margin: 2px 5px;
   width: 90px;
   height: 90px;
   background-size: contain;
 }
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .popover.bottom > .arrow:after {
+  border-bottom-color: #363636;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box {
+  width: 325px;
+  display: block;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top,
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-body,
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-foot {
+  padding: 8px 16px;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top {
+  background-color: #363636;
+  color: #ffffff;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-photo,
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-info,
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-top-icon {
+  display: inline-block;
+  vertical-align: top;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
+  background-size: contain;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-info {
+  filter: alpha(opacity=80);
+  /* ie 有效*/
+  -moz-opacity: 0.8;
+  /* Firefox  有效*/
+  opacity: 0.8;
+  /* 通用，其他浏览器  有效*/
+  padding-top: 6px;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-info .intd-info-msg {
+  margin-bottom: 3px;
+  padding-left: 15px;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-info .intd-info-msg:last-child {
+  margin-bottom: 0px;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-top-icon {
+  margin-left: 10px;
+  float: right;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-top-icon i {
+  color: #ffffff;
+  font-size: 18px;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-top .intd-top-icon .inner-icon-tiny {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0px 0px 0px 0px;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-foot .intd-foot-msg {
+  color: #333333;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-foot .intd-foot-icon {
+  float: right;
+  color: #333333;
+}
+.viewFramework-topbar .view-top-cont .top-user-box .user-photo-cont .user-intd-box .intd-foot .intd-foot-icon i {
+  font-size: 18px;
+}
 .viewFramework-body .view-body-cont {
   width: 1200px;
   min-height: 600px;
   margin: 45px auto 70px auto;
+  background-color: #ffffff;
+  border: solid #d9dadc 1px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont,
+.viewFramework-body .view-body-cont .view-product-body {
+  display: table-cell;
+  vertical-align: top;
+  min-height: 600px;
+  height: 600px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont {
+  width: 208px;
+  border-right: solid #e7e7eb 1px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont {
+  margin-top: 13px;
+  margin-bottom: 150px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box {
+  border-top: solid #e7e7eb 1px;
+  padding: 6px 0px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box:first-child {
+  border-top: 0px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-title .menu-tools,
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-item .menu-tools {
+  line-height: 33px;
+  height: 33px;
+  float: right;
+  margin-right: 20px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-title .menu-tools .icon,
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-item .menu-tools .icon {
+  padding-left: 4px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-title {
+  font-weight: 500;
+  padding: 0px 0px 0px 30px;
+  height: 34px;
+  line-height: 34px;
+  color: #8d8d8d;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-title .menu-icon,
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-title .title-cont {
+  vertical-align: middle;
+  display: inline-block;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-title .menu-icon {
+  font-size: 22px;
+  margin-right: 7px;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-item .item-cont,
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-item .menu-tools {
+  display: inline-block;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-item .item-cont {
+  height: 34px;
+  line-height: 34px;
+  padding-left: 62px;
+  text-decoration: none;
+  color: #333333;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .menu-item:hover {
+  background-color: #f4f5f9;
+}
+.viewFramework-body .view-body-cont .view-sidebar-cont .sidebar-cont .menu-box .menu .activ {
+  background-color: #f4f5f9;
+}
+.viewFramework-body .view-body-cont .view-product-body {
+  width: 990px;
 }
 .viewFramework-footer {
   background-color: #b8b9b9;
