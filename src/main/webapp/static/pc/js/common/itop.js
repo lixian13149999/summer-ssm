@@ -1,13 +1,16 @@
 var itop = new Object();
 //获取微信二维码的代码块
 itop.getWechatBarcode = function() {
+	var wechatData = $("#top_icon_wechat_barcode");
+
+	var url = wechatData.data('para-barcode');
 //    console.log("进入获取二维码方法");
-	return '<div class="wechat-2d-barcode" style="background-image: url(\'http://localhost:8899/img/wechat_2d_barcode.jpg\');"></div>'
+	return '<div class="wechat-2d-barcode" style="background-image: url('+url+');"></div>'
 }
 
 //获取用户简介的代码块
 itop.getUserIntd = function() {
-	var user_datas = $('#user_info_hide_datas');
+	var user_datas = $('#top_user_info_hide_datas');
 
 	var _id = user_datas.data('para-_id'); //用户的id
 	var username = user_datas.data('para-username'); //用户名
