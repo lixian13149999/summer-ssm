@@ -65,6 +65,7 @@ vd.toError = function(errorEle,confEle){
     }
     console.log("error");
     console.log(errorEle);
+    console.log(errorMsg);
     console.log(confEle);
 }
 vd.toSuccess = function(label){
