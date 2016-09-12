@@ -1,3 +1,7 @@
+/**
+ * 用于栏目公用js处理的脚本
+ *
+ */
 var imenu = new Object();
 $(function(){
     imenu.clickMenu();

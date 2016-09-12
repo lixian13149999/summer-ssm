@@ -152,6 +152,70 @@ body {
         }
     }   
 }
+
+
+
+//<div class="beaut-form-box has-error">
+//    <label for="username" class="control-label">用户名</label>
+//    <input id="username" type="text" name="username" class="form-control" id="" placeholder="请输入用户名">
+//    <label for="username" class="error-msg-label">错误提示信息</label>
+//</div>
+//输入框域块样式开始
+.beaut-form-box{
+    label{
+        margin-bottom: 0px;
+        font-weight: 500;
+    }
+    .control-label{
+        position: absolute;
+        padding: 3px 10px;
+        margin-top: 4px;
+        margin-left: 5px;
+        background-color: #fff;
+        .transition;
+//        &:checked{
+//            margin-top: -22px;
+//        }
+    }
+    
+    .active{
+        margin-top: -20px;
+    }
+    
+    .error-msg-label {
+        padding: 5px 0px 5px 15px;
+    }
+}
+
+.form-box{
+//    margin-bottom: 15px;
+    
+    label{
+        margin-bottom: 0px;
+        font-weight: 500;
+    }
+    
+    .control-label{
+        padding-right: 15px;
+    }
+    
+    .active{
+        margin-top: -20px;
+    }
+    
+    .error-msg-label {
+        padding: 5px 0px 5px 15px;
+    }
+}
+
+.has-error{
+    .error-msg-label{
+        color: @base-error-font-color;
+    }
+}
+
+
+
 //登录注册页面输入框样式统一定义
 .input_container{ //整个块最外层包裹块样式
     width:100%;

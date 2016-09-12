@@ -1,3 +1,7 @@
+/**
+ * 头部代码处理的文件
+ *
+ */
 var itop = new Object();
 //获取微信二维码的代码块
 itop.getWechatBarcode = function() {

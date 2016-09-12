@@ -1,8 +1,8 @@
+/**
+ * 用于处理警告框公用样式的文件
+ *
+ */
 var ipopover = new Object();
-
-$(function(){
-    ipopover.listenerPromptCont();
-})
 
 ipopover.listenerPromptCont = function(){
 //    console.log("执行了监听");
@@ -48,6 +48,6 @@ ipopover.getTitle = function(ele){
 //获取提示标签的内容(根据id)
 ipopover.getContent = function(ele){
     var contentFunc = $(ele).data("content-func-mapping");
-    console.log(contentFunc);
+//    console.log(contentFunc);
     return eval(contentFunc);
 }
