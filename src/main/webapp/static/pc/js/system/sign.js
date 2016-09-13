@@ -10,6 +10,7 @@ $(function(){
 
 sign.signin = function() {
 	var user = iform.parse("signin_form");
+    console.log(user);
 	$.ajax({
 		url: "signin",
 		type: 'POST',

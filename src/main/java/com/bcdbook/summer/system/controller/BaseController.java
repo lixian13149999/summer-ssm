@@ -118,6 +118,19 @@ public class BaseController {
 	/*
 	 * 一下是测试时使用的方法,正式上线之前需要删除
 	 */
+	
+	@RequestMapping(value="/signin2",method={RequestMethod.GET})
+	public ModelAndView signin2(HttpServletRequest req,HttpServletResponse resp,Model model){
+		ModelAndView mv = JadeUtil.getView("signin2.jade");
+		return mv;
+	}
+	
+	@RequestMapping(value="/signup2",method={RequestMethod.GET})
+	public ModelAndView signup2(HttpServletRequest req,HttpServletResponse resp,Model model){
+		ModelAndView mv = JadeUtil.getView("signup2.jade");
+		return mv;
+	}
+	
 	@RequestMapping(method = {RequestMethod.GET}) 
 	public ModelAndView getLoginPage(HttpServletRequest req,HttpServletResponse resp,Model model){
 //		Menu menu = new Menu();

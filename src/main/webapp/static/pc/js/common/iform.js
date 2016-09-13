@@ -21,7 +21,7 @@ iform.listenerFormControl = function(){
 
 iform.parse = function(formId){
     var backData = new Object();
-    $("#"+formId+" input[name]").each(function(index,ele){
+    $("#"+formId+" [name]").each(function(index,ele){
         var name = $(ele).attr('name');
         var val = $(ele).val();
         

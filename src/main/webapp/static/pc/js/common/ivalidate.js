@@ -95,7 +95,6 @@ vd.init = function(eleId,inputType,hasMsg){
             },
             confirmPwd:{
             	equalTo:"#pwd"
-                rangelength:[3,10]
             },
             email:{
                 required:true,
