@@ -44,32 +44,23 @@
     <div class="viewFramework-body">
         <div class="sign-body-cont">
            <div class="sign-content-box">
-                <div class="sign-container signin-form-container">
-                    <img src="../../static/pc/imgs/register_left_pic.png" alt="signin-pic">
-                    <div class="sign-form signin-form">
+                <div class="sign-container mail-check-container">
+                    <div class="sign-form mail-form">
                        <div class="form-title">
-                           用户注册
+                           邮箱验证
                        </div>
+                        
+                        <div class="mail-pic">
+                            <img src="../../static/pc/imgs/mail_icon.png" alt="mail-pic">
+                        </div>
 
-                        <form id="signup-form" method="get" action="mail.html" class="form-horizontal">
+                        <form id="signup-form" method="get" action="javascript:formAction()" class="form-horizontal">
                             <div class="page-form beaut-form-box">
-                                <label for="username" class="control-label">用户名</label>
-                                <input id="username" data-form-control="beaut-control" type="text" name="username" class="form-control" id="" placeholder="">
-                                <label for="username" class="error-msg-label"></label>
+                                <label for="email" class="control-label">请输入邮箱地址</label>
+                                <input id="email" data-form-control="beaut-control" type="text" name="email" class="form-control" id="" placeholder="">
+                                <label for="email" class="error-msg-label"></label>
                             </div>
-
-                            <div class="page-form beaut-form-box">
-                                <label for="password" class="control-label">设置密码</label>
-                                <input id="password" data-form-control="beaut-control" type="password" name="password" class="form-control" id="" placeholder="">
-                                <label for="password" class="error-msg-label"></label>
-                            </div>
-                            
-                            <div class="page-form beaut-form-box">
-                                <label for="password_confirm" class="control-label">确认密码</label>
-                                <input id="password_confirm" data-form-control="beaut-control" type="password" name="password_confirm" class="form-control" id="" placeholder="">
-                                <label for="password_confirm" class="error-msg-label"></label>
-                            </div><br>
-                            <input type="submit" value="提交" class="button button-primary button-rounded pre-button sure-button" />
+                            <input type="submit" value="发送" class="button button-primary button-rounded pre-button mail-button" />
                         </form>
                     </div>
                 </div>

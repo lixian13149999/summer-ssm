@@ -219,33 +219,79 @@ body {
 
 
 //登录注册页面输入框样式统一定义
-.input_container{ //整个块最外层包裹块样式
+
+//页面底部样式定义
+.viewFramework-footer{
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:@sign-footer-height;
     width:100%;
-    margin-bottom:15px;
-    .form-control{ //输入框样式定义
-        width:100%;
-        display:block;
-        height:20px;
-        padding:6px 0;
-        text-indent:1em;
-    }
-    .input_placeholder{ //输入框内提示文字样式定义
-        position:relative;
-        top:-27px;
-        left:5px;
-    }
-    .input_message{ //输入框下部提示文字样式定义
-        display:block;
-        color:#bebebe;
-        margin-top:-12px;
-        padding-left:14px;
+    background-color:#fff;
+    .sign-footer-cont{
+        width:@base-width;
+        height:100%;
+        margin:0 auto;
+        line-height:@sign-footer-height;
+        text-align:center;
+        background-color:#fafafa;
+        color:#999;
     }
 }
-//表单提交按钮样式统一定义
-.input_button{
-    width:142px;
-    height:36px;
+
+//页面中部背景图片定义
+.sign-body-cont{
+    height:100%;
+    background:url("../../imgs/page_bg.png") no-repeat;
+    background-size: cover;
+}
+
+//页面所有按钮基本样式定义
+.pre-button{
+    display:block;
     font-size:14px;
+    background-color:#31a9e8;
+    height:35px;
+    line-height:35px;
 }
+
+//页面可输入区域基本样式定义
+.sign-form{
+    height:100%;
+    position:absolute;
+    background-color:#fff;
+    z-index:10;
+    border:1px solid #d9d9d9;
+    border-radius:5px;
+    margin:0 -15px;
+    padding:0 15px;
+    z-index:10;
+    .form-title,.mail-pic{
+        width:100%;
+        height:60px;
+        line-height:60px;
+        text-align:center;
+    }
+}
+
+//页面中间区域基本样式定义
+.sign-container{
+    position:relative;
+    top:15%;
+    margin:0 auto;
+    border:1px solid #d9d9d9;
+    border-radius:5px;
+    z-index:10;
+    .signin-form{
+        width:@signup-form-width;
+        height:100%;
+        right:15px;
+        border:none;
+    }
+    .mail-form{
+        width:100%;
+    }
+}
+
 
 

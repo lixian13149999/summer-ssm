@@ -1,72 +1,72 @@
-@import url(../include/theme.less);
-@import url(../include/main.less);
-@import url(../include/reset.less);
+@import url("theme.less");
+@import url("main.less");
 
-.background_layer{
+@sign-footer-height:100px;//页面底部高度
+@signup-form-width:314px;//用户登录输入区域宽度
+@signup-form-height:294px;//用户登录输入区域高度
+@signin-form-width:636px;//用户注册输入区域宽度
+@signin-form-height:358px;//用户注册输入区域高度
+@mail-form-width:586px;//邮箱验证输入区域宽度
+@mail-form-height:260px;//邮箱验证输入区域高度
+
+body{
+    background-color:@body-bg-color;
+}
+
+.viewFramework-topbar{
+    color:#fff;
+    .to-signin{
+        color:#31a9e8;
+    }
+}
+
+
+.viewFramework-body{
     position:absolute;
-    top:0;
-    left:0;
+    top:@top-height;
+    bottom:@sign-footer-height;
     width:100%;
-    height:100%;
-    min-height:700px;
-    background:url("http://10.23.2.229:8899/img/signin.jpg") no-repeat;
-    background-size:cover;
-    overflow:hidden;
-    filter:blur(5px);
-    -webkit-filter:blur(5px);
-}
-.sign_box{
-    position:absolute;
-    top:@sign_boxtop;
-    left:0;
-    right:0;
-    display:block;
-    margin:auto;
-    background-color:@sign_box_basecolor;
-    padding:20px 30px;
-}
-.sign_window{
-    width:@sign_box_width;
-    height:@sign_box_height;
-    border:1px solid #666;
-    box-shadow:0 0 10px #adadad;
-    -webkit-box-shadow:0 0 10px #adadad;
-    .signin_logo{
-        width:@logo-size;
-        height:@logo-size;
-        margin:20px auto;
-        .icon{
-            font-size:@logo-size;
-            line-height:@logo-size;
-            color:#000;
+    min-width:@base-width;
+    .sign-content-box{
+        width:@base-width;
+        height:100%;
+        margin:0 auto;
+        position:relative;
+        .left-pic{
+            position:absolute;
+            top:15%;
+            left:150px;
+            z-index:10;
         }
-    }
-    .sign_title{
-        height:20px;
-        margin-bottom:20px;
-        .to_signin{
-            float:right;
-            color:#aaa;
-            a{
-                text-decoration:none;
-                color:#337ab7;
+        .right-form{
+            width:@signup-form-width;
+            height:@signup-form-height;
+            top:22%;
+            right:200px;
+        }
+        .sure-button{
+            width:(@signup-form-width)-30;
+        }
+        .signin-form-container{
+            width:@signin-form-width;
+            height:@signin-form-height;
+            img{
+                height:100%;
+                float:left;
+                border-radius:5px 0 0 5px;
             }
         }
-    }
-    form{
-        width:100%;
-        .sign_input_div{
-            .input_container;
-            .box_tips{
-                .input_placeholder;
+        .mail-check-container{
+            width:@mail-form-width;
+            height:@mail-form-height;
+            .mail-pic{
+                margin:0 0 20px;
             }
-            .message{
-                .input_message;
-            }
+            .mail-button{
+                margin:0 auto;
+            }                
         }
-        .sign_bottom{
-            .input_button;
-            margin:30px auto;
-        }
-    }
+    }    
 }
+
+

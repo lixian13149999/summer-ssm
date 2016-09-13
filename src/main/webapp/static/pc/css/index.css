@@ -8,10 +8,6 @@
  *
  */
 /**
- * 登录注册页面相关定义
- *
- */
-/**
  * 用于重写bootstrap
  * 原始标签样式的文件
  */
@@ -228,32 +224,67 @@ body {
 .has-error .error-msg-label {
   color: #e53a40;
 }
-.input_container {
+.viewFramework-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 150px;
   width: 100%;
-  margin-bottom: 15px;
+  background-color: #fff;
 }
-.input_container .form-control {
-  width: 100%;
+.viewFramework-footer .sign-footer-cont {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  line-height: 150px;
+  text-align: center;
+  background-color: #fafafa;
+  color: #999;
+}
+.sign-body-cont {
+  height: 100%;
+  background: url("../../imgs/page_bg.png") no-repeat;
+  background-size: cover;
+}
+.pre-button {
   display: block;
-  height: 20px;
-  padding: 6px 0;
-  text-indent: 1em;
-}
-.input_container .input_placeholder {
-  position: relative;
-  top: -27px;
-  left: 5px;
-}
-.input_container .input_message {
-  display: block;
-  color: #bebebe;
-  margin-top: -12px;
-  padding-left: 14px;
-}
-.input_button {
-  width: 142px;
-  height: 36px;
   font-size: 14px;
+  background-color: #31a9e8;
+  height: 35px;
+}
+.sign-form {
+  height: 100%;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  margin: 0 -15px;
+  padding: 0 15px;
+  z-index: 10;
+}
+.sign-form .form-title,
+.sign-form .mail-pic {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.sign-container {
+  position: relative;
+  top: 15%;
+  margin: 0 auto;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  z-index: 10;
+}
+.sign-container .signin-form {
+  width: 314px;
+  height: 100%;
+  right: 15px;
+  border: none;
+}
+.sign-container .mail-form {
+  width: 100%;
 }
 .viewFramework-topbar,
 .viewFramework-body,

@@ -2,47 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>注册</title>
-    <!-- Bootstrap样式表引入-->
-    <link rel="stylesheet" href="../../static/libs/bootstrap-buttons/buttons.css" />
-    <!-- 页面自定义样式引入-->
-    <link rel="stylesheet" href="../../static/pc/css/include/sign.css">
+    <title>用户登录</title>
+
+    <!-- 框架样式引入 -->
+    <!-- bootstrap基础样式 -->
+    <link rel="stylesheet" href="../../static/libs/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <!-- bootstrap时间插件样式 -->
+    <link rel="stylesheet" href="../../static/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" type="text/css">
+    <!-- bootstrap的按钮样式 -->
+    <link rel="stylesheet" href="../../static/libs/bootstrap-buttons/buttons.css" type="text/css">
+    <!-- 引入阿里的图标 -->
+    <link rel="stylesheet" href="../../static/libs/iconfont/iconfont.css" type="text/less">
+
+    <!-- 引入图标 -->
+    <link rel="shortcut icon" href="../../static/pc/imgs/logo32.png">
+
+    <!-- 自设定样式的引入 -->
+    <link rel="stylesheet/less" href="../../static/pc/css/index.less" type="text/less">
+    <link rel="stylesheet" type="text/less" href="../../static/pc/css/include/sign.less">
+
 </head>
+
 <body>
-    <div class="background_layer"></div>
-    <div class="sign_box sign_window">
-        <div class="sign_title">
-            <span>用户注册</span>
-            <span class="to_signin">
-                已有账号？请
-                <a href="../pc/signin.html">登录</a>
-            </span>
+    <!--头部开始-->
+    <div class="viewFramework-topbar">
+        <div class="view-top-cont">
+            <div class="top-logo-box">
+                <a href="#" class="logo-href">
+                    <i class="logo-icon icon icon-logo"></i>
+                    <span class="logo-title hover-default">业务·管理平台</span>
+                </a>
+            </div>
+            <div class="top-menu-box"></div>
+            <div class="top-user-box" style="padding-top:25px">
+                没有账号？<a href="signin.html" class="to-signin">请注册</a>
+            </div>
         </div>
-        <form mesthod="post" action="#" id="sign_form">
-            <div class="sign_input">
-                <div class="sign_input_div">
-                    <input type="text" id="username" name="user[username]" class="form-control"/>
-                    <label class="box_tips" for="#username">用户名</label>
-                    <span class="message">请输入用户名</span>       
+    </div>
+
+    <!--body部分开始-->
+    <div class="viewFramework-body">
+        <div class="sign-body-cont">
+           <div class="sign-content-box">
+                <div class="left-pic">
+                    <img src="../../static/pc/imgs/left_pic.png" alt="left_pic">
                 </div>
-                
-                <div class="sign_input_div">
-                    <input type="text" id="passworda" name="user[username]" class="form-control"/>
-                    <label class="box_tips" for="#passworda">密码</label>
-                    <span class="message">请输入密码</span>
-                </div>
-                
-                <div class="sign_input_div">
-                    <input type="text" id="passwordb" name="user[username]" class="form-control"/>
-                    <label class="box_tips" for="passwordb">密码</label>
-                    <span class="message">请再次输入密码</span>         
+                <div class="sign-form right-form">
+                   <div class="form-title">
+                       用户登录
+                   </div>
+                   
+                    <form id="signup-form" method="get" action="javascript:void(0)" class="form-horizontal">
+                        <div class="page-form beaut-form-box">
+                            <label for="username" class="control-label">用户名</label>
+                            <input id="username" data-form-control="beaut-control" type="text" name="username" class="form-control" id="" placeholder="">
+                            <label for="username" class="error-msg-label"></label>
+                        </div>
+                        
+                        <div class="page-form beaut-form-box">
+                            <label for="password" class="control-label">密码</label>
+                            <input id="password" data-form-control="beaut-control" type="password" name="password" class="form-control" id="" placeholder="">
+                            <label for="password" class="error-msg-label"></label>
+                        </div><br>
+                        <input type="submit" value="提交" class="button button-primary button-rounded pre-button sure-button" />
+                    </form>
                 </div>
             </div>
-    
-            <div class="sign_bottom">
-                <button type="button" class="button button-primary input_button">下一步</button>
-            </div>            
-        </form>
+        </div>
     </div>
+
+
+    <!-- 底部开始 -->
+    <div class="viewFramework-footer">
+        <div class="sign-footer-cont">
+            江苏绿能宝融租租赁有限公司
+        </div>
+    </div>
+
+    <!-- 框架js文件的引入 -->
+    <!-- jquery文件 -->
+    <script src="../../static/libs/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <!--引入jQuery的校验-->
+    <script src="../../static/libs/jquery-validation/jquery.validate.min.js"></script>
+    <!--引入jQuery校验的中文提示-->
+    <script src="../../static/libs/jquery-validation/localization/messages_zh.min.js"></script>
+    <!-- jquery-ui文件 -->
+    <script src="../../static/libs/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- bootstrap主js文件 -->
+    <script src="../../static/libs/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- less编译的js文件 -->
+    <script src="../../static/libs/less/dist/less.min.js" type="text/javascript"></script>
+
+    <!-- 自定义的一些js文件 -->
+    <!-- 常用工具类 -->
+    <script type="text/javascript" src="../../static/pc/js/common/itools.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/common/ipopover.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/common/iverify.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/common/ivalidate.js"></script>
+    
+    <script type="text/javascript" src="../../static/pc/js/common/imain.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/common/itop.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/common/imenu.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/common/iform.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        vd.init("signup-form");
+    </script>
 </body>
 </html>

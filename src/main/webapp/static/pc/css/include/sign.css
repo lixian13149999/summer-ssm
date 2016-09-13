@@ -4,10 +4,6 @@
  *
  */
 /**
- * 登录注册页面相关定义
- *
- */
-/**
  * 用于抽取,全局中公用样式的文件
  *
  */
@@ -72,166 +68,160 @@ body {
   color: #5cb85c;
   text-shadow: 0px 0px 3px #5cb85c;
 }
-.input_container {
-  width: 100%;
-  margin-bottom: 15px;
-}
-.input_container .form-control {
-  width: 100%;
-  display: block;
-  height: 20px;
-  padding: 6px 0;
-  text-indent: 1em;
-}
-.input_container .input_placeholder {
-  position: relative;
-  top: -27px;
-  left: 5px;
-}
-.input_container .input_message {
-  display: block;
-  color: #bebebe;
-  margin-top: -12px;
-  padding-left: 14px;
-}
-.input_button {
-  width: 142px;
-  height: 36px;
-  font-size: 14px;
-}
-/**
- * 用于重写bootstrap
- * 原始标签样式的文件
- */
-a,
-a:link,
-a:hover,
-a:active,
-a:visited {
-  color: #666666;
-  text-decoration: none;
-  cursor: pointer;
-}
-dl {
+.beaut-form-box label {
   margin-bottom: 0px;
+  font-weight: 500;
 }
-.popover {
-  padding: 0px;
-  border-radius: 0px;
-  max-width: 600px;
-}
-.popover-content {
-  padding: 0px 0px;
-}
-.form-control {
-  border-radius: 0px;
-}
-.form-control:focus {
-  border: solid #666 1px;
-  -webkit-box-shadow: 0 0 7px 1px #888888;
-  -moz-box-shadow: 0 0 7px 1px #888888;
-  box-shadow: 0 0 7px 1px #888888;
-}
-.has-error .form-control {
-  border-color: #e53a40;
-}
-.has-error .form-control:focus {
-  border: solid #e53a40 1px;
-  -webkit-box-shadow: 0px 0px 4px 1px #ff7473;
-  -moz-box-shadow: 0px 0px 4px 1px #ff7473;
-  box-shadow: 0px 0px 4px 1px #ff7473;
-}
-.background_layer {
+.beaut-form-box .control-label {
   position: absolute;
-  top: 0;
+  padding: 3px 10px;
+  margin-top: 4px;
+  margin-left: 5px;
+  background-color: #fff;
+  transition: all 600ms ease;
+  -webkit-transition: all 600ms ease;
+  -moz-transition: all 600ms ease;
+}
+.beaut-form-box .active {
+  margin-top: -20px;
+}
+.beaut-form-box .error-msg-label {
+  padding: 5px 0px 5px 15px;
+  min-height: 25px;
+}
+.form-box label {
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+.form-box .control-label {
+  padding-right: 15px;
+}
+.form-box .active {
+  margin-top: -20px;
+}
+.form-box .error-msg-label {
+  padding: 5px 0px 5px 15px;
+  min-height: 25px;
+}
+.has-error .error-msg-label {
+  color: #e53a40;
+}
+.viewFramework-footer {
+  position: absolute;
+  bottom: 0;
   left: 0;
+  height: 100px;
   width: 100%;
+  background-color: #fff;
+}
+.viewFramework-footer .sign-footer-cont {
+  width: 1200px;
   height: 100%;
-  min-height: 700px;
-  background: url("http://10.23.2.229:8899/img/signin.jpg") no-repeat;
+  margin: 0 auto;
+  line-height: 100px;
+  text-align: center;
+  background-color: #fafafa;
+  color: #999;
+}
+.sign-body-cont {
+  height: 100%;
+  background: url("../../imgs/page_bg.png") no-repeat;
   background-size: cover;
-  overflow: hidden;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
 }
-.sign_box {
-  position: absolute;
-  top: 200px;
-  left: 0;
-  right: 0;
+.pre-button {
   display: block;
-  margin: auto;
-  background-color: #ffffff;
-  padding: 20px 30px;
-}
-.sign_window {
-  width: 450px;
-  height: 420px;
-  border: 1px solid #666;
-  box-shadow: 0 0 10px #adadad;
-  -webkit-box-shadow: 0 0 10px #adadad;
-}
-.sign_window .signin_logo {
-  width: 120px;
-  height: 120px;
-  margin: 20px auto;
-}
-.sign_window .signin_logo .icon {
-  font-size: 120px;
-  line-height: 120px;
-  color: #000;
-}
-.sign_window .sign_title {
-  height: 20px;
-  margin-bottom: 20px;
-}
-.sign_window .sign_title .to_signin {
-  float: right;
-  color: #aaa;
-}
-.sign_window .sign_title .to_signin a {
-  text-decoration: none;
-  color: #337ab7;
-}
-.sign_window form {
-  width: 100%;
-}
-.sign_window form .sign_input_div {
-  width: 100%;
-  margin-bottom: 15px;
-}
-.sign_window form .sign_input_div .form-control {
-  width: 100%;
-  display: block;
-  height: 20px;
-  padding: 6px 0;
-  text-indent: 1em;
-}
-.sign_window form .sign_input_div .input_placeholder {
-  position: relative;
-  top: -27px;
-  left: 5px;
-}
-.sign_window form .sign_input_div .input_message {
-  display: block;
-  color: #bebebe;
-  margin-top: -12px;
-  padding-left: 14px;
-}
-.sign_window form .sign_input_div .box_tips {
-  position: relative;
-  top: -27px;
-  left: 5px;
-}
-.sign_window form .sign_input_div .message {
-  display: block;
-  color: #bebebe;
-  margin-top: -12px;
-  padding-left: 14px;
-}
-.sign_window form .sign_bottom {
-  width: 142px;
-  height: 36px;
   font-size: 14px;
-  margin: 30px auto;
+  background-color: #31a9e8;
+  height: 35px;
+  line-height: 35px;
+}
+.sign-form {
+  height: 100%;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  margin: 0 -15px;
+  padding: 0 15px;
+  z-index: 10;
+}
+.sign-form .form-title,
+.sign-form .mail-pic {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.sign-container {
+  position: relative;
+  top: 15%;
+  margin: 0 auto;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  z-index: 10;
+}
+.sign-container .signin-form {
+  width: 314px;
+  height: 100%;
+  right: 15px;
+  border: none;
+}
+.sign-container .mail-form {
+  width: 100%;
+}
+body {
+  background-color: #ffffff;
+}
+.viewFramework-topbar {
+  color: #fff;
+}
+.viewFramework-topbar .to-signin {
+  color: #31a9e8;
+}
+.viewFramework-body {
+  position: absolute;
+  top: 66px;
+  bottom: 100px;
+  width: 100%;
+  min-width: 1200px;
+}
+.viewFramework-body .sign-content-box {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.viewFramework-body .sign-content-box .left-pic {
+  position: absolute;
+  top: 15%;
+  left: 150px;
+  z-index: 10;
+}
+.viewFramework-body .sign-content-box .right-form {
+  width: 314px;
+  height: 294px;
+  top: 22%;
+  right: 200px;
+}
+.viewFramework-body .sign-content-box .sure-button {
+  width: 284px;
+}
+.viewFramework-body .sign-content-box .signin-form-container {
+  width: 636px;
+  height: 358px;
+}
+.viewFramework-body .sign-content-box .signin-form-container img {
+  height: 100%;
+  float: left;
+  border-radius: 5px 0 0 5px;
+}
+.viewFramework-body .sign-content-box .mail-check-container {
+  width: 586px;
+  height: 260px;
+}
+.viewFramework-body .sign-content-box .mail-check-container .mail-pic {
+  margin: 0 0 20px;
+}
+.viewFramework-body .sign-content-box .mail-check-container .mail-button {
+  margin: 0 auto;
 }

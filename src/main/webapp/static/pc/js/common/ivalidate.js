@@ -34,6 +34,15 @@ vd.init = function(eleId){
             password:{
                 required:true,
                 rangelength:[3,10]
+            },
+            password_confirm:{
+                required:true,
+                rangelength:[3,10],
+                equalTo:"#password"
+            },
+            email:{
+                required:true,
+                email:true,
             }
         },
         messages:{
@@ -43,7 +52,15 @@ vd.init = function(eleId){
             },
             password:{
                 required: "密码不能为空",
-                rangelength:"长度限制"
+                rangelength:"请输入3~10个字符"
+            },
+            password_confirm:{
+                required:"确认密码不能为空",
+                equalTo:"确认密码与密码不一致"
+            },
+            email:{
+                required:"邮件地址不能为空",
+                email:"请输入正确的邮箱",
             }
         }
     });
