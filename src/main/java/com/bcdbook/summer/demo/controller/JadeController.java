@@ -1,6 +1,5 @@
 package com.bcdbook.summer.demo.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,11 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bcdbook.summer.common.util.JadeUtil;
-import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.User;
-
-import de.neuland.jade4j.Jade4J;
-import de.neuland.jade4j.exceptions.JadeCompilerException;
 
 /**
  * 常用的Demo的控制器

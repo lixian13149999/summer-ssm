@@ -3,7 +3,6 @@ package com.bcdbook.summer.common.persistence.pojo;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.common.util.IdGen;
-import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.common.util.UserUtil;
 import com.bcdbook.summer.system.pojo.User;
 //import com.thinkgem.jeesite.common.utils.IdGen;
