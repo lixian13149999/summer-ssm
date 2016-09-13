@@ -67,6 +67,7 @@ dl {
 }
 .form-group {
   margin-right: 0px;
+  margin-left: 0px;
   margin-bottom: 0px;
 }
 .form-horizontal .form-group {
@@ -208,6 +209,7 @@ body {
 }
 .beaut-form-box .error-msg-label {
   padding: 5px 0px 5px 15px;
+  min-height: 25px;
 }
 .form-box label {
   margin-bottom: 0px;
@@ -221,6 +223,7 @@ body {
 }
 .form-box .error-msg-label {
   padding: 5px 0px 5px 15px;
+  min-height: 25px;
 }
 .has-error .error-msg-label {
   color: #e53a40;
