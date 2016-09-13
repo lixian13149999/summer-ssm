@@ -124,6 +124,7 @@ public class UserService extends CrudService<UserDao,User>{
 				menus.add(menu);
 			}
 		}
+		
 		return menus;
 	}
 	

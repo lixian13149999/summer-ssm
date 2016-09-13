@@ -12,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bcdbook.summer.system.pojo.Menu;
+import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.system.service.MenuService;
 import com.bcdbook.summer.system.service.UserService;
 
@@ -32,6 +34,34 @@ public class UserController {
 	private UserService userService;
 	@Resource
 	private MenuService menuService;
+	
+
+	/**
+	 * @Description: 检查用户名是否被占用的方法
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param user
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月13日
+	 */
+	@RequestMapping(value="/userNameCanUse",method = {RequestMethod.GET}) 
+	@ResponseBody
+	public String userIsExist(HttpServletRequest req,HttpServletResponse resp,User user){
+		//根据前台传入的用户对象,从数据库中获取user
+		User dbUser = userService.getByCondition(user);
+		System.out.println(user);
+		System.out.println(dbUser);
+		//如果用户不存在,返回true,否则返回false
+		return dbUser==null?"true":"false";
+	}
+	
+	
+	/*
+	 * 以下是测试使用的方法,正式上线前需要删除
+	 */
 	
 	@RequestMapping(value="",method={RequestMethod.GET})
 	public String testIndex(HttpServletRequest request,HttpServletResponse response,Model model){

@@ -76,7 +76,7 @@
             </div>
 
             <div class="view-product-body">
-                <form id="test_form" method="get" action="javascript:formAction()" class="form-horizontal">
+                <form id="test_form" method="get" action="javascript:testGetName()" class="form-horizontal">
                     
                     <div class="page-form form-box">
                         <div class="form-group">
@@ -91,7 +91,7 @@
                     
                     <div class="page-form beaut-form-box">
                         <label for="username" class="control-label">用户名</label>
-                        <input id="username" data-form-control="beaut-control" type="text" name="username" class="form-control" id="" placeholder="">
+                        <input id="username" data-form-control="beaut-control" type="text" name="username" class="form-control" placeholder="">
                         <label for="username" class="error-msg-label">默认错误提示信息</label>
                     </div>
                     
@@ -128,13 +128,18 @@
     <script type="text/javascript" src="../../static/pc/js/common/ipopover.js"></script>
     <script type="text/javascript" src="../../static/pc/js/common/iverify.js"></script>
     <script type="text/javascript" src="../../static/pc/js/common/ivalidate.js"></script>
-    
-    <script type="text/javascript" src="../../static/pc/js/common/imain.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/itop.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/imenu.js"></script>
     <script type="text/javascript" src="../../static/pc/js/common/iform.js"></script>
+    
+    <script type="text/javascript" src="../../static/pc/js/system/imain.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/system/itop.js"></script>
+    <script type="text/javascript" src="../../static/pc/js/system/imenu.js"></script>
     <script type="text/javascript" charset="utf-8">
-        vd.init("test_form");
+        vd.init("test_form",2,1);
+
+        function testGetName(){
+            var proj = iform.parse("test_form");
+            console.log(proj);
+        }
     </script>
 </body>
 </html>

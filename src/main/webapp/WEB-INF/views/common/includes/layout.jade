@@ -27,10 +27,13 @@ html
 		script(type='text/javascript',src='#{staticCtx}/libs/jquery/dist/jquery.min.js')
 		//- jquery验证文件
 		script(type='text/javascript',src='#{staticCtx}/libs/jquery-validation/jquery.validate.min.js')
+		//- 进入jQuery校验的中文提示
+		script(type='text/javascript',src='#{staticCtx}/libs/jquery-validation/localization/messages_zh.min.js')
 		//- jquery-ui文件
 		script(type='text/javascript',src='#{staticCtx}/libs/jquery-ui/jquery-ui.min.js')
 		//- bootstrap主js文件
 		script(type='text/javascript',src='#{staticCtx}/libs/bootstrap/dist/js/bootstrap.min.js')
+			
 		//- less编译的js文件
 		script(type='text/javascript',src='#{staticCtx}/libs/less/dist/less.min.js')
 
@@ -39,16 +42,16 @@ html
 		script.
 			var ctx = '#{ctx}';
 			var staticCtx = '#{staticCtx}';
-			console.log(ctx);
+			//- console.log(ctx);
 		script(type='text/javascript',src='#{staticCtx}/pc/js/common/itools.js')
 		script(type='text/javascript',src='#{staticCtx}/pc/js/common/ipopover.js')
 		script(type='text/javascript',src='#{staticCtx}/pc/js/common/iverify.js')
 		script(type='text/javascript',src='#{staticCtx}/pc/js/common/ivalidate.js')
-        
-		script(type='text/javascript',src='#{staticCtx}/pc/js/common/imain.js')
-		script(type='text/javascript',src='#{staticCtx}/pc/js/common/itop.js')
-		script(type='text/javascript',src='#{staticCtx}/pc/js/common/imenu.js')
 		script(type='text/javascript',src='#{staticCtx}/pc/js/common/iform.js')
+        
+		script(type='text/javascript',src='#{staticCtx}/pc/js/system/imain.js')
+		script(type='text/javascript',src='#{staticCtx}/pc/js/system/itop.js')
+		script(type='text/javascript',src='#{staticCtx}/pc/js/system/imenu.js')
 		
 	body
 		block content	

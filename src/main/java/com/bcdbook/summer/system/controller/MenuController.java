@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSON;
 import com.bcdbook.summer.system.service.MenuService;
 
 
@@ -30,6 +31,7 @@ public class MenuController {
 //		
 //		menuService.addMenu(m);
 //		
+//		JSON.parse(text)
 		return "user/getUser";
 	}
 

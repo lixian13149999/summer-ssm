@@ -1,0 +1,15 @@
+extends ./common/includes/layout.jade
+block content
+	.signin-box(style="width:400px;margin: 50px auto;")
+		form#signin_form.form-horizontal(method="get" action="javascript:sign.signin()")
+			div.page-form.beaut-form-box
+				lable.control-label(for="userName") 用户名
+				input#userName.form-control(data-form-control="beaut-control" type="text" name="userName")
+				label.error-msg-label(for="userName")
+			div.page-form.beaut-form-box
+				lable.control-label(for="pwd") 密码
+				input#pwd.form-control(data-form-control="beaut-control" type="password" name="pwd")
+				label.error-msg-label(for="pwd")
+			input.button.button-primary(type="submit" value="提交")
+			
+	script(type='text/javascript',src='#{staticCtx}/pc/js/system/sign.js')
