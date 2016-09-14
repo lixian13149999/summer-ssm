@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.bcdbook.summer.common.util.StringUtils;
+import com.bcdbook.summer.system.pojo.User;
+
 /**
  * @author lason 拦截器的类,使用spring的AOP用来拦截事物处理相关的事项
  */
@@ -32,20 +35,28 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		logger.info("拦截器中加入日志");
+		String aa = request.getRequestURL().toString();
+//		System.out.println("====================="+aa);
+		logger.info("日志中加入拦截器中产生的路径:"+aa);
+		
+		User user = (User) request.getSession().getAttribute("onlineUser");
+		if(user==null||StringUtils.isNull(user.getUserName())){
+			response.sendRedirect("signin");
+			return false;
+		}
+		
+		return true;
+		
 		
 		//拦截器中,可以直接获取request中的值
 //		System.out.println(request.getParameter("type"));
 //		System.out.println(request.getPathInfo());
 //		String path = request.getContextPath();
-		String aa = request.getRequestURL().toString();
 //		
 //		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"+"aa="+aa;
-		System.out.println("====================="+aa);
 //		System.out.println("进入拦截器preHandle");
 //		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 //		return false;
-		return true;
 ////		if ("GET".equalsIgnoreCase(request.getMethod())) {
 ////			RequestUtil.saveRequest();
 ////		}

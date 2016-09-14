@@ -13,7 +13,7 @@ public class User extends DataEntity<User> {
 	private int age;// 年龄
 	private int gender;//性别
 	private String phone;// 电话
-	private int phoneState;//电话的绑定状态,,1:绑定,2:未绑定
+	private int phoneState;//电话的绑定状态,1:绑定,2:未绑定
 	private String email;// 邮箱
 	private int emailState;//邮箱的绑定状态,1:绑定,2:未绑定
 	private String openId;// 用于微信绑定的openid

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.system.pojo.Menu;
@@ -36,6 +37,19 @@ public class BaseController {
 	private UserService userService;
 	@Resource
 	private MenuService menuService;
+	
+	
+	@RequestMapping(method = {RequestMethod.GET}) 
+	public ModelAndView getLoginPage(HttpServletRequest req,HttpServletResponse resp,Model model){
+//		Menu menu = new Menu();
+//		menu.setParentId("first");
+//		List<Menu> userMenus = menuService.findList(menu);
+		
+		ModelAndView mv = JadeUtil.getView("index.jade");
+//		mv.addObject("onlineMenus", userMenus);
+		
+		return mv;
+	}
 	
 	/**
 	 * @Description: 获取登陆页面
@@ -109,9 +123,15 @@ public class BaseController {
 	 * @date 2016年9月1日
 	 */
 	@RequestMapping(value="/signup",method={RequestMethod.POST})
-	public ModelAndView doSignup(HttpServletRequest req,HttpServletResponse resp,User user){
-		System.out.println(user);
-		return null;
+	@ResponseBody
+	public String doSignup(HttpServletRequest req,HttpServletResponse resp,User user){
+		
+		User newUser = userService.signup(user);
+		
+		if(newUser==null)
+			return BackMsg.error("signup error");
+		
+		return BackMsg.success(JSON.toJSONString(newUser), "signup success");
 	}
 	
 	
@@ -128,18 +148,6 @@ public class BaseController {
 	@RequestMapping(value="/signup2",method={RequestMethod.GET})
 	public ModelAndView signup2(HttpServletRequest req,HttpServletResponse resp,Model model){
 		ModelAndView mv = JadeUtil.getView("signup2.jade");
-		return mv;
-	}
-	
-	@RequestMapping(method = {RequestMethod.GET}) 
-	public ModelAndView getLoginPage(HttpServletRequest req,HttpServletResponse resp,Model model){
-//		Menu menu = new Menu();
-//		menu.setParentId("first");
-//		List<Menu> userMenus = menuService.findList(menu);
-		
-		ModelAndView mv = JadeUtil.getView("index.jade");
-//		mv.addObject("onlineMenus", userMenus);
-		
 		return mv;
 	}
 	

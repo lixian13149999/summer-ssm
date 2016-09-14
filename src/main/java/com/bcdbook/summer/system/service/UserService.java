@@ -8,8 +8,11 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bcdbook.summer.common.persistence.service.CrudService;
+import com.bcdbook.summer.common.util.MD5Util;
+import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.dao.RoleDao;
 import com.bcdbook.summer.system.dao.UserDao;
 import com.bcdbook.summer.system.pojo.Menu;
@@ -24,6 +27,50 @@ public class UserService extends CrudService<UserDao,User>{
 	private UserDao userDao;
 	@Resource
 	private RoleDao roleDao;
+	
+	/**
+	 * @Description: 注册的service层处理
+	 * @param @param user
+	 * @param @return   
+	 * @return boolean  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月14日
+	 */
+//	@Transactional
+	//为了避免注册的时候出现用户名冲突的问题(多线程并发,这里注册时锁定线程)
+	public synchronized User signup(User user){
+		//如果传入的User对象为空,或者username为空或者password为空,直接返回false
+		if(user==null||StringUtils.isNull(user.getUserName())||StringUtils.isNull(user.getPwd()))
+			return null;
+		
+		//创建一个User对象,用于封装检测条件
+		User checkUser = new User();
+		//把用户名封装到用于检测的User对象中
+		checkUser.setUserName(user.getUserName());
+		//通过设定的条件获取User对象
+		User dbUser = getByCondition(checkUser);
+		
+		//如果用户存在,说明此用户名已经被占用
+		if(dbUser!=null)
+			return null;
+		
+		user.setPwd(MD5Util.getMD5Code(user.getPwd()));
+		user.setPhoneState(User.UNBOUND);//设置手机为未绑定状态
+		user.setEmailState(User.UNBOUND);//设置邮箱为未绑定状态
+		user.setWechatState(User.UNBOUND);//设置微信为未绑定状态
+		user.setIsLock(User.LOCK);//设置用户为锁定状态
+		
+		String userId = addBackId(user);
+		
+		if(userId==null)
+			return null;
+					
+		User backUser = get(userId);
+		
+		return backUser;
+	}
+	
 	
 	/**
 	 * @Description: 添加用户,角色关系

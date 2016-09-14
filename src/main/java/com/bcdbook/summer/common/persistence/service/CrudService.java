@@ -35,6 +35,26 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 		entity.preInsert();
 		return dao.insert(entity);
 	}
+	/**
+	 * @Description: 添加一条数据,返回该调数据库的id
+	 * @param @param entity
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月14日
+	 */
+	public String addBackId(T entity){
+		if(entity==null)
+			return null;
+		
+		entity.preInsert();
+		
+		if(dao.insert(entity)!=1)
+			return null;
+		
+		return entity.getId(); 
+	}
 
 	/**
 	 * 根据id删除相关数据

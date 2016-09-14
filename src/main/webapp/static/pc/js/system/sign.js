@@ -35,18 +35,26 @@ sign.signup = function() {
 	$.ajax({
 		url: "signup",
 		type: 'POST',
+		dataType:"json",
 		data: {
 			userName:userName,
 			pwd:pwd
 		},
 		async: false,
 		success: function(data) {
-			console.log(data);
-			//cb(data);
+			// console.log(data);
+			cb(data);
 		},
 		error: function() {
 			console.log('pathExcel error2')
 		}
 	});
-	console.log("signup");
+	function cb (data) {
+		if(data.code==200&&data.type==1){
+			var user = data.data;
+			window.location.href="signin&userName="+user.userName;
+		}
+		console.log(data);
+	}
+	// console.log("signup");
 }
