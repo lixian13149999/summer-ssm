@@ -251,6 +251,7 @@ body {
   font-size: 14px;
   background-color: #31a9e8;
   height: 35px;
+  line-height: 35px;
 }
 .sign-form {
   height: 100%;

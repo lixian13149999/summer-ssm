@@ -1,0 +1,34 @@
+extends ./common/includes/layout.jade
+block content
+    //- 头部页面块
+    .viewFramework-topbar
+        include ./common/includes/signup-top.jade
+
+    //- body部分页面块
+    .viewFramework-body
+        .sign-body-cont
+            .sign-content-box
+                .sign-container.mail-check-container
+                    .sign-form.mail-form
+                        .form-title 邮箱验证
+                    .mail-pic
+                        img(src="#{staticCtx}/pc/imgs/mail_icon.png" alt="mail-pic")
+                    form#signup-form.form-horizontal(method="get" action="javascript:formAction()")
+                        .page-form.beaut-form-box
+                            label.control-label(for="email") 请输入邮箱地址
+                            input#email.form-control(data-form-control="beaut-control" type="password" name="email")
+                            label.error-msg-label(for="email")
+                        input.button.button-primary.button-rounded.prebutton.sure-button(type="submit" value="提交")
+                            
+
+    //- 脚部页面块
+    .viewFramework-footer
+        include ./common/includes/footer.jade
+        
+    script(type='text/javascript',src='#{staticCtx}/pc/js/system/sign.js')
+    script(type='text/javascript',src='#{staticCtx}/backup/js/system/menu.js')
+    script(type='text/javascript',src='#{staticCtx}/backup/js/system/auth.js')
+    script(type='text/javascript',src='#{staticCtx}/backup/js/system/role.js')
+    script(type='text/javascript',src='#{staticCtx}/backup/js/system/user.js')
+    script(type='text/javascript',src='#{staticCtx}/backup/js/system/company.js')
+    script(type='text/javascript',src='#{staticCtx}/backup/js/system/depart.js')
