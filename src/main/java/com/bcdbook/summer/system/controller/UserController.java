@@ -1,7 +1,9 @@
 package com.bcdbook.summer.system.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -13,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.system.service.MenuService;
@@ -58,6 +62,15 @@ public class UserController {
 		return dbUser==null?"true":"false";
 	}
 	
+	@RequestMapping(value="/verifyEmail",method={RequestMethod.GET})
+	public ModelAndView signin(HttpServletRequest req,HttpServletResponse resp,Model model){
+		
+		Map<String, Boolean> pageData = new HashMap<String, Boolean>();
+		pageData.put("hasUser", true);
+		
+		ModelAndView mv = JadeUtil.getView("system/sign/verify_email.jade",pageData);
+		return mv;
+	}
 	
 	/*
 	 * 以下是测试使用的方法,正式上线前需要删除

@@ -27,6 +27,8 @@
 	        
 	        <!-- 用于检查用户名是否存在的接口 -->
 	        <mvc:exclude-mapping path="/user/userNameCanUse" />
+	        <!-- 获取邮箱验证页面的接口 -->
+	        <mvc:exclude-mapping path="/user/verifyEmail" />
 	        
 	        <!-- 拦截时过滤掉wechat/login -->
 	        <mvc:exclude-mapping path="/wechat/login" />

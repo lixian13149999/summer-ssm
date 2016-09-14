@@ -1,0 +1,40 @@
+doctype html
+html
+	head
+		title 邮箱验证
+
+		//- 引入页面用样式
+		include ../../common/static/style.jade
+
+		//- 引入此页面单独的样式
+		link(rel='stylesheet/less',type='text/css',href='#{staticCtx}/pc/css/include/sign.less')
+
+		//- 引入公用的js文件
+		include ../../common/static/script.jade
+	body
+		//- 头部页面块
+		.viewFramework-topbar
+			include ./signup_top.jade
+
+		//- body部分页面块
+		.viewFramework-body-sign
+			.sign-body-cont
+				.sign-content-box
+					.sign-container.mail-check-container
+						.sign-form.mail-form
+							//- .form-title 邮箱验证
+							.mail-pic
+								i.icon.icon-email-shade
+								//- img(src="#{staticCtx}/pc/imgs/mail_icon.png" alt="mail-pic")
+							form#signup-form.form-horizontal(method="get" action="javascript:formAction()")
+								.page-form.beaut-form-box
+									label.control-label(for="email") 请输入邮箱地址
+									input#email.form-control(data-form-control="beaut-control" type="password" name="email" autofocus)
+									label.error-msg-label(for="email")
+								input.button.button-primary.sure-button.mail-button(type="submit" value="提交")
+
+		//- 脚部页面块
+		.viewFramework-footer
+			include ../../common/includes/footer.jade
+
+		script(type='text/javascript',src='#{staticCtx}/pc/js/system/sign.js')

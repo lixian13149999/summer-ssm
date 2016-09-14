@@ -1,0 +1,45 @@
+doctype html
+html
+	head
+		title 注册
+
+		//- 引入页面用样式
+		include ../../common/static/style.jade
+
+		//- 引入此页面单独的样式
+		link(rel='stylesheet/less',type='text/css',href='#{staticCtx}/pc/css/include/sign.less')
+
+		//- 引入公用的js文件
+		include ../../common/static/script.jade
+	body
+		//- 头部页面块
+		.viewFramework-topbar
+			include ./signup_top.jade
+
+		//- body部分页面块
+		.viewFramework-body-sign
+			.sign-body-cont
+				.sign-content-box
+					.sign-container.signin-form-container
+						img(src="#{staticCtx}/pc/imgs/register_left_pic.png" alt="signin-pic")
+						.sign-form.signin-form
+							.form-title 用户注册
+							form#signup_form.form-horizontal(method="get" action="javascript:sign.signup()")
+								.page-form.beaut-form-box
+									label.control-label(for="signupUserName") 用户名
+									input#signupUserName.form-control(data-form-control="beaut-control" type="text" name="signupUserName" autofocus)
+									label.error-msg-label(for="signupUserName")
+								.page-form.beaut-form-box
+									label.control-label(for="pwd") 密码
+									input#pwd.form-control(data-form-control="beaut-control" type="password" name="pwd")
+									label.error-msg-label(for="pwd")
+								.page-form.beaut-form-box
+									label.control-label(for="confirmPwd") 验证密码
+									input#confirmPwd.form-control(data-form-control="beaut-control" type="password" name="confirmPwd")
+									label.error-msg-label(for="confirmPwd")
+								input.button.button-primary.sure-button(type="submit" value="提交")
+		//- 脚部页面块
+		.viewFramework-footer
+			include ../../common/includes/footer.jade
+
+		script(type='text/javascript',src='#{staticCtx}/pc/js/system/sign.js')

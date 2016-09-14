@@ -1,0 +1,14 @@
+.view-top-cont
+	.top-logo-box
+		a.logo-href(href="/")
+			i.logo-icon.icon.icon-logo
+			span.logo-title.hover-default 业务·管理平台
+
+	.top-menu-box
+	
+	if hasUser
+		.signin-up-msg 没有账号？
+			a.to-signin(href="signup") 请注册
+	else if !hasUser
+		.signin-up-msg 已有账号？
+			a.to-signin(href="signin") 请登录

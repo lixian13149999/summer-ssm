@@ -7,7 +7,7 @@
 @signin-form-width:636px;//用户注册输入区域宽度
 @signin-form-height:358px;//用户注册输入区域高度
 @mail-form-width:586px;//邮箱验证输入区域宽度
-@mail-form-height:260px;//邮箱验证输入区域高度
+@mail-form-height:290px;//邮箱验证输入区域高度
 
 body{
     background-color:@body-bg-color;
@@ -15,8 +15,13 @@ body{
 
 .viewFramework-topbar{
     color:#fff;
-    .to-signin{
-        color:#31a9e8;
+    .signin-up-msg{
+        display:inline-block;
+        padding:25px 0;
+        float: right;
+        .to-signin{
+            color:#31a9e8;
+        }
     }
 }
 
@@ -60,13 +65,92 @@ body{
             width:@mail-form-width;
             height:@mail-form-height;
             .mail-pic{
-                margin:0 0 20px;
+                // margin:0 0 20px;
+                height: 150px;
+                line-height: 140px;
+                i{
+                    font-size: 90px;
+                    .opacity(80,0.8);
+                }
             }
             .mail-button{
                 margin:0 auto;
+                display:block;
             }                
         }
     }    
 }
+//登录注册页面输入框样式统一定义
 
+//页面底部样式定义
+.viewFramework-footer{
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:@sign-footer-height;
+    width:100%;
+    background-color:#fff;
+    .sign-footer-cont{
+        width:@base-width;
+        height:100%;
+        margin:0 auto;
+        line-height:@sign-footer-height;
+        text-align:center;
+        background-color:#fafafa;
+        color:#999;
+    }
+}
 
+//页面中部背景图片定义
+.sign-body-cont{
+    height:100%;
+    background:url("../../imgs/page_bg.png") no-repeat;
+    background-size: cover;
+}
+
+//页面所有按钮基本样式定义
+.pre-button{
+    display:block;
+    font-size:14px;
+    background-color:#31a9e8;
+    height:35px;
+    line-height:35px;
+}
+
+//页面可输入区域基本样式定义
+.sign-form{
+    height:100%;
+    position:absolute;
+    background-color:#fff;
+    z-index:10;
+    border:1px solid #d9d9d9;
+    border-radius:5px;
+    margin:0 -15px;
+    padding:0 15px;
+    z-index:10;
+    .form-title,.mail-pic{
+        width:100%;
+        height:60px;
+        line-height:60px;
+        text-align:center;
+    }
+}
+
+//页面中间区域基本样式定义
+.sign-container{
+    position:relative;
+    top:15%;
+    margin:0 auto;
+    border:1px solid #d9d9d9;
+    border-radius:5px;
+    z-index:10;
+    .signin-form{
+        width:@signup-form-width;
+        height:100%;
+        right:15px;
+        border:none;
+    }
+    .mail-form{
+        width:100%;
+    }
+}

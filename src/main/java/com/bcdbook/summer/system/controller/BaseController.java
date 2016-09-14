@@ -1,6 +1,9 @@
 package com.bcdbook.summer.system.controller;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -43,7 +46,7 @@ public class BaseController {
 	
 	
 	@RequestMapping(method = {RequestMethod.GET}) 
-	public ModelAndView getLoginPage(HttpServletRequest req,HttpServletResponse resp,Model model){
+	public ModelAndView index(HttpServletRequest req,HttpServletResponse resp,Model model){
 //		Menu menu = new Menu();
 //		menu.setParentId("first");
 //		List<Menu> userMenus = menuService.findList(menu);
@@ -67,7 +70,11 @@ public class BaseController {
 	 */
 	@RequestMapping(value="/signin",method={RequestMethod.GET})
 	public ModelAndView signin(HttpServletRequest req,HttpServletResponse resp,Model model){
-		ModelAndView mv = JadeUtil.getView("signin.jade");
+		
+		Map<String, Boolean> pageData = new HashMap<String, Boolean>();
+		pageData.put("hasUser", true);
+		
+		ModelAndView mv = JadeUtil.getView("system/sign/signin.jade",pageData);
 		return mv;
 	}
 	
@@ -127,7 +134,11 @@ public class BaseController {
 	 */
 	@RequestMapping(value="/signup",method={RequestMethod.GET})
 	public ModelAndView signup(HttpServletRequest req,HttpServletResponse resp,Model model){
-		ModelAndView mv = JadeUtil.getView("signup.jade");
+
+		Map<String, Boolean> pageData = new HashMap<String, Boolean>();
+		pageData.put("hasUser", false);
+		
+		ModelAndView mv = JadeUtil.getView("system/sign/signup.jade",pageData);
 		return mv;
 	}
 	/**
