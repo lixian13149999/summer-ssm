@@ -48,6 +48,8 @@ public class Global {
 	public static final Boolean TRUE = true;
 	public static final Boolean FALSE = false;
 	
+	public static final String ONLINE_USER = "onlineUser";
+	
 	/**
 	 * 上传文件基础虚拟路径
 	 */

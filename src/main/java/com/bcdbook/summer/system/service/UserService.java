@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,6 +70,32 @@ public class UserService extends CrudService<UserDao,User>{
 		User backUser = get(userId);
 		
 		return backUser;
+	}
+
+	/**
+	 * @Description: 用户登录的方法
+	 * @param @param user
+	 * @param @return   
+	 * @return User  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月14日
+	 */
+	public User signin(User user) {
+		//如果传入的User为空,或者用户名为空,或者密码为空,则直接返回空
+		if(user==null||StringUtils.isNull(user.getUserName())||StringUtils.isNull(user.getPwd()))
+			return null;
+		
+		//对传入的密码进行md5加密处理,使用加密后的值和后台对比
+		user.setPwd(MD5Util.getMD5Code(user.getPwd()));
+		
+		//为避免出现查出多条记录的错误,这里直接查一个user集合
+		List<User> userList = findList(user);
+		//如果符合条件的User的数量不为1,则说明登陆数据出错了,返回null
+		if(userList.size()!=1)
+			return null;
+		
+		return userList.get(0);
 	}
 	
 	
@@ -194,4 +221,6 @@ public class UserService extends CrudService<UserDao,User>{
 		}
 		return powers;
 	}
+
+
 }

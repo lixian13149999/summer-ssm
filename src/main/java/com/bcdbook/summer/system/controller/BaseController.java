@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.JadeUtil;
+import com.bcdbook.summer.common.util.SessionUtil;
 import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.Power;
 import com.bcdbook.summer.system.pojo.Role;
@@ -82,13 +85,29 @@ public class BaseController {
 	@RequestMapping(value="/signin",method={RequestMethod.POST})
 	@ResponseBody
 	public String doSignin(HttpServletRequest req,HttpServletResponse resp,User user){
-		User onlineUser = userService.getByCondition(user);
-		if(onlineUser==null)
-			return BackMsg.error("user not exist");
+		System.out.println(user);
+		if(user==null)
+			return BackMsg.error("request user is null");
 		
-		List<Role> roles = userService.listRoleByUser(onlineUser.getId());
-		Set<Menu> menus = userService.listMenuByUser(onlineUser.getId());
-		Set<Power> powers = userService.listPowerByUser(onlineUser.getId());
+		User onlineUser = userService.signin(user);
+		if(onlineUser==null)
+			return BackMsg.error("signin error");
+		
+		if(!SessionUtil.refresh(req, Global.ONLINE_USER, onlineUser))
+			return BackMsg.error("signin error");
+		
+		HttpSession session = req.getSession();
+//		List<User> userList = userService.findList(user);
+//		if(userList.size()!=1)
+//			return BackMsg.error("user not exist or too more");
+//		
+//		User onlineUser = userService.getByCondition(user);
+//		if(onlineUser==null)
+//			return BackMsg.error("user not exist");
+		
+//		List<Role> roles = userService.listRoleByUser(onlineUser.getId());
+//		Set<Menu> menus = userService.listMenuByUser(onlineUser.getId());
+//		Set<Power> powers = userService.listPowerByUser(onlineUser.getId());
 		
 		
 		System.out.println(user);
