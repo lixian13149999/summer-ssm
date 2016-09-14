@@ -44,12 +44,17 @@ body {
 	filter: blur(@blur_size);
 }
 // 定义过度效果的样式
-.transition{
-	transition: all 600ms ease;
-	-webkit-transition: all 600ms ease;
-	-moz-transition: all 600ms ease;
+.transition(@time:600ms){
+	transition: all @time ease;
+	-webkit-transition: all @time ease;
+	-moz-transition: all @time ease;
+    -o-transition: all @time ease;
 }
-
+.radius(@radius:4px){
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+}
 //获得鼠标字体样式改变的方法的定义 start------------------------
 .light-color{
     color: @font-color-light;

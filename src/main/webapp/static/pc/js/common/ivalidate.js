@@ -1,6 +1,5 @@
 var vd = new Object();
-
-
+    
 //验证出现错误时需要做的处理
 vd.toError = function(errorEle,confEle){
     //获取错误提示消息
@@ -33,6 +32,17 @@ vd.toBeautError = function(errorEle,confEle){
     }
 }
 
+vd.alertError = function(errorEle){
+	console.log(errorEle);
+	console.log(errorEle.text());
+    //获取错误提示消息
+    var errorMsg = errorEle.text();
+    if(!v.isNull(errorMsg)){
+    	imessenger.error(errorMsg);
+    }
+    // body...
+};
+
 vd.toSuccess = function(label){
 //    console.log("success");
 }
@@ -61,6 +71,8 @@ vd.init = function(eleId,inputType,hasMsg){
             }
             
             if(hasMsg==1){
+                // imessenger.error()
+                vd.alertError(errorEle);
 //                console.log("弹出消息信息");
             }
         },

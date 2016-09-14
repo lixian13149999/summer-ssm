@@ -31,6 +31,7 @@ v.shortThan = function(str, length) {
 v.hasSpecialChar = function(str) {
 	var reg = new RegExp("[^a-zA-Z0-9`~!@#$%^&*()\-=_+\{\};:\'\"|/*,.<>?]");
 	return reg.test(str);
+	
 }
 
 // 两个值是否相等

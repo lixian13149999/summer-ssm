@@ -6,6 +6,8 @@
  * 原始标签样式的文件
  */
 
+
+// 页面标签重写开始***************************
 //页面元素样式重写
 //a标签重写
 a,
@@ -21,9 +23,11 @@ a:visited {
 dl {
     margin-bottom: 0px;
 }
+// 页面标签重写结束==============================
 
 //bootstrap样式重写
-//弹出框重写
+// bootstrap样式重写开始*************************
+//弹出框重写--------------
 .popover {
     padding: 0px;
     border-radius: 0px;
@@ -35,7 +39,7 @@ dl {
     padding: 0px 0px;
 }
 
-//输入框的样式重写
+//输入框的样式重写--------------
 .form-control {
     border-radius: 0px;
     // .transition;
@@ -83,6 +87,35 @@ dl {
     margin-left: 0px;
 }
 
+// bootstrap警告框重写------------------
+//警告框距离头部的距离重新定义
+ul.messenger.messenger-fixed.messenger-on-top{
+    top:60px;
+}
+// 警告框的外框样式重写
+ul.messenger-theme-air .messenger-message{
+    .transition(400ms);
+    // .box-shadow(@x:0,@y:0,@blur:7px,@spread:1px,@color:#888)
+    .radius(5px);
+    .box-shadow();
+    // -moz-box-shadow: inset 0 0 0 1px #fff, inset 0 2px #fff, 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px rgba(0, 0, 0, 0.2);
+    // -webkit-box-shadow: inset 0 0 0 1px #fff, inset 0 2px #fff, 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px rgba(0, 0, 0, 0.2);
+    // box-shadow: inset 0 0 0 1px #fff, inset 0 2px #fff, 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px rgba(0, 0, 0, 0.2);
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    margin-bottom: 1em;
+    font-size: 13px;
+    color: #555;
+    font-weight: 500;
+    padding: 13px 30px 13px 46px;
+}
+// 警告框的关闭按钮位置重写
+ul.messenger-theme-air .messenger-message .messenger-close{
+    padding: 13px 10px 7px 7px;
+}
+
+//bootstrap的响应式布局mapping修改-------------
 //去除所有响应式布局的边框padding值,同样不能理解为什么要这样处理
 .col-lg-1,
 .col-lg-10,

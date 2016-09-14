@@ -4,8 +4,8 @@
 var sign = new Object();
 
 $(function(){
-	vd.init("signin_form",2,2);
-	vd.init("signup_form",2,2);
+	vd.init("signin_form",2,1);
+	vd.init("signup_form",2,1);
 });
 
 sign.signin = function() {
