@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.User;
 
@@ -37,10 +38,11 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse response, Object handler) throws Exception {
 		String aa = request.getRequestURL().toString();
 //		System.out.println("====================="+aa);
-		logger.info("日志中加入拦截器中产生的路径:"+aa);
+		logger.info("请求路径:"+aa);
 		
-		User user = (User) request.getSession().getAttribute("onlineUser");
+		User user = (User) request.getSession().getAttribute(Global.ONLINE_USER);
 		if(user==null||StringUtils.isNull(user.getUserName())){
+			logger.info("拦截路径:"+aa);
 			response.sendRedirect("signin");
 			return false;
 		}

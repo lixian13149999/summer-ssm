@@ -11,10 +11,11 @@ $(function(){
 //执行登陆操作
 sign.signin = function() {
 	var user = iform.parse("signin_form");
-    console.log(user);
+    //console.log(user);
 	$.ajax({
 		url: "signin",
 		type: 'POST',
+		dataType:"json",
 		data: user,
 		async: false,
 		success: function(data) {
@@ -26,7 +27,7 @@ sign.signin = function() {
 			console.log('pathExcel error2')
 		}
 	});
-	console.log("signin");
+	//console.log("signin");
 }
 
 //注册成功后自动登陆的操作
@@ -39,6 +40,7 @@ sign.autoSignin = function () {
 	$.ajax({
 		url: "signin",
 		type: 'POST',
+		dataType:"json",
 		data: {
 			userName:userName,
 			pwd:pwd
@@ -59,7 +61,8 @@ sign.autoSignin = function () {
 sign.signinSuccessBack = function (data) {
 	//如果返回值为操作成功
 	if(iutil.isSuccess(data)){
-		window.location.href="";
+		//跳转到首页
+		window.location.href=ctx;
 	}else{
 		imessenger.error("登录失败");
 	}
