@@ -1,4 +1,4 @@
-package com.bcdbook.summer.system.pojo;
+package com.bcdbook.summer.common.tools.pojo;
 
 import com.bcdbook.summer.common.persistence.pojo.DataEntity;
 
@@ -87,6 +87,13 @@ public class File extends DataEntity<File> {
 	}
 	public void setPojoType(Integer pojoType) {
 		this.pojoType = pojoType;
+	}
+	@Override
+	public String toString() {
+		return "File [sort=" + sort + ", sourceName=" + sourceName + ", name="
+				+ name + ", src=" + src + ", size=" + size + ", type=" + type
+				+ ", suffix=" + suffix + ", pojoId=" + pojoId + ", pojoType="
+				+ pojoType + "]";
 	}
 	
 }

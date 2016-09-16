@@ -1,6 +1,6 @@
 .view-top-cont
 	.top-logo-box
-		a.logo-href(href="/")
+		a.logo-href(href="#{ctx}")
 			i.logo-icon.icon.icon-logo
 			span.logo-title.hover-default 业务·管理平台
 
@@ -8,7 +8,7 @@
 	
 	if hasUser
 		.signin-up-msg 没有账号？
-			a.to-signin(href="signup") 请注册
+			a.to-signin(href="#{ctx}/signup") 请注册
 	else if !hasUser
 		.signin-up-msg 已有账号？
-			a.to-signin(href="signin") 请登录
+			a.to-signin(href="#{ctx}/signin") 请登录

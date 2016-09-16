@@ -1,4 +1,4 @@
-package com.bcdbook.summer.test.system;
+package com.bcdbook.summer.test.common.tools;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bcdbook.summer.common.persistence.Page;
-import com.bcdbook.summer.system.pojo.File;
-import com.bcdbook.summer.system.service.FileService;
+import com.bcdbook.summer.common.tools.pojo.File;
+import com.bcdbook.summer.common.tools.service.FileService;
 import com.bcdbook.summer.test.wechat.TestWechat;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类

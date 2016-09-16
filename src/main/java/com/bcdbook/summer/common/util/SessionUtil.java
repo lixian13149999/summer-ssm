@@ -32,11 +32,11 @@ public class SessionUtil {
 			//如果存在则从session中删除此对象
 			if(remove(req, key)){
 				//如果删除成功,则添加新的数据到session
-				req.getSession().setAttribute(key, obj);
+				get(req).setAttribute(key, obj);
 			}
 		}else{
 			//如果session中不存在,则直接添加session
-			req.getSession().setAttribute(key, obj);
+			get(req).setAttribute(key, obj);
 		}
 		return true;
 	}
@@ -59,7 +59,7 @@ public class SessionUtil {
 		//检查此key值是否被使用,
 		if(checkObjIsExist(req, key))
 			//如果被使用,则删除此key
-			req.getSession().removeAttribute(key);
+			get(req).removeAttribute(key);
 
 		//如果不存在,或已删除均返回true
 		return true;
@@ -108,6 +108,21 @@ public class SessionUtil {
 	 */
 	public static HttpSession get(HttpServletRequest req){
 		//如果传入的request对象为空,直接返回null,否则调用返回session对象
-		return req!=null ? null: req.getSession();
+		return req==null ? null: req.getSession();
+	}
+	
+	public static Object getObj(HttpServletRequest req,String key){
+		HttpSession session = get(req);
+//		Object obj = null;
+//		if(session!=null){
+//			obj = session.getAttribute(key);
+//		}
+//		return obj;
+		
+		return session==null?null:session.getAttribute(key);
 	}
 }
+
+
+
+

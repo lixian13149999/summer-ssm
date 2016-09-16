@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 设置映射的dao类 -->
+<mapper namespace="com.bcdbook.summer.common.tools.dao.MailDao">
+	<!-- 全局配置开始=======start -->
+	<!-- 设置映射的数据模型 -->
+	<resultMap id="Mail" type="com.bcdbook.summer.common.tools.pojo.Mail">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+		
+		<result column="subject" property="subject" jdbcType="VARCHAR" />
+		<result column="text" property="text" jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="modal_url" property="modalUrl" jdbcType="VARCHAR" />
+		<result column="mail_key" property="mailKey" jdbcType="VARCHAR" />
+		
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 定义查询的所有参数 -->
+	<sql id="MailColumns">
+		id, del_flag,
+		subject, text, content, modal_url, mail_key,
+		create_time, create_by, update_time, update_by, remark
+	</sql>
+	<!-- 定义所有条件 -->
+	<sql id="MailCondition">
+		<where>
+	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="true">
+		    	and del_flag = 1
+		    </if>
+		     
+		    <if test="subject != null and !&quot;&quot;.equals(subject.trim())">
+		    	and subject = #{subject}
+		    </if>
+		    <if test="text != null and !&quot;&quot;.equals(text.trim())">
+		    	and text = #{text}
+		    </if>
+		    <if test="content != null and !&quot;&quot;.equals(content.trim())">
+		    	and content = #{content}
+		    </if>
+		    <if test="modalUrl != null and !&quot;&quot;.equals(modalUrl.trim())">
+		    	and modal_url = #{modalUrl}
+		    </if>
+		    <if test="mailKey != null and !&quot;&quot;.equals(mailKey.trim())">
+		    	and mail_key = #{mailKey}
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+	    </where>
+	</sql>
+	<!-- 全局配置结束========end -->
+	
+	<!-- 添加 -->
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.common.tools.pojo.Mail">
+		insert into tools_mail (id, del_flag, subject, text, content, modal_url, mail_key, create_time, create_by, update_time, update_by, remark)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=INTEGER},
+			
+			#{subject,jdbcType=VARCHAR},
+			#{text,jdbcType=VARCHAR},
+			#{content,jdbcType=VARCHAR},
+			#{modalUrl,jdbcType=VARCHAR},
+			#{mailKey,jdbcType=VARCHAR},
+			
+			#{createTime,jdbcType=VARCHAR},
+			#{createBy,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{updateBy,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- 伪删除(根据id) -->
+	<update id="delete" parameterType="java.lang.String">
+		update tools_mail
+		<set>
+			del_flag = 2
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<!-- 伪删除(根据实体类条件) -->
+	<update id="deleteByCondition" parameterType="com.bcdbook.summer.common.tools.pojo.Mail">
+		update tools_mail
+		<set>
+			del_flag = 2
+		</set>
+		<include refid="MailCondition" />
+	</update>
+	
+	<!-- 修改邮件 -->
+	<update id="update" parameterType="com.bcdbook.summer.common.tools.pojo.Mail">
+		update tools_mail
+		<set>
+		    <if test="delFlag != null and delFlag != 0">
+		    	del_flag = #{delFlag},
+		    </if>
+		    
+		    <if test="subject != null and !&quot;&quot;.equals(subject.trim())">
+		    	subject = #{subject},
+		    </if>
+		    <if test="text != null and !&quot;&quot;.equals(text.trim())">
+		    	text = #{text},
+		    </if>
+		    <if test="content != null and !&quot;&quot;.equals(content.trim())">
+		    	content = #{content},
+		    </if>
+		    <if test="modalUrl != null and !&quot;&quot;.equals(modalUrl.trim())">
+		    	modal_url = #{modalUrl},
+		    </if>
+		    <if test="mailKey != null and !&quot;&quot;.equals(mailKey.trim())">
+		    	mail_key = #{mailKey},
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	create_time = #{createTime},
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	create_by = #{createBy},
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	update_time = #{updateTime},
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	update_by = #{updateBy},
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	remark = #{remark},
+		    </if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 查询(根据id) -->
+	<select id="get" resultMap="Mail" parameterType="java.lang.String">
+		select
+		<include refid="MailColumns" />
+		from tools_mail
+		where id = #{id,jdbcType=VARCHAR} 
+		and del_flag = 1
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="getByCondition" resultMap="Mail" parameterType="com.bcdbook.summer.common.tools.pojo.Mail">
+		select
+		<include refid="MailColumns" />
+		from tools_mail
+		<include refid="MailCondition" /> 
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="findList" resultMap="Mail" parameterType="com.bcdbook.summer.common.tools.pojo.Mail">
+		select
+		<include refid="MailColumns" />
+		from tools_mail
+		<include refid="MailCondition" /> 
+	    order by update_time
+	    <if test="page != null">
+	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
+	    </if>
+	</select>
+	<!-- 查询所有数据 -->
+	<select id="findAllList" resultMap="Mail" parameterType="com.bcdbook.summer.common.tools.pojo.Mail">
+		select
+		<include refid="MailColumns" />
+		from tools_mail where 1=1 
+		order by update_time
+	</select>
+	<!-- 根据实体类条件,符合数据的数量 -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.bcdbook.summer.common.tools.pojo.Mail">
+		select count(*) from tools_mail
+		<include refid="MailCondition" />
+	</select>
+</mapper>

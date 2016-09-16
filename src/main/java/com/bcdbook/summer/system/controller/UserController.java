@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.JadeUtil;
+import com.bcdbook.summer.common.util.SessionUtil;
 import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.system.service.MenuService;
@@ -53,20 +56,36 @@ public class UserController {
 	 */
 	@RequestMapping(value="/userNameCanUse",method = {RequestMethod.GET}) 
 	@ResponseBody
+	public String userNameCanUse(HttpServletRequest req,HttpServletResponse resp,User user){
+		//根据前台传入的用户对象,从数据库中获取user
+		User dbUser = userService.getByCondition(user);
+//		System.out.println(user);
+//		System.out.println(dbUser);
+		//如果用户不存在,返回true,否则返回false
+		return dbUser==null?"true":"false";
+	}
+	
+	@RequestMapping(value="/userIsExist",method = {RequestMethod.GET}) 
+	@ResponseBody
 	public String userIsExist(HttpServletRequest req,HttpServletResponse resp,User user){
 		//根据前台传入的用户对象,从数据库中获取user
 		User dbUser = userService.getByCondition(user);
 		System.out.println(user);
 		System.out.println(dbUser);
 		//如果用户不存在,返回true,否则返回false
-		return dbUser==null?"true":"false";
+		
+		return dbUser==null?BackMsg.success(false):BackMsg.success(true);
 	}
 	
 	@RequestMapping(value="/verifyEmail",method={RequestMethod.GET})
 	public ModelAndView signin(HttpServletRequest req,HttpServletResponse resp,Model model){
 		
-		Map<String, Boolean> pageData = new HashMap<String, Boolean>();
-		pageData.put("hasUser", true);
+		Map<String, Object> pageData = new HashMap<String, Object>();
+		pageData.put("hasUser", false);
+		
+		User user = (User) SessionUtil.getObj(req, Global.ONLINE_USER);
+		System.out.println(user);
+		pageData.put("user", user);
 		
 		ModelAndView mv = JadeUtil.getView("system/sign/verify_email.jade",pageData);
 		return mv;

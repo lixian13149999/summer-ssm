@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.bcdbook.summer.common.config.Global;
+import com.bcdbook.summer.common.context.ContextParameter;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.User;
 
@@ -34,17 +35,39 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	 * 从最后一个拦截器往回执行所有的postHandle() 接着再从最后一个拦截器往回执行所有的afterCompletion()
 	 */
 	@Override
-	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler) throws Exception {
-		String aa = request.getRequestURL().toString();
+	public boolean preHandle(HttpServletRequest req,
+			HttpServletResponse resp, Object handler) throws Exception {
+		String aa = req.getRequestURL().toString();
 //		System.out.println("====================="+aa);
 		logger.info("请求路径:"+aa);
 		
-		User user = (User) request.getSession().getAttribute(Global.ONLINE_USER);
+		//从session中获取user对象
+		User user = (User) req.getSession().getAttribute(Global.ONLINE_USER);
+		//判断user是否为空
 		if(user==null||StringUtils.isNull(user.getUserName())){
 			logger.info("拦截路径:"+aa);
-			response.sendRedirect("signin");
+			//如果user为空,则转发到登录界面
+			resp.sendRedirect(Global.getProjPash()+"/signin");
 			return false;
+		}
+		
+		//判断用户是否为锁定状态
+		if(user.getIsLock()==User.LOCK){
+			//如果是锁定状态
+			//- TODO 锁定状态需要做对应的处理
+		}
+		
+		//判断用户的邮箱是否为绑定状态
+		if(user.getEmailState()==User.UNBOUND){
+			//如果是未绑定状态
+			//邮箱未绑定状态,需要做特殊的处理
+			resp.sendRedirect(Global.getProjPash()+"/user/verifyEmail");
+			return false;
+		}
+		
+		if(user.getWechatState()==User.UNBOUND){
+			//如果微信是未绑定状态
+			//- TODO 如果微信未绑定,需要做的特殊处理
 		}
 		
 		return true;
@@ -70,13 +93,6 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 //		log.info("requestUri:" + requestUri);
 //		log.info("contextPath:" + contextPath);
 //		log.info("url:" + url);
-//
-//		String username = (String) request.getSession().getAttribute("user");
-//		if (username == null) {
-//			log.info("Interceptor：跳转到login页面！");
-//			return false;
-//		} else
-//			return true;
 	}
 
 	/**

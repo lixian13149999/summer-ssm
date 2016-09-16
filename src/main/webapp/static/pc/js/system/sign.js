@@ -6,6 +6,7 @@ var sign = new Object();
 $(function() {
 	vd.init("signin_form", 2, 1);
 	vd.init("signup_form", 2, 1);
+	vd.init("verify_email_form", 2, 1);
 
 	// console.log(document.getElementById("userName"));
 	// document.getElementById("userName").focus();
@@ -15,8 +16,10 @@ $(function() {
 sign.signin = function() {
 	var user = iform.parse("signin_form");
 	//console.log(user);
+	var url = ctx + "/signin";
+	//	console.log(url);
 	$.ajax({
-		url: "signin",
+		url: url,
 		type: 'POST',
 		dataType: "json",
 		data: user,
@@ -40,8 +43,9 @@ sign.autoSignin = function() {
 	var userName = $("#signupUserName").val();
 	var pwd = $("#pwd").val();
 
+	var url = ctx + "/signin";
 	$.ajax({
-		url: "signin",
+		url: url,
 		type: 'POST',
 		dataType: "json",
 		data: {
@@ -77,8 +81,10 @@ sign.signup = function() {
 	var userName = $("#signupUserName").val();
 	var pwd = $("#pwd").val();
 
+	var url = ctx + "/signup";
+
 	$.ajax({
-		url: "signup",
+		url: url,
 		type: 'POST',
 		dataType: "json",
 		data: {
@@ -104,4 +110,86 @@ sign.signup = function() {
 			}
 		}
 	}
+}
+
+//用于绑定用户email的方法
+sign.verifyEmail = function() {
+	if (sign.checkVerifyUserIsExist()) {
+		imessenger.success("用户检测成功,将要发送验证信息到您的邮箱");
+		//如果不为空,验证用户是否存在
+		var url = ctx + "/email/sendEmail";
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: "json",
+			data: {
+				id: userId
+			},
+			async: false,
+			success: function(data) {
+				console.log(data);
+				cb(data);
+			},
+			error: function() {
+				console.log('验证用户时,服务器出错');
+			}
+		});
+
+		function cb(data) {
+			//验证返回值是否正确
+			if (iutil.isSuccess(data)) {
+				//如果验证值正确
+				if (data.data) {
+					verifyUserIsExist = true;
+				}
+			} else {
+				imessenger.error("验证用户信息出错");
+			}
+		}
+	} else {
+		imessenger.error("用户不存在或验证出错,请重新登录");
+	}
+}
+
+sign.checkVerifyUserIsExist = function() {
+	verifyUserIsExist = false;
+	//获取用户id
+	var userId = $("#user_id").val();
+	//检查用户id是否为空
+	if (v.isNull(userId)) {
+		//如果为空,则直接返回错误提示
+		imessenger.error("获取登录用户出错,请重新登录");
+	} else {
+		//如果不为空,验证用户是否存在
+		var url = ctx + "/user/userIsExist";
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: "json",
+			data: {
+				id: userId
+			},
+			async: false,
+			success: function(data) {
+				console.log(data);
+				cb(data);
+			},
+			error: function() {
+				console.log('验证用户时,服务器出错');
+			}
+		});
+
+		function cb(data) {
+			//验证返回值是否正确
+			if (iutil.isSuccess(data)) {
+				//如果验证值正确
+				if (data.data) {
+					verifyUserIsExist = true;
+				}
+			} else {
+				imessenger.error("验证用户信息出错");
+			}
+		}
+	}
+	return verifyUserIsExist;
 }

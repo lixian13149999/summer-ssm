@@ -164,6 +164,38 @@ public class BaseController {
 		return BackMsg.success(JSON.toJSONString(newUser), "signup success");
 	}
 	
+	/**
+	    * @Discription 404的错误页面
+	    * @author lason       
+	    * @created 2016年9月15日 下午10:07:38     
+	    * @param req
+	    * @param resp
+	    * @param model
+	    * @return
+	 */
+	@RequestMapping(value="/error/404",method={RequestMethod.GET})
+	public ModelAndView error404(HttpServletRequest req,HttpServletResponse resp,Model model){
+		
+		ModelAndView mv = JadeUtil.getView("common/error/404.jade");
+		return mv;
+	}
+	
+	/**
+	    * @Discription 500的错误页面
+	    * @author lason       
+	    * @created 2016年9月15日 下午10:07:49     
+	    * @param req
+	    * @param resp
+	    * @param model
+	    * @return
+	 */
+	@RequestMapping(value="/error/500",method={RequestMethod.GET})
+	public ModelAndView error500(HttpServletRequest req,HttpServletResponse resp,Model model){
+		
+		ModelAndView mv = JadeUtil.getView("common/error/500.jade");
+		return mv;
+	}
+	
 	
 	/*
 	 * 一下是测试时使用的方法,正式上线之前需要删除

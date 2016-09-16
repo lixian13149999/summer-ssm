@@ -25,13 +25,18 @@
 	        <!-- 注册页面 -->
 	        <mvc:exclude-mapping path="/signup" />
 	        
-	        <!-- 用于检查用户名是否存在的接口 -->
+	        <!-- 用于检查用户名是否可以使用 -->
 	        <mvc:exclude-mapping path="/user/userNameCanUse" />
+	        <!-- 检查符合条件的用户是否存在 -->
+	        <mvc:exclude-mapping path="/user/userIsExist" />
 	        <!-- 获取邮箱验证页面的接口 -->
 	        <mvc:exclude-mapping path="/user/verifyEmail" />
 	        
 	        <!-- 拦截时过滤掉wechat/login -->
 	        <mvc:exclude-mapping path="/wechat/login" />
+	        
+	        <!-- 过滤掉错误页面的拦截 -->
+	        <mvc:exclude-mapping path="/error/**" />
 	        
 	        <!-- 过滤掉demo下面的所有路径 -->
 	        <mvc:exclude-mapping path="/demo/**" />

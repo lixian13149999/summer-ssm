@@ -1,6 +1,6 @@
 package com.bcdbook.summer.common.email.pojo;
 
-public class Mail {
+public class Mail2 {
 	public static final String ENCODEING = "UTF-8";
 	
 	public String host;//服务器地址
@@ -13,10 +13,10 @@ public class Mail {
 	public String text;//简介信息
 	public String content;//邮件主体内容
 	
-	public Mail() {
+	public Mail2() {
 		super();
 	}
-	public Mail(String host, String sender, String receiver, String nickName,
+	public Mail2(String host, String sender, String receiver, String nickName,
 			String username, String password, String subject, String text,
 			String content) {
 		super();

@@ -2,6 +2,7 @@ package com.bcdbook.summer.common.config;
 
 import java.util.Map;
 
+import com.bcdbook.summer.common.context.ContextParameter;
 import com.bcdbook.summer.common.util.PropertiesLoader;
 import com.google.common.collect.Maps;
 
@@ -139,6 +140,16 @@ public class Global {
 			// 异常代表无配置，这里什么也不做
 		}
 		return null;
+	}
+	
+	/**
+	    * @Discription 获取项目路径的方法
+	    * @author lason       
+	    * @created 2016年9月16日 下午3:30:02     
+	    * @return
+	 */
+	public static String getProjPash(){
+		return ContextParameter.getContextPath();
 	}
 
 	/**

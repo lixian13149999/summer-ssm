@@ -15,7 +15,7 @@ $(function() {
 });
 
 imessenger.error = function(text){
-    //Messenger().hideAll();
+    Messenger().hideAll();
     Messenger().post({
         message: text,
         type: 'error',
@@ -24,7 +24,7 @@ imessenger.error = function(text){
     });
 }
 imessenger.success = function(text){
-    //Messenger().hideAll();
+    Messenger().hideAll();
     Messenger().post({
         message: text,
         type: 'success',
@@ -33,7 +33,7 @@ imessenger.success = function(text){
     });
 }
 imessenger.info = function(text){
-    //Messenger().hideAll();
+    Messenger().hideAll();
     Messenger().post({
         message: text,
         type: 'info',

@@ -12,12 +12,12 @@ import javax.mail.Message.RecipientType;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.bcdbook.summer.common.email.pojo.Mail;
+import com.bcdbook.summer.common.email.pojo.Mail2;
 
 
 
-public class MailService {
-	public String send(Mail mail) throws MessagingException, UnsupportedEncodingException{
+public class MailService2 {
+	public String send(Mail2 mail) throws MessagingException, UnsupportedEncodingException{
 		// 配置发送邮件的环境属性
         final Properties props = new Properties();
         // 表示SMTP发送邮件，需要进行身份验证
@@ -79,7 +79,7 @@ public class MailService {
 	}
 	
 	public String send(String to,String subject,String text,String content){
-		Mail mail = new Mail();
+		Mail2 mail = new Mail2();
 		mail.setHost("smtp.163.com");
 		mail.setSender("xianforwork@163.com");
 		mail.setNickName("BcdBook");
@@ -103,7 +103,7 @@ public class MailService {
 	}
 	
 	public static void main(String[] args) {
-		MailService ms = new MailService();
+		MailService2 ms = new MailService2();
 		ms.send("xianforwork@163.com", "Bcdbook验证", "text信息", "邮件的主要内容,写点什么好呢?");
 	}
 }
