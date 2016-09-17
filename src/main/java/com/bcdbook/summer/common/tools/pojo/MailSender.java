@@ -2,7 +2,7 @@ package com.bcdbook.summer.common.tools.pojo;
 
 import java.util.List;
 
-public class MailSend {
+public class MailSender {
 	private String host;//服务器地址
 	private String sender;//发件人的邮箱
 	private String nickName;//发件人的昵称
