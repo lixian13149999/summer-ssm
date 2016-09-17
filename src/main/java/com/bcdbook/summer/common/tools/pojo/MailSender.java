@@ -14,4 +14,5 @@ public class MailSender {
 	private List<String> toBlindCarbonCopyAddress;//密送者邮箱
 	
 	private Mail mail;
+	
 }
