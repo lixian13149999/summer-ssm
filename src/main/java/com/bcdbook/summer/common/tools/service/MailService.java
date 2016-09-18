@@ -8,5 +8,5 @@ import com.bcdbook.summer.common.tools.pojo.Mail;
 
 @Service("mailService")
 public class MailService extends CrudService<MailDao,Mail> {
-
+	
 }

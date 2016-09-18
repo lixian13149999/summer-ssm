@@ -1,4 +1,4 @@
-package com.bcdbook.summer.common.util.file;
+package com.bcdbook.summer.common.tools.util;
 
 /**
  * 
