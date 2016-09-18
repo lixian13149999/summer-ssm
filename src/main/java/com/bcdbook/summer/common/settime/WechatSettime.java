@@ -7,8 +7,6 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.bcdbook.summer.wechat.service.ConnectService;
-import com.bcdbook.summer.wechat.service.MaterialService;
 
 /**
  * 
@@ -42,13 +40,13 @@ public class WechatSettime {
 	    * @param name
 	    * @return
 	 */
-	public static ConnectService getConnectBean(String name) {
-		WebApplicationContext webApp = ContextLoader.getCurrentWebApplicationContext();
-		ServletContext servletContext = webApp.getServletContext();
-		ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(servletContext);
-		
-		return (ConnectService) app.getBean(name);
-	}
+//	public static ConnectService getConnectBean(String name) {
+//		WebApplicationContext webApp = ContextLoader.getCurrentWebApplicationContext();
+//		ServletContext servletContext = webApp.getServletContext();
+//		ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+//		
+//		return (ConnectService) app.getBean(name);
+//	}
 	
 	
 	/**
@@ -71,11 +69,11 @@ public class WechatSettime {
 	    * @param name
 	    * @return
 	 */
-	public static MaterialService getMaterialBean(String name) {
-		WebApplicationContext webApp = ContextLoader.getCurrentWebApplicationContext();
-		ServletContext servletContext = webApp.getServletContext();
-		ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(servletContext);
-		
-		return (MaterialService) app.getBean(name);
-	}
+//	public static MaterialService getMaterialBean(String name) {
+//		WebApplicationContext webApp = ContextLoader.getCurrentWebApplicationContext();
+//		ServletContext servletContext = webApp.getServletContext();
+//		ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+//		
+//		return (MaterialService) app.getBean(name);
+//	}
 }

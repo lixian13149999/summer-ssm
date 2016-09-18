@@ -13,7 +13,6 @@ import com.bcdbook.summer.common.tools.pojo.Mail;
 import com.bcdbook.summer.common.tools.util.MailUtil;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.StringUtils;
-import com.bcdbook.summer.system.dao.UserDao;
 import com.bcdbook.summer.system.pojo.User;
 
 /**

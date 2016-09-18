@@ -133,7 +133,7 @@ public class MailUtil {
             //Transport.send(sendMailMessage);  
             Transport transport = sendMailSession.getTransport("smtp");  
             transport.connect(mailSenderInfo.getUsername(), mailSenderInfo.getPassword());
-            transport.send(sendMailMessage,sendMailMessage.getAllRecipients());
+            Transport.send(sendMailMessage,sendMailMessage.getAllRecipients());
             transport.close();
             return true;
               

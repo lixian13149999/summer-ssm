@@ -17,12 +17,11 @@ import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.Power;
 import com.bcdbook.summer.system.pojo.Role;
 import com.bcdbook.summer.system.service.RoleService;
-import com.bcdbook.summer.test.wechat.TestWechat;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class TestRole {
-	private static Logger logger = Logger.getLogger(TestWechat.class);
+	private static Logger logger = Logger.getLogger(TestRole.class);
 	
 	@Resource
 	private RoleService roleService = null;

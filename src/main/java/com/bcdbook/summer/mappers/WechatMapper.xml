@@ -1,74 +1,178 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- 设置映射的dao类 -->
-<mapper namespace="WechatBase">
+<mapper namespace="com.bcdbook.summer.wechat.dao.WechatDao">
+	<!-- 全局配置开始=======start -->
 	<!-- 设置映射的数据模型 -->
-	
 	<resultMap id="Wechat" type="com.bcdbook.summer.wechat.pojo.Wechat">
 		<id column="id" property="id" jdbcType="VARCHAR" />
 		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
-		<result column="access_token" property="accessToken" jdbcType="VARCHAR" />
-		<result column="refresh_token" property="refreshToken" jdbcType="VARCHAR" />
+		
+		<result column="wechat_key" property="wechatKey" jdbcType="VARCHAR" />
+		<result column="wechat_value" property="wechatValue" jdbcType="VARCHAR" />
+		<result column="refresh_value" property="refreshValue" jdbcType="VARCHAR" />
+		
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
-		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />		
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<!-- 定义查询的所有参数 -->
-	<!-- 添加按照id获取，删除，和插入一条wechat记录的方法 -->
-	<sql id="Base_Column_List">
-		id,del_flag, access_token, refresh_token,add_time,update_time
+	<sql id="WechatColumns">
+		id, del_flag,
+		wechat_key, wechat_value, refresh_value,
+		create_time, create_by, update_time, update_by, remark
 	</sql>
-	
-	<sql id="Base_Column_ListRecent">
-		access_token,add_time
+	<!-- 定义所有条件 -->
+	<sql id="WechatCondition">
+		<where>
+	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="true">
+		    	and del_flag = 1
+		    </if>
+		     
+		    <if test="wechatKey != null and !&quot;&quot;.equals(wechatKey.trim())">
+		    	and wechat_key = #{wechatKey}
+		    </if>
+		    <if test="wechatValue != null and !&quot;&quot;.equals(wechatValue.trim())">
+		    	and wechat_value = #{wechatValue}
+		    </if>
+		    <if test="refreshValue != null and !&quot;&quot;.equals(refreshValue.trim())">
+		    	and refresh_value = #{refreshValue}
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+	    </where>
 	</sql>
+	<!-- 全局配置结束========end -->
 	
-	<select id="selectById" resultMap="Wechat" parameterType="java.lang.Integer">
-		select
-		<include refid="Base_Column_List" />
-		from t_wechat
-		where id = #{id,jdbcType=INTEGER}
-	</select> 
-	
-	<select id="selectRecent" resultMap="Wechat">
-		select
-		<include refid="Base_Column_ListRecent" />
-		from t_wechat order by add_time desc
-		 limit 1
-	</select>
-
-	<delete id="deleteById" parameterType="java.lang.Integer">
-		delete from t_wechat
-		where id
-		= #{id,jdbcType=INTEGER}
-	</delete>
-	<insert id="insert" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
-		insert into t_wechat (id,
-		access_token, refresh_token,
-		add_time,update_time)
-		values (#{id,jdbcType=INTEGER},
-		#{accessToken,jdbcType=VARCHAR},
-		#{refreshToken,jdbcType=VARCHAR},
-		#{addTime,jdbcType=VARCHAR},
-		#{updateTime,jdbcType=VARCHAR})
+	<!-- 添加 -->
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		insert into wech_wechat (id, del_flag, wechat_key, wechat_value, refresh_value, create_time, create_by, update_time, update_by, remark)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=INTEGER},
+			
+			#{wechatKey,jdbcType=VARCHAR},
+			#{wechatValue,jdbcType=VARCHAR},
+			#{refreshValue,jdbcType=VARCHAR},
+			
+			#{createTime,jdbcType=VARCHAR},
+			#{createBy,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{updateBy,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR}
+		)
 	</insert>
 	
-	<update id="refreshToken" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
-		update t_wechat
+	<!-- 伪删除(根据id) -->
+	<update id="delete" parameterType="java.lang.String">
+		update wech_wechat
 		<set>
-			<if test="accessToken != null">
-				access_token = #{accessToken,jdbcType=VARCHAR},
-			</if>
-			<if test="refreshToken != null">
-				refresh_token = #{refreshToken,jdbcType=VARCHAR},
-			</if>
-			<if test="addTime != null">
-				add_time = #{addTime,jdbcType=VARCHAR},
-			</if>
-			<if test="updateTime != null">
-				update_time = #{updateTime,jdbcType=VARCHAR},
-			</if>
+			del_flag = 2
 		</set>
-		where id = #{id,jdbcType=INTEGER}
+		where id = #{id,jdbcType=VARCHAR}
 	</update>
+	<!-- 伪删除(根据实体类条件) -->
+	<update id="deleteByCondition" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		update wech_wechat
+		<set>
+			del_flag = 2
+		</set>
+		<include refid="WechatCondition" />
+	</update>
+	
+	<!-- 修改权限 -->
+	<update id="update" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		update wech_wechat
+		<set>
+		    <if test="delFlag != null and delFlag != 0">
+		    	del_flag = #{delFlag},
+		    </if>
+		    
+		    <if test="wechatKey != null and !&quot;&quot;.equals(wechatKey.trim())">
+		    	wechat_key = #{wechatKey},
+		    </if>
+		    <if test="wechatValue != null and !&quot;&quot;.equals(wechatValue.trim())">
+		    	wechat_value = #{wechatValue},
+		    </if>
+		    <if test="refreshValue != null and !&quot;&quot;.equals(refreshValue.trim())">
+		    	refresh_value = #{refreshValue},
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	create_time = #{createTime},
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	create_by = #{createBy},
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	update_time = #{updateTime},
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	update_by = #{updateBy},
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	remark = #{remark},
+		    </if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 查询(根据id) -->
+	<select id="get" resultMap="Wechat" parameterType="java.lang.String">
+		select
+		<include refid="WechatColumns" />
+		from wech_wechat
+		where id = #{id,jdbcType=VARCHAR} 
+		and del_flag = 1
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="getByCondition" resultMap="Wechat" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		select
+		<include refid="WechatColumns" />
+		from wech_wechat
+		<include refid="WechatCondition" /> 
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="findList" resultMap="Wechat" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		select
+		<include refid="WechatColumns" />
+		from wech_wechat
+		<include refid="WechatCondition" /> 
+	    order by create_time
+	    <if test="page != null">
+	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
+	    </if>
+	</select>
+	<!-- 查询所有数据 -->
+	<select id="findAllList" resultMap="Wechat" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		select
+		<include refid="WechatColumns" />
+		from wech_wechat where 1=1 
+		order by create_time
+	</select>
+	<!-- 根据实体类条件,符合数据的数量 -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.bcdbook.summer.wechat.pojo.Wechat">
+		select count(*) from wech_wechat
+		<include refid="WechatCondition" />
+	</select>
 </mapper>

@@ -13,12 +13,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.bcdbook.summer.common.persistence.Page;
 import com.bcdbook.summer.system.pojo.Addr;
 import com.bcdbook.summer.system.service.AddrService;
-import com.bcdbook.summer.test.wechat.TestWechat;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class TestAddr {
-	private static Logger logger = Logger.getLogger(TestWechat.class);
+	private static Logger logger = Logger.getLogger(TestAddr.class);
 	
 	@Resource
 	private AddrService addrService = null;

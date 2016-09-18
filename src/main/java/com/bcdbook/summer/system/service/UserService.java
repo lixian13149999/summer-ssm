@@ -6,11 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.bcdbook.summer.common.persistence.service.CrudService;
 import com.bcdbook.summer.common.util.MD5Util;
 import com.bcdbook.summer.common.util.StringUtils;
@@ -22,7 +18,6 @@ import com.bcdbook.summer.system.pojo.Role;
 import com.bcdbook.summer.system.pojo.User;
 
 @Service("userService")
-//public class UserService implements InitializingBean{
 public class UserService extends CrudService<UserDao,User>{
 	@Resource
 	private UserDao userDao;

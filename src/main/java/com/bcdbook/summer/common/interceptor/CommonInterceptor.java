@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.bcdbook.summer.common.config.Global;
-import com.bcdbook.summer.common.context.ContextParameter;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.User;
 

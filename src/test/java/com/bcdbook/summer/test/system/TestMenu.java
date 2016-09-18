@@ -14,12 +14,11 @@ import com.bcdbook.summer.common.persistence.Page;
 import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.Power;
 import com.bcdbook.summer.system.service.MenuService;
-import com.bcdbook.summer.test.wechat.TestWechat;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class TestMenu {
-	private static Logger logger = Logger.getLogger(TestWechat.class);
+	private static Logger logger = Logger.getLogger(TestMenu.class);
 	
 	@Resource
 	private MenuService menuService = null;

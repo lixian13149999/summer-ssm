@@ -13,12 +13,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.bcdbook.summer.common.persistence.Page;
 import com.bcdbook.summer.system.pojo.Power;
 import com.bcdbook.summer.system.service.PowerService;
-import com.bcdbook.summer.test.wechat.TestWechat;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class TestPower {
-	private static Logger logger = Logger.getLogger(TestWechat.class);
+	private static Logger logger = Logger.getLogger(TestPower.class);
 	
 	@Resource
 	private PowerService powerService = null;

@@ -1,11 +1,7 @@
 package com.bcdbook.summer.system.controller;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,9 +19,6 @@ import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.SessionUtil;
-import com.bcdbook.summer.system.pojo.Menu;
-import com.bcdbook.summer.system.pojo.Power;
-import com.bcdbook.summer.system.pojo.Role;
 import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.system.service.MenuService;
 import com.bcdbook.summer.system.service.UserService;
