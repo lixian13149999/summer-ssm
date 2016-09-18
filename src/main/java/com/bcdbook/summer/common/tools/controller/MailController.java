@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bcdbook.summer.common.tools.pojo.Mail;
+import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.tools.service.MailService;
+import com.bcdbook.summer.common.util.IdGen;
+import com.bcdbook.summer.common.util.StringUtils;
+import com.bcdbook.summer.system.pojo.User;
+import com.bcdbook.summer.system.service.UserService;
 
 @Controller
 @RequestMapping("/mail")
@@ -18,6 +22,8 @@ public class MailController {
 
 	@Resource
 	private MailService mailService;
+	@Resource
+	private UserService userService;
 	
 	/**
 	    * @Discription 用于发送邮件的接口
@@ -28,26 +34,34 @@ public class MailController {
 	    * @param mail
 	    * @return
 	 */
-	@RequestMapping(value="/send",method = {RequestMethod.GET}) 
+	@RequestMapping(value="/sendVerifyEmail",method = {RequestMethod.POST}) 
 	@ResponseBody
-	public String send(HttpServletRequest req,HttpServletResponse resp,Mail mail){
-		//检查传入的mail对象是否为空,如果为空,直接返回发送失败
-//		if(mail==null)
-//			return BackMsg.error("request mail is null");
-//		
-//		//检查收件者邮箱,或想要发送的邮件类型是否为空,如果为空则直接返回错误信息
-//		if(StringUtils.isNull(mail.getReceiver())||StringUtils.isNull(mail.getMailKey()))
-//			return BackMsg.error("receiver is null or key is null");
-//		
-//		//调用发送方法,并获取发送是否成功的返回值
-//		boolean sendOk = mailService.sendMail(mail.getReceiver(),mail.getMailKey());
-//		
-//		//根据前台传入的用户对象,从数据库中获取user
-//		Mail dbMail = mailService.getByCondition(mail);
-////		System.out.println(user);
-////		System.out.println(dbUser);
-//		//如果用户不存在,返回true,否则返回false
-//		return dbMail==null?"true":"false";
-		return "false";
+	public String sendVerifyEmail(HttpServletRequest req,HttpServletResponse resp){
+		//获取前台传入的用户id
+		String userId = req.getParameter("userId");
+		//获取前台传入的,用于绑定的邮箱
+		String emailAddr = req.getParameter("emailAddr");
+		
+		//判断获取到的参数是否合法,如果不合法,直接返会错误信息
+		if(StringUtils.isNull(userId)
+				||StringUtils.isNull(emailAddr))
+			return BackMsg.error("request userId is null or emailAddr is null");
+		
+		//通过传入的用户id,获取对应的用户
+		User user = userService.get(userId);
+		//判断对应的用户是否存在,如果不存在,直接返回错误信息
+		if(user==null)
+			return BackMsg.error("user is not exit");
+		
+		//获取一个用于验证的编码
+		String accessToken = IdGen.uuid();
+		//设置用于验证的邮箱到用户的绑定邮箱字段
+		user.setEmail(emailAddr);
+		//设置验证编码到用户的备注字段,以备验证
+		user.setRemark(accessToken);
+		//更新用户相关信息,以便于后期验证时调用
+		userService.update(user);
+		
+		return mailService.sendVerifyEmail(user)?BackMsg.success(true, "send verify email success"):BackMsg.error("send verify email fail");
 	}
 }

@@ -27,6 +27,13 @@ import com.bcdbook.summer.system.pojo.User;
 @Controller
 @RequestMapping("/demo/jade")
 public class JadeController {
+	@RequestMapping("/testJadeBody")
+	@ResponseBody
+	public String testJadeBody(HttpServletRequest req,HttpServletResponse resp,Model model){
+		String jadeBody = JadeUtil.getBodyView("system/sign/mail2.jade", null);
+		return jadeBody;
+	}
+	
 	
 	@RequestMapping(method = {RequestMethod.GET}) 
 	public ModelAndView getLoginPage(HttpServletRequest req,HttpServletResponse resp,Model model){

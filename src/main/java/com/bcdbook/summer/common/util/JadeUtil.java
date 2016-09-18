@@ -152,6 +152,43 @@ public class JadeUtil {
 		
 		return true;
 	}
+	
+	/**
+	 * @Description: 根据文件路径和要加入的数据对象,获取相应的页面
+	 * @param @param src
+	 * @param @param model
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月18日
+	 */
+	public static String getBodyView(String src,Map<String, Object> model){
+		String viewPath = Global.getConfig("jade.viewPath");
+		System.out.println(viewPath);
+		if(viewPath==null)
+			return null;
+		String realPath = ContextParameter.getRealPath();
+		System.out.println(realPath);
+		System.out.println(src);
+		String absolutePath = realPath+viewPath;
+		if(absolutePath==null
+				||realPath==null)
+			return null;
+		
+		String fileName = absolutePath+"/"+src;
+		
+		String html = null;
+		try {
+			setContext(model);
+			html = Jade4J.render(fileName, model);
+		} catch (JadeCompilerException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return html;
+	}
 	/**
 	 * @Description: 当视图返回值为html页面时,需要执行的封装方法
 	 * @param @param req
@@ -165,10 +202,10 @@ public class JadeUtil {
 	 */
 	public static String getBodyView(HttpServletRequest req,String src,Map<String, Object> model){
 		String viewPath = Global.getConfig("jade.viewPath");
-		if(viewPath!=null)
+		if(viewPath==null)
 			return null;
 		String absolutePath = req.getSession().getServletContext().getRealPath(viewPath);
-		if(absolutePath!=null)
+		if(absolutePath==null)
 			return null;
 		
 		String fileName = absolutePath+src;
@@ -213,7 +250,7 @@ public class JadeUtil {
 		if(session==null)
 			return false;
 		
-		User user = (User) session.getAttribute("onlineUser");
+		User user = (User) session.getAttribute(Global.ONLINE_USER);
 		List<Menu> menus = (List<Menu>) session.getAttribute("onlineMenus");
 		List<Power> powers = (List<Power>) session.getAttribute("onlinePowers");
 		

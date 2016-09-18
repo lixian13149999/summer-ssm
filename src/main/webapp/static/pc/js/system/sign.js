@@ -112,18 +112,23 @@ sign.signup = function() {
 	}
 }
 
-//用于绑定用户email的方法
-sign.verifyEmail = function() {
+//像用户发送用于绑定邮箱的邮件的方法
+sign.sendVerifyEmail = function() {
+	//检查当前是否有登录用户
 	if (sign.checkVerifyUserIsExist()) {
 		imessenger.success("用户检测成功,将要发送验证信息到您的邮箱");
 		//如果不为空,验证用户是否存在
-		var url = ctx + "/email/sendEmail";
+		var url = ctx + "/mail/sendVerifyEmail";
+		var userId = $("#user_id").val();
+		var emailAddr = $("#email").val();
+
 		$.ajax({
 			url: url,
-			type: 'GET',
+			type: 'POST',
 			dataType: "json",
 			data: {
-				id: userId
+				"userId": userId,
+				"emailAddr":emailAddr
 			},
 			async: false,
 			success: function(data) {

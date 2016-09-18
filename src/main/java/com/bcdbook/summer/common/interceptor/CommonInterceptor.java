@@ -61,7 +61,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		if(user.getEmailState()==User.UNBOUND){
 			//如果是未绑定状态
 			//邮箱未绑定状态,需要做特殊的处理
-			resp.sendRedirect(Global.getProjPash()+"/user/verifyEmail");
+			resp.sendRedirect(Global.getProjPash()+"/user/verifyEmailPage");
 			return false;
 		}
 		

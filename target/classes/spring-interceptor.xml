@@ -30,7 +30,10 @@
 	        <!-- 检查符合条件的用户是否存在 -->
 	        <mvc:exclude-mapping path="/user/userIsExist" />
 	        <!-- 获取邮箱验证页面的接口 -->
-	        <mvc:exclude-mapping path="/user/verifyEmail" />
+	        <mvc:exclude-mapping path="/user/verifyEmailPage" />
+	        
+	        <!-- 发送邮件的接口 -->
+	        <mvc:exclude-mapping path="/mail/sendVerifyEmail" />
 	        
 	        <!-- 拦截时过滤掉wechat/login -->
 	        <mvc:exclude-mapping path="/wechat/login" />

@@ -26,7 +26,7 @@ html
 							.mail-pic
 								i.icon.icon-email-shade
 								//- img(src="#{staticCtx}/pc/imgs/mail_icon.png" alt="mail-pic")
-							form#verify_email_form.form-horizontal(method="get" action="javascript:sign.verifyEmail()")
+							form#verify_email_form.form-horizontal(method="get" action="javascript:sign.sendVerifyEmail()")
 								//- #{user.userName}
 								input#user_id(name="verifyMailUserId" value="#{user.id}")
 								.page-form.beaut-form-box

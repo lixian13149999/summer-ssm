@@ -92,7 +92,7 @@ public class BaseController {
 	@RequestMapping(value="/signin",method={RequestMethod.POST})
 	@ResponseBody
 	public String doSignin(HttpServletRequest req,HttpServletResponse resp,User user){
-		System.out.println(user);
+//		System.out.println(user);
 		if(user==null)
 			return BackMsg.error("request user is null");
 		
@@ -117,7 +117,7 @@ public class BaseController {
 //		Set<Power> powers = userService.listPowerByUser(onlineUser.getId());
 		
 		
-		System.out.println(user);
+//		System.out.println(user);
 		return BackMsg.success("signin success");
 	}
 	

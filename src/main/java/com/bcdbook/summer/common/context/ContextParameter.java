@@ -15,6 +15,7 @@ import javax.servlet.ServletContextListener;
  */
 public class ContextParameter implements ServletContextListener {
 	public static String ctx = null;
+	public static String realPath = null;
 	/**
 	    * @Discription 项目注销是的方法重写
 	    * @author lason       
@@ -45,9 +46,15 @@ public class ContextParameter implements ServletContextListener {
 		String icontext = sc.getContextPath().toString();
 		ctx = icontext;
 		sc.setAttribute("ctx", context);
+		
+		realPath = sc.getRealPath("/");
 	}
 
 	public static String getContextPath(){
 		return ctx;
+	}
+	
+	public static String getRealPath(){
+		return realPath;
 	}
 }
