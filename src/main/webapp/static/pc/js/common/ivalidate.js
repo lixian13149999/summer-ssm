@@ -114,17 +114,18 @@ vd.init = function(eleId, inputType, hasMsg) {
             },
             bundleEmail: {
                 required: true,
-                email: true,
-                remote: {
-                    url: ctx+"/user/checkEmailIsSingle", //后台处理程序
-                    type: "get", //数据发送方式
-                    dataType: "json", //接受数据格式   
-                    data: { //要传递的数据
-                        email: function() {
-                            return $("#email").val();
-                        }
-                    }
-                }
+                email: true
+//                ,
+//                remote: {
+//                    url: ctx+"/user/checkEmailIsSingle", //后台处理程序
+//                    type: "get", //数据发送方式
+//                    dataType: "json", //接受数据格式   
+//                    data: { //要传递的数据
+//                        email: function() {
+//                            return $("#email").val();
+//                        }
+//                    }
+//                }
             }
         },
         messages: {
@@ -153,8 +154,9 @@ vd.init = function(eleId, inputType, hasMsg) {
             },
             bundleEmail: {
                 required: "邮件地址不能为空",
-                email: "请输入正确的邮箱",
-                remote:"此邮箱已经被绑定,请重新输入"
+                email: "请输入正确的邮箱"
+//                	,
+//                remote:"此邮箱已经被绑定,请重新输入"
             }
         }
     });
