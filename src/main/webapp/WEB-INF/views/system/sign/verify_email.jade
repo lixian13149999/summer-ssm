@@ -28,6 +28,7 @@ html
 								//- img(src="#{staticCtx}/pc/imgs/mail_icon.png" alt="mail-pic")
 							form#verify_email_form.form-horizontal(method="get" action="javascript:sign.sendVerifyEmail()")
 								//- #{user.userName}
+								input#user_bundle_ok.hide(value="#{bundleOk}")
 								input#user_id.hide(name="verifyMailUserId" value="#{user.id}")
 								.page-form.beaut-form-box
 									label.control-label(for="email") 请输入邮箱地址
@@ -40,3 +41,7 @@ html
 			include ../../common/includes/footer.jade
 
 		script(type='text/javascript',src='#{staticCtx}/pc/js/system/sign.js')
+		script.
+			$(function(){
+				sign.checkBundleType();
+			});

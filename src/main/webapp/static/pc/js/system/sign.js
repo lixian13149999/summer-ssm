@@ -8,6 +8,7 @@ $(function() {
 	vd.init("signup_form", 2, 1);
 	vd.init("verify_email_form", 2, 1);
 
+
 	// console.log(document.getElementById("userName"));
 	// document.getElementById("userName").focus();
 });
@@ -114,8 +115,11 @@ sign.signup = function() {
 
 //像用户发送用于绑定邮箱的邮件的方法
 sign.sendVerifyEmail = function() {
+//	console.log("进入发送邮件的方法");
+	var verifyUserIsExist = sign.checkVerifyUserIsExist();
+	//sign.checkVerifyUserIsExist
 	//检查当前是否有登录用户
-	if (sign.checkVerifyUserIsExist()) {
+	if (verifyUserIsExist) {
 		imessenger.success("用户检测成功,将要发送验证信息到您的邮箱");
 		//如果不为空,验证用户是否存在
 		var url = ctx + "/mail/sendVerifyEmail";
@@ -157,7 +161,8 @@ sign.sendVerifyEmail = function() {
 }
 
 sign.checkVerifyUserIsExist = function() {
-	verifyUserIsExist = false;
+//	console.log("进入检查用户的方法");
+	var verifyUserIsExist = false;
 	//获取用户id
 	var userId = $("#user_id").val();
 	//检查用户id是否为空
@@ -197,4 +202,15 @@ sign.checkVerifyUserIsExist = function() {
 		}
 	}
 	return verifyUserIsExist;
+}
+
+sign.checkBundleType = function(){
+	var bundleOk = $("#user_bundle_ok").val();
+
+	if(bundleOk=="true"){
+
+	}else if(bundleOk=="false"){
+		imessenger.error("绑定邮箱出错,请重新绑定");
+	}
+	//console.log(bundleOk);
 }

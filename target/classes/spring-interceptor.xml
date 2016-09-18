@@ -33,6 +33,8 @@
 	        <mvc:exclude-mapping path="/user/checkEmailIsSingle" />
 	        <!-- 获取邮箱验证页面的接口 -->
 	        <mvc:exclude-mapping path="/user/verifyEmailPage" />
+	        <!-- 获取邮箱验证页面的接口(绑定失败页面) -->
+	        <mvc:exclude-mapping path="/user/bundleEmail" />
 	        
 	        <!-- 发送邮件的接口 -->
 	        <mvc:exclude-mapping path="/mail/sendVerifyEmail" />

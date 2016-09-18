@@ -21,6 +21,7 @@ import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.SessionUtil;
+import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.system.service.MenuService;
@@ -94,9 +95,10 @@ public class UserController {
 		return dbUser==null?"true":"false";
 	}
 	
-	@RequestMapping(value="/verifyEmailPage",method={RequestMethod.GET})
-	public ModelAndView verifyEmailPage(HttpServletRequest req,HttpServletResponse resp,Model model){
-		
+	/**
+	 * 获取绑定页面的公用方法
+	 */
+	public static ModelAndView getVerifyEmailPage(HttpServletRequest req,HttpServletResponse resp,String bundleOk){
 		Map<String, Object> pageData = new HashMap<String, Object>();
 		pageData.put("hasUser", false);
 		
@@ -104,23 +106,89 @@ public class UserController {
 //		System.out.println(user);
 		pageData.put("user", user);
 		
+		pageData.put("bundleOk", bundleOk);
+		
 		ModelAndView mv = JadeUtil.getView("system/sign/verify_email.jade",pageData);
 		return mv;
 	}
+	/**
+	 * @Description: 获取绑定页面
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param model
+	 * @param @return   
+	 * @return ModelAndView  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月18日
+	 */
+	@RequestMapping(value="/verifyEmailPage",method={RequestMethod.GET})
+	public ModelAndView verifyEmailPage(HttpServletRequest req,HttpServletResponse resp,Model model){
+		ModelAndView mv = getVerifyEmailPage(req, resp,"true");
+		return mv;
+	}
 
-	@RequestMapping(value="/verifyEmail",method={RequestMethod.GET})
-	public ModelAndView verifyEmail(HttpServletRequest req,HttpServletResponse resp,User user){
+	/**
+	 * @Description: 执行邮箱绑定的方法
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param user
+	 * @param @return   
+	 * @return ModelAndView  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月18日
+	 */
+	@RequestMapping(value="/bundleEmail",method={RequestMethod.GET})
+	public ModelAndView bundleEmail(HttpServletRequest req,HttpServletResponse resp,User user){
 		
-//		Map<String, Object> pageData = new HashMap<String, Object>();
-//		pageData.put("hasUser", false);
-//		
-//		User user = (User) SessionUtil.getObj(req, Global.ONLINE_USER);
-////		System.out.println(user);
-//		pageData.put("user", user);
-//		
-//		ModelAndView mv = JadeUtil.getView("system/sign/verify_email.jade",pageData);
-//		return mv;
-		return null;
+		ModelAndView mv = getVerifyEmailPage(req, resp,"false");
+		
+		//判断传入值是否为空,如果为空,则直接返回false
+		if(user==null)
+			return mv;
+		
+		//判断传入值的敏感参数是否为空,如果为空,直接返回失败
+		if(StringUtils.isNull(user.getId())
+				||StringUtils.isNull(user.getEmail())
+				||StringUtils.isNull(user.getRemark()))
+			return mv;
+		
+		//获取session中的用户对象,并判断User是否存在
+		User onlineUser = (User) req.getSession().getAttribute(Global.ONLINE_USER);
+		if(onlineUser==null)
+			return mv;
+		
+		//对比传入的User的id和已登录的id是否一致
+		if(!user.getId().equals(onlineUser.getId()))
+			return mv;
+		
+		//根据传入的User对象,获取用集合,如果用户不唯一,说明出现了错误
+		List<User> userList = userService.findList(user);
+		if(userList==null||userList.size()!=1)
+			return mv;
+		
+		//获取查询出的数据库中的用户对象
+		User dbUser = userList.get(0);
+		dbUser.setEmailState(User.BOUND);//修改值
+		dbUser.setRemark("");
+		int updateBack = userService.update(dbUser);//执行更新操作
+		//如果更新后的返回值不为1,则说明出错了
+		if(updateBack!=1)
+			return mv;
+		
+		//以上均未出现问题,则说明所有的 绑定操作执行OK了
+		onlineUser.setEmailState(User.BOUND);//修改session中的邮件状态为绑定状态
+		onlineUser.setEmail(dbUser.getEmail());//修改session中用户绑定的邮箱
+		SessionUtil.refresh(req, Global.ONLINE_USER, onlineUser);//刷新session
+		
+		try {
+			resp.sendRedirect(Global.getProjPash()+"/");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return mv;
 	}
 	
 	/*
