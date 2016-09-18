@@ -1,0 +1,77 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		title 邮箱验证
+		style.
+			.base{
+				width:100%;
+				height:100%;
+				margin:0;
+				padding:0;
+				background-color:#eee;
+				}
+			table{
+				width:500px;
+				margin:150px auto;
+				background-color:#fff;
+				border:1px solid #999;
+				font-family:"Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+				}
+			.title{
+				height:100px;
+				background-color:#363636;
+				color:#fff;
+				font-size:1.5em;
+				}
+			.logo{
+				width:94px;
+				padding-left:30px;
+				}
+			.content{
+				font-size:14px;
+				}
+			h4{
+				line-height:30px;
+				margin:10px 20px 20px;
+				border-bottom:2px solid #dedede;
+				text-indent:1em;
+				font-weight:200;
+				}
+			p{
+				margin:0 -10px;
+				padding:0 60px;
+				line-height:24px;
+				margin-bottom:20px;
+				}
+			a,a:link{
+				text-decoration:none;
+				color:#56b6ea;
+				word-wrap:break-word;
+				word-break:break-all;
+				}
+			a:hover{
+				text-decoration:underline;
+				}
+	body
+		tbody(cellspacing="0" cellpadding="0")
+			tr.base
+				td
+					table(cellspacing="0" cellpadding="0")
+						tbody
+							tr.title
+								td.logo
+									img(src="#{staticCtx}/pc/imgs/logo64_w.png" alt="logo")
+									td bcdbook
+							tr.content
+								td(colspan="2")
+										h4 邮箱验证
+										p 
+											| 本邮件用于bcdbook的邮箱验证，请
+											a.click(href="#")点击这里
+											| 进行验证，验证后将能更好的使用本系统的功能。
+											br
+											| 若点击无效，请复制下方按钮，并在浏览器中打开
+										p
+											a(href="#") http://www.bcdbook.com/mail/verify?userid=57282fecc2860566612c9d69&usermail=lixian13149999@163.com&mail_token=bdb5f219-558d-43eb-8aec-2101a285012f
+										p 若此验证不是您本人操作，请忽视...
