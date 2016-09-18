@@ -29,6 +29,8 @@
 	        <mvc:exclude-mapping path="/user/userNameCanUse" />
 	        <!-- 检查符合条件的用户是否存在 -->
 	        <mvc:exclude-mapping path="/user/userIsExist" />
+	        <!-- 检查邮箱是否是唯一的 -->
+	        <mvc:exclude-mapping path="/user/checkEmailIsSingle" />
 	        <!-- 获取邮箱验证页面的接口 -->
 	        <mvc:exclude-mapping path="/user/verifyEmailPage" />
 	        

@@ -61,7 +61,13 @@ public class MailService extends CrudService<MailDao,Mail> {
 		Mail dbMail = new Mail();
 		dbMail.setSubject("bcdbook用户绑定 用户验证邮件");
 		dbMail.setText("邮箱验证的文本内容");
-		dbMail.setContent("localhost:8888/summer/user/verifyEmail?id="+user.getId()+"&email="+user.getEmail()+"&remark="+user.getRemark());
+		
+		Map<String, Object> modal = new HashMap<String, Object>();
+		String href = "http://localhost:8888/summer/user/verifyEmail?id="+user.getId()+"&email="+user.getEmail()+"&remark="+user.getRemark();
+		modal.put("verifyHref", href);
+		String content = JadeUtil.getBodyView("common/emails/email_user_verify.jade", modal);
+				
+		dbMail.setContent(content);
 		
 		//执行发送操作
 		return MailUtil.send(toAddress, dbMail);
