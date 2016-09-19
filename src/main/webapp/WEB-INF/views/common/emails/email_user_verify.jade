@@ -5,51 +5,55 @@ html(lang="en")
 		title 邮箱验证
 		style.
 			.base{
-				height:100%;
+				height:auto;
 				padding:150px;
 				background-color:#eee;
-				font-size:14px;
-				overfloe:hidden;
-				color:#434343;
-				font-size:14px;
 				}
 			.main-table{
 				width:600px;
 				margin:0 auto;
 				background-color:#fff;
-				font-family:"Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+				font-family:"Microsoft YaHei";
+				padding-bottom:25px;
 				}
 			.title{
-				height:60px;
+				height:64px;
 				background-color:#363636;
 				color:#fff;
 				}
-			.title-content{
-				font-size:1.3em;
-				padding-left:12px;
-				}
 			.logo{
 				width:64px;
-				padding-left:20px;
+				padding:0 12px 0 12px;
 				text-align:right;
+				}
+			img{
+				width:48px;
+				height:48px;
+				vertical-align:middle;
+				}
+			.title-content{
+				font-size:1.2em;
+				padding-top:6px;			
 				}
 			.content{
 				font-size:14px;
 				}
 			h4{
-				line-height:40px;
-				margin:10px 20px 20px;
+				line-height:35px;
+				margin:10px 20px 15px;
 				border-bottom:1.5px solid #dedede;
 				text-indent:1em;
 				font-weight:200;
 				font-size:14px;
+				color:#666;
 				}
 			p{
 				margin:0 -10px;
 				padding:0 60px;
 				line-height:24px;
-				margin-bottom:25px;
+				margin-bottom:10px;
 				font-size:14px;
+				color:#666;
 				}
 			.a-conect,.click,.email,a:link{
 				text-decoration:none;
@@ -58,7 +62,7 @@ html(lang="en")
 				word-break:break-all;
 				font-size:14px;
 				}
-			a:hover{
+			.a-conect:hover,a:hover{
 				text-decoration:underline;
 				}
 	body
@@ -67,7 +71,7 @@ html(lang="en")
 				tbody
 					tr.title
 						td.logo
-							img(src="#{staticCtx}/pc/imgs/logo64_w.png" alt="logo")
+							img(src="http://www.pp3.cn/uploads/allimg/111127/1-11112G42R2.png" alt="logo")
 							td.title-content bcdbook
 					tr.content
 						td(colspan="2")
@@ -75,11 +79,11 @@ html(lang="en")
 								p 
 									| 本邮件用于bcdbook的邮箱验证，请
 									span.a-conect
-										a.click(href="#" class="click") 点击这里
+										a.click(href="#") 点击这里
 									| 进行验证，验证后将能更好的使用本系统的功能。
 									br
 									| 若点击无效，请复制下方按钮，并在浏览器中打开
 								p
 									span.a-conect
-										a(href="#" class="email") http://www.bcdbook.com/mail/verify?userid=57282fecc2860566612c9d69&usermail=lixian13149999@163.com&mail_token=bdb5f219-558d-43eb-8aec-2101a285012f
+										a.email(href="#") http://www.bcdbook.com/mail/verify?userid=57282fecc2860566612c9d69&usermail=lixian13149999@163.com&mail_token=bdb5f219-558d-43eb-8aec-2101a285012f
 								p 若此验证不是您本人操作，请忽视...
