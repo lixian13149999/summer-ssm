@@ -24,7 +24,7 @@
 
     <!-- 自设定样式的引入 -->
     <link rel="stylesheet/less" href="../../static/pc/css/index.less" type="text/less">
-
+    <link rel="stylesheet/less" href="../../static/pc/css/include/user.less">
 
 </head>
 
@@ -81,28 +81,107 @@
             </div>
 
             <div class="view-product-body">
-                <form id="test_form" method="get" action="javascript:testGetName()" class="form-horizontal">
-                    
-                    <div class="page-form form-box">
-                        <div class="form-group">
-                            <label for="pwd" class="col-sm-2 control-label">密码</label>
-                            <div class="col-sm-10">
-                                <input id="pwd" type="password" name="password" class="form-control" id="" placeholder="请输入密码">
-                            </div>
-                            <div class="col-sm-2"></div>
-                            <label for="pwd" class="error-msg-label">默认错误提示信息</label>
-                        </div>
+                <div class="body-title">栏目管理</div>
+                
+                <div class="row body-pages-nav">
+                    <ul id="commission-nav-box" class="nav-justified">
+                        <li role="presentation" class="active" data-commission-nav="qiantai">前台栏目</li>
+                        <li role="presentation" data-commission-nav="houtai">后台栏目</li>
+                    </ul>
+                </div>
+                
+                <div id="commission-box" class="row commission-box"> 
+                    <div class="col-sm-3 left-content">
+                       <div class="commission-box-title">栏目编辑</div>
+                        <dl>
+                            <dd class="left-content-title">
+                                <i class="icon icon-menu"></i>
+                                &nbsp;栏目管理
+                                <span class="setting-icon">
+                                    <i class="icon icon-add"></i>
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                            <dd class="left-content-text">栏目列表</dd>
+                        </dl>
+                        <dl>
+                            <dd class="left-content-title">
+                                <i class="icon icon-user"></i>
+                                &nbsp;用户管理
+                                <span class="setting-icon">
+                                    <i class="icon icon-add"></i>
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                            <dd class="left-content-text">
+                            用户列表
+                                <span class="setting-icon">
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                            <dd class="left-content-text">
+                            个人中心
+                                <span class="setting-icon">
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                        </dl>
+                        <dl>
+                           <dd class="left-content-title">
+                                <i class="icon icon-role"></i>
+                                &nbsp;角色管理
+                                <span class="setting-icon">
+                                    <i class="icon icon-add"></i>
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                            <dd class="left-content-text">
+                            角色列表
+                                <span class="setting-icon">
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                        </dl>
                     </div>
                     
-                    <div class="page-form beaut-form-box">
-                        <label for="username" class="control-label">用户名</label>
-                        <input id="username" data-form-control="beaut-control" type="text" name="username" class="form-control" placeholder="">
-                        <label for="username" class="error-msg-label">默认错误提示信息</label>
+                    <div class="col-sm-9 right-content">
+                        <div class="commission-box-title">权限管理</div>
+                        <dl>
+                            <dd class="right-list">
+                                <i class="add-icon icon icon-add"> 添加</i>
+                                &nbsp;&nbsp;用户添加权限
+                                <span class="setting-icon">
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                            <dd class="right-list">
+                                <i class="add-icon icon icon-add"> 添加</i>
+                                &nbsp;&nbsp;用户添加权限
+                                <span class="setting-icon">
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                            <dd class="right-list">
+                                <i class="add-icon icon icon-add"> 添加</i>
+                                &nbsp;&nbsp;用户添加权限
+                                <span class="setting-icon">
+                                    <i class="icon icon-tool"></i>
+                                    <i class="icon icon-delete"></i>
+                                </span>
+                            </dd>
+                        </dl>
                     </div>
-                    
-                    <input type="submit" value="提交" />
-                </form>
+                </div>            
             </div>
+            
         </div>
     </div>
 
@@ -151,5 +230,7 @@
             console.log(proj);
         }
     </script>
+    
+    <script type="text/javascript" src="../../static/pc/js/system/user.js"></script>
 </body>
 </html>
