@@ -5,14 +5,14 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class WechatVoiceRecognitionMessage extends WechatVoiceMessage{
+public class VoiceRecognitionMessage extends VoiceMessage{
 	private String Recognition;//语音识别结果，UTF8编码
 	//空参
-	public WechatVoiceRecognitionMessage() {
+	public VoiceRecognitionMessage() {
 		super();
 	}
 	//全参
-	public WechatVoiceRecognitionMessage(String recognition) {
+	public VoiceRecognitionMessage(String recognition) {
 		super();
 		Recognition = recognition;
 	}

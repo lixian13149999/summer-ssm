@@ -5,16 +5,16 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class WechatImageMessage extends WechatMessage {
+public class ImageMessage extends Message {
 	private String PicUrl;//图片链接（由系统生成）
 	private String MediaId;//图片消息媒体id，可以调用多媒体文件下载接口拉取数据。
 	
 	//空参构造
-	public WechatImageMessage() {
+	public ImageMessage() {
 		super();
 	}
 	//全参构造
-	public WechatImageMessage(String picUrl, String mediaId) {
+	public ImageMessage(String picUrl, String mediaId) {
 		super();
 		PicUrl = picUrl;
 		MediaId = mediaId;

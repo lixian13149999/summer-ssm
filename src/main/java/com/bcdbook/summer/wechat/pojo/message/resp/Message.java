@@ -5,18 +5,18 @@ package com.bcdbook.summer.wechat.pojo.message.resp;
  * @author lason
  * @date 2016年9月19日
  */
-public class WechatMessage {
+public class Message {
 	private String ToUserName;//开发者微信号
 	private String FromUserName;//发送方帐号（一个OpenID）
 	private String CreateTime;//消息创建时间 （整型）
 	private String MsgType;//消息类型
 	
 	//空参构造
-	public WechatMessage() {
+	public Message() {
 		super();
 	}
 	//全参构造
-	public WechatMessage(String toUserName, String fromUserName,
+	public Message(String toUserName, String fromUserName,
 			String createTime, String msgType) {
 		super();
 		ToUserName = toUserName;
@@ -49,4 +49,12 @@ public class WechatMessage {
 	public void setMsgType(String msgType) {
 		MsgType = msgType;
 	}
+	//toString
+	@Override
+	public String toString() {
+		return "WechatMessage [ToUserName=" + ToUserName + ", FromUserName="
+				+ FromUserName + ", CreateTime=" + CreateTime + ", MsgType="
+				+ MsgType + "]";
+	}
+	
 }

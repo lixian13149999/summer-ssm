@@ -5,15 +5,15 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class WechatTextMessage extends WechatMessage {
+public class TextMessage extends Message {
 	private String Content;//文本消息内容
 
 	//空参构造
-	public WechatTextMessage() {
+	public TextMessage() {
 		super();
 	}
 	//全参构造
-	public WechatTextMessage(String content) {
+	public TextMessage(String content) {
 		super();
 		Content = content;
 	}

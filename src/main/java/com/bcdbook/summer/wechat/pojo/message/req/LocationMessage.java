@@ -5,17 +5,17 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class WechatLocationMessage extends WechatMessage{
+public class LocationMessage extends Message{
 	private String Location_X;//地理位置维度
 	private String Location_Y;//地理位置经度
 	private String Scale;//地图缩放大小
 	private String Label;//地理位置信息
 	//空参构造
-	public WechatLocationMessage() {
+	public LocationMessage() {
 		super();
 	}
 	//全参构造
-	public WechatLocationMessage(String location_X, String location_Y,
+	public LocationMessage(String location_X, String location_Y,
 			String scale, String label) {
 		super();
 		Location_X = location_X;

@@ -5,16 +5,16 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class WechatLinkMessage extends WechatMessage {
+public class LinkMessage extends Message {
 	private String Title;//消息标题
 	private String Description;//消息描述
 	private String Url;//消息链接
 	//空参
-	public WechatLinkMessage() {
+	public LinkMessage() {
 		super();
 	}
 	//全参
-	public WechatLinkMessage(String title, String description, String url) {
+	public LinkMessage(String title, String description, String url) {
 		super();
 		Title = title;
 		Description = description;

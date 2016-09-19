@@ -5,15 +5,15 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class WechatVoiceMessage extends WechatMessage {
+public class VoiceMessage extends Message {
 	private String MediaId;//语音消息媒体id，可以调用多媒体文件下载接口拉取数据。
 	private String Format;//语音格式，如amr，speex等
 	//空参构造
-	public WechatVoiceMessage() {
+	public VoiceMessage() {
 		super();
 	}
 	//全参构造
-	public WechatVoiceMessage(String mediaId, String format) {
+	public VoiceMessage(String mediaId, String format) {
 		super();
 		MediaId = mediaId;
 		Format = format;
