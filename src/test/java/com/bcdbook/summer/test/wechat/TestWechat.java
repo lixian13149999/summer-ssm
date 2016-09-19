@@ -61,4 +61,10 @@ public class TestWechat {
 		Wechat wc = wechatService.getByCondition(wechat);
 		System.out.println(wc);
 	}
+	
+//	@Test
+//	public void getWechatByKey(){
+//		Wechat w = wechatService.getWechatByKey(Wechat.KEY_ACCESS_TOKEN);
+//		System.out.println(w);
+//	}
 }

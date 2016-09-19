@@ -5,8 +5,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.bcdbook.summer.common.persistence.service.CrudService;
+import com.bcdbook.summer.common.util.DateUtil;
+import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.wechat.dao.WechatDao;
 import com.bcdbook.summer.wechat.pojo.Wechat;
+import com.bcdbook.summer.wechat.util.WechatUtil;
 
 /**
      * @Title: WechatService.java    
@@ -26,7 +29,7 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 	    * @param wechatKey
 	    * @return
 	 */
-	public String getParameter(String wechatKey){
+	private String getParameter(String wechatKey){
 		//验证参数是否合法
 		if(wechatKey==null)
 			return null;
@@ -44,7 +47,7 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 	    * @param wechat
 	    * @return
 	 */
-	public int save(Wechat wechat){
+	private int save(Wechat wechat){
 		//验证参数
 		if(wechat==null)
 			return 0;
@@ -52,15 +55,15 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 		String wechatKey = wechat.getWechatKey();
 		if(wechatKey==null)
 			return 0;
-		
-//		Wechat dbWecaht = getWechatByKey(wechatKey);
-//		if(dbWecaht==null){
-//			return add(wechat);
-//		}else{
-//			return update(wechat);
-//		}
+
 		//如果数据库中存在此key,则执行添加,否则执行更新
-		return getWechatByKey(wechatKey)==null?add(wechat):update(wechat);
+		Wechat dbWechat = getWechatByKey(wechatKey);
+		if(dbWechat==null)
+			return add(wechat);
+		
+		String dbId = dbWechat.getId();
+		wechat.setId(dbId);
+		return update(wechat);
 	}
 	
 	/**
@@ -70,7 +73,7 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 	    * @param wechatKey
 	    * @return
 	 */
-	public Wechat getWechatByKey(String wechatKey){
+	private Wechat getWechatByKey(String wechatKey){
 		//参数合法性验证
 		if(wechatKey==null)
 			return null;
@@ -81,5 +84,54 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 		
 		//返回获取到的微信对象
 		return getByCondition(wechat);
+	}
+
+	/**
+	 * @Description: 用于刷新数据库中accessToken的方法
+	 * @param    
+	 * @return void  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月19日
+	 */
+	public void refreshAccessToken() {
+		//获取数据库中的存有accessToken的wechat对象
+		Wechat dbWechat = getWechatByKey(Wechat.KEY_ACCESS_TOKEN);
+		//判断对象是否存在,,如果对象不存
+		if(dbWechat==null){
+			//直接进行存储操作
+			doRefreshAccessToken();
+		}else{
+			//获取原accessToken的更新时间
+			String updataTimeStr = dbWechat.getUpdateTime();
+			//如果更新时间为空,或者accessToken的值为空
+			if(StringUtils.isNull(updataTimeStr)||StringUtils.isNull(dbWechat.getWechatValue())){
+				//直接进行存储操作
+				doRefreshAccessToken();
+			}else{
+				long updataTime = Long.parseLong(updataTimeStr);//把更新时间的时间戳转换成long类型
+				long thisTime = DateUtil.getTime();//获取当前系统时间的时间戳
+				//如果距离上次更新超过一个小时,或更新时间大于当前系统时间
+				if((thisTime-updataTime)/1000/60>60||(thisTime-updataTime)<0){
+					//执行存储操作
+					doRefreshAccessToken();
+				}
+			}
+		}
+	}
+	private boolean doRefreshAccessToken(){
+		//创建微信对象
+		Wechat wechat = new Wechat();
+		//设置key值
+		wechat.setWechatKey(Wechat.KEY_ACCESS_TOKEN);
+		//设置value值
+		wechat.setWechatValue(WechatUtil.getNewAccessTokenFromWechatServer());
+		//执行保存操作
+		return save(wechat)==1?true:false;
+	}
+	
+	
+	public String getAccessToken(){
+		return getParameter(Wechat.KEY_ACCESS_TOKEN);
 	}
 }

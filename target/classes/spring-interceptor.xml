@@ -39,6 +39,8 @@
 	        <!-- 发送邮件的接口 -->
 	        <mvc:exclude-mapping path="/mail/sendVerifyEmail" />
 	        
+	        <!-- 允许wechat直接访问 -->
+	        <mvc:exclude-mapping path="/wechat" />
 	        <!-- 拦截时过滤掉wechat/login -->
 	        <mvc:exclude-mapping path="/wechat/login" />
 	        

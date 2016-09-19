@@ -4,6 +4,7 @@
 package com.bcdbook.summer.common.util;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,6 +12,7 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringEscapeUtils;
+
 import com.google.common.collect.Lists;
 
 /**
@@ -366,4 +368,32 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     public static boolean isNull(String value){
     	return value==null||value.trim().equals("")?true:false;
     }
+    
+
+	/**
+	 * @Description: 对不定长的字符数组进行排序,
+	 * 并返回排序后拼接生成的字符串
+	 * @param @param strings
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月19日
+	 */
+	public static String sortString(String... strings ){
+		//参数合法性验证
+		if(strings==null||strings.length==0)
+			return null;
+		
+		//排序
+		Arrays.sort(strings);
+		
+		//创建用于拼接的StringBuilder
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < strings.length; i++) {
+			sb.append(strings[i]);
+		}
+		return sb.toString();
+	}
+	
 }

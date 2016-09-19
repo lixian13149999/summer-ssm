@@ -12,7 +12,7 @@ public class Wechat extends DataEntity<Wechat> {
 	private static final long serialVersionUID = 291446736647879322L;
 
 	public static final String APP_ID = "wx18d7b3cb67983626";
-	public static final String APP_SECRET = "0dc447e218820b7df63d1dcda61df380";
+	public static final String APP_SECRET = "bd8194a6707b334583b363a8318b59f0";
 	
 	public static final String URL = "http://www.bcdbook.com/wechat";
 	public static final String TOKEN = "solar";
@@ -23,7 +23,7 @@ public class Wechat extends DataEntity<Wechat> {
 	public static final String PAY_SUCCESS_BACK = "http://you.bcdbook.com/proj/payBack";
 	public static final String PRE_URL = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 	
-	private static final String KEY_ACCESS_TOKEN = "accessToken";
+	public static final String KEY_ACCESS_TOKEN = "accessToken";
 	
 	
 	private String wechatKey;//字段的key值,用来存储字段的唯一识别码

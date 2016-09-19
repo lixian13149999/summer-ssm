@@ -34,9 +34,9 @@
 		<property name="jobDetail" ref="refreshAccessToken" />
 		<!-- 10 seconds -->
 		<!-- 首次执行的时候推辞的时间(时间均已毫秒计算) -->
-		<!-- 每隔15分钟执行一次 -->
+		<!-- 每隔半个小时分钟执行一次 -->
 		<!-- <property name="repeatInterval" value="900000" /> -->
-		<property name="repeatInterval" value="900000" />
+		<property name="repeatInterval" value="1800000" />
 	</bean>
 	<!-- 刷新素材的定时器的执行时间配置 -->
 	<bean id="refreshMaterialSettime" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
