@@ -198,7 +198,6 @@ public class WechatUtil {
 	 */
 	public static String getMenu() {
 		String menu = null;
-		
 		//获取项目的跟路径
 		String basePash = ContextParameter.getRealPath();
 		if(basePash==null)

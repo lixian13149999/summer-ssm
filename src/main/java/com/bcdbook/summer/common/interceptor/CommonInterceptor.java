@@ -42,6 +42,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		
 		//从session中获取user对象
 		User user = (User) req.getSession().getAttribute(Global.ONLINE_USER);
+//		System.out.println(user);
 		//判断user是否为空
 		if(user==null||StringUtils.isNull(user.getUserName())){
 			logger.info("拦截路径:"+aa);

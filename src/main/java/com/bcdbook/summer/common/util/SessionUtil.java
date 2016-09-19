@@ -38,6 +38,7 @@ public class SessionUtil {
 			//如果session中不存在,则直接添加session
 			get(req).setAttribute(key, obj);
 		}
+//		System.out.println("SessionUtil:"+get(req).getAttribute(key));
 		return true;
 	}
 	

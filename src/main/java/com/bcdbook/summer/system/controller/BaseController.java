@@ -90,6 +90,7 @@ public class BaseController {
 			return BackMsg.error("request user is null");
 		
 		User onlineUser = userService.signin(user);
+//		System.out.println(onlineUser);
 		if(onlineUser==null)
 			return BackMsg.error("signin error");
 		

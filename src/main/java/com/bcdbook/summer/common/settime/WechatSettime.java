@@ -30,7 +30,7 @@ public class WechatSettime {
 	public void refreshAccessToken() {
 //		System.out.println("刷新accessToken的方法执行");
 		logger.info("定时器,accessToken刷新");
-		WechatService wechatService = (WechatService) getConnectBean("wechatService");
+		WechatService wechatService = getConnectBean("wechatService");
 		wechatService.refreshAccessToken();
 	}
 

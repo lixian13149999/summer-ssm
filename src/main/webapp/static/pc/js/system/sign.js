@@ -70,7 +70,8 @@ sign.signinSuccessBack = function(data) {
 	//如果返回值为操作成功
 	if (iutil.isSuccess(data)) {
 		//跳转到首页
-		window.location.href = ctx;
+//		window.location.href = ctx;
+		window.location.href = "/";
 	} else {
 		imessenger.error("登录失败");
 	}
