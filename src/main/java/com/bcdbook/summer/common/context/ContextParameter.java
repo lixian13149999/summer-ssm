@@ -44,8 +44,8 @@ public class ContextParameter implements ServletContextListener {
 		
 		String icontext = sc.getContextPath().toString();
 		//- TODO 每次上线时需要修改的参数
-//		ctx = icontext+"/";
-		ctx = "/";
+		ctx = icontext+"/";
+//		ctx = "/";
 		sc.setAttribute("ctx", context);
 		
 		realPath = sc.getRealPath("/");
