@@ -7,7 +7,7 @@ import com.bcdbook.summer.wechatold.pojo.message.resp.Video;
  * @author lason
  * @date 2016年9月19日
  */
-public class VideoMessage extends Message{
+public class VideoMessage extends WechatRespMessage{
 	private Video video;//视频对象
 	
 	//空参构造

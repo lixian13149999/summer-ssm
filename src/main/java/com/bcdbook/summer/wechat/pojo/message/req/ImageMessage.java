@@ -5,7 +5,7 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class ImageMessage extends Message {
+public class ImageMessage extends WechatReqMessage {
 	private String PicUrl;//图片链接（由系统生成）
 	private String MediaId;//图片消息媒体id，可以调用多媒体文件下载接口拉取数据。
 	

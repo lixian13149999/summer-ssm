@@ -5,7 +5,7 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class Message {
+public class WechatReqMessage {
 	private String ToUserName;//开发者微信号
 	private String FromUserName;//发送方帐号（一个OpenID）
 	private String CreateTime;//消息创建时间 （整型）
@@ -13,11 +13,11 @@ public class Message {
 	private String MsgId;//消息id，64位整型
 	
 	//空参构造
-	public Message() {
+	public WechatReqMessage() {
 		super();
 	}
 	//全参构造
-	public Message(String toUserName, String fromUserName,
+	public WechatReqMessage(String toUserName, String fromUserName,
 			String createTime, String msgType, String msgId) {
 		super();
 		ToUserName = toUserName;

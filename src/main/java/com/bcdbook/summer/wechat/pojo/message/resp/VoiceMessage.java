@@ -5,7 +5,7 @@ package com.bcdbook.summer.wechat.pojo.message.resp;
  * @author lason
  * @date 2016年9月19日
  */
-public class VoiceMessage extends Message {
+public class VoiceMessage extends WechatRespMessage {
 	private Voice wechatVoice;//语音素材
 	
 	//空参构造

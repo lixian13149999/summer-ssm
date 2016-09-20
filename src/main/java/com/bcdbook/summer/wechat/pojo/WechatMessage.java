@@ -2,9 +2,52 @@ package com.bcdbook.summer.wechat.pojo;
 
 import com.bcdbook.summer.common.persistence.pojo.DataEntity;
 
-public class Message extends DataEntity<Message> {
+public class WechatMessage extends DataEntity<WechatMessage> {
 
 	private static final long serialVersionUID = 472956021907896157L;
+	
+	/**
+	 * 文本消息
+	 */
+	public static final String TEXT = "text";
+	/**
+	 * 图片消息
+	 */
+	public static final String IMAGE = "image";
+	/**
+	 * 语音消息
+	 */
+	public static final String VOICE = "voice";
+	/**
+	 * 视频消息
+	 */
+	public static final String VIDEO = "video";
+	/**
+	 * 短视频消息
+	 */
+	public static final String SHORT_VIDEO = "shortvideo";
+	/**
+	 * 地里位置消息
+	 */
+	public static final String LOCATION = "location";
+	/**
+	 * 连接消息
+	 */
+	public static final String LINK = "link";
+	
+	/**
+	 * 音乐消息
+	 */
+	public static final String MUSIC = "music";
+	/**
+	 * 文图消息
+	 */
+	public static final String NEWS = "news";
+	
+	/**
+	 * 事件消息
+	 */
+	public static final String EVENT = "event";
 	
 	private String name;// 消息的命名
 	private String keyword;// 消息关键字(用来匹配用户发送过来的消息)
@@ -17,11 +60,11 @@ public class Message extends DataEntity<Message> {
 	private String musicUrl;// 音乐的连接地址(music类型的消息会用到的字段)
 	private String hqMusicUrl;// 高清音乐的连接地址(music类型的消息会用到的字段)
 	
-	public Message() {
+	public WechatMessage() {
 		super();
 	}
 
-	public Message(String name, String keyword, String msgType, String mediaId,
+	public WechatMessage(String name, String keyword, String msgType, String mediaId,
 			String content, String title, String description, String musicUrl,
 			String hqMusicUrl) {
 		super();

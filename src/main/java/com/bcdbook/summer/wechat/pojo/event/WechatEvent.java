@@ -7,7 +7,69 @@ package com.bcdbook.summer.wechat.pojo.event;
      * @author lason       
      * @created 2016年5月27日 上午10:04:36
  */
-public class Event {
+public class WechatEvent {
+	/**
+	 * 关注事件
+	 */
+	public static final String SUBSCRIBE = "subscribe";
+	/**
+	 * 取消关注事件
+	 */
+	public static final String UNSUBSCRIBE = "unsubscribe";
+	/**
+	 * 扫描事件
+	 */
+	public static final String SCAN = "SCAN";
+	/**
+	 * 地里位置事件,自动发送
+	 */
+	public static final String LOCATION = "LOCATION";
+	/**
+	 * 点击事件
+	 */
+	public static final String CLICK = "CLICK";
+	/**
+	 * 连接事件
+	 */
+	public static final String VIEW = "VIEW";
+	
+	
+	/**
+	 * 扫码,自动进入连接事件
+	 */
+	public static final String SCANCODE_PUSH = "scancode_push";
+	/**
+	 * 扫码,带提示事件
+	 */
+	public static final String SCANCODE_WAITMSG = "scancode_waitmsg";
+	
+	/**
+	 * 发送系统拍照事件
+	 */
+	public static final String PIC_SYSPHOTO = "pic_sysphoto";
+	/**
+	 * 发送系统拍照或相册事件
+	 */
+	public static final String PIC_SYSPHOTO_OR_ALBUM = "pic_photo_or_album";
+	/**
+	 * 发送微信照片事件
+	 */
+	public static final String PIC_WEIXIN = "pic_weixin";
+	
+	/**
+	 * 发送地址事件,主动发送(可调整位置)
+	 */
+	public static final String LOCATION_SELECT = "location_select";
+	
+	/**
+	 * 下发消息事件
+	 */
+	public static final String MEDIA_ID = "media_id";
+	/**
+	 * 跳转素材中连接固定事件
+	 */
+	public static final String VIEW_LIMITED = "view_limited";
+	
 	private String ToUserName;//开发者微信号
 	private String FromUserName;//发送方帐号（一个OpenID）
 	private long CreateTime;//消息创建时间 （整型）
@@ -15,11 +77,11 @@ public class Event {
 	private String Event;//事件类型
 	
 	//空参构造
-	public Event() {
+	public WechatEvent() {
 		super();
 	}
 	//全参构造
-	public Event(String toUserName, String fromUserName, long createTime,
+	public WechatEvent(String toUserName, String fromUserName, long createTime,
 			String msgType, String event) {
 		super();
 		ToUserName = toUserName;

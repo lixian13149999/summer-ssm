@@ -7,7 +7,7 @@ package com.bcdbook.summer.wechat.pojo.event;
      * @author lason       
      * @created 2016年5月27日 上午10:05:54
  */
-public class MenuEvent extends Event {
+public class MenuEvent extends WechatEvent {
 	
 	private String EventKey;//事件KEY值，与自定义菜单接口中KEY值对应
 	

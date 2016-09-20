@@ -7,7 +7,7 @@ package com.bcdbook.summer.wechat.pojo.message.resp;
      * @author lason       
      * @created 2016年5月25日 上午9:59:01
  */
-public class MusicMessage extends Message {
+public class MusicMessage extends WechatRespMessage {
 	
 	private Music Music;//音乐对象
 

@@ -6,6 +6,6 @@ package com.bcdbook.summer.wechat.pojo.event;
      * @author lason       
      * @created 2016年9月19日 下午8:51:31
  */
-public class SubOrUnsubEvent extends Event {
+public class SubOrUnsubEvent extends WechatEvent {
 
 }

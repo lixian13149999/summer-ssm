@@ -43,6 +43,10 @@
 	        <mvc:exclude-mapping path="/wechat" />
 	        <!-- 拦截时过滤掉wechat/login -->
 	        <mvc:exclude-mapping path="/wechat/login" />
+	        <!-- 拦截时过滤掉wechat/message -->
+	        <mvc:exclude-mapping path="/wechat/message" />
+	        <!-- 拦截时过滤掉wechat/event -->
+	        <mvc:exclude-mapping path="/wechat/event" />
 	        
 	        <!-- 过滤掉错误页面的拦截 -->
 	        <mvc:exclude-mapping path="/error/**" />

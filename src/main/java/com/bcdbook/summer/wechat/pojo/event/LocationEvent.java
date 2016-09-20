@@ -7,7 +7,7 @@ package com.bcdbook.summer.wechat.pojo.event;
      * @author lason       
      * @created 2016年5月27日 上午10:05:40
  */
-public class LocationEvent extends Event {
+public class LocationEvent extends WechatEvent {
 	private String Latitude;//地理位置纬度
 	private String Longitude;//地理位置经度
 	private String Precision;//地理位置精度

@@ -47,7 +47,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		if(user==null||StringUtils.isNull(user.getUserName())){
 			logger.info("拦截路径:"+aa);
 			//如果user为空,则转发到登录界面
-			resp.sendRedirect(Global.getProjPash()+"/signin");
+			resp.sendRedirect(Global.getProjPash()+"signin");
 			return false;
 		}
 		
@@ -61,7 +61,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		if(user.getEmailState()==User.UNBOUND){
 			//如果是未绑定状态
 			//邮箱未绑定状态,需要做特殊的处理
-			resp.sendRedirect(Global.getProjPash()+"/user/verifyEmailPage");
+			resp.sendRedirect(Global.getProjPash()+"user/verifyEmailPage");
 			return false;
 		}
 		

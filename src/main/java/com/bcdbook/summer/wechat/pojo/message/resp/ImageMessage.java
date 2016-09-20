@@ -5,7 +5,7 @@ package com.bcdbook.summer.wechat.pojo.message.resp;
  * @author lason
  * @date 2016年9月19日
  */
-public class ImageMessage extends Message {
+public class ImageMessage extends WechatRespMessage {
 	private Image Image;//Image
 
 	//空参构造

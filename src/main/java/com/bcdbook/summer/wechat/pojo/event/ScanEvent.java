@@ -7,7 +7,7 @@ package com.bcdbook.summer.wechat.pojo.event;
      * @author lason       
      * @created 2016年5月27日 上午10:06:14
  */
-public class ScanEvent extends Event{
+public class ScanEvent extends WechatEvent{
 	private String EventKey; //事件KEY值，qrscene_为前缀，后面为二维码的参数值
 	private String Ticket;//二维码的ticket，可用来换取二维码图片
 	

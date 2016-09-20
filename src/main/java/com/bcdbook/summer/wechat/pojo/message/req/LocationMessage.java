@@ -5,7 +5,7 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class LocationMessage extends Message{
+public class LocationMessage extends WechatReqMessage{
 	private String Location_X;//地理位置维度
 	private String Location_Y;//地理位置经度
 	private String Scale;//地图缩放大小

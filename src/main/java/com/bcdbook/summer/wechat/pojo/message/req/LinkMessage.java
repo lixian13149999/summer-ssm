@@ -5,7 +5,7 @@ package com.bcdbook.summer.wechat.pojo.message.req;
  * @author lason
  * @date 2016年9月19日
  */
-public class LinkMessage extends Message {
+public class LinkMessage extends WechatReqMessage {
 	private String Title;//消息标题
 	private String Description;//消息描述
 	private String Url;//消息链接

@@ -17,7 +17,7 @@ $(function() {
 sign.signin = function() {
 	var user = iform.parse("signin_form");
 	//console.log(user);
-	var url = ctx + "/signin";
+	var url = ctx + "signin";
 	//	console.log(url);
 	$.ajax({
 		url: url,
@@ -44,7 +44,7 @@ sign.autoSignin = function() {
 	var userName = $("#signupUserName").val();
 	var pwd = $("#pwd").val();
 
-	var url = ctx + "/signin";
+	var url = ctx + "signin";
 	$.ajax({
 		url: url,
 		type: 'POST',
@@ -70,8 +70,8 @@ sign.signinSuccessBack = function(data) {
 	//如果返回值为操作成功
 	if (iutil.isSuccess(data)) {
 		//跳转到首页
-//		window.location.href = ctx;
-		window.location.href = "/";
+		window.location.href = ctx;
+//		window.location.href = "/";
 	} else {
 		imessenger.error("登录失败");
 	}
@@ -83,7 +83,7 @@ sign.signup = function() {
 	var userName = $("#signupUserName").val();
 	var pwd = $("#pwd").val();
 
-	var url = ctx + "/signup";
+	var url = ctx + "signup";
 
 	$.ajax({
 		url: url,
@@ -123,7 +123,7 @@ sign.sendVerifyEmail = function() {
 	if (verifyUserIsExist) {
 		imessenger.success("用户检测成功,将要发送验证信息到您的邮箱");
 		//如果不为空,验证用户是否存在
-		var url = ctx + "/mail/sendVerifyEmail";
+		var url = ctx + "mail/sendVerifyEmail";
 		var userId = $("#user_id").val();
 		var emailAddr = $("#email").val();
 
@@ -172,7 +172,7 @@ sign.checkVerifyUserIsExist = function() {
 		imessenger.error("获取登录用户出错,请重新登录");
 	} else {
 		//如果不为空,验证用户是否存在
-		var url = ctx + "/user/userIsExist";
+		var url = ctx + "user/userIsExist";
 		$.ajax({
 			url: url,
 			type: 'GET',
