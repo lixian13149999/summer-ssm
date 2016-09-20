@@ -1,6 +1,8 @@
 package com.bcdbook.summer.wechat.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +36,7 @@ public class WechatMenuController {
 	 */
 	@RequestMapping(value="create",method = { RequestMethod.GET },produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String create(){
+	public String create(HttpServletRequest req, HttpServletResponse resp){
 		
 		return wechatMenuService.createMenu(wechatService.getAccessToken());
 		
@@ -50,7 +52,7 @@ public class WechatMenuController {
 	 */
 	@RequestMapping(value="get",method = { RequestMethod.GET },produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String get(){
+	public String get(HttpServletRequest req, HttpServletResponse resp){
 		return wechatMenuService.getMenu(wechatService.getAccessToken());
 	}
 }

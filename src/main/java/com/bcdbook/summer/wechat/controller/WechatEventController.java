@@ -10,9 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bcdbook.summer.wechat.pojo.WechatMessage;
 import com.bcdbook.summer.wechat.pojo.event.WechatEvent;
+import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
 
+/**
+ * @Description: 微信事件处理的控制器
+ * @author lason
+ * @date 2016年9月20日
+ */
 @Controller
 @RequestMapping("/wechat/event")
 public class WechatEventController {

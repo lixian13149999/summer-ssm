@@ -17,10 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.common.util.XMLUtil;
-import com.bcdbook.summer.wechat.pojo.WechatMessage;
 import com.bcdbook.summer.wechat.pojo.Wechat;
+import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
 import com.bcdbook.summer.wechat.util.WechatUtil;
 
+/**
+ * @Description: 微信主控制器
+ * @author lason
+ * @date 2016年9月20日
+ */
 @Controller
 @RequestMapping("/wechat")
 public class WechatController {

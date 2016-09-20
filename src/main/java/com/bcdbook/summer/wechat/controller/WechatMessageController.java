@@ -10,8 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bcdbook.summer.wechat.pojo.WechatMessage;
+import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
 
+/**
+ * @Description: 微信消息处理的控制器
+ * @author lason
+ * @date 2016年9月20日
+ */
 @Controller
 @RequestMapping("/wechat/message")
 public class WechatMessageController {
@@ -32,11 +37,12 @@ public class WechatMessageController {
 	@RequestMapping(method = RequestMethod.POST)
 	public void post(HttpServletRequest req, HttpServletResponse resp) {
 		logger.info("进入消息处理的接口  /wechat/message");
+		//定义返回值
+		String backMsg = "success";
+		
 		@SuppressWarnings("unchecked")
 		Map<String,String> reqMapMsg = (Map<String, String>) req.getAttribute("reqMapMsg");
 		
-		//定义返回值
-		String backMsg = "success";
 		//获取消息的类型
 		String msgType = reqMapMsg.get("MsgType");
 		//根据不同的消息类型,选用不同的处理器进行处理
@@ -79,10 +85,6 @@ public class WechatMessageController {
 	}
 	
 	private String processTextMsg(Map<String, String> reqMapMsg) {
-		System.out.println("processTextMsg start");
-		System.out.println(reqMapMsg.get("MsgType"));
-		System.out.println(reqMapMsg.get("Content"));
-		System.out.println("processTextMsg end");
 		// TODO Auto-generated method stub
 		return null;
 	}

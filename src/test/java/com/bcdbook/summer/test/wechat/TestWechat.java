@@ -1,5 +1,7 @@
 package com.bcdbook.summer.test.wechat;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -8,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.wechat.pojo.Wechat;
 import com.bcdbook.summer.wechat.service.WechatService;
 
@@ -62,6 +65,16 @@ public class TestWechat {
 		System.out.println(wc);
 	}
 	
+	@Test
+	public void getTime(){
+		System.out.println(DateUtil.toTimeString("1464869363000"));
+		System.out.println(DateUtil.toTimeString("1464869337000"));
+		System.out.println(DateUtil.toTimeString("1464869040000"));
+		System.out.println(DateUtil.toTimeString("1464703252000"));
+		System.out.println(DateUtil.toTimeString("1464703220000"));
+		System.out.println(DateUtil.toTimeString("1464703213000"));
+		System.out.println(DateUtil.toTimeString("1474367022000"));
+	}
 //	@Test
 //	public void getWechatByKey(){
 //		Wechat w = wechatService.getWechatByKey(Wechat.KEY_ACCESS_TOKEN);

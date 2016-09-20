@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.bcdbook.summer.wechat.pojo.WechatMessage;
+import com.bcdbook.summer.wechat.pojo.WechatMaterial;
 
 @Service("wechatMessageService")
 public class WechatMessageService {
