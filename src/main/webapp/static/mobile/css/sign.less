@@ -1,0 +1,90 @@
+@import url(../../../static/mobile/css/include/theme.less);
+@import url(../../../static/mobile/css/include/reset.less);
+
+.main{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width:100%;
+    font-size:14px;
+    color:#666;
+    .content{
+        width:90%;
+        height:100%;
+        margin:0 auto;
+        .logo{
+            width:@logo-size+30px;
+            height:@logo-size+30px;
+            margin:0 auto;
+            line-height:@logo-size+30px;
+            text-align:center;
+            .icon-logo{
+                font-size:150px;   
+            }
+        }
+        .input-container{
+            width:100%;
+            padding:0 20px;
+            margin-top:5px;
+            .input-block{
+                width:100%;
+                margin-bottom:20px;
+                border-bottom:1px solid #ccc;
+                .input-box{
+                    width:90%;
+                    border:none;
+                    outline:none;
+                    height:@input-height;
+                    line-height:@input-height;
+                    &:focus{
+                        border:none;
+                        outline:none;
+                    }
+                }
+            }
+            .mobile-button{
+                margin:10px 0;
+                width:100%;
+            }
+        }
+        .tips{
+            width:100%;
+            text-align:center;
+        }
+        .footer-container{
+            width:90%;
+            height:18%;
+            position:absolute;
+            bottom:10%;
+            .footer-title{
+                width:100%;
+                height:@input-height;
+                line-height:@input-height;
+                border-bottom:1px solid #ccc;
+                .title-text{
+                    display:inline-block;
+                    width:36%;
+                    height:@input-height;
+                    line-height:@input-height;
+                    background-color:#fff;
+                    text-align:center;
+                    margin:@input-height/2 32%;
+                }
+            }
+            .weixin{
+                border:1px solid #ccc;
+                width:50px;
+                height:50px;
+                border-radius:50%;
+                line-height:50px;
+                margin:10% auto;
+                text-align:center;
+                .icon-wechat{
+                    font-size:30px;
+                    color:#04b010;
+                }
+            }
+        }
+    }
+}
