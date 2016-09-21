@@ -87,7 +87,7 @@ public class WechatController {
 	@RequestMapping(method = RequestMethod.POST)
 	public void post(HttpServletRequest req, HttpServletResponse resp) {
 		//定义用于返回的数据
-		String respMessage = "success";
+//		String respMessage = "success";
 		
 		/* 
 		 * 消息的接收、处理、响应
@@ -128,7 +128,6 @@ public class WechatController {
 			
 			if(!msgType.equals(WechatMessage.EVENT)){
 				//如果是事件,则转发到事件的处理方法
-	//			backMsg = wechatEventService.processEvent(reqMapMsg);
 				try {
 					req.getRequestDispatcher("/wechat/message").forward(req,resp);
 				} catch (ServletException e1) {
@@ -138,7 +137,6 @@ public class WechatController {
 				}
 			}else{
 				//如果是消息,则转发到消息的处理方法
-	//			backMsg = wechatMessageService.processMessage(reqMapMsg);
 				try {
 					req.getRequestDispatcher("/wechat/event").forward(req,resp);
 				} catch (ServletException e1) {
@@ -147,29 +145,8 @@ public class WechatController {
 					e1.printStackTrace();
 				}
 			}
-			
-			//获取通过事件接口或消息处理后,返回的数据
-			String backMsg = (String) req.getAttribute("backMsg");
-			if(!StringUtils.isNull(backMsg))
-				respMessage = backMsg;
 		}
 		
-		// 响应消息
-		PrintWriter out = null;
-		try {
-			logger.info("wechatController 中最总要返回的值:"+respMessage);
-			//获取流并输出要返回的信息
-			out = resp.getWriter();
-			out.print(respMessage);
-			out.print(respMessage);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if(out!=null){
-				out.flush();
-				out.close();
-				out = null;
-			}
-		}
+		System.out.println("正常情况下,这条信息不应该被输出");
 	}
 }

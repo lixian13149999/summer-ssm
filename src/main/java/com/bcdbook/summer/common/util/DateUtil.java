@@ -60,6 +60,37 @@ public class DateUtil {
 		}
 	}
 	
+
+	/**
+	 * @Description: 获取时间戳,10位
+	 * @param @return   
+	 * @return long  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月21日
+	 */
+	public static long getDateTime10(){
+		String dateTimeStr = String.valueOf((new Date()).getTime());
+		String dateTimeStrSub = dateTimeStr.substring(0, 10);
+		long dateTime = Long.valueOf(dateTimeStrSub);
+		return dateTime;
+	}
+	
+	/**
+	 * @Description: 获取时间戳,8位
+	 * @param @return   
+	 * @return long  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月21日
+	 */
+	public static long getDateTime8(){
+		String dateTimeStr = String.valueOf((new Date()).getTime());
+		String dateTimeStrSub = dateTimeStr.substring(0, 8);
+		long dateTime = Long.valueOf(dateTimeStrSub);
+		return dateTime;
+	}
+	
 	public static String getTimeStr(){
 		return String.valueOf(getTime());
 	}

@@ -3,19 +3,27 @@ package com.bcdbook.summer.wechat.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.context.ContextParameter;
+import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.common.util.JsonUtil;
 import com.bcdbook.summer.common.util.SHA1;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.wechat.pojo.Wechat;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.core.util.QuickWriter;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
+import com.thoughtworks.xstream.io.xml.XppDriver;
 
 public class WechatUtil {
 
@@ -216,7 +224,42 @@ public class WechatUtil {
 		return menu;
 	}
 	
+	public static <T> String packageXML(T entity){
+		xstream.alias("xml", entity.getClass());
+		return xstream.toXML(entity);
+	}
+	
+	/**
+	 * 扩展xstream，使其支持CDATA块
+	 * 
+	 */
+	private static XStream xstream = new XStream(new XppDriver() {
+		@Override
+		public HierarchicalStreamWriter createWriter(Writer out) {
+			return new PrettyPrintWriter(out) {
+				// 对所有xml节点的转换都增加CDATA标记
+				boolean cdata = true;
+				@Override
+				protected void writeText(QuickWriter writer, String text) {
+					if (cdata) {
+						writer.write("<![CDATA[");
+						writer.write(text);
+						writer.write("]]>");
+////						writer.write("<![CDATA[");
+//						writer.write(text);
+////						writer.write("]]>");
+					} else {
+						writer.write(text);
+					}
+				}
+			};
+		}
+	});
+	
+	
 	public static void main(String[] args) {
-		System.out.println(getNewAccessTokenFromWechatServer());
+//		System.out.println(DateUtil.getTime());
+//		getSecondDateTime();
+//		System.out.println(getNewAccessTokenFromWechatServer());
 	}
 }

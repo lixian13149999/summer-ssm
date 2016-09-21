@@ -1,5 +1,7 @@
 package com.bcdbook.summer.wechat.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
+import com.bcdbook.summer.wechat.pojo.message.resp.TextMessage;
+import com.bcdbook.summer.wechat.util.WechatUtil;
 
 /**
  * @Description: 微信消息处理的控制器
@@ -80,13 +85,38 @@ public class WechatMessageController {
 				backMsg = "success";
 				break;
 		}
-		logger.info("消息处理完毕,将要返回==>"+backMsg);
-		req.setAttribute("backMsg", backMsg);
+		
+		// 响应消息
+		PrintWriter out = null;
+		try {
+			logger.info("WechatMessageController 中最终要返回的值:");
+			logger.info(backMsg);
+			//获取流并输出要返回的信息
+			out = resp.getWriter();
+			out.print(backMsg);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(out!=null){
+				out.flush();
+				out.close();
+				out = null;
+			}
+		}
 	}
 	
 	private String processTextMsg(Map<String, String> reqMapMsg) {
+		TextMessage msg = new TextMessage();
+		msg.setToUserName(reqMapMsg.get("FromUserName"));
+		msg.setFromUserName(reqMapMsg.get("ToUserName"));
+		msg.setCreateTime(DateUtil.getTime());
+		//msg.setFuncFlag(0);// 标记成未读
+		msg.setMsgType(WechatMessage.TEXT);
+		msg.setContent("用于测试的回复的文本内容");
+		
+		String backMsg = WechatUtil.packageXML(msg);
 		// TODO Auto-generated method stub
-		return null;
+		return backMsg;
 	}
 	
 	private String processImageMsg(Map<String, String> reqMapMsg) {

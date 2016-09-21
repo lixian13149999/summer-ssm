@@ -53,7 +53,7 @@ public class WechatMessage {
 	
 	private String ToUserName;//发送方帐号（一个OpenID）
 	private String FromUserName;//开发者微信号
-	private String CreateTime;//消息创建时间 （整型）
+	private long CreateTime;//消息创建时间 （整型）
 	private String MsgType;//消息类型
 	
 	//空参构造
@@ -62,7 +62,7 @@ public class WechatMessage {
 	}
 	//全参构造
 	public WechatMessage(String toUserName, String fromUserName,
-			String createTime, String msgType) {
+			long createTime, String msgType) {
 		super();
 		ToUserName = toUserName;
 		FromUserName = fromUserName;
@@ -82,10 +82,10 @@ public class WechatMessage {
 	public void setFromUserName(String fromUserName) {
 		FromUserName = fromUserName;
 	}
-	public String getCreateTime() {
+	public long getCreateTime() {
 		return CreateTime;
 	}
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(long createTime) {
 		CreateTime = createTime;
 	}
 	public String getMsgType() {

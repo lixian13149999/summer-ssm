@@ -1,5 +1,7 @@
 package com.bcdbook.summer.wechat.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -116,8 +118,24 @@ public class WechatEventController {
 				break;
 			}
 		}
-		logger.info("事件处理完毕,将要返回==>"+backMsg);
-		req.setAttribute("backMsg", backMsg);
+		
+		// 响应事件
+		PrintWriter out = null;
+		try {
+			logger.info("WechatEventController 中最终要返回的值:");
+			logger.info(backMsg);
+			//获取流并输出要返回的信息
+			out = resp.getWriter();
+			out.print(backMsg);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(out!=null){
+				out.flush();
+				out.close();
+				out = null;
+			}
+		}
 	}
 	
 	private String processSubscribeEvent(Map<String, String> reqMapMsg) {
