@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.wechat.pojo.WechatMaterial;
 import com.bcdbook.summer.wechat.service.WechatMaterialService;
 import com.bcdbook.summer.wechat.service.WechatService;
@@ -45,6 +47,10 @@ public class WechatMaterialController {
 	
 	/**
 	 * @Description: 获取素材列表的方法
+	 * 请求时需要三个参数
+	 * 1. type:想要获取的素材列表的的类型
+	 * 2. offset:获取的起始位置(类似分页查询中的起始值)
+	 * 3. count:想要获取的素材的条数
 	 * @param @return   
 	 * @return String  
 	 * @throws
@@ -59,6 +65,9 @@ public class WechatMaterialController {
 		String countStr = req.getParameter("offset");//获取起始值
 		String typeStr = req.getParameter("count");//想要获取素材的数量
 		
+		if(type==null)
+			return BackMsg.error("type is null,this port nede 3 parameters type,offset and count");
+		
 		//把获取到的参数进行转换成int类型
 		int offsetSource = countStr==null?0:Integer.parseInt(countStr);
 		int countSource = typeStr==null?0:Integer.parseInt(typeStr);
@@ -68,5 +77,50 @@ public class WechatMaterialController {
 		int count = countSource<1||countSource>20?20:countSource;
 		
 		return wechatMaterialService.list(wechatService.getAccessToken(),type,offset,count);
+	}
+	
+	/**
+	 * @Description: 从微信中获取素材,并存储到本地数据库的方法
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月20日
+	 */
+	@RequestMapping(value="getAndSave",method = { RequestMethod.GET },produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String getAndSave(HttpServletRequest req, HttpServletResponse resp){
+		//从请求中获取参数
+		String mediaId = req.getParameter("mediaId");//获取素材id
+		String type = req.getParameter("type");//获取类型
+		String keyword = req.getParameter("keyword");//获取想要设置的关键字
+		if(StringUtils.isNull(mediaId)
+				||StringUtils.isNull(type)
+				||StringUtils.isNull(keyword))
+			return BackMsg.error("this port nede 3 parameters mediaId,type and keyword");
+		
+		if(!type.equals(WechatMaterial.NEWS))
+			return BackMsg.error("this port need type is news or video");
+		
+		return wechatMaterialService.getAndSave(wechatService.getAccessToken(),mediaId,type,keyword);
+	}
+	
+	/**
+	 * @Description: 从微信中获取单个素材方法
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月20日
+	 */
+	@RequestMapping(value="get",method = { RequestMethod.GET },produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String get(HttpServletRequest req, HttpServletResponse resp){
+		//从请求中获取参数
+		String mediaId = req.getParameter("mediaId");//获取素材的id
+		if(StringUtils.isNull(mediaId))
+			return BackMsg.error("mediaId is null");
+		
+		return wechatMaterialService.get(wechatService.getAccessToken(),mediaId);
 	}
 }

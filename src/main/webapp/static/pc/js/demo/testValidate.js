@@ -1,3 +1,5 @@
+var demo = new Object();
+
 function formAction() {
     console.log("formAction");
 }
@@ -51,3 +53,36 @@ $(function () {
         }
     });
 });
+
+
+
+
+
+
+//检查用户名的方法
+demo.checkUserNam = function(){
+    //1. 获取用户名输入框中的内容
+    var userName = $("#username").val();
+    
+    //2. 调用相关的验证规则,查看验证是否通过
+    var isNull = v.isNull(userName);//判断是否为空
+    var isTooShort = v.shortThan(userName,4);//判读是否小于4个字符
+    
+    //3. 跟用验证规则的返回值,返回相应的验证结果
+//    if(!isNull&&!isTooShort){
+//        return true;
+//    }else{
+//        return false;
+//    }
+    return isNull||isTooShort?false:true;
+}
+
+
+
+
+
+
+
+
+
+
