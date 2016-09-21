@@ -15,7 +15,7 @@ public class Location extends DataEntity<Location>{
 	private String openId;//发送者的openid
 	private double latitude;//纬度
 	private double longitude;//经度
-	private double precision;//地理位置的精度
+	private double locPrecision;//地理位置的精度
 	private String label;//地理位置信息
 	
 	//空参构造
@@ -29,7 +29,7 @@ public class Location extends DataEntity<Location>{
 		this.openId = openId;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.precision = precision;
+		this.locPrecision = precision;
 		this.label = label;
 	}
 	
@@ -52,11 +52,11 @@ public class Location extends DataEntity<Location>{
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	public double getPrecision() {
-		return precision;
+	public double getLocPrecision() {
+		return locPrecision;
 	}
-	public void setPrecision(double precision) {
-		this.precision = precision;
+	public void setLocPrecision(double precision) {
+		this.locPrecision = precision;
 	}
 	public String getLabel() {
 		return label;
@@ -69,7 +69,7 @@ public class Location extends DataEntity<Location>{
 	@Override
 	public String toString() {
 		return "Location [openId=" + openId + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", precision=" + precision
+				+ ", longitude=" + longitude + ", precision=" + locPrecision
 				+ ", label=" + label + "]";
 	}
 }
