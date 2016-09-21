@@ -14,7 +14,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.persistence.service.CrudService;
 import com.bcdbook.summer.common.util.StringUtils;
-import com.bcdbook.summer.wechat.dao.WechatDao;
 import com.bcdbook.summer.wechat.dao.WechatMaterialDao;
 import com.bcdbook.summer.wechat.pojo.WechatMaterial;
 import com.bcdbook.summer.wechat.util.WechatUtil;
@@ -119,21 +118,31 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 			//如果errcode中有值,则说明请求发生错误
 			return materialStr;
 		
-		//创建新的素材对象(用于保存)
-		WechatMaterial wm = new WechatMaterial();
-		//添加公用的素材值
-		wm.setKeyword(keyword);//设置关键字
-		wm.setMsgType(type);//设置消息类型
-		wm.setMediaId(mediaId);//设置素材的id
+		//创建新的素材对象(用于保存),并传入通用的属性.
+		WechatMaterial wm = new WechatMaterial(type, keyword, mediaId);
 		
 		//如果获取的是文图消息
 		if(!type.equals(WechatMaterial.NEWS))
 			return BackMsg.error("type not is news, plise use port 'wechat/material/listAndSave'");
 		
+		//根据保存的成功与否,返回相应的数据
 		return saveNews(wm, materialJson)?BackMsg.success("saveNews success") : BackMsg.error("saveNews error");
-//		
 	}
 	
+	/**
+	 * @Description: 通过请求素材列表接口的方式保存素材到本地
+	 * @param @param accessToken
+	 * @param @param mediaId
+	 * @param @param type
+	 * @param @param keyword
+	 * @param @param offset
+	 * @param @param count
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月21日
+	 */
 	public String listAndSave(String accessToken,String mediaId,String type,String keyword,int offset, int count){
 		//验证参数的合法性
 		if(StringUtils.isNull(accessToken)
@@ -149,8 +158,8 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		if(keywordIsExist(keyword))
 			return BackMsg.error("keyword is exist");
 		
+		//获取素材列表
 		String materialsStr = list(accessToken, type, offset, count);
-		
 		//把获取到的素材集合字符串,转成json
 		JSONObject materialListJson = JSON.parseObject(materialsStr);
 
@@ -159,40 +168,34 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 			//如果errcode中有值,则说明请求发生错误
 			return materialsStr;
 		
+		//获取素材列表中的素材,并封装成Json数组
 		JSONArray materialJsonArr = materialListJson.getJSONArray("item");
-		
+		boolean saveOk = false;
+		//循环数组,获取想要绑定的素材,并根据不同的素材类型进行不同的保存处理
 		for (int i = 0; i < materialJsonArr.size(); i++) {
+			//从素材数组中获取一个素材对象
 			JSONObject materialJson = materialJsonArr.getJSONObject(i);
+			//对比此条素材是否是想要保存的素材(根据media_id)
 			String itemMediaId = materialJson.getString("media_id");
 			if(itemMediaId.equals(mediaId)){
-				//创建新的素材对象(用于保存)
-				WechatMaterial wm = new WechatMaterial();
-				//添加公用的素材值
-				wm.setKeyword(keyword);//设置关键字
-				wm.setMsgType(type);//设置消息类型
-				wm.setMediaId(mediaId);//设置素材的id
+				//创建新的素材对象(用于保存),并传入通用的属性.
+				WechatMaterial wm = new WechatMaterial(type, keyword, mediaId);
+				
 				//如果获取的是文图消息
 				if(type.equals(WechatMaterial.NEWS)){
-					saveNews(wm, materialJson);
-//					wm.setTitle(materialJson.getString("title"));
-//					wm.setThumbMediaId((materialJson.getString("title")));
-//					wm.setShowCoverPic((materialJson.getIntValue("title")));
-//					wm.setAuthor((materialJson.getString("title")));
-//					wm.setDigest((materialJson.getString("title")));
-//					wm.setContent((materialJson.getString("title")));
-//					wm.setUrl((materialJson.getString("title")));
-//					wm.setContentSourceUrl((materialJson.getString("title")));
+					//保存文图素材的方法
+					saveOk = saveNews(wm, materialJson);
+
 				//如果获取的是其他类型的消息
 				}else{
-					saveNews(wm, materialJson);
-//					wm.setTitle(materialJson.getString("title"));
-//					wm.setDescription(materialJson.getString("description"));
-//					wm.setUrl(materialJson.getString("url"));
+					//保存其他类型的素材
+					saveOk = saveOtherMaterial(wm, materialJson);
 				}
 			}
 		}
 		
-		return null;
+		//根据保存的成功与否,返回相应的数据
+		return saveOk?BackMsg.success("saveNews success") : BackMsg.error("saveNews error");
 	}
 	/**
 	 * @Description: 获取单个素材的方法
@@ -249,10 +252,73 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		return true;
 	}
 	
+	/**
+	 * @Description: 保存文图素材的方法
+	 * @param @param wechatMaterial
+	 * @param @param materialJson
+	 * @param @return   
+	 * @return boolean  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月21日
+	 */
 	public boolean saveNews(WechatMaterial wechatMaterial,JSONObject materialJson){
+		//1. 保存news素材的根本识别数据
+		int addNews = add(wechatMaterial);
+		//如果父级news对象保存不成功,直接返回false
+		if(addNews!=1)
+			return false;
+		
+		//2. 循环保存news素材中的文章
+		JSONArray items = materialJson.getJSONArray("news_item");//获取素材中的单个文章
+		//如果获取文章出错,则直接返回false
+		if(items == null||items.size()<1)
+			return false;
+		for (int i = 0; i < items.size(); i++) {
+			//创建一个新的素材对象,用于保存单个的文章
+			WechatMaterial wm = new WechatMaterial();
+			wm.setTitle(materialJson.getString("title"));//设置图文消息的标题
+			wm.setThumbMediaId((materialJson.getString("thumb_media_id")));//图文消息的封面图片素材id（必须是永久mediaID）
+			wm.setShowCoverPic((materialJson.getIntValue("show_cover_pic")));//是否显示封面，0为false，即不显示，1为true，即显示
+			wm.setAuthor((materialJson.getString("author")));//作者
+			wm.setDigest((materialJson.getString("digest")));//图文消息的摘要，仅有单图文消息才有摘要，多图文此处为空
+			wm.setContent((materialJson.getString("content")));//图文消息的具体内容，支持HTML标签，必须少于2万字符，小于1M，且此处会去除JS
+			wm.setUrl((materialJson.getString("url")));//图文页的URL，或者，当获取的列表是图片素材列表时，该字段是图片的URL
+			wm.setContentSourceUrl((materialJson.getString("content_source_url")));//图文消息的原文地址，即点击“阅读原文”后的URL
+			
+			wm.setParentMediaId(wechatMaterial.getMediaId());//设置其父级的素材id
+			wm.setSort(i+1);//设置文章的排序
+			
+			int addItem = add(wm);
+			//如果有一个保存没有成功,则直接返回false
+			if(addItem!=1)
+				return false;
+		}
+		
+		//3. 返回最终结果
 		return true;
 	}
+	
+	/**
+	 * @Description: 保存其他类型素材的方法
+	 * @param @param wechatMaterial
+	 * @param @param materialJson
+	 * @param @return   
+	 * @return boolean  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月21日
+	 */
 	public boolean saveOtherMaterial(WechatMaterial wechatMaterial,JSONObject materialJson){
-		return true;
+		if(wechatMaterial==null||materialJson==null)
+			return false;
+		
+		//设置素材的title,
+		//注意:(列表方式获取素材的时候,返回值中的name即为通常素材中的title,所以这里直接用title来接此字段)
+		wechatMaterial.setTitle(materialJson.getString("name"));
+		wechatMaterial.setUrl(materialJson.getString("url"));
+		
+		//如果保存正常,返回true,否则返回false
+		return add(wechatMaterial)==1?true:false;
 	}
 }

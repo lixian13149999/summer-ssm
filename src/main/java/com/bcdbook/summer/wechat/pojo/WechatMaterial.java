@@ -96,7 +96,22 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 		this.sort = sort;
 		this.hqMusicUrl = hqMusicUrl;
 	}
-	
+	/**
+	 * @Description: 便于封装素材初始值的构造方法
+	 * @param @param msgType
+	 * @param @param keyword
+	 * @param @param mediaId   
+	 * @return WechatMaterial  
+	 * @throws
+	 * @author yokoboy
+	 * @date 2016年9月21日
+	 */
+	public WechatMaterial(String msgType, String keyword, String mediaId) {
+		super();
+		this.msgType = msgType;
+		this.keyword = keyword;
+		this.mediaId = mediaId;
+	}
 	//getter and setter
 	public String getMsgType() {
 		return msgType;
