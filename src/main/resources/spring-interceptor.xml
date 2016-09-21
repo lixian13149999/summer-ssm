@@ -43,14 +43,14 @@
 	        <mvc:exclude-mapping path="/wechat" />
 	        <!-- 拦截时过滤掉wechat/login -->
 	        <mvc:exclude-mapping path="/wechat/login" />
-	        <!-- 拦截时过滤掉wechat/message -->
+	        <!-- 拦截时过滤掉wechat/message(用于处理消息的接口) -->
 	        <mvc:exclude-mapping path="/wechat/message" />
-	        <!-- 拦截时过滤掉wechat/event -->
+	        <!-- 拦截时过滤掉wechat/event(用于处理事件的接口) -->
 	        <mvc:exclude-mapping path="/wechat/event" />
 	        <!-- 微信获取素材总量 -->
-	        <mvc:exclude-mapping path="/wechat/material/count" />
+	        <!-- <mvc:exclude-mapping path="/wechat/material/count" /> -->
 	        <!-- 获取微信素材列表的方法 -->
-	        <mvc:exclude-mapping path="/wechat/material/list" />
+	        <!-- <mvc:exclude-mapping path="/wechat/material/list" /> -->
 	        
 	        <!-- 过滤掉错误页面的拦截 -->
 	        <mvc:exclude-mapping path="/error/**" />

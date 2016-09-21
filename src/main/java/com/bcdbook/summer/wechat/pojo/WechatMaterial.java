@@ -30,7 +30,7 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 	 * 用户识别及维护使用的字段
 	 */
 	private String msgType;//素材类型
-	private String keyWord;//客户获取素材的关键字(用来匹配用户发送过来的消息)
+	private String keyword;//客户获取素材的关键字(用来匹配用户发送过来的消息)
 	
 	/**
 	 * 公用的素材字段
@@ -73,14 +73,14 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 		super();
 	}
 	//全参构造
-	public WechatMaterial(String msgType, String keyWord, String mediaId,
+	public WechatMaterial(String msgType, String keyword, String mediaId,
 			String content, String name, String url, String description,
 			String parentMediaId, String title, String thumbMediaId,
 			int showCoverPic, String author, String digest,
 			String contentSourceUrl, int sort, String hqMusicUrl) {
 		super();
 		this.msgType = msgType;
-		this.keyWord = keyWord;
+		this.keyword = keyword;
 		this.mediaId = mediaId;
 		this.content = content;
 		this.name = name;
@@ -104,11 +104,11 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 	public void setMsgType(String msgType) {
 		this.msgType = msgType;
 	}
-	public String getKeyWord() {
-		return keyWord;
+	public String getKeyword() {
+		return keyword;
 	}
-	public void setKeyWord(String keyWord) {
-		this.keyWord = keyWord;
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	public String getMediaId() {
 		return mediaId;
@@ -204,7 +204,7 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 	//toString
 	@Override
 	public String toString() {
-		return "WechatMaterial [msgType=" + msgType + ", keyWord=" + keyWord
+		return "WechatMaterial [msgType=" + msgType + ", keyword=" + keyword
 				+ ", mediaId=" + mediaId + ", content=" + content + ", name="
 				+ name + ", parentMediaId=" + parentMediaId + ", title="
 				+ title + ", thumbMediaId=" + thumbMediaId + ", showCoverPic="
