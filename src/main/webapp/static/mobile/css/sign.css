@@ -18,6 +18,7 @@ a:active {
   width: 100%;
   font-size: 14px;
   color: #666;
+  -webkit-font-smoothing: antialiased;
 }
 .main .content {
   width: 90%;
@@ -33,6 +34,7 @@ a:active {
 }
 .main .content .logo .icon-logo {
   font-size: 150px;
+  color: #333;
 }
 .main .content .input-container {
   width: 100%;
@@ -51,9 +53,15 @@ a:active {
   height: 34px;
   line-height: 34px;
 }
+.main .content .input-container .input-block .input-box:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
 .main .content .input-container .input-block .input-box:focus {
   border: none;
   outline: none;
+}
+.main .content .input-container .border {
+  border-bottom: 1px solid #000;
 }
 .main .content .input-container .mobile-button {
   margin: 10px 0;
@@ -85,6 +93,7 @@ a:active {
   margin: 17px 32%;
 }
 .main .content .footer-container .weixin {
+  display: block;
   border: 1px solid #ccc;
   width: 50px;
   height: 50px;

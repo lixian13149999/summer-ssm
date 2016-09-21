@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../static/libs/iconfont/iconfont.css" type="text/less">
 
     <!-- 引入图标 -->
-    <link rel="shortcut icon" href="../../static/pc/imgs/logo32.png">
+    <link rel="shortcut icon" href="../../static/mobile/imgs/logo32.png">
     
     <!-- 自定义样式-->
     <link rel="stylesheet" href="../../static/mobile/css/sign.css">
@@ -25,49 +25,46 @@
 <body>
     <div class="main">
         <div class="content">
-           
+<!-- 页面logo部分-->
             <div class="logo">
                 <i class="icon icon-logo"></i>
             </div>
-            
+<!-- 页面输入框部分-->            
             <div class="input-container">
-                <form>
+                <form id="signin_form">
                     <div class="input-block">
-                        <input type="text" class="input-box" data-input-box="input" placeholder="请输入用户名">
+                        <input id="username" name="username" type="text" class="input-box" data-input-box="input" placeholder="请输入用户名">
                         <span class="delete hide" data-text-delete="delete">X</span>
                     </div>
 
                     <div class="input-block">
-                        <input type="password" class="input-box" data-input-box="input" placeholder="请输入密码">
+                        <input id="password" name="password" type="password" class="input-box" data-input-box="input" placeholder="请输入密码">
                         <span class="delete hide" data-text-delete="delete">X</span>
                     </div>
 
-                    <button class="button button-primary button-rounded mobile-button" disabled>登录</button>
+                    <input type="submit" value="登录" class="button button-primary button-rounded mobile-button" disabled>
                     
                 </form>
-                
+<!-- 提交按钮下小提示-->
                 <div class="tips">
                     <a href="signup.html">
                         没有系统账号？去注册
                     </a>
                 </div>
             </div>
-            
+<!-- 页面微信登录框部分-->               
             <div class="footer-container">
                 <div class="footer-title">
                     <span class="title-text">社交账号登录</span>
                 </div>
                 
-                <div class="weixin">
+                <a class="weixin">
                     <i class="icon icon-wechat"></i>
-                </div>
+                </a>
             </div>
             
         </div>
     </div>
-    
-    <!-- 无法登录模块-->
-    
     
     <!-- 框架js文件的引入 -->
     <!-- jquery文件 -->
@@ -86,6 +83,9 @@
 
     <!-- 自定义的一些js文件 -->
     <script src="../../static/mobile/js/sign.js"></script>
+    <script src="../../static/mobile/js/common/iverify.js"></script>
+    <script src="../../static/mobile/js/common/ipopover.js"></script>
+    <script src="../../static/mobile/js/common/iform.js"></script>
     <!-- 常用工具类 -->
     
 </body>
