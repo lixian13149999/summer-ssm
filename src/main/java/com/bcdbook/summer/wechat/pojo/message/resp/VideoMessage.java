@@ -1,6 +1,6 @@
 package com.bcdbook.summer.wechat.pojo.message.resp;
 
-import com.bcdbook.summer.wechatold.pojo.message.resp.Video;
+import com.bcdbook.summer.wechat.pojo.message.resp.Video;
 
 /**
  * @Description: 用于接收视频消息
@@ -33,6 +33,5 @@ public class VideoMessage extends WechatRespMessage{
 	public String toString() {
 		return "WechatVideoMessage [video=" + video + "]";
 	}
-	
 	
 }

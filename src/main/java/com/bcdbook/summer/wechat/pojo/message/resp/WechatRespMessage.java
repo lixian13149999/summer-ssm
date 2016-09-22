@@ -8,5 +8,5 @@ import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
  * @date 2016年9月19日
  */
 public class WechatRespMessage extends WechatMessage{
-	
+	public static final String SUCCESS = "success";
 }

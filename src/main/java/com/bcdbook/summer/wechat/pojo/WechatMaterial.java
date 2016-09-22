@@ -59,6 +59,7 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 	private String digest;//图文消息的摘要，仅有单图文消息才有摘要，多图文此处为空
 	private String contentSourceUrl;//图文消息的原文地址，即点击“阅读原文”后的URL
 	private int sort;//文图消息的顺序,以便记录多文图消息的先后值
+	private String picUrl;//文图消息中,单个文章封面的图片对象
 	
 	/**
 	 * 音乐素材特有的字段
@@ -66,7 +67,7 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 //	private String musicUrl;//音乐链接,普通音乐和url通用
 	private String hqMusicUrl;//高质量音乐链接，WIFI环境优先使用该链接播放音乐
 
-	private List<WechatMaterial> wechatMaterials;//文图消息时,但个文章的集合
+	private List<WechatMaterial> wechatMaterials;//文图消息时,单个文章的集合
 	
 	//空参构造
 	public WechatMaterial() {
@@ -77,7 +78,7 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 			String content, String name, String url, String description,
 			String parentMediaId, String title, String thumbMediaId,
 			int showCoverPic, String author, String digest,
-			String contentSourceUrl, int sort, String hqMusicUrl) {
+			String contentSourceUrl, int sort, String picUrl, String hqMusicUrl) {
 		super();
 		this.msgType = msgType;
 		this.keyword = keyword;
@@ -94,8 +95,10 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 		this.digest = digest;
 		this.contentSourceUrl = contentSourceUrl;
 		this.sort = sort;
+		this.picUrl = picUrl;
 		this.hqMusicUrl = hqMusicUrl;
 	}
+	
 	/**
 	 * @Description: 便于封装素材初始值的构造方法
 	 * @param @param msgType
@@ -112,6 +115,7 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 		this.keyword = keyword;
 		this.mediaId = mediaId;
 	}
+
 	//getter and setter
 	public String getMsgType() {
 		return msgType;
@@ -215,17 +219,43 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 	public void setWechatMaterials(List<WechatMaterial> wechatMaterials) {
 		this.wechatMaterials = wechatMaterials;
 	}
-	
+	public String getPicUrl() {
+		return picUrl;
+	}
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
+	}
 	//toString
 	@Override
 	public String toString() {
-		return "WechatMaterial [msgType=" + msgType + ", keyword=" + keyword
-				+ ", mediaId=" + mediaId + ", content=" + content + ", name="
-				+ name + ", parentMediaId=" + parentMediaId + ", title="
-				+ title + ", thumbMediaId=" + thumbMediaId + ", showCoverPic="
-				+ showCoverPic + ", author=" + author + ", digest=" + digest
-				+ ", url=" + url + ", contentSourceUrl=" + contentSourceUrl
-				+ ", description=" + description + ", sort=" + sort
-				+ ", hqMusicUrl=" + hqMusicUrl + "]";
+		return "WechatMaterial ["
+				+ (msgType != null ? "msgType=" + msgType + ", " : "")
+				+ (keyword != null ? "keyword=" + keyword + ", " : "")
+				+ (mediaId != null ? "mediaId=" + mediaId + ", " : "")
+				+ (content != null ? "content=" + content + ", " : "")
+				+ (name != null ? "name=" + name + ", " : "")
+				+ (url != null ? "url=" + url + ", " : "")
+				+ (description != null ? "description=" + description + ", "
+						: "")
+						+ (parentMediaId != null ? "parentMediaId=" + parentMediaId
+								+ ", " : "")
+								+ (title != null ? "title=" + title + ", " : "")
+								+ (thumbMediaId != null ? "thumbMediaId=" + thumbMediaId + ", "
+										: "")
+										+ "showCoverPic="
+										+ showCoverPic
+										+ ", "
+										+ (author != null ? "author=" + author + ", " : "")
+										+ (digest != null ? "digest=" + digest + ", " : "")
+										+ (contentSourceUrl != null ? "contentSourceUrl="
+												+ contentSourceUrl + ", " : "")
+												+ "sort="
+												+ sort
+												+ ", "
+												+ (picUrl != null ? "picUrl=" + picUrl + ", " : "")
+												+ (hqMusicUrl != null ? "hqMusicUrl=" + hqMusicUrl + ", " : "")
+												+ (wechatMaterials != null ? "wechatMaterials="
+														+ wechatMaterials : "") + "]";
 	}
+	
 }

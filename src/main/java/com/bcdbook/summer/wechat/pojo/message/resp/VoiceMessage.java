@@ -6,29 +6,29 @@ package com.bcdbook.summer.wechat.pojo.message.resp;
  * @date 2016年9月19日
  */
 public class VoiceMessage extends WechatRespMessage {
-	private Voice wechatVoice;//语音素材
+	private Voice voice;//语音素材
 	
 	//空参构造
 	public VoiceMessage() {
 		super();
 	}
 	//全参构造
-	public VoiceMessage(Voice wechatVoice) {
+	public VoiceMessage(Voice voice) {
 		super();
-		this.wechatVoice = wechatVoice;
+		this.voice = voice;
 	}
 
 	//getter and setter
-	public Voice getWechatVoice() {
-		return wechatVoice;
+	public Voice getVoice() {
+		return voice;
 	}
-	public void setWechatVoice(Voice wechatVoice) {
-		this.wechatVoice = wechatVoice;
+	public void setVoice(Voice voice) {
+		this.voice = voice;
 	}
 
 	//toString
 	@Override
 	public String toString() {
-		return "WechatVoiceMessage [wechatVoice=" + wechatVoice + "]";
+		return "WechatVoiceMessage [voice=" + voice + "]";
 	}
 }
