@@ -48,8 +48,10 @@ sign.verify = function(){
 //执行登录操作
 sign.signerror = function(){
     $('#sign-error').modal();
-    setTimeout("$('#sign-error').modal('hide')",1500);
+    setTimeout("$('#sign-error').modal('hide')",2000); 
 }
+
+
 
 
 

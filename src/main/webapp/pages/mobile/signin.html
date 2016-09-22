@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../static/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" type="text/css">
     <!-- bootstrap的按钮样式 -->
     <link rel="stylesheet" href="../../static/libs/bootstrap-buttons/buttons.css" type="text/css">
+    
     <!-- 引入阿里的图标 -->
     <link rel="stylesheet" href="../../static/libs/iconfont/iconfont.css" type="text/less">
 
@@ -34,13 +35,16 @@
                 <form method="get" action="javascript:sign.signerror()">
                     <div class="input-block">
                         <input id="username" type="text" class="input-box" data-input-box="input" placeholder="请输入用户名" autocomplete="off">
-                        <span class="delete hide" data-text-delete="delete">X</span>
+                        <a class="delete hide" data-text-delete="delete">
+                            <i class="icon icon-delete3"></i>
+                        </a>
                     </div>
 
                     <div class="input-block">
                         <input id="password" name="password" type="password" class="input-box" data-input-box="input" placeholder="请输入密码">
-                        <input id="password" type="password" class="input-box" data-input-box="input" placeholder="请输入密码">
-                        <span class="delete hide" data-text-delete="delete">X</span>
+                        <a class="delete hide" data-text-delete="delete">
+                            <i class="icon icon-delete3"></i>
+                        </a>
                     </div>
 
                     <input type="submit" value="登录" class="button button-primary button-rounded mobile-button" disabled>                    
@@ -59,7 +63,7 @@
                 </div>
                 
                 <a class="weixin">
-                    <i class="icon icon-wechat"></i>
+                    <i class="icon icon-wechat-dark"></i>
                 </a>
             </div>
             
@@ -67,9 +71,12 @@
     </div>
 
 <!-- 登录错误提示框-->
-   <div id="sign-error" class="modal fade error-modal" aria-hidden="true">
-        <div class="modal-title">!</div>
-        <div class="modal-text">用户名或密码错误</div>
+    <div id="sign-error" class="modal fade error-modal" aria-hidden="true">
+        <div class="error-content">
+            <i class="icon icon-warning error-title"></i>
+            <br>
+            <span class="error-text">用户名或密码错误</span>
+        </div>
     </div>
    
     <!-- 框架js文件的引入 -->
@@ -83,6 +90,7 @@
     <script src="../../static/libs/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <!-- bootstrap主js文件 -->
     <script src="../../static/libs/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../static/libs/messenger/js/messenger.min.js" type="text/javascript"></script>
 
     <!-- less编译的js文件 -->
     <script src="../../static/libs/less/dist/less.min.js" type="text/javascript"></script>

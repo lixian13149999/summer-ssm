@@ -5,11 +5,13 @@ block main
         form(method="get" action="javascript:sign.signerror()")
             .input-block
                 input#username.input-box(type="text" data-input-box="input" placeholder="请输入用户名" autocomplete="off")
-                span.delete.hide(data-text-delete="delete") X
+                a.delete.hide(data-text-delete="delete")
+                    i.icon.icon-dele3
 
             .input-block
                 input#password.input-box(type="password" data-input-box="input" placeholder="请输入密码")
-                span.delete.hide(data-text-delete="delete") X
+                a.delete.hide(data-text-delete="delete")
+                    i.icon.icon-dele3
 
             input.button.button-primary.button-rounded.mobile-button(type="submit" value="登录")
             
@@ -21,12 +23,14 @@ block main
             span.title-text 社交账号登录
             
         a.weixin
-            i.icon.icon-wechat
+            i.icon.icon-wechat-dark
             
 block error
     #sign-error.modal.fade.error-modal(aria-hidden="true")
-        .modal-title ！
-        .modal-text 用户名或密码错误
+        .error-content
+            i.icon.icon-warning.error-title
+            br
+            span.error-text 用户名或密码错误
             
     
             

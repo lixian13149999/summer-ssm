@@ -1,0 +1,557 @@
+[33mcommit b0658e3a3b20fc15c874a43caffce3263ceeceec[m
+Merge: 2f448c8 b180367
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Thu Sep 22 12:48:53 2016 +0800
+
+    Merge branch 'master' of https://github.com/lixian13149999/summer
+
+[33mcommit 2f448c87bdfc5308057cf1f19464a218aff0726e[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Thu Sep 22 12:48:45 2016 +0800
+
+    手机端登录注册页面jade文件提交
+
+[33mcommit b180367548cba4417fa56c34914109ac0c16bb94[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 22 12:14:46 2016 +0800
+
+    返回消息的封装完成
+    
+    返回消息的封装完成
+    素材类添加一个字段,用于存储文图消息的封面
+
+[33mcommit 67aa5885f74bf9159307f8ce3c7c2a09d28acd54[m
+Author: vae496075 <496075305@qq.com>
+Date:   Thu Sep 22 10:40:53 2016 +0800
+
+    素材基础 查询完成
+    
+    1. 完成素材的xml文件的相关开发
+    2. 完成素材类的junit测试，
+    3. service层的调用开发完成
+
+[33mcommit 599a007e56c1061963f797264183d939de6f697f[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Thu Sep 22 10:19:36 2016 +0800
+
+    登录注册错误提示功能提交
+
+[33mcommit c9e46e9f978e128fdb28a0b6239a056352f17bae[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 21 19:48:15 2016 +0800
+
+    修复了提交时产生冲突,导致项目回滚的问题,修复了转发不能返回数据的问题
+    
+    修复了提交时产生冲突,导致项目回滚的问题,修复了转发不能返回数据的问题
+
+[33mcommit c4b0ea0da1f82932c9dea0fe97ef1cfc6a2848a5[m
+Merge: a83331e 4919f78
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Wed Sep 21 17:48:37 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit a83331eca15c2e289a12664b30fd7ce445fe5465[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Wed Sep 21 17:48:23 2016 +0800
+
+    登录注册页面修改提交
+    
+    1、样式细节修改
+    2、js控制代码风格统一
+
+[33mcommit 4919f78411375bed7a2c4589c4e31add60ad76f1[m
+Merge: 579c0f7 08321d2
+Author: vae496075 <496075305@qq.com>
+Date:   Wed Sep 21 17:25:37 2016 +0800
+
+    Merge branch 'master' of https://github.com/lixian13149999/summer.git
+
+[33mcommit 579c0f7fff4e0acbd7ceef30671bd166d03b7cb2[m
+Author: vae496075 <496075305@qq.com>
+Date:   Wed Sep 21 17:23:57 2016 +0800
+
+    新增location的test文件
+
+[33mcommit 27a94cf5f757397f6aedba21828316b582c0907d[m
+Author: vae496075 <496075305@qq.com>
+Date:   Wed Sep 21 17:23:28 2016 +0800
+
+    新增location的service文件
+
+[33mcommit 94847f5525c17666d0f53b7da5742ee5e2eb9290[m
+Author: vae496075 <496075305@qq.com>
+Date:   Wed Sep 21 17:23:01 2016 +0800
+
+    新增location的dao文件
+
+[33mcommit 24ddbe606bf8a6cb44190e8daf97b92f16479c2f[m
+Author: vae496075 <496075305@qq.com>
+Date:   Wed Sep 21 17:22:20 2016 +0800
+
+    新增location的mapper文件
+
+[33mcommit ad2a601188924784b3c948b705bb1a87ff0318e9[m
+Author: vae496075 <496075305@qq.com>
+Date:   Wed Sep 21 17:21:46 2016 +0800
+
+    修改location的locPrecision属性
+
+[33mcommit 08321d2c71cc7cec0bce2553d1ff5ab43641f671[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 21 16:46:56 2016 +0800
+
+    素材存储的相关逻辑开发完成
+    
+    素材存储的相关逻辑开发完成
+
+[33mcommit 4ae49ab7652a1ce99c95864f0cf1649602f1b73f[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Wed Sep 21 14:20:02 2016 +0800
+
+    手机端登录注册页面提交
+
+[33mcommit 7571262bcdf50f78f5a459503e6a7af1f57f86ff[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 21 14:12:36 2016 +0800
+
+    微信素材的相关维护持续中
+    
+    微信素材的相关维护持续中
+
+[33mcommit b93ea84b606b0000624f1fd03fc4f952a2f94a3b[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Tue Sep 20 22:40:54 2016 +0800
+
+    加入地里位置基础类,添加地理位置数据模型
+    
+    加入地里位置基础类,添加地理位置数据模型
+
+[33mcommit 5f60f51a696e76003c3aa9f35541b3ee658f8648[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Tue Sep 20 22:15:51 2016 +0800
+
+    加入微信素材基础类
+    
+    加入微信素材基础类
+
+[33mcommit 70d55705b95da1f5da42d187428885caeaac938c[m
+Author: lason <xianforwork@163.com>
+Date:   Tue Sep 20 19:18:16 2016 +0800
+
+    素材相关处理开始
+    
+    1. 素材数据库设计基本完成
+    2. 获取素材总数及获取素材列表完成
+    3. 微信接收消息机返回消息的基类调整结构
+
+[33mcommit e9ab4410193ee61500d063498af206080532af0f[m
+Author: lason <xianforwork@163.com>
+Date:   Tue Sep 20 12:55:42 2016 +0800
+
+    微信消息接收及相关解析处理完成
+    
+    微信消息接收及相关解析处理完成
+
+[33mcommit 12c459982be409cff6b85bc8a55c6774f1197d50[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Mon Sep 19 23:49:12 2016 +0800
+
+    把session和项目路径调顺当了
+
+[33mcommit f392cdd77e080956a2ba54e8b60e5fa3a8cef0dd[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Mon Sep 19 21:21:31 2016 +0800
+
+    微信消息基类添加完成
+    
+    微信消息类,(接收/回复)
+    微信事件对应类也添加完成
+
+[33mcommit 661ff388734fd60a302e686cbd3037056ca0c3a4[m
+Author: lason <xianforwork@163.com>
+Date:   Mon Sep 19 18:08:18 2016 +0800
+
+    微信开发进行中
+    
+    微信开发进行中
+    1.  微信接入开发完成
+    2. 创建栏目和查看栏目开发完成
+    3. 消息接收的基类及相关类添加完成
+    4. 首次接入验证开发完成
+
+[33mcommit de1f55e02272f8643bc473bf4a4153a2fca30a47[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Mon Sep 19 18:03:13 2016 +0800
+
+    页面body内容填充（初步构建 待完善）
+
+[33mcommit 023bae4635aab033e7f0820e32b0a69198191659[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Mon Sep 19 13:51:53 2016 +0800
+
+    邮箱验证页面修改
+
+[33mcommit b5bbcb318c013ededbcd6718db46150a2d9a32df[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Sun Sep 18 22:23:31 2016 +0800
+
+    微信开发开始,
+    
+    微信基础数据维护类开发完成
+    接入微信操作开始
+
+[33mcommit 16d4005446a8b74782e11e768f7c95855d4e1bd9[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Sun Sep 18 17:49:04 2016 +0800
+
+    邮件验证页面更新完善（细节待完善）
+    
+    ......
+
+[33mcommit 7a373040e071620f807595452a8fa3e0b31bec1b[m
+Author: lason <xianforwork@163.com>
+Date:   Sun Sep 18 17:54:33 2016 +0800
+
+    邮件验证后台开发完成,前台只差发送到用户端的页面
+
+[33mcommit a2c1e52e12747e1ed8c0aa348e93fa8250fa05a9[m
+Author: lason <xianforwork@163.com>
+Date:   Sun Sep 18 14:54:06 2016 +0800
+
+    去除邮件唯一性的验证规则
+    
+    去除邮件唯一性的验证规则
+
+[33mcommit 086180ffdb2d1daf0490a05e230b115f5c443a7f[m
+Author: lason <xianforwork@163.com>
+Date:   Sun Sep 18 14:48:42 2016 +0800
+
+    邮箱绑定,前后台持续开发中
+
+[33mcommit 9d79520431f2dc606670ab1138b7a0c812bae884[m
+Author: lason <xianforwork@163.com>
+Date:   Sun Sep 18 13:58:58 2016 +0800
+
+    邮件绑定,前后台整合中
+    
+    邮件绑定,前后台整合中
+
+[33mcommit 0c73879135bb29430442dc6f8c2430655306e914[m
+Author: lason <xianforwork@163.com>
+Date:   Sun Sep 18 11:26:02 2016 +0800
+
+    邮件工具类后台开发完成
+    
+    邮件工具类后台开发完成
+
+[33mcommit 5d145afe4f8d66ba6d2d151a39e2356249438d9e[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Sun Sep 18 10:29:33 2016 +0800
+
+    邮箱验证页面样式修改
+
+[33mcommit 5363a6b828d48d7127a11a7f313dd3be97295183[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Sat Sep 17 22:34:14 2016 +0800
+
+    就多了一个回车
+
+[33mcommit 4765608269e9f08646c388eb2c524152356d116c[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Sat Sep 17 22:32:25 2016 +0800
+
+    邮件工具持续调整中
+
+[33mcommit 8b8d15afceabac37dd71b923b7efc8a13da30e22[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Fri Sep 16 22:47:25 2016 +0800
+
+    添加邮件的管理
+    
+    添加邮件管理到数据库
+    调整mapping文件的命名规则
+    调整file相关处理的文件结构
+    添加mail的相关管理
+    将要写mail的发送工具类
+
+[33mcommit 8b1c1387d1acca218232facbf563cdb7a5d6b15d[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Wed Sep 14 23:51:46 2016 +0800
+
+    提交自动编译的文件
+
+[33mcommit 4f46e36c4ffb1ac4aa3086c332d0bcb4ae6a2e91[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Wed Sep 14 23:44:00 2016 +0800
+
+    重新调整了页面的引入结构
+    
+    1. 重新调整了页面的引入结构
+    2. 以后需要注意缩进的问题(jade页面好多空格展示)
+    3. button按钮不使用圆角
+
+[33mcommit 8f5a58170c74a98c0b0f818c7b8ff94f13457048[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 14 18:30:13 2016 +0800
+
+    登录前台逻辑处理完成
+
+[33mcommit f31c747faa361a9b00dc5dd36f7c6a6768373bf3[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Wed Sep 14 18:21:27 2016 +0800
+
+    为避免页面样式冲突，登录页面部分修改
+
+[33mcommit 2e06e67cfc74dcac0fdbfc7936070bb22eebcaf3[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Wed Sep 14 17:42:24 2016 +0800
+
+    邮箱验证页面添加
+
+[33mcommit 64916ed65d47a3acee5420a2427ea2039a724e4b[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 14 17:37:11 2016 +0800
+
+    登录继续开发中,添加了session的工具类
+    
+    登录继续开发中,添加了session的工具类
+
+[33mcommit 4327a35b1fe266c8bcd27973eda625b90faac502[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 14 15:16:20 2016 +0800
+
+    加入并修复了messenger工具的样式
+    
+    加入并修复了messenger工具的样式
+
+[33mcommit c9338d1619287fae5ac814eff784921e8f28b5e7[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 14 13:39:26 2016 +0800
+
+    更换了登陆页面
+    
+    更换了登陆页面,等待提取出登陆页面需要维护的变量.
+
+[33mcommit c2b9a7a9fde02ccd642746f020fe9d6a14bc2e33[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 14 13:24:03 2016 +0800
+
+    添加了登陆的相关处理
+    
+    添加了登陆的相关处理
+
+[33mcommit 41bf29f0dd852f644bffbaf67aef3d7ced7a775c[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Wed Sep 14 11:12:46 2016 +0800
+
+    登录注册相关页面jade文件生成
+
+[33mcommit 59931bf46a97b6854cc25c48df899ff9efcfff11[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Tue Sep 13 19:14:56 2016 +0800
+
+    123
+
+[33mcommit 0d70cfb1379d9928ef86a4d4898bb097157c0831[m
+Author: lason <xianforwork@163.com>
+Date:   Tue Sep 13 19:14:08 2016 +0800
+
+    添加测试jade页面的接口
+    
+    添加测试jade页面的接口
+
+[33mcommit f2cc37f5a74995f2bf7a3dfb0f0d0d9e90ce0ac7[m
+Author: lason <xianforwork@163.com>
+Date:   Tue Sep 13 17:46:33 2016 +0800
+
+    处理产生冲突的验证文件
+
+[33mcommit 1f09f05733e966418e1fad91d73a70ab5fd77968[m
+Author: lason <xianforwork@163.com>
+Date:   Tue Sep 13 17:46:04 2016 +0800
+
+    添加登陆的测试页面,并简单处理了后台
+    
+    添加登陆的测试页面,并简单处理了后台
+
+[33mcommit 23e452df6318f1e33d195f6e3a7f678ae3cec2cd[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Tue Sep 13 16:31:31 2016 +0800
+
+    登录、注册及邮箱验证页面提交
+
+[33mcommit 0ca34cf9beb888c98bc628779a7da928aeb55dcd[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Tue Sep 13 08:58:52 2016 +0800
+
+    验证持续调整中
+
+[33mcommit 6ae0a6b7a8cfe57b1a7fbf08ed03cdbd4ae13098[m
+Author: lixian13149999 <lixian13149999@163.com>
+Date:   Mon Sep 12 16:48:55 2016 +0800
+
+    生成了一些编译文件
+
+[33mcommit 8af0cc6a6c1f9eabcd2742cd73ae84656dfb3be7[m
+Author: lason <xianforwork@163.com>
+Date:   Mon Sep 12 16:44:55 2016 +0800
+
+    简要修复
+
+[33mcommit a9bdfb4dc83d74eff8b295b65ab393d1ed4de46c[m
+Author: lason <xianforwork@163.com>
+Date:   Mon Sep 12 16:22:56 2016 +0800
+
+    添加了公用的输入框样式和输入框的验证
+
+[33mcommit dd3fd1c4a1023b9f61fcc1287bd5b125cef230f7[m
+Author: lason <xianforwork@163.com>
+Date:   Mon Sep 12 10:41:51 2016 +0800
+
+    页面样式调整中
+
+[33mcommit 29d860aedcdcfa84648675bb4ea7a4660d9531fe[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Mon Sep 12 10:38:35 2016 +0800
+
+    登录注册页面添加
+    
+    input输入框样式需要进一步修改调试
+
+[33mcommit e57e5e401b721075cb1ff39fb20a9ac53948f1d3[m
+Author: lason <xianforwork@163.com>
+Date:   Mon Sep 12 09:24:29 2016 +0800
+
+    解决项目默认路径的问题
+
+[33mcommit f09c64acd93b95fe75371330d56116e0de710ef9[m
+Author: lason <xianforwork@163.com>
+Date:   Fri Sep 9 23:19:41 2016 +0800
+
+    jQuery的验证类持续开发中
+
+[33mcommit 6d5ed7f62fadd1b9b05be6dbeab76892a9b37197[m
+Author: lason <xianforwork@163.com>
+Date:   Fri Sep 9 10:28:58 2016 +0800
+
+    删除原有jade页面
+
+[33mcommit 20c7f18f0a93635ae9ba62c750113d98bd545af5[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 8 18:21:15 2016 +0800
+
+    加入栏目点击后的效果切换
+
+[33mcommit 7d1e4b0c8ba4bc14c7e80a357ed95f0b760d7017[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 8 16:56:15 2016 +0800
+
+    修改栏目样式块的位置
+
+[33mcommit 99c817561af33ee8543d98e3fc55cf4a05fafb06[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 8 16:54:30 2016 +0800
+
+    加入登陆和注册页面
+
+[33mcommit abe84622a6c61fed51eef779865bc908487597a6[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 8 16:49:15 2016 +0800
+
+    加入了主页面中栏目部分的样式,重写了输入框样式
+
+[33mcommit e9a4f7b18778414ec403ccba54c892f8d75f5296[m
+Author: Cassie-Yu <cassie-yu@hotmail.com>
+Date:   Thu Sep 8 08:39:02 2016 +0800
+
+    页面头部结构调整
+
+[33mcommit 681c3c31e551d157d81cad81780297239089df3d[m
+Author: lason <xianforwork@163.com>
+Date:   Wed Sep 7 17:37:22 2016 +0800
+
+    前台页面框架重写开始
+
+[33mcommit c7a25c5b54763d100d719e8b7deb3c79d19e471d[m
+Author: lason <xianforwork@163.com>
+Date:   Mon Sep 5 10:12:03 2016 +0800
+
+    调整了前端页面的管理结构
+    
+    调整了前端页面的管理结构
+
+[33mcommit 6e5a62e77b5bd5920a1e399f00bce499a43cbb70[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 19:53:51 2016 +0800
+
+    jade页面的目录结构进一步调整中
+
+[33mcommit 558763caa63fd8be2ba033dc89fa2c6c0c7d516d[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 18:33:32 2016 +0800
+
+    解决github不能提交jade文件的问题
+
+[33mcommit 5c37b77ab5dfcc0b2bdb1e94efe5b107340eaaa6[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 17:52:39 2016 +0800
+
+    jade页面框架基本调试完成
+
+[33mcommit 6fb7a24216baead7cd861dfa3cc137a0ce994b10[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 15:41:43 2016 +0800
+
+    页面换成原nodejs项目m的页面
+
+[33mcommit 19c7da7769f9df984c8bd349f699f36fa4fa4384[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 14:46:46 2016 +0800
+
+    总会有办法上传的,jade上传问题解决
+
+[33mcommit e3c1b49b3bf026bf14aa6391a3b7c740f369bca7[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 14:45:00 2016 +0800
+
+    先上传再说吧,解决jade不能上传的问题
+
+[33mcommit 8b188dc5d381b02ce1ed33b1ca78d26fc8d4fb4f[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 14:34:39 2016 +0800
+
+    为什么jade不能上传?
+
+[33mcommit 06d8da2542838c17456fd19de7c3ee0e2b2c36f3[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 14:32:43 2016 +0800
+
+    加入jade文件
+
+[33mcommit a51922b4484a22f5dfe5642cb4acfb5098eda833[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 14:23:41 2016 +0800
+
+    加入jade相关配置
+    
+    加入jade模板引擎,同时结合spring调试完成,
+    加入相关测试的demo
+
+[33mcommit a14d23674c87749d79180c039c29e4cbd52a06e1[m
+Author: caojiayao <496922401@qq.com>
+Date:   Thu Sep 1 11:08:45 2016 +0800
+
+    完成File的测试类
+
+[33mcommit ff0820148f3966528f1f7f0a94c07e8aee062795[m
+Author: lason <xianforwork@163.com>
+Date:   Thu Sep 1 09:58:37 2016 +0800
+
+    加入拦截器,从新配置log
+
+[33mcommit 76a8a5c317876bf0e70bc72ede2a3f01dd85b62b[m
+Author: caojiayao <496922401@qq.com>
+Date:   Thu Sep 1 09:43:18 2016 +0800
+
+    完成Message的测试类
