@@ -1,0 +1,24 @@
+extends ../layout.jade
+
+block main
+    .input-container
+        form(method="get" action="javascript:sign.signerror()")
+            .input-block
+                input#username.input-box(type="text" data-input-box="input" placeholder="请输入用户名" autocomplete="off")
+                span.delete.hide(data-text-delete="delete") X
+
+            .input-block
+                input#password.input-box(type="password" data-input-box="input" placeholder="请输入密码（不少于6位）")
+                span.delete.hide(data-text-delete="delete") X
+                
+            .input-block
+                input#password-again.input-box(type="password" data-input-box="input" placeholder="请再次输入密码")
+                span.delete.hide(data-text-delete="delete") X
+    
+        .tips
+            a(href="signin.jade") 已有系统账号？去登录
+            
+block error
+    #sign-error.modal.fade.error-modal(aria-hidden="true")
+        .modal-title ！
+        .modal-text 此邮箱已被注册
