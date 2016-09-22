@@ -23,6 +23,7 @@
 		<result column="digest" property="digest" jdbcType="VARCHAR" />
 		<result column="content_source_url" property="contentSourceUrl" jdbcType="VARCHAR" />
 		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
 		<result column="hq_music_url" property="hqMusicUrl" jdbcType="VARCHAR" />
 		
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
@@ -35,7 +36,7 @@
 	<!-- 定义查询的所有参数 -->
 	<sql id="WechatMaterialColumns">
 		id, del_flag,
-		msg_type, keyword, media_id, content, name, url, description,parent_media_id, title, thumb_media_id, show_cover_pic, author, digest, content_source_url, sort, hq_music_url,
+		msg_type, keyword, media_id, content, name, url, description,parent_media_id, title, thumb_media_id, show_cover_pic, author, digest, content_source_url, sort, pic_url, hq_music_url,
 		create_time, create_by, update_time, update_by, remark
 	</sql>
 	<!-- 定义所有条件 -->
@@ -93,6 +94,9 @@
 		    <if test="sort != null and sort != 0">
 		    	and sort = #{sort}
 		    </if>
+		    <if test="picUrl != null and !&quot;&quot;.equals(picUrl.trim())">
+		    	and pic_url = #{picUrl}
+		    </if>
 		    <if test="hqMusicUrl != null and !&quot;&quot;.equals(hqMusicUrl.trim())">
 		    	and hq_music_url = #{hqMusicUrl}
 		    </if>
@@ -118,7 +122,7 @@
 	
 	<!-- 添加 -->
 	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
-		insert into wech_material (id, del_flag, msg_type, keyword, media_id, content, name, url, description,parent_media_id, title, thumb_media_id, show_cover_pic, author, digest, content_source_url, sort, hq_music_url, create_time, create_by, update_time, update_by, remark)
+		insert into wech_material (id, del_flag, msg_type, keyword, media_id, content, name, url, description,parent_media_id, title, thumb_media_id, show_cover_pic, author, digest, content_source_url, sort, pic_url, hq_music_url, create_time, create_by, update_time, update_by, remark)
 		values (
 			#{id,jdbcType=VARCHAR},
 			#{delFlag,jdbcType=INTEGER},
@@ -138,6 +142,7 @@
 			#{digest,jdbcType=VARCHAR},
 			#{contentSourceUrl,jdbcType=VARCHAR},
 			#{sort,jdbcType=INTEGER},
+			#{picUrl,jdbcType=VARCHAR},
 			#{hqMusicUrl,jdbcType=VARCHAR},
 			
 			#{createTime,jdbcType=VARCHAR},
@@ -217,6 +222,9 @@
 		    </if>
 		    <if test="sort != null and sort != 0">
 		    	sort = #{sort},
+		    </if>
+		    <if test="picUrl != null and !&quot;&quot;.equals(picUrl.trim())">
+		    	pic_url = #{picUrl},
 		    </if>
 		    <if test="hqMusicUrl != null and !&quot;&quot;.equals(hqMusicUrl.trim())">
 		    	hq_music_url = #{hqMusicUrl},

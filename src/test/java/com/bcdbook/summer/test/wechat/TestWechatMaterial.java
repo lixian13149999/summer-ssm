@@ -8,8 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bcdbook.summer.common.util.DateUtil;
-import com.bcdbook.summer.wechat.pojo.Location;
 import com.bcdbook.summer.wechat.pojo.WechatMaterial;
 import com.bcdbook.summer.wechat.service.WechatMaterialService;
 
@@ -39,32 +37,34 @@ public class TestWechatMaterial {
 		wechatMaterial.setDigest("dig");
 		wechatMaterial.setContentSourceUrl("www.bilibili.com");
 		wechatMaterial.setSort(3);
+		wechatMaterial.setPicUrl("www.gif.com");
 		wechatMaterial.setHqMusicUrl("www.google.com");
 		wechatMaterialService.add(wechatMaterial);
 	}
 	
 	@Test
 	public void delete(){
-		wechatMaterialService.delete("a7064dfbd49a43e78eaa77b451594983");
+		wechatMaterialService.delete("75bf7698e0114b78ac54d99b6bf9e6b7");
 	}
 	
 	@Test
 	public void delete2(){
-		WechatMaterial wechatMaterial = wechatMaterialService.get("a7064dfbd49a43e78eaa77b451594983");
+		WechatMaterial wechatMaterial = wechatMaterialService.get("75bf7698e0114b78ac54d99b6bf9e6b7");
 		wechatMaterialService.deleteByCondition(wechatMaterial);
 	}
 	
 	@Test
 	public void update(){
-		WechatMaterial wechatMaterial = wechatMaterialService.get("a7064dfbd49a43e78eaa77b451594983");
+		WechatMaterial wechatMaterial = wechatMaterialService.get("75bf7698e0114b78ac54d99b6bf9e6b7");
 		wechatMaterial.setMsgType("gif");
 		wechatMaterial.setUrl("spring.io");
+		wechatMaterial.setPicUrl("www.fpga.com");
 		wechatMaterialService.update(wechatMaterial);
 	}
 	
 	@Test
 	public void get(){
-		WechatMaterial wechatMaterial = wechatMaterialService.get("a7064dfbd49a43e78eaa77b451594983");
+		WechatMaterial wechatMaterial = wechatMaterialService.get("75bf7698e0114b78ac54d99b6bf9e6b7");
 		WechatMaterial wechatMaterial1 = wechatMaterialService.getByCondition(wechatMaterial);
 		System.out.println(wechatMaterial1);
 	}
