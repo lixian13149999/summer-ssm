@@ -5,18 +5,18 @@ package com.bcdbook.summer.wechat.pojo.message.resp;
  * @author lason
  * @date 2016年9月20日
  */
-public class Articles {
+public class Article {
 	private String Title;//图文消息标题
 	private String Description;//图文消息描述
 	private String PicUrl;//图片链接，支持JPG、PNG格式，较好的效果为大图360*200，小图200*200
 	private String Url;//点击图文消息跳转链接
 	
 	//空参构造
-	public Articles() {
+	public Article() {
 		super();
 	}
 	//全参构造
-	public Articles(String title, String description, String picUrl, String url) {
+	public Article(String title, String description, String picUrl, String url) {
 		super();
 		Title = title;
 		Description = description;

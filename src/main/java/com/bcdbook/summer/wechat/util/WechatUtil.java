@@ -7,18 +7,18 @@ import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Date;
 
 import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.context.ContextParameter;
-import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.common.util.JsonUtil;
 import com.bcdbook.summer.common.util.SHA1;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.wechat.pojo.Wechat;
+import com.bcdbook.summer.wechat.pojo.message.resp.NewsMessage;
+import com.bcdbook.summer.wechat.pojo.message.resp.Article;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.QuickWriter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
@@ -224,9 +224,33 @@ public class WechatUtil {
 		return menu;
 	}
 	
+	/**
+	 * @Description: 对象转xml的方法
+	 * @param @param entity
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月22日
+	 */
 	public static <T> String packageXML(T entity){
 		xstream.alias("xml", entity.getClass());
 		return xstream.toXML(entity);
+	}
+
+	/**
+	 * @Description: news对象转xml的方法
+	 * @param @param newsMessage
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月22日
+	 */
+	public static String packageNewsXML(NewsMessage newsMessage) {
+		xstream.alias("xml", newsMessage.getClass());
+		xstream.alias("item", new Article().getClass());
+		return xstream.toXML(newsMessage);
 	}
 	
 	/**
