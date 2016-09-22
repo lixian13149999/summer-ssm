@@ -268,9 +268,9 @@
 	<select id="findList" resultMap="WechatMaterial" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
 		select
 		<include refid="WechatMaterialColumns" />
-		from wech_wechat
+		from wech_material
 		<include refid="WechatMaterialCondition" /> 
-	    order by wech_material
+	    order by sort
 	    <if test="page != null">
 	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
 	    </if>
