@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.common.util.StringUtils;
-import com.bcdbook.summer.common.util.XMLUtil;
 import com.bcdbook.summer.wechat.pojo.WechatMaterial;
 import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
 import com.bcdbook.summer.wechat.pojo.message.resp.Article;

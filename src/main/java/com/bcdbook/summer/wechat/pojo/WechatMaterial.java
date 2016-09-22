@@ -20,11 +20,12 @@ public class WechatMaterial extends DataEntity<WechatMaterial> {
 	private static final long serialVersionUID = 472956021907896157L;
 	
 	//素材类型
+	public static final String TEXT = "text";//文本
 	public static final String IMAGE = "image";//图片
-	public static final String VIDEO = "video";//视频
 	public static final String VOICE = "voice";//语音
-	public static final String NEWS = "news";//文图消息
+	public static final String VIDEO = "video";//视频
 	public static final String MUSIC = "music";//音乐
+	public static final String NEWS = "news";//文图消息
 	
 	/**
 	 * 用户识别及维护使用的字段
