@@ -1,5 +1,6 @@
 var input = new Object();
 
+//方法引用自iverify.js
 //验证用户名是否为邮箱
 input.checkUserName = function(){
     var UserName = $("#username").val();

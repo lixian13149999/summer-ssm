@@ -45,9 +45,10 @@ a:active {
   width: 100%;
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
+  position: relative;
 }
 .main .content .input-container .input-block .input-box {
-  width: 90%;
+  width: 100%;
   border: none;
   outline: none;
   height: 34px;
@@ -59,6 +60,12 @@ a:active {
 .main .content .input-container .input-block .input-box:focus {
   border: none;
   outline: none;
+}
+.main .content .input-container .input-block .delete {
+  color: #ccc;
+  position: absolute;
+  top: 9px;
+  right: 10px;
 }
 .main .content .input-container .border {
   border-bottom: 1px solid #000;
@@ -105,4 +112,20 @@ a:active {
 .main .content .footer-container .weixin .icon-wechat {
   font-size: 30px;
   color: #04b010;
+}
+.error-modal {
+  position: absolute;
+  top: 40%;
+  width: 40%;
+  height: 15%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-weight: bolder;
+  border-radius: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+.error-modal .modal-title {
+  padding: 10px 0 5px;
+  font-size: 2em;
 }

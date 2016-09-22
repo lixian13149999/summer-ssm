@@ -1,7 +1,7 @@
 $(function(){
     sign.input();//输入框焦点获失时样式变化
     sign.deleteIcon();//输入框清空按钮的变化及相关操作
-    sign.verify();//表单验证后提交按钮的样式变化
+    sign.verify();//表单验证及提交按钮的样式变化
 })
 
 var sign = new Object();
@@ -25,6 +25,7 @@ sign.deleteIcon = function(){
             $(document).on('click touchstart','[data-text-delete="delete"]',function(){
                 $(this).siblings('.input-box').val('');
                 $(this).addClass('hide');
+                $('.mobile-button').attr('disabled',true);
             })
         }
         else{
@@ -33,7 +34,7 @@ sign.deleteIcon = function(){
     })
 }
 
-
+//方法引用自ipopover.js
 sign.verify = function(){
     $(document).on('input propertychange','[data-input-box="input"]',function(){
         if($('#password-again').length>0){
@@ -45,24 +46,9 @@ sign.verify = function(){
 }
 
 //执行登录操作
-sign.signin = function() {
-	var user = iform.parse("signin_form");
-	var url = "http://localhost:8080";
-	$.ajax({
-		url: url,
-		type: 'POST',
-		dataType: "json",
-		data: user,
-		async: false,
-		success: function(data) {
-			console.log(data);
-			sign.signinSuccessBack(data);
-			//cb(data);
-		},
-		error: function() {
-			alert('密码或用户名错误')
-		}
-	});
+sign.signerror = function(){
+    $('#sign-error').modal();
+    setTimeout("$('#sign-error').modal('hide')",1500);
 }
 
 

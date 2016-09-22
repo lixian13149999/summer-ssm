@@ -31,9 +31,9 @@
             </div>
 <!-- 页面输入框部分-->             
             <div class="input-container">
-                <form> 
+                <form method="get" action="javascript:sign.signerror()"> 
                     <div class="input-block">
-                        <input id="username" type="text" class="input-box" data-input-box="input" placeholder="请输入邮箱">
+                        <input id="username" type="text" class="input-box" data-input-box="input" placeholder="请输入邮箱" autocomplete="off">
                         <span class="delete hide" data-text-delete="delete">X</span>
                     </div>
 
@@ -58,6 +58,12 @@
             </div>
             
         </div>
+    </div>
+
+<!-- 注册错误模态框-->
+   <div id="sign-error" class="modal fade error-modal" aria-hidden="true">
+        <div class="modal-title">!</div>
+        <div class="modal-text">此邮箱已被注册</div>
     </div>
     
     <!-- 框架js文件的引入 -->
