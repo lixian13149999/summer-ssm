@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.context.ContextParameter;
 import com.bcdbook.summer.common.util.JsonUtil;
 import com.bcdbook.summer.common.util.SHA1;
@@ -224,6 +225,29 @@ public class WechatUtil {
 		return menu;
 	}
 	
+	/**
+	    * @Discription 根据微信的openid获取用户详细信息的方法
+	    * @author lason       
+	    * @created 2016年9月22日 下午10:18:22     
+	    * @param accessToken
+	    * @param openId
+	    * @return
+	 */
+	public static String getUserInfo(String accessToken,String openId){
+		//验证参数的合法性
+		if(StringUtils.isNull(accessToken)
+				||StringUtils.isNull(openId))
+			return BackMsg.error("accessToken or openId is null");
+		
+		//拼接请求参数
+		String url = "https://api.weixin.qq.com/cgi-bin/user/info"
+				+ "?access_token="+accessToken
+				+ "&openid="+openId
+				+ "&lang=zh_CN";
+		
+		//返回获取到的用户数据
+		return wechatGet(url);
+	}
 	/**
 	 * @Description: 对象转xml的方法
 	 * @param @param entity

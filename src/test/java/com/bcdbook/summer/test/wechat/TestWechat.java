@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.bcdbook.summer.common.util.DateUtil;
 import com.bcdbook.summer.wechat.pojo.Wechat;
 import com.bcdbook.summer.wechat.service.WechatService;
+import com.bcdbook.summer.wechat.util.WechatUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
@@ -80,4 +81,12 @@ public class TestWechat {
 //		Wechat w = wechatService.getWechatByKey(Wechat.KEY_ACCESS_TOKEN);
 //		System.out.println(w);
 //	}
+	
+	@Test
+	public void getUserInfo(){
+		String accessToken = wechatService.getAccessToken();
+		String openId = "o8yDuvoYJ-39Z1o9YRRjREfIfFL4";
+		String userInfo = WechatUtil.getUserInfo(accessToken, openId);
+		System.out.println(userInfo);
+	}
 }

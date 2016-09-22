@@ -134,4 +134,6 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 	public String getAccessToken(){
 		return getParameter(Wechat.KEY_ACCESS_TOKEN);
 	}
+	
+	
 }
