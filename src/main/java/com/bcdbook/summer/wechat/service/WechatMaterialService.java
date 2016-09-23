@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.scripting.xmltags.WhereSqlNode;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
@@ -70,7 +71,81 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		System.out.println(materialStr);
 		return materialStr;
 	}
-	
+
+	/**
+	 * @Description: 根据图片的的mediaId获取图片的地址
+	 * @param @param string
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月23日
+	 */
+	public String getPicUrlByMediaId(String accessToken,String mediaId) {
+		//参数合法性验证
+		if(StringUtils.isNull(accessToken)
+				||StringUtils.isNull(mediaId))
+			return null;
+		
+		//设置获取的素材类型
+		String type = WechatMaterial.IMAGE;
+		int offset = 0;//设置起始值
+		int count = 20;//设置获取的数量
+		int times = 1;//因为需要通过循环获取相应的信息,这里通过times计数
+		
+		boolean findedPic = false;
+		String picUrl = null;
+		
+		while (times<10) {//限制最大循环次数(如果200张图片中,没有找到想要的图片,则直接放弃查找)
+			System.out.println("进入循环");
+			//获取素材列表
+			String materialsStr = list(accessToken, type, offset, count);
+			//如果获取到的素材列表为空,则直接返回空
+			if(StringUtils.isNull(materialsStr))
+				return null;
+			
+			//把获取到的素材集合字符串,转成json
+			JSONObject materialListJson = JSON.parseObject(materialsStr);
+			
+			//检查返回的数据是否有错误
+			if(!StringUtils.isNull(materialListJson.getString("errcode")))
+				//如果errcode中有值,则说明请求发生错误
+				return null;
+			
+			//获取素材的总数
+			int totalCount = materialListJson.getIntValue("total_count");
+			if(totalCount<1)//如果素材总数小于1,说明没有素材,则直接返回null
+				return null;
+			
+			//获取素材列表中的素材,并封装成Json数组
+			JSONArray materialJsonArr = materialListJson.getJSONArray("item");
+			//循环素材列表,以获取相应的值
+			for (int i = 0; i < materialJsonArr.size(); i++) {
+				//获取单个素材对象
+				JSONObject item = materialJsonArr.getJSONObject(i);
+				//如果获取到的素材id和传入的素材id一致
+				if(mediaId.equals(item.getString("media_id"))){
+					findedPic = true;//标记已经找到素材
+					picUrl = item.getString("url");//把素材的地址赋予picUrl
+					break;
+				}
+			}
+			
+			//如果已经找到图片
+			if(findedPic)
+				return picUrl;//直接返回图片路径
+			
+			//检查总数是否已经超过了现在获取的值,如果是则说明素材库中没有要找的素材
+			if(totalCount<=times*count)
+				return null;//直接返回空
+			
+			times++;//把循环次数累加
+			offset+=20;//改变查询的起始值
+		}
+		
+		return null;
+	}
+
 	/**
 	 * @Description: 用来获取素材列表的方法
 	 * @param @param accessToken
@@ -157,7 +232,7 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		//如果获取的不是文图消息,并且不是视频消息
 		if(type.equals(WechatMaterial.NEWS))
 			//根据保存的成功与否,返回相应的数据
-			return saveNewsMaterialFromGet(wm, materialJson)?BackMsg.success("saveNews success") : BackMsg.error("saveNews error");
+			return saveNewsMaterialFromGet(accessToken,wm, materialJson)?BackMsg.success("saveNews success") : BackMsg.error("saveNews error");
 		
 		if(type.equals(WechatMaterial.VIDEO))
 			return saveVideoMaterialFromGet(wm, materialJson)?BackMsg.success("saveVideo success") : BackMsg.error("saveVideo error");
@@ -221,7 +296,7 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 				//如果获取的是文图消息
 				if(type.equals(WechatMaterial.NEWS)){
 					//保存文图素材的方法
-					saveOk = saveNewsMaterialFromList(wm, materialJson);
+					saveOk = saveNewsMaterialFromList(accessToken,wm, materialJson);
 
 				//如果获取的是其他类型的消息
 				}else{
@@ -265,7 +340,6 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 	/**
 	 * @Description: 保存从文图消息素材
 	 * 注意:此文图消息素材是get方式获取的单个文图素材
-	 * TODO--需要加入对封面的处理
 	 * @param @param wm
 	 * @param @param materialJson
 	 * @param @return   
@@ -274,7 +348,7 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 	 * @author lason
 	 * @date 2016年9月22日
 	 */
-	public boolean saveNewsMaterialFromGet(WechatMaterial wechatMaterial,JSONObject materialJson) {
+	public boolean saveNewsMaterialFromGet(String accessToken,WechatMaterial wechatMaterial,JSONObject materialJson) {
 		//验证参数的合法性
 		if(wechatMaterial==null||materialJson==null)
 			return false;
@@ -306,6 +380,8 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 			wm.setParentMediaId(wechatMaterial.getMediaId());//设置其父级的素材id
 			wm.setSort(i+1);//设置文章的排序
 			
+			wm.setPicUrl(getPicUrlByMediaId(accessToken,item.getString("thumb_media_id")));
+			
 			int addItem = add(wm);
 			//如果有一个保存没有成功,则直接返回false
 			if(addItem!=1)
@@ -319,7 +395,6 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 	/**
 	 * @Description: 保存文图素材的方法
 	 * 注意:此文图消息素材是list方式获取的文图素材列表
-	 * TODO--需要加入对封面的处理
 	 * @param @param wechatMaterial
 	 * @param @param materialJson
 	 * @param @return   
@@ -328,7 +403,7 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 	 * @author lason
 	 * @date 2016年9月21日
 	 */
-	public boolean saveNewsMaterialFromList(WechatMaterial wechatMaterial,JSONObject materialJson){
+	public boolean saveNewsMaterialFromList(String accessToken,WechatMaterial wechatMaterial,JSONObject materialJson){
 		//验证参数的合法性
 		if(wechatMaterial==null||materialJson==null)
 			return false;
@@ -363,6 +438,8 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 			
 			wm.setParentMediaId(wechatMaterial.getMediaId());//设置其父级的素材id
 			wm.setSort(i+1);//设置文章的排序
+			
+			wm.setPicUrl(getPicUrlByMediaId(accessToken,item.getString("thumb_media_id")));
 			
 			int addItem = add(wm);
 			//如果有一个保存没有成功,则直接返回false
@@ -424,6 +501,7 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		WechatMaterial wechatMaterial = new WechatMaterial();
 		wechatMaterial.setKeyword(keyword);//设置关键字
 		wechatMaterial.setContent(content);//设置文本内容
+		wechatMaterial.setMsgType(WechatMaterial.TEXT);
 		
 		//根据保存方法的返回结果,封装并返回相应的提示信息
 		return add(wechatMaterial)==1?BackMsg.success("addTextMaterial success"):BackMsg.success("addTextMaterial error");

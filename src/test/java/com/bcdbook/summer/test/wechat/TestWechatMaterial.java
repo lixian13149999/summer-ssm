@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.bcdbook.summer.common.persistence.Page;
 import com.bcdbook.summer.wechat.pojo.WechatMaterial;
 import com.bcdbook.summer.wechat.service.WechatMaterialService;
+import com.bcdbook.summer.wechat.service.WechatService;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
@@ -21,6 +22,8 @@ public class TestWechatMaterial {
 	
 	@Resource
 	private WechatMaterialService wechatMaterialService;
+	@Resource
+	private WechatService wechatService;
 	
 	@Test
 	public void add(){
@@ -113,5 +116,13 @@ public class TestWechatMaterial {
 		page.setFunc("where?");
 		Page<WechatMaterial> newPage = wechatMaterialService.findPage(page, wechatMaterial);
 		System.out.println(newPage.getCountResult());
+	}
+	
+	public void getPicUrlByMediaId(){
+		String accessToken = wechatService.getAccessToken();
+		String mediaId = "mErowUdivp53pbwYC5N7cSLx5K5GbE0H40";
+		String picUrl = wechatMaterialService.getPicUrlByMediaId(accessToken, mediaId);
+		
+		System.out.println(picUrl);
 	}
 }

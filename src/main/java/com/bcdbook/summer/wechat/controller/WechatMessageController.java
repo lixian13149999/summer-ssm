@@ -163,14 +163,6 @@ public class WechatMessageController {
 		//调用封装返回数据的方法,获取返回数据
 		String backMsg = parseMsg(dbWM,reqMapMsg);
 		
-//		TextMessage msg = new TextMessage();
-//		msg.setToUserName(reqMapMsg.get("FromUserName"));
-//		msg.setFromUserName(reqMapMsg.get("ToUserName"));
-//		msg.setCreateTime(DateUtil.getTime());
-//		//msg.setFuncFlag(0);// 标记成未读
-//		msg.setMsgType(WechatMessage.TEXT);
-//		msg.setContent("用于测试的回复的文本内容");
-		
 		return backMsg;
 	}
 	
@@ -223,7 +215,9 @@ public class WechatMessageController {
 	 * @author lason
 	 * @date 2016年9月22日
 	 */
+//	@RequestMapping(value="parseMsg", method = RequestMethod.POST)
 	private String parseMsg(WechatMaterial wechatMaterial,Map<String, String> reqMapMsg) {
+		logger.info("进入封装消息的主方法");
 		//定义最终的返回值
 		String backMsg = WechatRespMessage.SUCCESS;
 		
@@ -233,6 +227,7 @@ public class WechatMessageController {
 		
 		//获取返回消息的类型,并验证合法性
 		String type = wechatMaterial.getMsgType();
+		logger.info("封装消息的主方法中的Type值:"+type);
 		if(StringUtils.isNull(type))
 			return backMsg;
 		
@@ -267,7 +262,7 @@ public class WechatMessageController {
 				backMsg = WechatRespMessage.SUCCESS;
 				break;
 		}
-		
+//		logger.info("主方法中获取到的backMsg"+backMsg);
 		return StringUtils.isNull(backMsg)?WechatRespMessage.SUCCESS:backMsg;
 	}
 
@@ -281,6 +276,7 @@ public class WechatMessageController {
 	 * @date 2016年9月22日
 	 */
 	private String parseTextMsg(WechatMaterial wechatMaterial,Map<String, String> reqMapMsg) {
+		logger.info("进入封装文本消息的方法");
 		//验证参数的合法性
 		if(wechatMaterial==null||reqMapMsg==null)
 			return null;
