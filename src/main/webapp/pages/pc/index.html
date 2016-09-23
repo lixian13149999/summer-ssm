@@ -92,61 +92,135 @@
                 
                 <div id="commission-box" class="row commission-box"> 
                     <div class="col-sm-3 left-content">
-                       <div class="commission-box-title">栏目编辑</div>
-                        <dl>
-                            <dd class="left-content-title">
-                                <i class="icon icon-menu"></i>
-                                &nbsp;栏目管理
-                                <span class="setting-icon">
+                       <div class="commission-box-title">
+                           栏目编辑
+                           <span class="setting-icon">
+                                <a href="#">
                                     <i class="icon icon-add"></i>
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
+                                </a>
+                                <a href="#">
+                                    <i class="icon icon-grip" data-move-icon="move"></i>
+                                </a>
+                           </span>
+                       </div>
+                       <dl id="sortable">
+                            <dd class="each-list nomal" data-drag-list="drag">
+                                <dl>
+                                    <dd class="left-content-title">
+                                        <i class="icon icon-menu"></i>
+                                        &nbsp;栏目管理
+                                        <span class="setting-icon">
+                                            <a href="#">
+                                                <i class="icon icon-add"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-tool"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-delete"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-grip move hide"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <dd class="left-content-text">
+                                        栏目列表
+                                        <span class="setting-icon">
+                                            <a href="#">
+                                                <i class="icon icon-tool"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-delete"></i>
+                                            </a>
+                                            <i class="move hide">&#12288;</i>
+                                        </span>
+                                    </dd>
+                                </dl>
                             </dd>
-                            <dd class="left-content-text">栏目列表</dd>
-                        </dl>
-                        <dl>
-                            <dd class="left-content-title">
-                                <i class="icon icon-user"></i>
-                                &nbsp;用户管理
-                                <span class="setting-icon">
-                                    <i class="icon icon-add"></i>
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
+                            
+                            <dd class="each-list nomal" data-drag-list="drag">
+                                <dl>
+                                    <dd class="left-content-title">
+                                        <i class="icon icon-user"></i>
+                                        &nbsp;用户管理
+                                        <span class="setting-icon">
+                                            <a href="#">
+                                                <i class="icon icon-add"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-tool"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-delete"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-grip move hide"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <dd class="left-content-text">
+                                        用户列表
+                                        <span class="setting-icon">
+                                            <a href="#">
+                                                <i class="icon icon-tool"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-delete"></i>
+                                            </a>
+                                            <i class="move hide">&#12288;</i>
+                                        </span>
+                                    </dd>
+                                    <dd class="left-content-text">
+                                    个人中心
+                                        <span class="setting-icon">
+                                            <a href="#">
+                                                <i class="icon icon-tool"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-delete"></i>
+                                            </a>
+                                            <i class="move hide">&#12288;</i>
+                                        </span>
+                                    </dd>
+                                </dl>
                             </dd>
-                            <dd class="left-content-text">
-                            用户列表
-                                <span class="setting-icon">
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
+                            
+                            <dd class="each-list nomal" data-drag-list="drag">
+                                <dl>
+                                   <dd class="left-content-title">
+                                        <i class="icon icon-role"></i>
+                                        &nbsp;角色管理
+                                        <span class="setting-icon">
+                                            <a href="#">
+                                                <i class="icon icon-add"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-tool"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-delete"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-grip move hide"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <dd class="left-content-text">
+                                    角色列表
+                                        <span class="setting-icon">
+                                            <a href="#">
+                                                <i class="icon icon-tool"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="icon icon-delete"></i>
+                                            </a>
+                                            <i class="move hide">&#12288;</i>
+                                        </span>
+                                    </dd>
+                                </dl>
                             </dd>
-                            <dd class="left-content-text">
-                            个人中心
-                                <span class="setting-icon">
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
-                            </dd>
-                        </dl>
-                        <dl>
-                           <dd class="left-content-title">
-                                <i class="icon icon-role"></i>
-                                &nbsp;角色管理
-                                <span class="setting-icon">
-                                    <i class="icon icon-add"></i>
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
-                            </dd>
-                            <dd class="left-content-text">
-                            角色列表
-                                <span class="setting-icon">
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
-                            </dd>
+                            
                         </dl>
                     </div>
                     
@@ -154,24 +228,24 @@
                         <div class="commission-box-title">权限管理</div>
                         <dl>
                             <dd class="right-list">
-                                <i class="add-icon icon icon-add"> 添加</i>
-                                &nbsp;&nbsp;用户添加权限
+                                <i class="add-icon icon icon-add"></i>
+                                <span class="tips">添加</span>&nbsp;&nbsp;用户添加权限
                                 <span class="setting-icon">
                                     <i class="icon icon-tool"></i>
                                     <i class="icon icon-delete"></i>
                                 </span>
                             </dd>
                             <dd class="right-list">
-                                <i class="add-icon icon icon-add"> 添加</i>
-                                &nbsp;&nbsp;用户添加权限
+                                <i class="add-icon icon icon-add"></i>
+                                <span class="tips">添加</span>&nbsp;&nbsp;用户添加权限
                                 <span class="setting-icon">
                                     <i class="icon icon-tool"></i>
                                     <i class="icon icon-delete"></i>
                                 </span>
                             </dd>
                             <dd class="right-list">
-                                <i class="add-icon icon icon-add"> 添加</i>
-                                &nbsp;&nbsp;用户添加权限
+                                <i class="add-icon icon icon-add"></i>
+                                <span class="tips">添加</span>&nbsp;&nbsp;用户添加权限
                                 <span class="setting-icon">
                                     <i class="icon icon-tool"></i>
                                     <i class="icon icon-delete"></i>
