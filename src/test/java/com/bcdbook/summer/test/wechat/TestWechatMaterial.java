@@ -1,5 +1,7 @@
 package com.bcdbook.summer.test.wechat;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -8,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.bcdbook.summer.common.persistence.Page;
 import com.bcdbook.summer.wechat.pojo.WechatMaterial;
 import com.bcdbook.summer.wechat.service.WechatMaterialService;
 
@@ -40,26 +43,40 @@ public class TestWechatMaterial {
 		wechatMaterial.setPicUrl("www.gif.com");
 		wechatMaterial.setHqMusicUrl("www.google.com");
 		wechatMaterialService.add(wechatMaterial);
+		System.out.println(wechatMaterialService.getByCondition(wechatMaterial));
+	}
+	
+	@Test
+	public void addBackId(){
+		WechatMaterial wechatMaterial = wechatMaterialService.get("801f06ba2fad4c0fb1ad01e5634a4643");
+		wechatMaterial.setId(null);
+		String backId = wechatMaterialService.addBackId(wechatMaterial);
+		System.out.println("backId: "+backId);
 	}
 	
 	@Test
 	public void delete(){
-		wechatMaterialService.delete("75bf7698e0114b78ac54d99b6bf9e6b7");
+		String id = "801f06ba2fad4c0fb1ad01e5634a4643";
+		wechatMaterialService.delete(id);
 	}
 	
 	@Test
-	public void delete2(){
-		WechatMaterial wechatMaterial = wechatMaterialService.get("75bf7698e0114b78ac54d99b6bf9e6b7");
+	public void deleteByCondition(){
+		String id = "a49df4f5c33b4d0c8a6786f01099aaf6";
+		WechatMaterial wechatMaterial = wechatMaterialService.get(id);
 		wechatMaterialService.deleteByCondition(wechatMaterial);
 	}
 	
 	@Test
 	public void update(){
-		WechatMaterial wechatMaterial = wechatMaterialService.get("75bf7698e0114b78ac54d99b6bf9e6b7");
-		wechatMaterial.setMsgType("gif");
+		String id = "a49df4f5c33b4d0c8a6786f01099aaf6";
+		WechatMaterial wechatMaterial = wechatMaterialService.get(id);
+		System.out.println("before: "+wechatMaterial);
+		wechatMaterial.setMsgType("mpeg");
 		wechatMaterial.setUrl("spring.io");
 		wechatMaterial.setPicUrl("www.fpga.com");
 		wechatMaterialService.update(wechatMaterial);
+		System.out.println("after:  "+wechatMaterialService.get(id));
 	}
 	
 	@Test
@@ -69,4 +86,32 @@ public class TestWechatMaterial {
 		System.out.println(wechatMaterial1);
 	}
 	
+	@Test
+	public void findList(){
+		WechatMaterial wechatMaterial = wechatMaterialService.get("cdb9819726144cf99b0aea0c64904515");
+		List<WechatMaterial> list = wechatMaterialService.findList(wechatMaterial);
+		for(WechatMaterial w : list){
+			System.out.println(w);
+		}
+	}
+	
+	@Test
+	public void findAllList(){
+		WechatMaterial wechatMaterial = wechatMaterialService.get("cdb9819726144cf99b0aea0c64904515");
+		List<WechatMaterial> list = wechatMaterialService.findList(wechatMaterial);
+		for(WechatMaterial w : list){
+			System.out.println(w);
+		}
+	}
+	
+	@Test
+	public void findPage(){
+		WechatMaterial wechatMaterial = wechatMaterialService.get("cdb9819726144cf99b0aea0c64904515");
+		Page<WechatMaterial> page = new Page<WechatMaterial>() ;
+		page.setPageNum(1);
+		page.setPageSize(10);
+		page.setFunc("where?");
+		Page<WechatMaterial> newPage = wechatMaterialService.findPage(page, wechatMaterial);
+		System.out.println(newPage.getCountResult());
+	}
 }
