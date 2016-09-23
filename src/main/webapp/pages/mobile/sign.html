@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui">
-    <title>手机端登录页面</title>
+    <title>登录及注册页面</title>
     <!-- 框架样式引入 -->
     <!-- bootstrap基础样式 -->
     <link rel="stylesheet" href="../../static/libs/bootstrap/dist/css/bootstrap.min.css" type="text/css">
@@ -24,50 +24,8 @@
     
 </head>
 <body>
-    <div class="main">
-        <div class="content">
-<!-- 页面logo部分-->
-            <div class="logo">
-                <i class="icon icon-logo"></i>
-            </div>
-<!-- 页面输入框部分-->            
-            <div class="input-container">
-                <form method="get" action="javascript:sign.signerror()">
-                    <div class="input-block">
-                        <input id="username" type="text" class="input-box" data-input-box="input" placeholder="请输入用户名" autocomplete="off">
-                        <a class="delete hide" data-text-delete="delete">
-                            <i class="icon icon-delete3"></i>
-                        </a>
-                    </div>
-
-                    <div class="input-block">
-                        <input id="password" name="password" type="password" class="input-box" data-input-box="input" placeholder="请输入密码">
-                        <a class="delete hide" data-text-delete="delete">
-                            <i class="icon icon-delete3"></i>
-                        </a>
-                    </div>
-
-                    <input type="submit" value="登录" class="button button-primary button-rounded mobile-button" disabled>                    
-                </form>
-<!-- 提交按钮下小提示-->
-                <div class="tips">
-                    <a href="signup.html">
-                        没有系统账号？去注册
-                    </a>
-                </div>
-            </div>
-<!-- 页面微信登录框部分-->               
-            <div class="footer-container">
-                <div class="footer-title">
-                    <span class="title-text">社交账号登录</span>
-                </div>
-                
-                <a class="weixin">
-                    <i class="icon icon-wechat-dark"></i>
-                </a>
-            </div>
-            
-        </div>
+    <div id="main-container" class="main">
+       
     </div>
 
 <!-- 登录错误提示框-->
@@ -75,7 +33,7 @@
         <div class="error-content">
             <i class="icon icon-warning error-title"></i>
             <br>
-            <span class="error-text">用户名或密码错误</span>
+            <span class="error-text"></span>
         </div>
     </div>
    
@@ -97,9 +55,11 @@
 
     <!-- 自定义的一些js文件 -->
     <script src="../../static/mobile/js/sign.js"></script>
+    <script src="../../static/mobile/js/common/mainsign.js"></script>
     <script src="../../static/mobile/js/common/iverify.js"></script>
     <script src="../../static/mobile/js/common/ipopover.js"></script>
     <script src="../../static/mobile/js/common/iform.js"></script>
+    
     <!-- 常用工具类 -->
     
 </body>

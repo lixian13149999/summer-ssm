@@ -1,29 +1,28 @@
-extends ../layout.jade
+extends ../sign.jade
 
 block main
-    .input-container
-        form(method="get" action="javascript:sign.signerror()")
-            .input-block
-                input#username.input-box(type="text" data-input-box="input" placeholder="请输入用户名" autocomplete="off")
-                a.delete.hide(data-text-delete="delete")
-                    i.icon.icon-dele3
+    .content
+        .logo
+            i.icon.icon-logo
+        .input-container
+            form(method="get" action="javascript:mainsign.signerror()")
+                .input-block
+                    input#username.input-box(type="text" data-input-box="input" placeholder="请输入用户名" autocomplete="off")
+                    a.delete.hide(data-text-delete="delete")
+                        i.icon.icon-delete3
 
-            .input-block
-                input#password.input-box(type="password" data-input-box="input" placeholder="请输入密码（不少于6位）")
-                a.delete.hide(data-text-delete="delete")
-                    i.icon.icon-dele3
-                
-            .input-block
-                input#password-again.input-box(type="password" data-input-box="input" placeholder="请再次输入密码")
-                a.delete.hide(data-text-delete="delete")
-                    i.icon.icon-dele3
+                .input-block
+                    input#password.input-box(type="password" data-input-box="input" placeholder="请输入密码")
+                    a.delete.hide(data-text-delete="delete")
+                        i.icon.icon-delete3
+                        
+                .input-block
+                    input#password-again.input-box(type="password" data-input-box="input" placeholder="请再次输入密码")
+                    a.delete.hide(data-text-delete="delete")
+                        i.icon.icon-delete3
+
+                input.button.button-primary.button-rounded.mobile-button(type="submit" value="注册")
+
+            .tips
+                a(href="javascript:void(0)" data-tips-change="signup") 已有系统账号？去登录
     
-        .tips
-            a(href="signin.jade") 已有系统账号？去登录
-            
-block error
-    #sign-error.modal.fade.error-modal(aria-hidden="true")
-        .error-content
-            i.icon.icon-warning.error-title
-            br
-            span.error-text 此邮箱已被注册

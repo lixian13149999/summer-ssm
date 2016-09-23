@@ -41,15 +41,19 @@ html
         script(type='text/javascript',src='../../static/libs/less/dist/less.min.js')
         
         //- 引入自设定的js文件
-        script(type='text/javascript',src='../../static/mobile/js/common/sign.js')
+        script(type='text/javascript',src='../../static/mobile/js/sign.js')
+        script(type='text/javascript',src='../../static/mobile/js/common/mainsign.js')
+        script(type='text/javascript',src='../../static/mobile/js/common/iverify.js')
         script(type='text/javascript',src='../../static/mobile/js/common/iform.js')
         script(type='text/javascript',src='../../static/mobile/js/common/ipopover.js')
-        script(type='text/javascript',src='../../static/mobile/js/common/iverify.js')
+        
         
     body
-        .main
-            .content
-                .logo
-                    i.icon.icon-logo
-                block main
-        block error
+        #main-container.main
+            block main
+            
+        #sign-error.modal.fade.error-modal(aria-hidden="true")
+            .error-content
+                i.icon.icon-warning.error-title
+                br
+                span.error-text 
