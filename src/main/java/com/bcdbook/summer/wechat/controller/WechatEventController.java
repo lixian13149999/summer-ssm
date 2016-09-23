@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,8 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.wechat.pojo.event.WechatEvent;
 import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
+import com.bcdbook.summer.wechat.pojo.message.resp.WechatRespMessage;
+import com.bcdbook.summer.wechat.service.WechatLocationService;
 
 /**
  * @Description: 微信事件处理的控制器
@@ -26,8 +30,8 @@ public class WechatEventController {
 	
 	private static Logger logger = Logger.getLogger(WechatEventController.class);
 	
-//	@Resource
-//	private WechatService wechatService;
+	@Resource
+	private WechatLocationService wechatLocationService;
 	
 	/**
 	 * @Description: 处理事件的接口
@@ -114,10 +118,13 @@ public class WechatEventController {
 				break;
 			default:
 				//解析无法识别类型的事件
-				backMsg = "success";
+				backMsg = WechatRespMessage.SUCCESS;
 				break;
 			}
 		}
+		
+		if(StringUtils.isNull(backMsg))
+			backMsg = WechatRespMessage.SUCCESS;
 		
 		// 响应事件
 		PrintWriter out = null;
@@ -154,8 +161,12 @@ public class WechatEventController {
 	}
 	
 	private String processLOCATIONEvent(Map<String, String> reqMapMsg) {
-		// TODO Auto-generated method stub
-		return null;
+		//验证参数的合法性
+		if(reqMapMsg==null)
+			return null;
+		
+		//执行添加地址消息到数据库的操作
+		return wechatLocationService.addLocationFromEvent(reqMapMsg);
 	}
 	
 	private String processCLICKEvent(Map<String, String> reqMapMsg) {

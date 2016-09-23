@@ -107,6 +107,10 @@ public class WechatMessageController {
 				break;
 		}
 		
+
+		if(StringUtils.isNull(backMsg))
+			backMsg = WechatRespMessage.SUCCESS;
+		
 		// 响应消息
 		PrintWriter out = null;
 		try {
