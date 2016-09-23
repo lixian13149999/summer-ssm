@@ -62,7 +62,7 @@ public class BackMsg {
 			return false;
 		
 		//把传入的字符串解析成json对象
-		JSONObject backMsgJson = JSONObject.parseObject(backMsg);
+		JSONObject backMsgJson = JSON.parseObject(backMsg);
 				
 		if(backMsgJson==null)
 			return false;

@@ -15,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.common.util.XMLUtil;
 import com.bcdbook.summer.wechat.pojo.Wechat;
 import com.bcdbook.summer.wechat.pojo.message.WechatMessage;

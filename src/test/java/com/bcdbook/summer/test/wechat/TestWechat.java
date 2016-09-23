@@ -1,7 +1,5 @@
 package com.bcdbook.summer.test.wechat;
 
-import java.util.Date;
-
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
