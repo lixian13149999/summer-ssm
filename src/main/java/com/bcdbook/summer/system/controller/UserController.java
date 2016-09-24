@@ -58,8 +58,10 @@ public class UserController {
 	@RequestMapping(value="/userNameCanUse",method = {RequestMethod.GET}) 
 	@ResponseBody
 	public String userNameCanUse(HttpServletRequest req,HttpServletResponse resp,User user){
+		User conditionUser = new User();
+		conditionUser.setUserName(user.getUserName());
 		//根据前台传入的用户对象,从数据库中获取user
-		User dbUser = userService.getByCondition(user);
+		User dbUser = userService.getByCondition(conditionUser);
 //		System.out.println(user);
 //		System.out.println(dbUser);
 		//如果用户不存在,返回true,否则返回false

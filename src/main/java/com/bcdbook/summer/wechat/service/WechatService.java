@@ -1,12 +1,17 @@
 package com.bcdbook.summer.wechat.service;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.persistence.service.CrudService;
 import com.bcdbook.summer.common.util.DateUtil;
+import com.bcdbook.summer.common.util.MD5Util;
 import com.bcdbook.summer.common.util.StringUtils;
+import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.wechat.dao.WechatDao;
 import com.bcdbook.summer.wechat.pojo.Wechat;
 import com.bcdbook.summer.wechat.util.WechatUtil;
@@ -133,6 +138,51 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 	
 	public String getAccessToken(){
 		return getParameter(Wechat.KEY_ACCESS_TOKEN);
+	}
+
+	/**
+	    * @Discription 添加微信关注者的相关信息到用户表
+	    * 此操作会预存关注者的相关信息
+	    * 执行绑定后会做合并用户的操作
+	    * @author lason       
+	    * @created 2016年9月24日 下午7:58:51     
+	    * @param accessToken
+	    * @param openId
+	    * @return
+	 */
+	public User getUserInfo(String accessToken,String openId) {
+		//验证参数的合法性
+		if(StringUtils.isNull(accessToken)
+				||StringUtils.isNull(accessToken))
+			return null;
+		//获取用户的详细信息
+		String userInfo = WechatUtil.getUserInfo(accessToken, openId);
+		//如果获取到的值为空,则直接返回空
+		if(StringUtils.isNull(userInfo))
+			return null;
+		
+		//把获取到的值转换成JSONObject类型
+		JSONObject userJson = JSONObject.parseObject(userInfo);
+		
+		//如果返回值出错,则直接返回null
+		//当subscribe=0时表示用户没有关注此公众号,无法获取相关信息
+		if(!StringUtils.isNull(userJson.getString("errmsg"))
+				||userJson.getIntValue("subscribe")==0)
+			return null;
+		
+		User user = new User();
+		user.setOpenId(userJson.getString("openid"));
+		//TODO --这里的昵称还没有加入,需要后期加入
+//		user.setNickname(userJson.getString("nickname"));
+		user.setGender(userJson.getIntValue("sex"));
+		//TODO --头像的设置也需要加入
+//		user.setPhoto(userJson.getString("headimgurl"));
+		user.setPhoneState(User.UNBOUND);//设置手机为未绑定状态
+		user.setEmailState(User.UNBOUND);//设置邮箱为未绑定状态
+		user.setWechatState(User.UNBOUND);//设置微信为未绑定状态
+		user.setIsLock(User.LOCK);//设置用户为锁定状态
+		
+		return user;
 	}
 	
 	

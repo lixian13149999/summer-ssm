@@ -10,6 +10,8 @@ public class User extends DataEntity<User> {
 	
 	private String userName;// 用户名
 	private String pwd;// 密码
+	private String nickname;//昵称
+	private String realname;//真实姓名
 	private int age;// 年龄
 	private int gender;//性别
 	private String phone;// 电话

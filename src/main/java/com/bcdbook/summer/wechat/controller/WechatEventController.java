@@ -2,6 +2,7 @@ package com.bcdbook.summer.wechat.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -14,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bcdbook.summer.common.util.StringUtils;
+import com.bcdbook.summer.system.pojo.User;
+import com.bcdbook.summer.system.service.UserService;
 import com.bcdbook.summer.wechat.pojo.event.WechatEvent;
 import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
 import com.bcdbook.summer.wechat.pojo.message.resp.WechatRespMessage;
 import com.bcdbook.summer.wechat.service.WechatLocationService;
+import com.bcdbook.summer.wechat.service.WechatService;
 
 /**
  * @Description: 微信事件处理的控制器
@@ -32,6 +36,10 @@ public class WechatEventController {
 	
 	@Resource
 	private WechatLocationService wechatLocationService;
+	@Resource
+	private WechatService wechatService;
+	@Resource
+	private UserService userService;
 	
 	/**
 	 * @Description: 处理事件的接口
@@ -145,7 +153,31 @@ public class WechatEventController {
 		}
 	}
 	
+	/**
+	    * @Discription 关注事件的处理
+	    * @author lason       
+	    * @created 2016年9月24日 下午8:15:44     
+	    * @param reqMapMsg
+	    * @return
+	 */
 	private String processSubscribeEvent(Map<String, String> reqMapMsg) {
+		//从事件中获取关注者的openid
+		String openId = reqMapMsg.get("FromUserName");
+		
+		//创建user对象,用于封装查询条件
+		User conditionUser = new User();
+		conditionUser.setOpenId(openId);//设置查询条件
+		//根据查询条件,查询出符合条件的用户
+		List<User> userList = userService.findList(conditionUser);
+		User user = null;
+		//如果没有符合条件的用户
+		if(userList==null||userList.size()<1)
+			//执行添加此用户的信息到数据库中
+			user = wechatService.getUserInfo(wechatService.getAccessToken(),openId);
+		
+		if(user!=null)
+			userService.add(user);
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
