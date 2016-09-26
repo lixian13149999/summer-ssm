@@ -50,3 +50,8 @@ mainsign.signerror = function(){
     $('#sign-error').modal();
     setTimeout("$('#sign-error').modal('hide')",2000); 
 }
+
+//确认操作
+$(document).on('click','[data-sure-button="sure"]',function(){
+    $('#sure-tips').modal();
+})
