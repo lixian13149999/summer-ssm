@@ -9,6 +9,10 @@
 		
 		<result column="user_name" property="userName" jdbcType="VARCHAR" />
 		<result column="pwd" property="pwd" jdbcType="VARCHAR" />
+		<result column="nickname" property="nickname" jdbcType="VARCHAR" />
+		<result column="real_name" property="realName" jdbcType="VARCHAR" />
+		<result column="head_img" property="headImg" jdbcType="VARCHAR" />
+		<result column="id_card" property="idCard" jdbcType="VARCHAR" />
 		<result column="age" property="age" jdbcType="INTEGER" />
 		<result column="gender" property="gender" jdbcType="INTEGER" />
 		<result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -50,7 +54,7 @@
 	<!-- 定义查询的所有参数 -->
 	<sql id="UserColumns">
 		id, del_flag,
-		user_name, pwd,age,gender,phone,phone_state,email,email_state,open_id,wechat_state,company,department,position,is_lock,
+		user_name,pwd,nickname,real_name,head_img,id_card,age,gender,phone,phone_state,email,email_state,open_id,wechat_state,company,department,position,is_lock,
 		create_time,create_by,update_time,update_by,remark
 	</sql>
 	<!-- 定义所有条件 -->
@@ -68,6 +72,18 @@
 		    </if>
 		    <if test="pwd != null and !&quot;&quot;.equals(pwd.trim())">
 		    	and pwd = #{pwd}
+		    </if>
+		    <if test="nickname != null and !&quot;&quot;.equals(nickname.trim())">
+		    	and nickname = #{nickname}
+		    </if>
+		    <if test="realName != null and !&quot;&quot;.equals(realName.trim())">
+		    	and real_name = #{realName}
+		    </if>
+		    <if test="headImg != null and !&quot;&quot;.equals(headImg.trim())">
+		    	and head_img = #{headImg}
+		    </if>
+		    <if test="idCard != null and !&quot;&quot;.equals(idCard.trim())">
+		    	and id_card = #{idCard}
 		    </if>
 		    <if test="age != null and age != 0">
 		    	and age = #{age}
@@ -127,13 +143,17 @@
 	
 	<!-- 添加 -->
 	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.system.pojo.User">
-		insert into sys_user (id, del_flag, user_name, pwd,age,gender,phone,phone_state,email,email_state,open_id,wechat_state,company,department,position,is_lock, create_time, create_by, update_time, update_by, remark)
+		insert into sys_user (id,del_flag,user_name,pwd,nickname,real_name,head_img,id_card,age,gender,phone,phone_state,email,email_state,open_id,wechat_state,company,department,position,is_lock, create_time, create_by, update_time, update_by, remark)
 		values (
 			#{id,jdbcType=VARCHAR},
 			#{delFlag,jdbcType=INTEGER},
 
 			#{userName,jdbcType=VARCHAR},
 			#{pwd,jdbcType=VARCHAR},
+			#{nickname,jdbcType=VARCHAR},
+			#{realName,jdbcType=VARCHAR},
+			#{headImg,jdbcType=VARCHAR},
+			#{idCard,jdbcType=VARCHAR},
 			#{age,jdbcType=INTEGER},
 			#{gender,jdbcType=INTEGER},
 			#{phone,jdbcType=VARCHAR},
@@ -185,6 +205,18 @@
 		    </if>
 		    <if test="pwd != null and !&quot;&quot;.equals(pwd.trim())">
 		    	pwd = #{pwd},
+		    </if>
+		    <if test="nickname != null and !&quot;&quot;.equals(nickname.trim())">
+		    	nickname = #{nickname},
+		    </if>
+		    <if test="realName != null and !&quot;&quot;.equals(realName.trim())">
+		    	real_name = #{realName},
+		    </if>
+		    <if test="headImg != null and !&quot;&quot;.equals(headImg.trim())">
+		    	head_img = #{headImg},
+		    </if>
+		    <if test="idCard != null and !&quot;&quot;.equals(idCard.trim())">
+		    	id_card = #{idCard},
 		    </if>
 		    <if test="age != null and age != 0">
 		    	age = #{age},

@@ -42,6 +42,10 @@ public class TestUser {
 		
 		user.setUserName("userName");
 		user.setPwd("pwd");
+		user.setNickname("nickname");
+		user.setRealName("realName");
+		user.setHeadImg("headImg");
+		user.setIdCard("idCard");
 		user.setAge(0);
 		user.setGender(0);
 		user.setPhone("phone");
@@ -68,22 +72,30 @@ public class TestUser {
 
 	@Test 
 	public void remove(){
-		userService.delete("96c0afebc32e450ebaf1a7a188914653");
+		userService.delete("6b6fb917348541899ab05bc52a5eaeb9");
 	}
 	
 	@Test 
 	public void removeByCondition(){
 		User user = new User();
-		user.setId("96c0afebc32e450ebaf1a7a188914653");
+		user.setId("6b6fb917348541899ab05bc52a5eaeb9");
+		user.setNickname("nickname");
+		user.setRealName("realName");
+		user.setHeadImg("headImg");
+		user.setIdCard("idCard");
 		userService.deleteByCondition(user);
 	}
 	
 	@Test
 	public void update(){
 		User user = new User();
-		user.setId("96c0afebc32e450ebaf1a7a188914653");
+		user.setId("f7b6315ccf3d4ae58c8988d8db113cc8");
 		user.setUserName("userName1");
 		user.setPwd("pwd1");
+		user.setNickname("nickname");
+		user.setRealName("realName");
+		user.setHeadImg("headImg");
+		user.setIdCard("idCard");
 		user.setAge(10);
 		user.setGender(10);
 		user.setPhone("phone1");
@@ -101,16 +113,20 @@ public class TestUser {
 	
 	@Test
 	public void get(){
-		User user = userService.get("96c0afebc32e450ebaf1a7a188914653");
+		User user = userService.get("c44779c10f9c46d9809318f8b7b05643");
 		System.out.println(user);
 	}
 	
 	@Test
 	public void getByCondition(){
 		User user = new User();
-		user.setId("96c0afebc32e450ebaf1a7a188914653");
+		user.setId("f7b6315ccf3d4ae58c8988d8db113cc8");
 		user.setUserName("userName1");
 		user.setPwd("pwd1");
+		user.setNickname("nickname");
+		user.setRealName("realName");
+		user.setHeadImg("headImg");
+		user.setIdCard("idCard");
 		user.setAge(10);
 		user.setGender(10);
 		user.setPhone("phone1");
