@@ -1,27 +1,43 @@
-extends ./sign.jade
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui")
+		title 登录及注册页面
+		
+		include ./common/static/style.jade
 
-block main
-	.content
-		.logo
-			i.icon.icon-logo
-		.input-container
-			form(method="get" action="javascript:sign.signerror()")
-			.input-block
-				input#username.input-box(type="text" data-input-box="input" placeholder="请输入用户名" autocomplete="off")
-				a.delete.hide(data-text-delete="delete")
-					i.icon.icon-delete3
+		include ./common/static/script.jade
 
-			.input-block
-				input#password.input-box(type="password" data-input-box="input" placeholder="请输入密码")
-				a.delete.hide(data-text-delete="delete")
-					i.icon.icon-delete3
+	body
+		#main-container.main
+			.content
+				.logo
+					i.icon.icon-logo
+				.input-container
+					form(method="get" action="javascript:sign.signerror()")
+					.input-block
+						input#username.input-box(type="text" data-input-box="input" placeholder="请输入用户名" autocomplete="off")
+						a.delete.hide(data-text-delete="delete")
+							i.icon.icon-delete3
 
-			.input-block
-				input#password-again.input-box(type="password" data-input-box="input" placeholder="请再次输入密码")
-				a.delete.hide(data-text-delete="delete")
-					i.icon.icon-delete3
+					.input-block
+						input#password.input-box(type="password" data-input-box="input" placeholder="请输入密码")
+						a.delete.hide(data-text-delete="delete")
+							i.icon.icon-delete3
 
-			input.button.button-primary.button-rounded.mobile-button(type="submit" value="注册" data-signup-button="signup" disabled)
+					.input-block
+						input#password-again.input-box(type="password" data-input-box="input" placeholder="请再次输入密码")
+						a.delete.hide(data-text-delete="delete")
+							i.icon.icon-delete3
 
-		.tips
-			a(href="signin.jade") 已有系统账号？去登录
+					input.button.button-primary.button-rounded.mobile-button(type="submit" value="注册" data-signup-button="signup" disabled)
+
+				.tips
+					a(href="signin.jade") 已有系统账号？去登录
+
+		#sign-error.modal.fade.error-modal(aria-hidden="true")
+			.error-content
+				i.icon.icon-warning.error-title
+				br
+				span.error-text

@@ -110,7 +110,7 @@ public class UserController {
 		
 		pageData.put("bundleOk", bundleOk);
 		
-		ModelAndView mv = JadeUtil.getView("system/sign/verify_email.jade",pageData);
+		ModelAndView mv = JadeUtil.getView("pc/system/sign/verify_email.jade",pageData);
 		return mv;
 	}
 	/**

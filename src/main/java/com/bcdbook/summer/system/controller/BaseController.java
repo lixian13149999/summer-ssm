@@ -44,7 +44,7 @@ public class BaseController {
 //		menu.setParentId("first");
 //		List<Menu> userMenus = menuService.findList(menu);
 		
-		ModelAndView mv = JadeUtil.getView("index.jade");
+		ModelAndView mv = JadeUtil.getView("pc/index.jade");
 //		mv.addObject("onlineMenus", userMenus);
 		
 		return mv;
@@ -67,7 +67,7 @@ public class BaseController {
 		Map<String, Boolean> pageData = new HashMap<String, Boolean>();
 		pageData.put("hasUser", true);
 		
-		ModelAndView mv = JadeUtil.getView("system/sign/signin.jade",pageData);
+		ModelAndView mv = JadeUtil.getView("pc/system/sign/signin.jade",pageData);
 		return mv;
 	}
 	
@@ -86,9 +86,11 @@ public class BaseController {
 	@ResponseBody
 	public String doSignin(HttpServletRequest req,HttpServletResponse resp,User user){
 //		System.out.println(user);
+		//参数合法性验证
 		if(user==null)
 			return BackMsg.error("request user is null");
 		
+		//执行验证的相关操作,如果验证通过,返回一个user对象
 		User onlineUser = userService.signin(user);
 //		System.out.println(onlineUser);
 		if(onlineUser==null)
@@ -132,7 +134,7 @@ public class BaseController {
 		Map<String, Boolean> pageData = new HashMap<String, Boolean>();
 		pageData.put("hasUser", false);
 		
-		ModelAndView mv = JadeUtil.getView("system/sign/signup.jade",pageData);
+		ModelAndView mv = JadeUtil.getView("pc/system/sign/signup.jade",pageData);
 		return mv;
 	}
 	/**
@@ -170,7 +172,7 @@ public class BaseController {
 	@RequestMapping(value="/error/404",method={RequestMethod.GET})
 	public ModelAndView error404(HttpServletRequest req,HttpServletResponse resp,Model model){
 		
-		ModelAndView mv = JadeUtil.getView("common/error/404.jade");
+		ModelAndView mv = JadeUtil.getView("pc/common/error/404.jade");
 		return mv;
 	}
 	
@@ -186,7 +188,7 @@ public class BaseController {
 	@RequestMapping(value="/error/500",method={RequestMethod.GET})
 	public ModelAndView error500(HttpServletRequest req,HttpServletResponse resp,Model model){
 		
-		ModelAndView mv = JadeUtil.getView("common/error/500.jade");
+		ModelAndView mv = JadeUtil.getView("pc/common/error/500.jade");
 		return mv;
 	}
 	
@@ -194,23 +196,4 @@ public class BaseController {
 	/*
 	 * 一下是测试时使用的方法,正式上线之前需要删除
 	 */
-	
-	@RequestMapping(value="/signin2",method={RequestMethod.GET})
-	public ModelAndView signin2(HttpServletRequest req,HttpServletResponse resp,Model model){
-		ModelAndView mv = JadeUtil.getView("signin2.jade");
-		return mv;
-	}
-	
-	@RequestMapping(value="/signup2",method={RequestMethod.GET})
-	public ModelAndView signup2(HttpServletRequest req,HttpServletResponse resp,Model model){
-		ModelAndView mv = JadeUtil.getView("signup2.jade");
-		return mv;
-	}
-	
-	@RequestMapping(method = {RequestMethod.POST}) 
-	@ResponseBody
-	public String toLogin(){
-		return "SUCCESS";
-	}
-	
 }

@@ -18,6 +18,10 @@ public class Wechat extends DataEntity<Wechat> {
 	public static final String TOKEN = "solar";
 	public static final String ENCODING_AES_KEY = "1BIqibAgB4GnC1izNv0wEab0YrErwiv3uaaRCmElBBV";
 	
+	public static final String REDIRECT_URL = "http://www.bcdbook.com/m/signin";//用户同意授权后回调的页面
+	public static final String SNSAPI_BASE = "snsapi_base";
+	public static final String SNSAPI_USERINFO = "snsapi_userinfo";
+	
 	public static final String PUBLIC_PARTNER = "1332229801";
 	public static final String PUBLIC_PARTNER_KEY = "Youchoumiyao123456789youchoumiya";
 	public static final String PAY_SUCCESS_BACK = "http://you.bcdbook.com/proj/payBack";

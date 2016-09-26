@@ -38,10 +38,34 @@ public class MobileController {
 	@RequestMapping(value="/signin",method={RequestMethod.GET})
 	public ModelAndView signin(HttpServletRequest req,HttpServletResponse resp,Model model){
 		
-		Map<String, Boolean> pageData = new HashMap<String, Boolean>();
-//		pageData.put("hasUser", true);
+		String code = req.getParameter("code");
+		String state = req.getParameter("state");
+		
+		Map<String, String> pageData = new HashMap<String, String>();
+		pageData.put("code", code);
+		pageData.put("state", state);
 		
 		ModelAndView mv = JadeUtil.getView("mobile/system/sign/signin.jade",pageData);
+		return mv;
+	}
+	
+	/**
+	 * @Description: 注册(获取移动端的注册页面)
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param model
+	 * @param @return   
+	 * @return ModelAndView  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月26日
+	 */
+	@RequestMapping(value="/signup",method={RequestMethod.GET})
+	public ModelAndView signup(HttpServletRequest req,HttpServletResponse resp,Model model){
+		
+		Map<String, String> pageData = new HashMap<String, String>();
+		
+		ModelAndView mv = JadeUtil.getView("mobile/system/sign/signup.jade",pageData);
 		return mv;
 	}
 }

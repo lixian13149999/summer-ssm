@@ -3,8 +3,10 @@ package com.bcdbook.summer.wechat.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,9 +17,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.alibaba.fastjson.JSONObject;
+import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.config.Global;
+import com.bcdbook.summer.common.util.SessionUtil;
+import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.common.util.XMLUtil;
+import com.bcdbook.summer.system.pojo.User;
+import com.bcdbook.summer.system.service.UserService;
 import com.bcdbook.summer.wechat.pojo.Wechat;
 import com.bcdbook.summer.wechat.pojo.message.WechatMessage;
+import com.bcdbook.summer.wechat.service.WechatService;
 import com.bcdbook.summer.wechat.util.WechatUtil;
 
 /**
@@ -30,10 +40,10 @@ import com.bcdbook.summer.wechat.util.WechatUtil;
 public class WechatController {
 	private static Logger logger = Logger.getLogger(WechatController.class);
 	
-//	@Resource
-//	private WechatService wechatService;
-//	@Resource
-//	private WechatMessageService wechatMessageService;
+	@Resource
+	private WechatService wechatService;
+	@Resource
+	private UserService userService;
 //	@Resource
 //	private WechatEventService wechatEventService;
 
@@ -147,5 +157,80 @@ public class WechatController {
 		}
 		
 		System.out.println("正常情况下,这条信息不应该被输出");
+	}
+	
+	/**
+	 * @Description: 获取code的方法
+	 * @param @param req
+	 * @param @param resp   
+	 * @return void  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月26日
+	 */
+	@RequestMapping(value="getCode" ,method = RequestMethod.GET)
+	public void getCode(HttpServletRequest req, HttpServletResponse resp) {
+		//获取微信重定向时附带的参数
+		String state = req.getParameter("state");
+		state = StringUtils.isNull(state)?"signin":state;
+		//获取封装好的url
+		String getCodeUrl = WechatUtil.packageGetCodeUrl(Wechat.REDIRECT_URL, Wechat.SNSAPI_BASE, state);
+		if(getCodeUrl!=null){
+			try {
+				resp.sendRedirect(getCodeUrl);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * @Description: 用于微信端登录的接口
+	 * @param @param req
+	 * @param @param resp   
+	 * @return void  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月26日
+	 */
+	@RequestMapping(value="signin" ,method = RequestMethod.POST)
+	public String signin(HttpServletRequest req, HttpServletResponse resp) {
+		//和微信交互获取的code值
+		String code = req.getParameter("code");
+		//获取微信重定向时附带的参数
+		String state = req.getParameter("state");
+		if(StringUtils.isNull(code))
+			return BackMsg.error("code is null");
+		
+		String backData = WechatUtil.getWebAccessTokenAndOpenId(code);
+		//验证参数的合法性
+		if(StringUtils.isNull(backData))
+			return BackMsg.error("backData is null");
+		
+		//把通过code换取来的数据转换成json格式
+		JSONObject jsonData = JSONObject.parseObject(backData);
+		//如果返回的数据是错误的,则直接返回null
+		if(!StringUtils.isNull(jsonData.getString("errmsg")))
+			return BackMsg.error("get webAccessToken error");
+		
+		String openId = jsonData.getString("openid");
+		//验证获取的openId的合法性
+		if(StringUtils.isNull(openId))
+			return BackMsg.error("openId is null");
+		//创建user对象,以便于查询
+		User user = new User();
+		user.setOpenId(openId);//封装查询参数到用于查询的对象中
+		List<User> userList = userService.findList(user);
+		//检测获取到的用户集合是否合法
+		if(userList==null||userList.size()!=1)
+			return BackMsg.error("userList error");
+		
+		//从集合中获取一个登录验证成功的User对象
+		User onlineUser = userList.get(0);
+		//把User写入到session
+		if(!SessionUtil.refresh(req, Global.ONLINE_USER, onlineUser))
+			return BackMsg.error("refresh session error");
+		
+		return BackMsg.success("wechat signin success");
 	}
 }

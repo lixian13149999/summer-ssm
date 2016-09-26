@@ -7,6 +7,7 @@ import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import org.apache.log4j.Logger;
 
@@ -303,6 +304,87 @@ public class WechatUtil {
 			};
 		}
 	});
+	
+	/**
+	 * 
+	    * @Discription 对url转码的工具方法
+	    * @author lason       
+	    * @created 2016年5月26日 上午10:35:08     
+	    * @param str
+	    * @return
+	 */
+    public static String urlEnodeUTF8(String str){
+        String result = str;
+        try {
+            result = URLEncoder.encode(str,"UTF-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+
+	/**
+	 * @Description: 封装获取code的连接地址的方法
+	 * @param @param redirectUri 授权后,重定向的回调连接地址
+	 * @param @param scope  应用授权作用域(snsapi_base /snsapi_userinfo)
+	 * @param @param state  重定向后会带上的参数(开发者自定义)
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月26日
+	 */
+	public static String packageGetCodeUrl(String redirectUri,String scope,String state){
+		//验证参数的合法性
+		if(StringUtils.isNull(redirectUri)
+				||StringUtils.isNull(scope))
+			return null;
+		
+		//定义请求地址
+		String url = "https://open.weixin.qq.com/connect/oauth2/authorize"
+				+ "?appid=APP_ID"
+				+ "&redirect_uri=REDIRECT_URI"
+				+ "&response_type=code"
+				+ "&scope=SCOPE"
+				+ "&state=STATE"
+				+ "#wechat_redirect";
+		
+		//转译并替换相关的参数
+		url = url.replace("APP_ID", WechatUtil.urlEnodeUTF8(Wechat.APP_ID));
+		url = url.replace("REDIRECT_URI", WechatUtil.urlEnodeUTF8(redirectUri));
+		url = url.replace("SCOPE", WechatUtil.urlEnodeUTF8(scope));
+		url = url.replace("STATE", WechatUtil.urlEnodeUTF8(state));
+		
+		//返回封装后的值
+		return url;
+	}
+	
+	/**
+	 * @Description: 通过code换取网页端使用的accessToken的方法
+	 * @param @param code
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年9月26日
+	 */
+	public static String getWebAccessTokenAndOpenId(String code){
+		//验证参数的合法性
+		if(StringUtils.isNull(code))
+			return null;
+		
+		//拼接连接地址
+		String url = "https://api.weixin.qq.com/sns/oauth2/access_token"
+				+ "?appid="+Wechat.APP_ID
+				+ "&secret="+Wechat.APP_SECRET
+				+ "&code="+code
+				+ "&grant_type=authorization_code";
+		
+		String backMsg = WechatUtil.wechatGet(url);
+		
+		return backMsg;
+	}
 	
 	
 	public static void main(String[] args) {

@@ -42,7 +42,9 @@
 	        <!-- 允许wechat直接访问 -->
 	        <mvc:exclude-mapping path="/wechat" />
 	        <!-- 拦截时过滤掉wechat/login -->
-	        <mvc:exclude-mapping path="/wechat/login" />
+	        <mvc:exclude-mapping path="/wechat/signin" />
+	        <!-- 过滤掉获取微信code的方法 -->
+	        <mvc:exclude-mapping path="/wechat/getCode" />
 	        <!-- 拦截时过滤掉wechat/message(用于处理消息的接口) -->
 	        <mvc:exclude-mapping path="/wechat/message" />
 	        <!-- 拦截时过滤掉wechat/event(用于处理事件的接口) -->
@@ -57,6 +59,8 @@
 	        
 			<!-- 过滤掉移动端的登录页面 -->	        
 	        <mvc:exclude-mapping path="/m/signin" />
+	        <!-- 移动端注册页面 -->
+	        <mvc:exclude-mapping path="/m/signup" />
 	        
 	        <!-- 过滤掉demo下面的所有路径 -->
 	        <mvc:exclude-mapping path="/demo/**" />

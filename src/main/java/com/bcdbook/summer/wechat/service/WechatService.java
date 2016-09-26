@@ -1,5 +1,6 @@
 package com.bcdbook.summer.wechat.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -183,6 +184,32 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 		//返回封装好的user对象
 		return user;
 	}
-	
+
+//	/**
+//	 * @Description: 通过微信端登录的方法
+//	 * @param @param backData
+//	 * @param @return   
+//	 * @return User  
+//	 * @throws
+//	 * @author lason
+//	 * @date 2016年9月26日
+//	 */
+//	public User signin(String backData) {
+//		//验证参数的合法性
+//		if(StringUtils.isNull(backData))
+//			return null;
+//		//把通过code换取来的数据转换成json格式
+//		JSONObject jsonData = JSONObject.parseObject(backData);
+//		//如果返回的数据是错误的,则直接返回null
+//		if(!StringUtils.isNull(jsonData.getString("errmsg")))
+//			return null;
+//		
+//		String openId = jsonData.getString("openid");
+//		User user = new User();
+//		user.setOpenId(openId);
+//		List<User> userList =  user
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 }
