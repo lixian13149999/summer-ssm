@@ -11,7 +11,9 @@ public class User extends DataEntity<User> {
 	private String userName;// 用户名
 	private String pwd;// 密码
 	private String nickname;//昵称
-	private String realname;//真实姓名
+	private String realName;//真实姓名
+	private String headImg;//头像的连接地址
+	private String idCard;//身份证号码
 	private int age;// 年龄
 	private int gender;//性别
 	private String phone;// 电话
@@ -50,13 +52,19 @@ public class User extends DataEntity<User> {
 		super();
 	}
 
-	public User(String userName, String pwd, int age, int gender, String phone,
+	//全参构造
+	public User(String userName, String pwd, String nickname, String realName,
+			String headImg, String idCard, int age, int gender, String phone,
 			int phoneState, String email, int emailState, String openId,
-			int wechatState, int company, int department,
-			int position, int isLock) {
+			int wechatState, int company, int department, int position,
+			int isLock, List<Role> roles) {
 		super();
 		this.userName = userName;
 		this.pwd = pwd;
+		this.nickname = nickname;
+		this.realName = realName;
+		this.headImg = headImg;
+		this.idCard = idCard;
 		this.age = age;
 		this.gender = gender;
 		this.phone = phone;
@@ -69,8 +77,9 @@ public class User extends DataEntity<User> {
 		this.department = department;
 		this.position = position;
 		this.isLock = isLock;
+		this.roles = roles;
 	}
-
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -85,6 +94,38 @@ public class User extends DataEntity<User> {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	public String getHeadImg() {
+		return headImg;
+	}
+
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
+	}
+
+	public String getIdCard() {
+		return idCard;
+	}
+
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
 	}
 
 	public int getAge() {
@@ -182,7 +223,7 @@ public class User extends DataEntity<User> {
 	public void setIsLock(int isLock) {
 		this.isLock = isLock;
 	}
-	
+
 	public List<Role> getRoles() {
 		return roles;
 	}
@@ -191,16 +232,26 @@ public class User extends DataEntity<User> {
 		this.roles = roles;
 	}
 
+	//toString
 	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", pwd=" + pwd + ", age=" + age
-				+ ", gender=" + gender + ", phone=" + phone + ", phoneState="
-				+ phoneState + ", email=" + email + ", emailState="
-				+ emailState + ", openId=" + openId + ", wechatState="
-				+ wechatState + ", company=" + company
+		return "User ["
+				+ (userName != null ? "userName=" + userName + ", " : "")
+				+ (pwd != null ? "pwd=" + pwd + ", " : "")
+				+ (nickname != null ? "nickname=" + nickname + ", " : "")
+				+ (realName != null ? "realName=" + realName + ", " : "")
+				+ (headImg != null ? "headImg=" + headImg + ", " : "")
+				+ (idCard != null ? "idCard=" + idCard + ", " : "") + "age="
+				+ age + ", gender=" + gender + ", "
+				+ (phone != null ? "phone=" + phone + ", " : "")
+				+ "phoneState=" + phoneState + ", "
+				+ (email != null ? "email=" + email + ", " : "")
+				+ "emailState=" + emailState + ", "
+				+ (openId != null ? "openId=" + openId + ", " : "")
+				+ "wechatState=" + wechatState + ", company=" + company
 				+ ", department=" + department + ", position=" + position
-				+ ", isLock=" + isLock + "]";
+				+ ", isLock=" + isLock + ", "
+				+ (roles != null ? "roles=" + roles : "") + "]";
 	}
-	
 	
 }
