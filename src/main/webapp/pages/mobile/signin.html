@@ -25,7 +25,51 @@
 </head>
 <body>
     <div id="main-container" class="main">
-       
+        <div class="content">
+<!-- 页面logo部分-->
+            <div class="logo">
+                <i class="icon icon-logo"></i>
+            </div>
+    <!-- 页面输入框部分-->            
+            <div class="input-container">
+                <form method="get" action="javascript:sign.signerror()">
+                    <div class="input-block">
+                        <input id="username" type="text" class="input-box" data-input-box="input" placeholder="请输入用户名" autocomplete="off">
+                        <a class="delete hide" data-text-delete="delete">
+                            <i class="icon icon-delete3"></i>
+                        </a>
+                    </div>
+
+                    <div class="input-block">
+                        <input id="password" name="password" type="password" class="input-box" data-input-box="input" placeholder="请输入密码" >
+                        <a class="delete hide" data-text-delete="delete">
+                            <i class="icon icon-delete3"></i>
+                        </a>
+                    </div>
+
+                    <input type="submit" value="登录" class="button button-primary button-rounded mobile-button" data-signin-button="signin" disabled>                    
+                </form>
+
+                    <input type="submit" value="确定" class="button button-primary button-rounded" data-sure-button="sure">    
+            </div>
+            <!-- 提交按钮下小提示-->
+                <div class="tips">
+                    <a href="signup.html">
+                        没有系统账号？去注册
+                    </a>
+                </div>
+    <!-- 页面微信登录框部分-->               
+            <div class="footer-container">
+                <div class="footer-title">
+                    <span class="title-text">社交账号登录</span>
+                </div>
+
+                <a class="weixin">
+                    <i class="icon icon-wechat-dark"></i>
+                </a>
+            </div>
+            
+        </div>
     </div>
 
 <!-- 登录错误提示框-->
@@ -36,7 +80,7 @@
             <span class="error-text"></span>
         </div>
     </div>
-    
+<!--确认操作提示框 -->
     <div id="sure-tips" class="modal fade sure-modal" aria-hidden="true">
         <div class="sure-content">
             <i class="icon icon-warning sure-title"></i>
@@ -64,7 +108,6 @@
 
     <!-- 自定义的一些js文件 -->
     <script src="../../static/mobile/js/sign.js"></script>
-    <script src="../../static/mobile/js/common/mainsign.js"></script>
     <script src="../../static/mobile/js/common/iverify.js"></script>
     <script src="../../static/mobile/js/common/ipopover.js"></script>
     <script src="../../static/mobile/js/common/iform.js"></script>
