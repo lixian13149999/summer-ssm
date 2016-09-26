@@ -1,4 +1,4 @@
-extends ../sign.jade
+extends ./sign.jade
 
 block main
     .content
@@ -15,18 +15,14 @@ block main
                     input#password.input-box(type="password" data-input-box="input" placeholder="请输入密码")
                     a.delete.hide(data-text-delete="delete")
                         i.icon.icon-delete3
+                        
+                .input-block
+                    input#password-again.input-box(type="password" data-input-box="input" placeholder="请再次输入密码")
+                    a.delete.hide(data-text-delete="delete")
+                        i.icon.icon-delete3
 
-                input.button.button-primary.button-rounded.mobile-button(type="submit" value="登录")
+                input.button.button-primary.button-rounded.mobile-button(type="submit" value="注册")
 
             .tips
-                a(href="javascript:void(0)" data-tips-change="signin") 没有系统账号？去注册
-
-        .footer-container
-            .footer-title
-                span.title-text 社交账号登录
-            a.weixin
-                i.icon.icon-wechat-dark
-    
-            
-            
+                a(href="javascript:void(0)" data-tips-change="signup") 已有系统账号？去登录
     

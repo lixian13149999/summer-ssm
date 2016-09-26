@@ -1,0 +1,59 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui")
+        title 登录及注册页面
+        
+        //- 框架样式引入
+        //- bootstrap基础样式
+        link(rel='stylesheet',type='text/css',href='#{staticCtx}libs/bootstrap/dist/css/bootstrap.min.css')
+        //- bootstrap时间插件样式
+        link(rel='stylesheet',type='text/css',href='#{staticCtx}libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
+        //- bootstrap的按钮样式
+        link(rel='stylesheet',type='text/css',href='#{staticCtx}libs/bootstrap-buttons/buttons.css')
+        //- bootstrap弹出框的主样式
+        link(rel='stylesheet',type='text/css',href='#{staticCtx}libs/messenger/css/messenger.css')
+        //- bootstrap弹出框的主题样式
+        link(rel='stylesheet',type='text/css',href='#{staticCtx}libs/messenger/css/messenger-theme-air.css')
+        //- 引入阿里的图标
+        link(rel='stylesheet',type='text/css',href='#{staticCtx}libs/iconfont/iconfont.css')
+
+        //- 引入图标
+        link(rel='shortcut icon',href='#{staticCtx}mobile/imgs/logo32.png')
+        
+        //- 自设定样式的引入
+        link(rel='stylesheet/less',type='text/css',href='#{staticCtx}mobile/css/sign.css')
+        
+        //- jquery文件
+        script(type='text/javascript',src='#{staticCtx}libs/jquery/dist/jquery.min.js')
+        //- jquery验证文件
+        script(type='text/javascript',src='#{staticCtx}libs/jquery-validation/jquery.validate.min.js')
+        //- 进入jQuery校验的中文提示
+        script(type='text/javascript',src='#{staticCtx}libs/jquery-validation/localization/messages_zh.min.js')
+        //- jquery-ui文件
+        script(type='text/javascript',src='#{staticCtx}libs/jquery-ui/jquery-ui.min.js')
+        //- bootstrap主js文件
+        script(type='text/javascript',src='#{staticCtx}libs/bootstrap/dist/js/bootstrap.min.js')
+        script(type='text/javascript',src='#{staticCtx}libs/messenger/js/messenger.min.js')
+
+        //- less编译的js文件
+        script(type='text/javascript',src='#{staticCtx}libs/less/dist/less.min.js')
+        
+        //- 引入自设定的js文件
+        script(type='text/javascript',src='#{staticCtx}mobile/js/sign.js')
+        script(type='text/javascript',src='#{staticCtx}mobile/js/common/mainsign.js')
+        script(type='text/javascript',src='#{staticCtx}mobile/js/common/iverify.js')
+        script(type='text/javascript',src='#{staticCtx}mobile/js/common/iform.js')
+        script(type='text/javascript',src='#{staticCtx}mobile/js/common/ipopover.js')
+        
+        
+    body
+        #main-container.main
+            block main
+            
+        #sign-error.modal.fade.error-modal(aria-hidden="true")
+            .error-content
+                i.icon.icon-warning.error-title
+                br
+                span.error-text 

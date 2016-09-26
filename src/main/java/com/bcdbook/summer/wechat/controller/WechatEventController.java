@@ -178,7 +178,6 @@ public class WechatEventController {
 		if(user!=null)
 			userService.add(user);
 		
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

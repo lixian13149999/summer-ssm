@@ -1,5 +1,7 @@
 package com.bcdbook.summer.common.interceptor;
 
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.bcdbook.summer.common.config.Global;
+import com.bcdbook.summer.common.util.PhoneUtil;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.User;
 
@@ -36,63 +39,103 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest req,
 			HttpServletResponse resp, Object handler) throws Exception {
+		
+		String userAgent = req.getHeader("User-Agent");
+		boolean isMobile = PhoneUtil.isMobile(userAgent.toLowerCase());
+		
+		/*
+		 * 服务器的操作系统信息  
+		 */
+		String osName = System.getProperty("os.name");//win2003竟然是win XP？  
+		String osVersion = System.getProperty("os.version");//系统版本  
+		String osArch = System.getProperty("os.arch");//底层结构(x86)
+
+		/*
+		 * 获取请求中相关参数
+		 */
+		String getContextPath = req.getContextPath();// 
+		String getParameter = req.getParameter("type");// 
+		String getPathInfo = req.getPathInfo();// 
+		String getScheme = req.getScheme();// 
+		String getMethod = req.getMethod();//获得客户端向服务器端传送数据的方法有GET、POST、PUT等类型  
+		String getRequestURI = req.getRequestURI();//获得发出请求字符串的客户端地址  
+		String getServletPath = req.getServletPath();//获得客户端所请求的脚本文件的文件路径  
+		String getServerName = req.getServerName();//获得服务器的名字,若失败，则返回服务器端电脑的IP地址 
+		int getServerPort = req.getServerPort();//获得服务器的端口号
+		
+		/*
+		 * 获取客户端的相关信息
+		 */
+		String getRemoteAddr = req.getRemoteAddr();//获得客户端的IP地址  
+		String getRemoteHost = req.getRemoteHost();//获得客户端电脑的名字,若失败，则返回客户端电脑的IP地址  
+		String getProtocol = req.getProtocol();//获取请求协议
+		Enumeration<String> getHeaderNames = req.getHeaderNames();//返回所有request header的名字，结果集是一个Enumeration（枚举）类的实例  
+		
+
+		
 		String aa = req.getRequestURL().toString();
-//		System.out.println("====================="+aa);
 		logger.info("请求路径:"+aa);
 		
 		//从session中获取user对象
 		User user = (User) req.getSession().getAttribute(Global.ONLINE_USER);
-//		System.out.println(user);
-		//判断user是否为空
-		if(user==null||StringUtils.isNull(user.getUserName())){
-			logger.info("拦截路径:"+aa);
-			//如果user为空,则转发到登录界面
-			resp.sendRedirect(Global.getProjPash()+"signin");
-			return false;
-		}
 		
-		//判断用户是否为锁定状态
-		if(user.getIsLock()==User.LOCK){
-			//如果是锁定状态
-			//- TODO 锁定状态需要做对应的处理
+		if(!isMobile){
+			//判断user是否为空
+			if(user==null||StringUtils.isNull(user.getUserName())){
+				logger.info("拦截路径:"+aa);
+				//如果user为空,则转发到登录界面
+				resp.sendRedirect(Global.getProjPash()+"signin");
+				return false;
+			}
+			
+			//判断用户是否为锁定状态
+			if(user.getIsLock()==User.LOCK){
+				//如果是锁定状态
+				//- TODO 锁定状态需要做对应的处理
+			}
+			
+			//判断用户的邮箱是否为绑定状态
+			if(user.getEmailState()==User.UNBOUND){
+				//如果是未绑定状态
+				//邮箱未绑定状态,需要做特殊的处理
+				resp.sendRedirect(Global.getProjPash()+"user/verifyEmailPage");
+				return false;
+			}
+			
+			if(user.getWechatState()==User.UNBOUND){
+				//如果微信是未绑定状态
+				//- TODO 如果微信未绑定,需要做的特殊处理
+			}
+		}else{
+			//判断user是否为空
+			if(user==null||StringUtils.isNull(user.getUserName())){
+				logger.info("拦截路径:"+aa);
+				//如果user为空,则转发到登录界面
+				resp.sendRedirect(Global.getProjPash()+"m/signin");
+				return false;
+			}
+			
+			//判断用户是否为锁定状态
+			if(user.getIsLock()==User.LOCK){
+				//如果是锁定状态
+				//- TODO 锁定状态需要做对应的处理
+			}
+			
+			//判断用户的邮箱是否为绑定状态
+			if(user.getEmailState()==User.UNBOUND){
+				//如果是未绑定状态
+				//邮箱未绑定状态,需要做特殊的处理
+				resp.sendRedirect(Global.getProjPash()+"user/verifyEmailPage");
+				return false;
+			}
+			
+			if(user.getWechatState()==User.UNBOUND){
+				//如果微信是未绑定状态
+				//- TODO 如果微信未绑定,需要做的特殊处理
+			}
 		}
-		
-		//判断用户的邮箱是否为绑定状态
-		if(user.getEmailState()==User.UNBOUND){
-			//如果是未绑定状态
-			//邮箱未绑定状态,需要做特殊的处理
-			resp.sendRedirect(Global.getProjPash()+"user/verifyEmailPage");
-			return false;
-		}
-		
-		if(user.getWechatState()==User.UNBOUND){
-			//如果微信是未绑定状态
-			//- TODO 如果微信未绑定,需要做的特殊处理
-		}
-		
 		return true;
 		
-		
-		//拦截器中,可以直接获取request中的值
-//		System.out.println(request.getParameter("type"));
-//		System.out.println(request.getPathInfo());
-//		String path = request.getContextPath();
-//		
-//		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"+"aa="+aa;
-//		System.out.println("进入拦截器preHandle");
-//		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-//		return false;
-////		if ("GET".equalsIgnoreCase(request.getMethod())) {
-////			RequestUtil.saveRequest();
-////		}
-//		log.info("==============执行顺序: 1、preHandle================");
-//		String requestUri = request.getRequestURI();
-//		String contextPath = request.getContextPath();
-//		String url = requestUri.substring(contextPath.length());
-//
-//		log.info("requestUri:" + requestUri);
-//		log.info("contextPath:" + contextPath);
-//		log.info("url:" + url);
 	}
 
 	/**

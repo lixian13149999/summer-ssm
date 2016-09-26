@@ -171,17 +171,16 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 			return null;
 		
 		User user = new User();
-		user.setOpenId(userJson.getString("openid"));
-		//TODO --这里的昵称还没有加入,需要后期加入
-//		user.setNickname(userJson.getString("nickname"));
-		user.setGender(userJson.getIntValue("sex"));
-		//TODO --头像的设置也需要加入
-//		user.setPhoto(userJson.getString("headimgurl"));
+		user.setOpenId(userJson.getString("openid"));//设置openid
+		user.setNickname(userJson.getString("nickname"));//设置昵称
+		user.setGender(userJson.getIntValue("sex"));//设置性别
+		user.setHeadImg(userJson.getString("headimgurl"));//设置头像
 		user.setPhoneState(User.UNBOUND);//设置手机为未绑定状态
 		user.setEmailState(User.UNBOUND);//设置邮箱为未绑定状态
 		user.setWechatState(User.UNBOUND);//设置微信为未绑定状态
 		user.setIsLock(User.LOCK);//设置用户为锁定状态
 		
+		//返回封装好的user对象
 		return user;
 	}
 	

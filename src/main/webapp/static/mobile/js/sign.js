@@ -1,6 +1,6 @@
 $(function(){
-    sign.addPages('./common/signin.html','main-container','用户名或密码错误');//页面一加载即登录页面
-    sign.change();//登录注册页面切换
+//    sign.addPages('./common/signin.html','main-container','用户名或密码错误');//页面一加载即登录页面
+//    sign.change();//登录注册页面切换
 })
 
 var  sign = new Object();
