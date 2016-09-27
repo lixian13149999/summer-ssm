@@ -14,6 +14,10 @@ script(type='text/javascript',src='#{staticCtx}libs/messenger/js/messenger.min.j
 script(type='text/javascript',src='#{staticCtx}libs/less/dist/less.min.js')
 
 //- 引入自设定的js文件
+script.
+	var ctx = '#{ctx}';
+	var staticCtx = '#{staticCtx}';
+//- 引入自设定的js文件
 script(type='text/javascript',src='#{staticCtx}mobile/js/sign.js')
 script(type='text/javascript',src='#{staticCtx}mobile/js/common/iverify.js')
 script(type='text/javascript',src='#{staticCtx}mobile/js/common/iform.js')

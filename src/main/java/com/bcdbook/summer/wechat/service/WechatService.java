@@ -1,16 +1,13 @@
 package com.bcdbook.summer.wechat.service;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.persistence.service.CrudService;
 import com.bcdbook.summer.common.util.DateUtil;
-import com.bcdbook.summer.common.util.MD5Util;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.wechat.dao.WechatDao;
@@ -163,7 +160,7 @@ public class WechatService extends CrudService<WechatDao, Wechat> {
 			return null;
 		
 		//把获取到的值转换成JSONObject类型
-		JSONObject userJson = JSONObject.parseObject(userInfo);
+		JSONObject userJson = JSON.parseObject(userInfo);
 		
 		//如果返回值出错,则直接返回null
 		//当subscribe=0时表示用户没有关注此公众号,无法获取相关信息

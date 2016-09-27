@@ -61,6 +61,8 @@
 	        <mvc:exclude-mapping path="/m/signin" />
 	        <!-- 移动端注册页面 -->
 	        <mvc:exclude-mapping path="/m/signup" />
+	        <!-- 跳转到微信的自动登录页面的接口 -->
+	        <mvc:exclude-mapping path="/m/wechatAutoSignin" />
 	        
 	        <!-- 过滤掉demo下面的所有路径 -->
 	        <mvc:exclude-mapping path="/demo/**" />

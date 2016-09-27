@@ -16,7 +16,9 @@ import org.dom4j.DocumentException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
@@ -193,7 +195,8 @@ public class WechatController {
 	 * @author lason
 	 * @date 2016年9月26日
 	 */
-	@RequestMapping(value="signin" ,method = RequestMethod.POST)
+	@RequestMapping(value="signin" ,method = RequestMethod.POST,produces = "application/json; charset=UTF-8")
+	@ResponseBody
 	public String signin(HttpServletRequest req, HttpServletResponse resp) {
 		//和微信交互获取的code值
 		String code = req.getParameter("code");
@@ -208,7 +211,7 @@ public class WechatController {
 			return BackMsg.error("backData is null");
 		
 		//把通过code换取来的数据转换成json格式
-		JSONObject jsonData = JSONObject.parseObject(backData);
+		JSONObject jsonData = JSON.parseObject(backData);
 		//如果返回的数据是错误的,则直接返回null
 		if(!StringUtils.isNull(jsonData.getString("errmsg")))
 			return BackMsg.error("get webAccessToken error");
@@ -227,6 +230,11 @@ public class WechatController {
 		
 		//从集合中获取一个登录验证成功的User对象
 		User onlineUser = userList.get(0);
+		if(onlineUser==null)
+			return BackMsg.error("onlineUser is null");
+		if(onlineUser.getWechatState()==User.UNBOUND)
+			return BackMsg.error("此用户未绑定微信,请先绑定");
+		
 		//把User写入到session
 		if(!SessionUtil.refresh(req, Global.ONLINE_USER, onlineUser))
 			return BackMsg.error("refresh session error");

@@ -8,7 +8,7 @@
 	
 	if hasUser
 		.signin-up-msg 没有账号？
-			a.to-signin(href="#{ctx}/signup") 请注册
+			a.to-signin(href="#{ctx}signup") 请注册
 	else if !hasUser
 		.signin-up-msg 已有账号？
-			a.to-signin(href="#{ctx}/signin") 请登录
+			a.to-signin(href="#{ctx}signin") 请登录

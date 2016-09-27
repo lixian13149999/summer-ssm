@@ -8,6 +8,7 @@ input.checkUserName = function(){
     var istooshort = v.shortThan(UserName,4);
     return isnull||istooshort ? false : true ;
 }
+
 //验证密码是否大于6位
 input.checkPassword = function(){
     var PassWord = $("#password").val();

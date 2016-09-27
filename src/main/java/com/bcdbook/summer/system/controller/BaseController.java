@@ -82,7 +82,7 @@ public class BaseController {
 	 * @author lason
 	 * @date 2016年9月1日
 	 */
-	@RequestMapping(value="/signin",method={RequestMethod.POST})
+	@RequestMapping(value="/signin",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String doSignin(HttpServletRequest req,HttpServletResponse resp,User user){
 //		System.out.println(user);
@@ -148,7 +148,7 @@ public class BaseController {
 	 * @author lason
 	 * @date 2016年9月1日
 	 */
-	@RequestMapping(value="/signup",method={RequestMethod.POST})
+	@RequestMapping(value="/signup",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String doSignup(HttpServletRequest req,HttpServletResponse resp,User user){
 		

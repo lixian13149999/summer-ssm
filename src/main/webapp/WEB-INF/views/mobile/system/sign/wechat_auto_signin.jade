@@ -1,0 +1,50 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui")
+		title 登录及注册页面
+		
+		include ./common/static/style.jade
+
+		include ./common/static/script.jade
+
+	body
+		.input-block
+			input#code.input-box(value="#{code}" type="text" data-input-box="input" autocomplete="off")
+			a.delete.hide(data-text-delete="delete")
+				i.icon.icon-delete3
+		.input-block
+			input#state.input-box(value="#{state}" type="text" data-input-box="input" autocomplete="off")
+			a.delete.hide(data-text-delete="delete")
+				i.icon.icon-delete3
+
+		script.
+			$(function(){
+				var code = $("#code").val();
+				var state = $("#state").val();
+
+				if(v.isNull(code)||code==0){
+					console.log("code is null");
+				}else{
+					var url = ctx + "wechat/signin";
+					$.ajax({
+						url: url,
+						type: 'POST',
+						dataType: "json",
+						data: {
+							code: code,
+							state: state
+						},
+						async: false,
+						success: function(data) {
+							console.log(data);
+							
+						},
+						error: function() {
+							console.log('pathExcel error2')
+						}
+					});
+				}
+			})
+		

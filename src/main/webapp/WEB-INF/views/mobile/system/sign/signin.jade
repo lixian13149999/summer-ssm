@@ -15,13 +15,20 @@ html
 				.logo
 					i.icon.icon-logo
 				.input-container
+					//- pageData.put("code", code);
+					//- pageData.put("state", state);
+					//- pageData.put("autoLogin", autoLogin);
 					form(method="get" action="javascript:sign.signerror()")
 						.input-block
-							input#code.input-box(value="#{code}" type="text" data-input-box="input" autocomplete="off")
+							input#code.input-box(type="text" data-input-box="input" value="#{code}" autocomplete="off")
 							a.delete.hide(data-text-delete="delete")
 								i.icon.icon-delete3
 						.input-block
-							input#state.input-box(value="#{state}" type="text" data-input-box="input" autocomplete="off")
+							input#state.input-box(type="text" data-input-box="input" value="#{state}" autocomplete="off")
+							a.delete.hide(data-text-delete="delete")
+								i.icon.icon-delete3
+						.input-block
+							input#auto_signin.input-box(type="text" data-input-box="input" value="#{auto_signin}" autocomplete="off")
 							a.delete.hide(data-text-delete="delete")
 								i.icon.icon-delete3
 								
@@ -37,12 +44,12 @@ html
 						input.button.button-primary.button-rounded.mobile-button(type="submit" value="登录" data-signin-button="signin" disabled)
 
 					.tips
-						a(href="signup.jade") 没有系统账号？去注册
+						a(href="#{ctx}m/signup") 没有系统账号？去注册
 
 				.footer-container
 					.footer-title
 						span.title-text 社交账号登录
-					a.weixin
+					a.weixin(href="#{ctx}wechat/getCode")
 						i.icon.icon-wechat-dark
 
 
@@ -52,3 +59,45 @@ html
 				br
 				span.error-text
 
+		script.
+			$(function(){
+				//获取code(用来换取用户openid的方式)
+				var code = $("#code").val();
+				//获取state(获取openid时传入的参数)
+				var state = $("#state").val();
+				//获取是否自动登录的标识字段
+				var auto_signin = $("#auto_signin").val();
+
+				//如果是自动登录
+				if(auto_signin=="auto_signin"){
+					//验证code的合法性
+					if(v.isNull(code)||code==0){
+
+						console.log("微信登录获取参数出错");
+					}else{
+						//定义请求路径
+						var url = ctx + "wechat/signin";
+						$.ajax({
+							url: url,
+							type: 'POST',
+							dataType: "json",
+							data: {
+								code: code,
+								state: state
+							},
+							async: false,
+							success: function(data) {
+								cb(data);
+								
+							},
+							error: function() {
+								console.log('pathExcel error2')
+							}
+						});
+						function cb(data){
+							console.log(data);
+						}
+					}
+				
+				}
+			})

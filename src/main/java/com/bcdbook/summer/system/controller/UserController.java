@@ -55,7 +55,7 @@ public class UserController {
 	 * @author lason
 	 * @date 2016年9月13日
 	 */
-	@RequestMapping(value="/userNameCanUse",method = {RequestMethod.GET}) 
+	@RequestMapping(value="/userNameCanUse",method = {RequestMethod.GET},produces = "application/json; charset=UTF-8") 
 	@ResponseBody
 	public String userNameCanUse(HttpServletRequest req,HttpServletResponse resp,User user){
 		User conditionUser = new User();
@@ -68,7 +68,7 @@ public class UserController {
 		return dbUser==null?"true":"false";
 	}
 	
-	@RequestMapping(value="/userIsExist",method = {RequestMethod.GET}) 
+	@RequestMapping(value="/userIsExist",method = {RequestMethod.GET},produces = "application/json; charset=UTF-8") 
 	@ResponseBody
 	public String userIsExist(HttpServletRequest req,HttpServletResponse resp,User user){
 		if(user==null)
@@ -83,7 +83,7 @@ public class UserController {
 		return dbUser==null?BackMsg.success(false):BackMsg.success(true);
 	}
 	
-	@RequestMapping(value="/checkEmailIsSingle",method = {RequestMethod.GET}) 
+	@RequestMapping(value="/checkEmailIsSingle",method = {RequestMethod.GET},produces = "application/json; charset=UTF-8") 
 	@ResponseBody
 	public String checkEmailIsSingle(HttpServletRequest req,HttpServletResponse resp,User user){
 		if(user==null)
