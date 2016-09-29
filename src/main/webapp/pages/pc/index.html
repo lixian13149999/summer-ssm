@@ -24,7 +24,7 @@
 
     <!-- 自设定样式的引入 -->
     <link rel="stylesheet/less" href="../../static/pc/css/index.less" type="text/less">
-    <link rel="stylesheet/less" href="../../static/pc/css/include/user.less">
+    <link rel="stylesheet/less" href="../../static/pc/css/menu.less">
 
 </head>
 
@@ -81,181 +81,47 @@
             </div>
 
             <div class="view-product-body">
-                <div class="body-title">栏目管理</div>
-                
-                <div class="row body-pages-nav">
-                    <ul id="commission-nav-box" class="nav-justified">
-                        <li role="presentation" class="active" data-commission-nav="qiantai">前台栏目</li>
-                        <li role="presentation" data-commission-nav="houtai">后台栏目</li>
+                <h4 class="page-title">栏目管理</h4>
+                <div class="page-second-title-content">
+                    <ul class="tab-navs">
+                        <li class="tab-nav checked">
+                            <a href="javascript:void(0)">前台栏目</a>
+                        </li>
+                        <li class="tab-nav">
+                            <a href="javascript:void(0)">后台栏目</a>
+                        </li>
                     </ul>
                 </div>
                 
-                <div id="commission-box" class="row commission-box"> 
-                    <div class="col-sm-3 left-content">
-                       <div class="commission-box-title">
-                           栏目编辑
-                           <span class="setting-icon">
-                                <a href="#">
-                                    <i class="icon icon-add"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="icon icon-grip" data-move-icon="move"></i>
-                                </a>
-                           </span>
-                       </div>
-                       <dl id="sortable">
-                            <dd class="each-list nomal" data-drag-list="drag">
-                                <dl>
-                                    <dd class="left-content-title">
-                                        <i class="icon icon-menu"></i>
-                                        &nbsp;栏目管理
-                                        <span class="setting-icon">
-                                            <a href="#">
-                                                <i class="icon icon-add"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-tool"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-delete"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-grip move hide"></i>
-                                            </a>
-                                        </span>
+                <div class="body-menus-count">
+                    <div class="au-menu-count">
+                        <div class="page-third-title">
+                            栏目管理
+                        </div>
+                        
+                        <div data-cont="menu-cont" class="sidebar-cont">
+                            <div class="menu-box">
+                                <dl class="menu">
+                                    <dt class="menu-title">
+                                        <i class="menu-icon icon icon-tool"></i>
+                                        <a href="javascript:void(0)" class="title-cont">用户管理</a>
+                                    </dt>
+                                    <dd data-page-click="menu-item" class="menu-item activ">
+                                        <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
                                     </dd>
-                                    <dd class="left-content-text">
-                                        栏目列表
-                                        <span class="setting-icon">
-                                            <a href="#">
-                                                <i class="icon icon-tool"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-delete"></i>
-                                            </a>
-                                            <i class="move hide">&#12288;</i>
-                                        </span>
+                                    <dd data-page-click="menu-item" class="menu-item">
+                                        <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                                    </dd>
+                                    <dd data-page-click="menu-item" class="menu-item">
+                                        <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
                                     </dd>
                                 </dl>
-                            </dd>
-                            
-                            <dd class="each-list nomal" data-drag-list="drag">
-                                <dl>
-                                    <dd class="left-content-title">
-                                        <i class="icon icon-user"></i>
-                                        &nbsp;用户管理
-                                        <span class="setting-icon">
-                                            <a href="#">
-                                                <i class="icon icon-add"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-tool"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-delete"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-grip move hide"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
-                                    <dd class="left-content-text">
-                                        用户列表
-                                        <span class="setting-icon">
-                                            <a href="#">
-                                                <i class="icon icon-tool"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-delete"></i>
-                                            </a>
-                                            <i class="move hide">&#12288;</i>
-                                        </span>
-                                    </dd>
-                                    <dd class="left-content-text">
-                                    个人中心
-                                        <span class="setting-icon">
-                                            <a href="#">
-                                                <i class="icon icon-tool"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-delete"></i>
-                                            </a>
-                                            <i class="move hide">&#12288;</i>
-                                        </span>
-                                    </dd>
-                                </dl>
-                            </dd>
-                            
-                            <dd class="each-list nomal" data-drag-list="drag">
-                                <dl>
-                                   <dd class="left-content-title">
-                                        <i class="icon icon-role"></i>
-                                        &nbsp;角色管理
-                                        <span class="setting-icon">
-                                            <a href="#">
-                                                <i class="icon icon-add"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-tool"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-delete"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-grip move hide"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
-                                    <dd class="left-content-text">
-                                    角色列表
-                                        <span class="setting-icon">
-                                            <a href="#">
-                                                <i class="icon icon-tool"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="icon icon-delete"></i>
-                                            </a>
-                                            <i class="move hide">&#12288;</i>
-                                        </span>
-                                    </dd>
-                                </dl>
-                            </dd>
-                            
-                        </dl>
+                            </div>
+                        </div>
+                        
                     </div>
-                    
-                    <div class="col-sm-9 right-content">
-                        <div class="commission-box-title">权限管理</div>
-                        <dl>
-                            <dd class="right-list">
-                                <i class="add-icon icon icon-add"></i>
-                                <span class="tips">添加</span>&nbsp;&nbsp;用户添加权限
-                                <span class="setting-icon">
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
-                            </dd>
-                            <dd class="right-list">
-                                <i class="add-icon icon icon-add"></i>
-                                <span class="tips">添加</span>&nbsp;&nbsp;用户添加权限
-                                <span class="setting-icon">
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
-                            </dd>
-                            <dd class="right-list">
-                                <i class="add-icon icon icon-add"></i>
-                                <span class="tips">添加</span>&nbsp;&nbsp;用户添加权限
-                                <span class="setting-icon">
-                                    <i class="icon icon-tool"></i>
-                                    <i class="icon icon-delete"></i>
-                                </span>
-                            </dd>
-                        </dl>
-                    </div>
-                </div>            
+                </div>
             </div>
-            
         </div>
     </div>
 
@@ -284,14 +150,14 @@
 
     <!-- 自定义的一些js文件 -->
     <!-- 常用工具类 -->
-    <script type="text/javascript" src="../../static/pc/js/common/ibootbox.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/iform.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/imessenger.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/ipopover.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/itools.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/iutil.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/ivalidate.js"></script>
-    <script type="text/javascript" src="../../static/pc/js/common/iverify.js"></script>
+    <script type="text/javascript" src="../../static/util/ibootbox.js"></script>
+    <script type="text/javascript" src="../../static/util/iform.js"></script>
+    <script type="text/javascript" src="../../static/util/imessenger.js"></script>
+    <script type="text/javascript" src="../../static/util/ipopover.js"></script>
+<!--    <script type="text/javascript" src="../../static/util/itools.js"></script>-->
+    <script type="text/javascript" src="../../static/util/iutil.js"></script>
+    <script type="text/javascript" src="../../static/util/ivalidate.js"></script>
+    <script type="text/javascript" src="../../static/util/iverify.js"></script>
     
     <script type="text/javascript" src="../../static/pc/js/system/imain.js"></script>
     <script type="text/javascript" src="../../static/pc/js/system/imenu.js"></script>
@@ -305,6 +171,6 @@
         }
     </script>
     
-    <script type="text/javascript" src="../../static/pc/js/system/user.js"></script>
+<!--    <script type="text/javascript" src="../../static/pc/js/system/user.js"></script>-->
 </body>
 </html>

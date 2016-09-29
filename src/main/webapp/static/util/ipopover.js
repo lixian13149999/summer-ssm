@@ -33,21 +33,21 @@ ipopover.listenerPromptCont = function(){
 			setTimeout(function() {
 				// console.log($(".popover:hover"));
 				if (!$(".popover:hover").length) {
-					$(_this).popover("hide")
+					$(_this).popover("hide");
 				}
 			}, 100);
 		});
 	});
-}
+};
 
 //获取提示标签的titile
 ipopover.getTitle = function(ele){
     var contentFunc = $(ele).data("title-func-mapping");
     return eval(contentFunc);
-}
+};
 //获取提示标签的内容(根据id)
 ipopover.getContent = function(ele){
     var contentFunc = $(ele).data("content-func-mapping");
 //    console.log(contentFunc);
     return eval(contentFunc);
-}
+};

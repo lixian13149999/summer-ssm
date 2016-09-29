@@ -9,4 +9,15 @@ $(function(){
     ipopover.listenerPromptCont();
     //加入beaut输入框的监听方法
     iform.listenerFormControl();
+    
+    imain.changePageTitleStyle();
 })
+
+imain.changePageTitleStyle = function(){
+    $(document).on('click','.page-second-title-content .tab-navs .tab-nav',function(){
+        $('.page-second-title-content .tab-navs .tab-nav').each(function(index,ele){
+            $(ele).removeClass('checked');
+        });
+        $(this).addClass('checked');
+    });
+}

@@ -224,3 +224,43 @@ body {
     }
 }
 
+.page-title{
+    font-size: 16px;
+    padding: 0px 30px;
+//    border-bottom: solid red 1px;
+    margin: 0px;
+    line-height: 70px;
+}
+.page-second-title-content{
+    border-bottom: solid @line-color-light 1px;
+    .tab-navs{
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+        text-align: center;
+        line-height: 40px;
+        margin-bottom: -1px;
+        .tab-nav{
+            margin:0; 
+            padding:0; 
+            list-style: none;
+            display: table-cell;
+            a{
+                padding: 0 18px;
+                display: block;
+                &:first-child{
+                    padding-left: 30px;
+                }
+            }
+            &:hover{
+                border-bottom: solid @line-color-deep 3px;
+            }
+        }
+        .checked{
+            border-bottom: solid @line-color-checked 3px;
+            &:hover{
+                border-bottom: solid @line-color-checked 3px;
+            }
+        }
+    }
+}
