@@ -175,11 +175,12 @@
                                 </dl>
                             </div>
                             
+                            
                             <div class="menu-box">
                                 <dl class="menu">
                                     <dt class="menu-title">
                                         <i class="menu-icon icon icon-tool"></i>
-                                        <a href="javascript:void(0)" class="title-cont">用户管理</a>
+                                        <a href="javascript:void(0)" class="title-cont">用户管理/设置</a>
                                         <span class="menu-tools-cont">
                                             <a href="" class="menu-tools-box">
                                                 <i class="icon icon-add hover-primary"></i>
@@ -195,50 +196,54 @@
                                             </a>
                                         </span>
                                     </dt>
-                                    <dd data-page-click="menu-item" class="menu-item">
-                                        <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                        <span class="menu-tools-cont">
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-edit hover-warning"></i>
-                                            </a>
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-delete hover-danger"></i>
-                                            </a>
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-grip hover-warning"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
-                                    <dd data-page-click="menu-item" class="menu-item">
-                                        <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                        <span class="menu-tools-cont">
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-edit hover-warning"></i>
-                                            </a>
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-delete hover-danger"></i>
-                                            </a>
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-grip hover-warning"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
-                                    <dd data-page-click="menu-item" class="menu-item">
-                                        <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                        <span class="menu-tools-cont">
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-edit hover-warning"></i>
-                                            </a>
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-delete hover-danger"></i>
-                                            </a>
-                                            <a href="" class="menu-tools-box">
-                                                <i class="icon icon-grip hover-warning"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
+                                    <div class="menu-items-count">
+                                        <dd data-page-click="menu-item" class="menu-item activ">
+                                            <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                                            <span class="menu-tools-cont">
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-edit hover-warning"></i>
+                                                </a>
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-delete hover-danger"></i>
+                                                </a>
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                                </a>
+                                            </span>
+                                        </dd>
+                                        <dd data-page-click="menu-item" class="menu-item">
+                                            <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                                            <span class="menu-tools-cont">
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-edit hover-warning"></i>
+                                                </a>
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-delete hover-danger"></i>
+                                                </a>
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                                </a>
+                                            </span>
+                                        </dd>
+                                        <dd data-page-click="menu-item" class="menu-item">
+                                            <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                                            <span class="menu-tools-cont">
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-edit hover-warning"></i>
+                                                </a>
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-delete hover-danger"></i>
+                                                </a>
+                                                <a href="" class="menu-tools-box">
+                                                    <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                                </a>
+                                            </span>
+                                        </dd>
+                                    </div>
                                 </dl>
                             </div>
+                            
+                            
                         </div>
                         
                     </div>
@@ -255,22 +260,64 @@
                                 </a>
                             </span>
                         </div>
-                        <div class="au-role-box">
-                            <a href="" class="role-text">
-                                <i class="icon icon-add role-icon"></i>
-                                添加
-                            </a>
-                            <a href="" class="role-code">user:add</a>
-                            <a class="role-info">用户添加权限</a>
-                            <span class="menu-tools-cont">
-                                <a href="">
-                                    <i class="icon icon-edit hover-warning"></i>
+                        
+                        <div class="au-role-boxes">
+                            
+                            <div class="au-role-box">
+                                <a href="" class="role-text">
+                                    <i class="icon icon-add role-icon"></i>
+                                    添加
                                 </a>
-                                <a href="">
-                                    <i class="icon icon-grip hover-warning"></i>
+                                <a href="" class="role-code">user:add</a>
+                                <a class="role-info">用户添加权限</a>
+                                <span class="menu-tools-cont">
+                                    <a href="">
+                                        <i class="icon icon-edit hover-warning"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                    </a>
+                                </span>
+                            </div>
+
+
+                            <div class="au-role-box">
+                                <a href="" class="role-text">
+                                    <i class="icon icon-add role-icon"></i>
+                                    添加
                                 </a>
-                            </span>
+                                <a href="" class="role-code">user:add</a>
+                                <a class="role-info">用户添加权限</a>
+                                <span class="menu-tools-cont">
+                                    <a href="">
+                                        <i class="icon icon-edit hover-warning"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                    </a>
+                                </span>
+                            </div>
+
+
+                            <div class="au-role-box">
+                                <a href="" class="role-text">
+                                    <i class="icon icon-add role-icon"></i>
+                                    添加
+                                </a>
+                                <a href="" class="role-code">user:add</a>
+                                <a class="role-info">用户添加权限</a>
+                                <span class="menu-tools-cont">
+                                    <a href="">
+                                        <i class="icon icon-edit hover-warning"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            
                         </div>
+                        
                         
                     </div>
                 </div>

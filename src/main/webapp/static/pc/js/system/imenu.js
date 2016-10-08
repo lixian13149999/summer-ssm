@@ -4,8 +4,21 @@
  */
 var imenu = new Object();
 $(function(){
+    //栏目点击后添加选中效果的方法监听
     imenu.clickMenu();
-})
+    //一级栏目的拖动定义
+    imenu.moveFirstMenu();
+    //二级栏目的拖动定义
+    imenu.moveSecondMenu();
+    //权限管理的拖动定义
+    imenu.movePower();
+    
+    //显示或隐藏栏目拖动把手的方法
+    imenu.showOrHideMenuHandle();
+    
+    //显示或隐藏权限拖动把手的方法
+    imenu.showOrHidePowerHandle();
+});
 
 imenu.clickMenu = function(){
     $(document).on('click','[data-page-click="menu-item"]',function(){
@@ -19,10 +32,8 @@ imenu.clickMenu = function(){
     })
 }
 
-$(document).ready(function() {
-	/***************************栏目拖动的js开始*****************************/
-	// console.log("一级栏目加载完成");
-	// 一级栏目的拖动
+imenu.moveFirstMenu = function(){
+    // 一级栏目的拖动
 	$("#menu-cont").sortable({
 		//            约束其运动方向(只能y轴运动)
 		axis: "y",
@@ -78,7 +89,10 @@ $(document).ready(function() {
 			};
 		}
 	});
-	// 二级栏目的拖动
+}
+
+imenu.moveSecondMenu = function(){
+    // 二级栏目的拖动
 	$(".menu-items-count").sortable({
 		//            约束其运动方向(只能y轴运动)
 		axis: "y",
@@ -127,6 +141,79 @@ $(document).ready(function() {
 			};
 		}
 	});
+}
+
+imenu.movePower = function(){
+    // 权限列表的拖动排序
+	$(".au-role-boxes").sortable({
+		//            约束其运动方向(只能y轴运动)
+		axis: "y",
+		handle: ".item-move-handle",
+		revert: true,
+		// containment: ".column_items",
+		//            约束其运动范围(只能在父元素中运动)
+		// containment: "parent",
+		start: function(event, ui) {
+            ui.item.addClass("move-box-start");
+			// ui.item.addClass("sortable_start");
+
+			// ui.item.removeClass("add_transition");
+			// $(this).addClass("sortable_start");
+			// $("#sortable>.li").addClass("li_sor");
+		},
+		stop: function(event, ui) {
+            ui.item.removeClass("move-box-start");
+			var len = $(this).children('dd.menu_item').length;
+			var ele;
+			var menu;
+			for (var i = 0; i < len; i++) {
+				ele = $(this).children('dd').eq(i).children('span').children('span');
+				menu = iutil.getDatas(ele, {
+					dataName: 'para-_id',
+					objName: '_id'
+				}, {
+					dataName: 'para-name',
+					objName: 'name'
+				})
+				menu.order = i + 1
+					// console.log(menu);
+				$.ajax({
+					url: 'menu/order',
+					type: 'post',
+					data: {
+						_id: menu._id,
+						order: menu.order
+					},
+					success: function(data) {
+						// $("#column_list").html(data);
+						// console.log(data);
+					},
+					err: function(jqXHR, textStatus, errorThrown) {
+						console.log('error ' + textStatus + " " + errorThrown);
+					}
+				})
+			};
+		}
+	});
+}
+
+//显示或隐藏栏目拖动把手的方法
+imenu.showOrHideMenuHandle = function(){
+    
+}
+
+//显示或隐藏权限拖动把手的方法
+imenu.showOrHidePowerHandle = function(){
+
+}
+
+
+$(document).ready(function() {
+	/***************************栏目拖动的js开始*****************************/
+	// console.log("一级栏目加载完成");
+	
+	
+    
 //	$(document).on('click', '#menu_handle_contorler', function() {
 //		// console.log('has click');
 //		var isHdide = $(this).data('hide-type') == 0 ? true : false;
