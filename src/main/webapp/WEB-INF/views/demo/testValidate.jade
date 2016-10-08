@@ -6,4 +6,34 @@ form#signupForm(method="get" action="javascript:formAction()")
 	label(for="password") 用来显示密码错误信息的位置
 	br
 	input.submit(type="submit" value="提交")
+input#test_submit_list.button(type="button" value="测试提交list")
 script(type='text/javascript',src='#{staticCtx}/pc/js/demo/testValidate.js')
+script.
+	$(function(){
+		$(document).on('click','#test_submit_list',function(){
+			var menus = new Array();  
+			menus.push({id: "123123123"});
+			menus.push({id: "123123123"});
+			
+			var menusJson = JSON.stringify(menus);
+			console.log(menusJson);
+			$.ajax({
+				url: ctx+"menu/sequence",
+				type: 'POST',
+				dataType: "json",
+				contentType : 'application/json;charset=utf-8',
+				data: menusJson,
+				//async: false,
+				success: function(data) {
+					console.log(data);
+					//sign.signinSuccessBack(data);
+					//cb(data);
+				},
+				error: function() {
+					console.log('pathExcel error2')
+				}
+			});
+			//console.log("asdf");
+		});
+	});
+	

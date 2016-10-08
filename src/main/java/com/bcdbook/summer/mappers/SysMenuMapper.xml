@@ -26,7 +26,7 @@
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 		
 		<collection column="id" property="childs" select="listChilds" />
-		<collection column="id" property="powers" select="listPowers" />
+		<!-- <collection column="id" property="powers" select="listPowers" /> -->
 	</resultMap>
 
 	<!-- 定义查询的所有参数 -->

@@ -15,7 +15,7 @@ public class Menu extends DataEntity<Menu> {
 
 	private static final long serialVersionUID = 1045257040316372693L;
 	
-	private Integer place;
+	private Integer place;//栏目位置,前台栏目/后台栏目
 	private String parentId;//父级菜单id
 	private String name;//栏目名字
 	private String description;//栏目的描述

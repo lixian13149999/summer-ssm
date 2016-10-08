@@ -147,20 +147,20 @@ public class TestMenu {
 				for (Menu menu3 : childs) {
 					System.out.println("======>"+menu3);
 					
-					List<Power> powers = menu3.getPowers();
-					if(powers.size()>0){
-						for (Power power : powers) {
-							System.out.println("============>"+power);
-						}
-					}
+//					List<Power> powers = menu3.getPowers();
+//					if(powers.size()>0){
+//						for (Power power : powers) {
+//							System.out.println("============>"+power);
+//						}
+//					}
 				}
 			}
-			List<Power> powers = menu2.getPowers();
-			if(powers.size()>0){
-				for (Power power : powers) {
-					System.out.println("============>"+power);
-				}
-			}
+//			List<Power> powers = menu2.getPowers();
+//			if(powers.size()>0){
+//				for (Power power : powers) {
+//					System.out.println("============>"+power);
+//				}
+//			}
 		}
 	}
 	
