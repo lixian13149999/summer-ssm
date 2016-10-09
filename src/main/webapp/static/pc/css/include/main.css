@@ -103,3 +103,56 @@ body {
 .has-error .error-msg-label {
   color: #e53a40;
 }
+.page-title {
+  font-size: 16px;
+  padding: 0px 30px;
+  margin: 0px;
+  line-height: 70px;
+}
+.page-second-title-content {
+  border-bottom: solid #e7e7eb 1px;
+}
+.page-second-title-content .tab-navs {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  text-align: center;
+  line-height: 40px;
+  margin-bottom: -1px;
+}
+.page-second-title-content .tab-navs .tab-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: table-cell;
+}
+.page-second-title-content .tab-navs .tab-nav a {
+  padding: 0 18px;
+  display: block;
+}
+.page-second-title-content .tab-navs .tab-nav a:first-child {
+  padding-left: 30px;
+}
+.page-second-title-content .tab-navs .tab-nav:hover {
+  border-bottom: solid #d9dadc 3px;
+}
+.page-second-title-content .tab-navs .checked {
+  border-bottom: solid #363636 3px;
+}
+.page-second-title-content .tab-navs .checked:hover {
+  border-bottom: solid #363636 3px;
+}
+.page-third-title {
+  height: 35px;
+  line-height: 35px;
+  background-color: #f4f5f9;
+  padding: 0 0 0 20px;
+  border-bottom: solid #e7e7eb 1px;
+}
+.move-box-start {
+  background-color: #fff;
+  border: solid #e7e7eb 1px;
+  -webkit-box-shadow: 0 0 7px 1px #888888;
+  -moz-box-shadow: 0 0 7px 1px #888888;
+  box-shadow: 0 0 7px 1px #888888;
+}

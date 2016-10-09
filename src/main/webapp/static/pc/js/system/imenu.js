@@ -13,11 +13,17 @@ $(function(){
     //权限管理的拖动定义
     imenu.movePower();
     
-    //显示或隐藏栏目拖动把手的方法
-    imenu.showOrHideMenuHandle();
+    //显示或隐藏拖动把手的方法
+    imenu.showOrHideHandle();
     
     //显示或隐藏权限拖动把手的方法
     imenu.showOrHidePowerHandle();
+    
+    //为操作按钮添加模态框
+    imenu.addModal();
+    
+    //模态框部分内容自动填充
+    imenu.autoFill();
 });
 
 imenu.clickMenu = function(){
@@ -197,9 +203,16 @@ imenu.movePower = function(){
 	});
 }
 
-//显示或隐藏栏目拖动把手的方法
-imenu.showOrHideMenuHandle = function(){
-    
+//显示或隐藏拖动把手的方法
+imenu.showOrHideHandle = function(){
+    $(document).on('click','[data-flex-icon="flex"]',function(){
+        var target = $('.handle',$(this).parents(".page-third-title").siblings(".menu-content"));
+        if(target.hasClass('hide')){
+            target.removeClass('hide');
+        }else{
+            target.addClass('hide');
+        }
+    })
 }
 
 //显示或隐藏权限拖动把手的方法
@@ -233,3 +246,40 @@ $(document).ready(function() {
 //		}
 //	});
 });
+
+//模态框的添加
+imenu.addModal = function(){
+//栏目管理模态框的添加
+    addmodal('.icon-add','.au-menu-count','#addModal');
+    addmodal('.icon-edit','.au-menu-count','#addModal');
+//栏目管理模态框的添加
+    addmodal('.icon-add','.au-role-count','#addModal');
+    addmodal('.icon-edit','.au-role-count','#addModal');
+}
+
+var addmodal = function(target,parent,href){
+    $(target,$(parent)).attr({href:href,'data-toggle':"modal"});
+}
+
+//模态框部分内容自动填充
+imenu.autoFill = function(index){
+    $(document).on('click','.icon-add',function(){
+        var eleFirst = $('span:eq(0)',$(this).parents('.page-third-title'));
+        var eleSecond = $('span:eq(0)',$('dd:last',$(this).parents('.menu-items-count')));
+        getTarget(0).val('');
+        getTarget(1).val('1');
+        getTarget(3).val('');
+        if($(this).hasClass('first-add')){
+            getTarget(2).val('1');
+            getTarget(4).val(parseInt(eleFirst.attr('data-para-place'))+1);           
+        }else if($(this).hasClass('second-add')){
+            getTarget(2).val('2');
+            getTarget(4).val(parseInt(eleSecond.attr('data-para-place'))+1); 
+        }
+    })
+}
+
+var getTarget = function(index){
+    return $('input:eq('+index+')',$('.modal'));
+}
+
