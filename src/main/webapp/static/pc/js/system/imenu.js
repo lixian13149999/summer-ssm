@@ -17,7 +17,7 @@ $(function(){
     imenu.showOrHideHandle();
     
     //显示或隐藏权限拖动把手的方法
-    imenu.showOrHidePowerHandle();
+    // imenu.showOrHidePowerHandle();
     
     //为操作按钮添加模态框
     imenu.addModal();
@@ -216,9 +216,9 @@ imenu.showOrHideHandle = function(){
 }
 
 //显示或隐藏权限拖动把手的方法
-imenu.showOrHidePowerHandle = function(){
+// imenu.showOrHidePowerHandle = function(){
 
-}
+// }
 
 
 $(document).ready(function() {
@@ -247,17 +247,68 @@ $(document).ready(function() {
 //	});
 });
 
-//模态框的添加
-imenu.addModal = function(){
-//栏目管理模态框的添加
-    addmodal('.icon-add','.au-menu-count','#addModal');
-    addmodal('.icon-edit','.au-menu-count','#addModal');
-//栏目管理模态框的添加
-    addmodal('.icon-add','.au-role-count','#addModal');
-    addmodal('.icon-edit','.au-role-count','#addModal');
+imenu.clearMenuModal = function () {
+	
 }
 
-var addmodal = function(target,parent,href){
+/**
+ * 用于开启添加一级栏目的模态框
+ */
+imenu.openAddFirstMenuModal = function(){
+	//1. 获取/生成要设置的相关数据
+	var addOrEdit = 1;
+	var lab = 1;
+
+	var sort = $("#menu-cont .menu-box").size()+1;
+	console.log(sort);
+	
+
+	//1.1 清空栏目添加/编辑模态框中输入框中的数据
+	imenu.clearMenuModal();
+
+	//2. 填充1中获取的数据到模态框中
+
+
+	//3. 打开添加栏目的模态框
+	$('#addMenuModal').modal('toggle');
+}
+
+// <span data-para-place='11#{menu.place}' data-para-id='11#{menu.parentId}' data-para-sort="#{menu.sort}"></span>
+imenu.openEditFirstMenuModal = function () {
+	//1. 获取/定义一级栏目中相关的数据
+	var dataEle = $(this).parents(".menu-tools-cont").children("span");
+	var id = $(dataEle).data("para-id");
+	var sort = $(dataEle).data("para-sort");
+	var place = $(dataEle).data("para-place");
+
+	//2. 清空模态框中原有的垃圾数据
+	imenu.clearMenuModal();
+
+	//3. 填充1中获取到的当前栏目的数据
+
+	//4. 打开模态框
+	$('#addMenuModal').modal('toggle');
+}
+
+
+
+
+//模态框的添加
+imenu.addModal = function(){
+	// $('#myModal').modal('toggle')
+//栏目管理模态框的添加
+    imenu.doAddModal('.icon-add','.au-menu-count','#addModal');
+    imenu.doAddModal('.icon-edit','.au-menu-count','#addModal');
+//栏目管理模态框的添加
+    imenu.doAddModal('.icon-add','.au-role-count','#addModal');
+    imenu.doAddModal('.icon-edit','.au-role-count','#addModal');
+}
+
+/**
+ * target 表示点击的是添加按钮还是编辑按钮
+ *
+ */
+imenu.doAddModal = function(target,parent,href){
     $(target,$(parent)).attr({href:href,'data-toggle':"modal"});
 }
 

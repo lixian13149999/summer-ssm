@@ -101,7 +101,7 @@
                             栏目管理
                             <span data-para-place='12#{menu.place}'></span>
                             <span class="menu-tools-cont">
-                                <a class="menu-tools-box">
+                                <a href="javascript:imenu.openAddFirstMenuModal()" class="menu-tools-box">
                                     <i class="icon icon-add hover-primary first-add"></i>
                                 </a>
                                 <a href="javascript:void(0)" class="menu-tools-box" data-flex-icon="flex">
@@ -116,8 +116,9 @@
                                     <dt class="menu-title">
                                         <i class="menu-icon icon icon-tool"></i>
                                         <a href="javascript:void(0)" class="title-cont">用户管理/设置</a>
-                                        <span data-para-place='11#{menu.place}' data-para-id='11#{menu.parentId}'></span>
                                         <span class="menu-tools-cont">
+                                            <span data-para-place='11#{menu.place}' data-para-id='11#{menu.parentId}' data-para-sort="#{menu.sort}"></span>
+
                                             <a class="menu-tools-box">
                                                 <i class="icon icon-add hover-primary second-add"></i>
                                             </a>
@@ -337,7 +338,7 @@
     </div>
 
     <!--模态框开始-->
-    <div class="modal fade bs-example-modal-sm" id="addModal" aria-hidden="true">
+    <div class="modal fade bs-example-modal-sm" id="addMenuModal" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                <div class="modal-title">
