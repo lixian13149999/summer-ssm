@@ -33,8 +33,8 @@ vd.toBeautError = function(errorEle, confEle) {
 }
 
 vd.alertError = function(errorEle) {
-    console.log(errorEle);
-    console.log(errorEle.text());
+//    console.log(errorEle);
+//    console.log(errorEle.text());
     //获取错误提示消息
     var errorMsg = errorEle.text();
     if (!v.isNull(errorMsg)) {

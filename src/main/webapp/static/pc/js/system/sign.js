@@ -26,7 +26,7 @@ sign.signin = function() {
 		data: user,
 		async: false,
 		success: function(data) {
-			console.log(data);
+			//console.log(data);
 			sign.signinSuccessBack(data);
 			//cb(data);
 		},
@@ -55,7 +55,7 @@ sign.autoSignin = function() {
 		},
 		async: false,
 		success: function(data) {
-			console.log(data);
+			//console.log(data);
 			sign.signinSuccessBack(data);
 			//cb(data);
 		},
@@ -137,7 +137,7 @@ sign.sendVerifyEmail = function() {
 			},
 			async: false,
 			success: function(data) {
-				console.log(data);
+				//console.log(data);
 				cb(data);
 			},
 			error: function() {
@@ -182,7 +182,7 @@ sign.checkVerifyUserIsExist = function() {
 			},
 			async: false,
 			success: function(data) {
-				console.log(data);
+				//console.log(data);
 				cb(data);
 			},
 			error: function() {

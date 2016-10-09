@@ -25,9 +25,12 @@ public class Global {
 
 
 	/**
-	 * 删除标记（1：正常；2：删除；）
+	 * 正常状态
 	 */
 	public static final Integer DEL_FLAG_NORMAL = 1;
+	/**
+	 * 已删除状态
+	 */
 	public static final Integer DEL_FLAG_DELETE = 2;
 	
 	/**

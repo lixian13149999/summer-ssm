@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.service.MenuService;
@@ -24,19 +25,46 @@ public class MenuController {
 	@Resource
 	private MenuService menuService;
 	
-	//,params="fn=saveUsers"
-	@RequestMapping(value="/list",method={RequestMethod.POST})
+	/**
+	 * @Description: 获取前台栏目
+	 * @param @param req
+	 * @param @param resp
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年10月9日
+	 */
+	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
 	@ResponseBody
-	public String list(HttpServletRequest req,HttpServletResponse resp,Menu menu){
-		
+	public String listForeground(HttpServletRequest req,HttpServletResponse resp){
+		Menu menu = new Menu();
+		menu.setDelFlag(Global.DEL_FLAG_NORMAL);
+		menu.setPlace(Menu.PLACE_FOREGROUND);
 		List<Menu> menus = menuService.findList(menu);
+		if(menus==null)
+			return BackMsg.error("get foreground menu error");
 		
-		return null;
+		return BackMsg.success(menus, "get foreground menu success");
+	}
+	
+	//,params="fn=saveUsers"
+	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
+	@ResponseBody
+	public String list(HttpServletRequest req,HttpServletResponse resp){
+		Menu menu = new Menu();
+		menu.setDelFlag(Global.DEL_FLAG_NORMAL);
+		menu.setPlace(Menu.PLACE_BACKER);
+		List<Menu> menus = menuService.findList(menu);
+		if(menus==null)
+			return BackMsg.error("get backer menu error");
+		
+		return BackMsg.success(menus, "get backer menu success");
 	}
 	
 	
 //	,produces = "application/json; charset=UTF-8"
-	@RequestMapping(value="/sequence",method={RequestMethod.POST})
+	@RequestMapping(value="/sequence",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String sequence(HttpServletRequest req,HttpServletResponse resp,@RequestBody List<Menu> menus){
 		//验证参数的合法性
@@ -72,7 +100,7 @@ public class MenuController {
 	 * @author lason
 	 * @date 2016年10月8日
 	 */
-	@RequestMapping(value="/add",method={RequestMethod.POST})
+	@RequestMapping(value="/add",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String add(HttpServletRequest req,HttpServletResponse resp,Menu menu){
 		//验证参数的合法性
@@ -105,7 +133,7 @@ public class MenuController {
 	 * @author lason
 	 * @date 2016年10月8日
 	 */
-	@RequestMapping(value="/update",method={RequestMethod.POST})
+	@RequestMapping(value="/update",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String update(HttpServletRequest req,HttpServletResponse resp,Menu menu){
 		//验证参数的合法性
@@ -133,7 +161,7 @@ public class MenuController {
 	 * @author lason
 	 * @date 2016年10月8日
 	 */
-	@RequestMapping(value="/delete",method={RequestMethod.POST})
+	@RequestMapping(value="/delete",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String delete(HttpServletRequest req,HttpServletResponse resp,String menuId){
 		//验证参数的合法性
