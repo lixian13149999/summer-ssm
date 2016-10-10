@@ -21,3 +21,26 @@ imain.changePageTitleStyle = function(){
         $(this).addClass('checked');
     });
 }
+
+imain.testAddMenuList = function () {
+    $.ajax({
+        url: ctx + "menu/list?b",
+        type: 'GET',
+        dataType: "json",
+        data: {},
+        async: false,
+        success: function(data) {
+            if(iutil.isSuccess(data)){
+                cb(data);
+            }
+            
+        },
+        error: function() {
+            console.log('pathExcel error2')
+        }
+    });
+
+    function cb (backData) {
+        $("#product_main_body").html(backData.data);
+    }
+}

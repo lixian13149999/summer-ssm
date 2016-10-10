@@ -76,13 +76,3 @@ demo.checkUserNam = function(){
 //    }
     return isNull||isTooShort?false:true;
 }
-
-
-
-
-
-
-
-
-
-

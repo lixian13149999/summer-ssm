@@ -1,0 +1,44 @@
+h4.page-title 栏目管理
+.page-second-title-content
+	ul.tab-navs
+		li.tab-nav.checked
+			a(href="javascript:void(0)") 前台栏目
+		li.tab-nav
+			a(href="javascript:void(0)") 后台栏目
+.body-menus-count
+	.au-menu-count
+		.page-third-title 栏目管理
+			span.menu-tools-cont
+				a.menu-tools-box.first-add(href="javascript:void(0)")
+					i.icon.icon-add.hover-primary
+				a.menu-tools-box(href="javascript:void(0)" data-flex-icon="flex")
+					i.icon.icon-move.hover-warning
+		#menu-cont.sidebar-cont.menu-content(data-cont="menu-cont")
+			each menu,index in menus
+				.menu-box
+					dl.menu
+						dt.menu-title
+							i.menu-icon.icon.icon-tool
+							a.title-cont #{menu.name}
+							span.menu-tools-cont
+								span()
+								a.menu-tools-box.second-add(href="javascript:void(0)")
+									i.icon.icon-add.hover-primary
+								a.menu-tools-box.first-edit(href="javascript:void(0)")
+									i.icon.icon-edit.hover-warning
+								a.menu-tools-box(href="javascript:void(0)")
+									i.icon.icon-delete.hover-danger
+								a.menu-tools-box.handle.hide(href="javascript:void(0)")
+									i.icon.icon-grip.hover-warning.menu-move-handle
+						.menu-items-count
+							each item,index2 in menu.childs
+								dd.menu-item(data-page-click="menu-item")
+									a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") #{item.name}
+									span.menu-tools-cont
+										span()
+										a.menu-tools-box.second-edit(href="javascript:void(0)")
+											i.icon.icon-edit.hover-warning
+										a.menu-tools-box(href="javascript:void(0)")
+											i.icon.icon-delete.hover-danger
+										a.menu-tools-box.handle.hide(href="javascript:void(0)")
+											i.icon.icon-grip.hover-warning.menu-move-handle

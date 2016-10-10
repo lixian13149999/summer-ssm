@@ -1,6 +1,8 @@
 package com.bcdbook.summer.system.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
+import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.service.MenuService;
@@ -41,6 +44,7 @@ public class MenuController {
 		Menu menu = new Menu();
 		menu.setDelFlag(Global.DEL_FLAG_NORMAL);
 		menu.setPlace(Menu.PLACE_FOREGROUND);
+		menu.setParentId("first");
 		List<Menu> menus = menuService.findList(menu);
 		if(menus==null)
 			return BackMsg.error("get foreground menu error");
@@ -55,11 +59,26 @@ public class MenuController {
 		Menu menu = new Menu();
 		menu.setDelFlag(Global.DEL_FLAG_NORMAL);
 		menu.setPlace(Menu.PLACE_BACKER);
+		menu.setParentId("first");
 		List<Menu> menus = menuService.findList(menu);
 		if(menus==null)
 			return BackMsg.error("get backer menu error");
 		
-		return BackMsg.success(menus, "get backer menu success");
+		for (Menu menu2 : menus) {
+			System.out.println(menu2);
+		}
+		
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("menus", menus);
+		
+		String path = req.getSession().getServletContext().getRealPath("/");
+		System.out.println(path);
+		
+		String html = JadeUtil.getBodyView("pc/system/menu/au_list.jade", model);
+		System.out.println(html);
+		
+		return BackMsg.success(html, "get backer menu success");
 	}
 	
 	
