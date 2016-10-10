@@ -99,10 +99,10 @@
                     <div class="au-menu-count">
                         <div class="page-third-title">
                             栏目管理
-                            <span data-para-place='12#{menu.place}'></span>
+                            <span></span>
                             <span class="menu-tools-cont">
-                                <a href="javascript:imenu.openAddFirstMenuModal()" class="menu-tools-box">
-                                    <i class="icon icon-add hover-primary first-add"></i>
+                                <a href="javascript:void(0)" class="menu-tools-box first-add">
+                                    <i class="icon icon-add hover-primary"></i>
                                 </a>
                                 <a href="javascript:void(0)" class="menu-tools-box" data-flex-icon="flex">
                                     <i class="icon icon-move hover-warning"></i>
@@ -117,13 +117,12 @@
                                         <i class="menu-icon icon icon-tool"></i>
                                         <a href="javascript:void(0)" class="title-cont">用户管理/设置</a>
                                         <span class="menu-tools-cont">
-                                            <span data-para-place='11#{menu.place}' data-para-id='11#{menu.parentId}' data-para-sort="#{menu.sort}"></span>
-
-                                            <a class="menu-tools-box">
-                                                <i class="icon icon-add hover-primary second-add"></i>
+                                            <span data-para-place='11#{menu.place}' data-para-id='11#{menu.id}' data-para-sort='11#{menu.sort}'></span>
+                                            <a href="javascript:void(0)" class="menu-tools-box second-add">
+                                                <i class="icon icon-add hover-primary"></i>
                                             </a>
-                                            <a class="menu-tools-box">
-                                                <i class="icon icon-edit hover-warning first-edit"></i>
+                                            <a class="menu-tools-box first-edit">
+                                                <i class="icon icon-edit hover-warning"></i>
                                             </a>
                                             <a class="menu-tools-box">
                                                 <i class="icon icon-delete hover-danger"></i>
@@ -136,24 +135,9 @@
                                     <div class="menu-items-count">
                                         <dd data-page-click="menu-item" class="menu-item activ">
                                             <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                            <span data-pare-place='21#{item.place}' data-para-pid='21#{menu.parentId}' data-para-id='21#{item.id}'></span>
                                             <span class="menu-tools-cont">
-                                                <a class="menu-tools-box">
-                                                    <i class="icon icon-edit hover-warning second-edit"></i>
-                                                </a>
-                                                <a class="menu-tools-box">
-                                                    <i class="icon icon-delete hover-danger"></i>
-                                                </a>
-                                                <a class="menu-tools-box handle hide">
-                                                    <i class="icon icon-grip hover-warning item-move-handle"></i>
-                                                </a>
-                                            </span>
-                                        </dd>
-                                        <dd data-page-click="menu-item" class="menu-item">
-                                            <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                            <span data-pare-place='22#{item.place}' data-para-pid='22#{menu.parentId}' data-para-id='22#{item.id}'></span>
-                                            <span class="menu-tools-cont">
-                                                <a class="menu-tools-box">
+                                               <span data-para-place='11#{item.place}' data-para-id='11#{item.id}' data-para-parent-id='11#{menu.id}' data-para-sort='11#{item.sort}'></span>
+                                                <a class="menu-tools-box second-edit">
                                                     <i class="icon icon-edit hover-warning"></i>
                                                 </a>
                                                 <a class="menu-tools-box">
@@ -166,9 +150,39 @@
                                         </dd>
                                         <dd data-page-click="menu-item" class="menu-item">
                                             <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                            <span data-para-place='23#{item.place}' data-para-pid='23#{menu.parentId}' data-para-id='123#{item.id}'></span>
                                             <span class="menu-tools-cont">
+                                               <span data-para-place='12#{item.place}' data-para-id='12#{item.id}' data-para-parent-id='11#{menu.id}' data-para-sort='12#{item.sort}'></span>
+                                                <a class="menu-tools-box second-edit">
+                                                    <i class="icon icon-edit hover-warning"></i>
+                                                </a>
                                                 <a class="menu-tools-box">
+                                                    <i class="icon icon-delete hover-danger"></i>
+                                                </a>
+                                                <a class="menu-tools-box handle hide">
+                                                    <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                                </a>
+                                            </span>
+                                        </dd>
+                                        <dd data-page-click="menu-item" class="menu-item">
+                                            <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                                            <span class="menu-tools-cont">
+                                               <span data-para-place='13#{item.place}' data-para-id='13#{item.id}' data-para-parent-id='11#{menu.id}' data-para-sort='13#{item.sort}'></span>
+                                                <a class="menu-tools-box second-edit">
+                                                    <i class="icon icon-edit hover-warning"></i>
+                                                </a>
+                                                <a class="menu-tools-box">
+                                                    <i class="icon icon-delete hover-danger"></i>
+                                                </a>
+                                                <a class="menu-tools-box handle hide">
+                                                    <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                                </a>
+                                            </span>
+                                        </dd>
+                                        <dd data-page-click="menu-item" class="menu-item">
+                                            <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                                            <span class="menu-tools-cont">
+                                               <span data-para-place='14#{item.place}' data-para-id='14#{item.id}' data-para-parent-id='11#{menu.id}' data-para-sort='14#{item.sort}'></span>
+                                                <a class="menu-tools-box second-edit">
                                                     <i class="icon icon-edit hover-warning"></i>
                                                 </a>
                                                 <a class="menu-tools-box">
@@ -189,12 +203,12 @@
                                     <dt class="menu-title">
                                         <i class="menu-icon icon icon-tool"></i>
                                         <a href="javascript:void(0)" class="title-cont">用户管理/设置</a>
-                                        <span data-pare-place='12#{menu.place}' data-para-id='12#{menu.parentId}'></span>
                                         <span class="menu-tools-cont">
-                                            <a class="menu-tools-box">
-                                                <i class="icon icon-add hover-primary first-edit"></i>
+                                           <span data-para-place='12#{menu.place}' data-para-id='12#{menu.id}' data-para-sort='12#{menu.sort}'></span>
+                                            <a href="javascript:void(0)" class="menu-tools-box second-add">
+                                                <i class="icon icon-add hover-primary"></i>
                                             </a>
-                                            <a class="menu-tools-box">
+                                            <a class="menu-tools-box first-edit">
                                                 <i class="icon icon-edit hover-warning"></i>
                                             </a>
                                             <a class="menu-tools-box">
@@ -208,24 +222,9 @@
                                     <div class="menu-items-count">
                                         <dd data-page-click="menu-item" class="menu-item activ">
                                             <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                            <span data-pare-place='24#{item.place}' data-para-pid='24#{menu.parentId}' data-para-id='24#{item.id}'></span>
                                             <span class="menu-tools-cont">
-                                                <a class="menu-tools-box">
-                                                    <i class="icon icon-edit hover-warning second-edit"></i>
-                                                </a>
-                                                <a class="menu-tools-box">
-                                                    <i class="icon icon-delete hover-danger"></i>
-                                                </a>
-                                                <a class="menu-tools-box handle hide">
-                                                    <i class="icon icon-grip hover-warning item-move-handle"></i>
-                                                </a>
-                                            </span>
-                                        </dd>
-                                        <dd data-page-click="menu-item" class="menu-item">
-                                            <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                            <span data-pare-place='25#{item.place}' data-para-pid='25#{menu.parentId}' data-para-id='25#{item.id}'></span>
-                                            <span class="menu-tools-cont">
-                                                <a class="menu-tools-box">
+                                               <span data-para-place='21#{item.place}' data-para-id='21#{item.id}' data-para-parent-id='12#{menu.id}' data-para-sort='21#{item.sort}'></span>
+                                                <a class="menu-tools-box second-edit">
                                                     <i class="icon icon-edit hover-warning"></i>
                                                 </a>
                                                 <a class="menu-tools-box">
@@ -238,9 +237,24 @@
                                         </dd>
                                         <dd data-page-click="menu-item" class="menu-item">
                                             <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
-                                            <span data-pare-place='26#{item.place}' data-para-pid='26#{menu.parentId}' data-para-id='26#{item.id}'></span>
                                             <span class="menu-tools-cont">
+                                               <span data-para-place='22#{item.place}' data-para-id='22#{item.id}' data-para-parent-id='12#{menu.id}' data-para-sort='22#{item.sort}'></span>
+                                                <a class="menu-tools-box second-edit">
+                                                    <i class="icon icon-edit hover-warning"></i>
+                                                </a>
                                                 <a class="menu-tools-box">
+                                                    <i class="icon icon-delete hover-danger"></i>
+                                                </a>
+                                                <a class="menu-tools-box handle hide">
+                                                    <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                                </a>
+                                            </span>
+                                        </dd>
+                                        <dd data-page-click="menu-item" class="menu-item">
+                                            <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
+                                            <span class="menu-tools-cont">
+                                               <span data-para-place='23#{item.place}' data-para-id='23#{item.id}' data-para-parent-id='12#{menu.id}' data-para-sort='23#{item.sort}'></span>
+                                                <a class="menu-tools-box second-edit">
                                                     <i class="icon icon-edit hover-warning"></i>
                                                 </a>
                                                 <a class="menu-tools-box">
@@ -340,80 +354,102 @@
     <!--模态框开始-->
     <div class="modal fade bs-example-modal-sm" id="addMenuModal" aria-hidden="true">
         <div class="modal-dialog modal-sm">
-            <div class="modal-content">
+            <div class="modal-content modal-container" id="lanmu-modal-form">
                <div class="modal-title">
                    栏目添加或编辑
                </div>
-               <div class="modal-box">
+               <div class="modal-box hide">
                    <span>栏目ID&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input type="text" class="form-control" readonly>
                    </span>
                </div>
-               <div class="modal-box">
+               <div class="modal-box hide">
                    <span>执行的操作&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input type="text" class="form-control" readonly>
                    </span>
                </div>
-               <div class="modal-box">
+               <div class="modal-box hide">
                    <span>栏目级别&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input type="text" class="form-control" readonly>
                    </span>
                </div>
-               <div class="modal-box">
+               <div class="modal-box hide">
                    <span>父级ID&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input type="text" class="form-control" readonly>
                    </span>
                </div>
-               <div class="modal-box">
+               <div class="modal-box hide">
                    <span>栏目顺序&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input type="text" class="form-control" readonly>
                    </span>
                </div>
                <div class="modal-box">
                    <span>栏目名称&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input name="lanmuName" type="text" class="form-control">
                    </span>
+               </div>
+               <div class="error-tips">
+                   错误提示
                </div>
                <div class="modal-box">
                    <span>栏目图标&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input name="lanmuIcon" type="text" class="form-control">
                    </span>
+               </div>
+               <div class="error-tips">
+                   错误提示
                </div>
                <div class="modal-box">
                    <span>权限标识&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input name="lanmuPower" type="text" class="form-control">
                    </span>
+               </div>
+               <div class="error-tips">
+                   错误提示
                </div>
                <div class="modal-box">
                    <span>链接地址&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <input type="text" class="form-control">
+                       <input name="lanmuAddress" type="text" class="form-control">
                    </span>
                </div>
-               <div class="modal-box">
+               <div class="error-tips">
+                   错误提示
+               </div>
+               <div class="modal-box-exc">
                    <span class="input-tips">栏目简介&nbsp;&nbsp;&nbsp;</span>
                    <span class="input-text">
-                       <textarea class="form-control"></textarea>
+                       <textarea name="lanmuDes" class="form-control"></textarea>
                    </span>
+               </div>
+               <div class="error-tips">
+                   错误提示
                </div>
                <div class="modal-box">
                    <span>是否显示&nbsp;&nbsp;&nbsp;</span>
                    <span class="chose">
-                       <label><input name="YES/NO" type="radio" value="YES" />&nbsp;&nbsp;是</label>&nbsp;&nbsp;&nbsp; 
-                       <label><input name="YES/NO" type="radio" value="NO" />&nbsp;&nbsp;否</label> 
+                       <label>
+                           <input name="YES/NO" type="radio" value="YES" checked />&nbsp;&nbsp;是
+                       </label>&nbsp;&nbsp;&nbsp; 
+                       <label>
+                           <input name="YES/NO" type="radio" value="NO" />&nbsp;&nbsp;否
+                       </label> 
                    </span>
                </div>
+               <div class="error-tips">
+                   错误提示
+               </div>
                <div class="button-box">
-               <button class="btn btn-primary modal-button">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <button class="btn modal-button" data-dismiss="modal">关闭</button>
+               <button class="button button-primary modal-button submit-button">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <button class="button modal-button" data-dismiss="modal">关闭</button>
                </div>              
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
@@ -464,7 +500,6 @@
             console.log(proj);
         }
     </script>
-    
-<!--    <script type="text/javascript" src="../../static/pc/js/system/user.js"></script>-->
+
 </body>
 </html>

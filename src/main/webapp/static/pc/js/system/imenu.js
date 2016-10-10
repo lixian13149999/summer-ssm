@@ -16,14 +16,11 @@ $(function(){
     //显示或隐藏拖动把手的方法
     imenu.showOrHideHandle();
     
-    //显示或隐藏权限拖动把手的方法
-    // imenu.showOrHidePowerHandle();
+    //栏目添加按钮模态框
+    imenu.openAddMenuModal();
     
-    //为操作按钮添加模态框
-    imenu.addModal();
-    
-    //模态框部分内容自动填充
-    imenu.autoFill();
+    //模态框错误提示
+    imenu.modalIverify();
 });
 
 imenu.clickMenu = function(){
@@ -247,90 +244,167 @@ $(document).ready(function() {
 //	});
 });
 
+/**
+ * 用于模态框的初始化
+ */
 imenu.clearMenuModal = function () {
-	
+	$('#addMenuModal .form-control').val('');
+    $('#addMenuModal .error-tips').html('');
+    $('.chose :radio').removeAttr('checked');
+    $('.chose input:eq(0)').prop('checked',true);
 }
+
+/**
+ * 用于获取模态框各input元素
+ */
+imenu.getInput = function(index){
+    return $('input:eq('+index+')',$('.modal'));
+}
+
+/**
+ * 用于获取目标span元素，得到自动填充的信息
+ */
+imenu.getTarget = function(ele){
+        return $(ele).parents('.menu-tools-cont').children('span');
+    }
 
 /**
  * 用于开启添加一级栏目的模态框
  */
-imenu.openAddFirstMenuModal = function(){
-	//1. 获取/生成要设置的相关数据
-	var addOrEdit = 1;
-	var lab = 1;
+imenu.openAddMenuModal = function(){
+    $(document).on('click','.au-menu-count .menu-tools-box',function(){
+        //1. 获取/生成要设置的相关数据
+        var id;
+        var addOrEdit;
+        var pId;
+        var labelRank;
+        var sort; 
+        var labelName;
+        var labelIcon;
 
-	var sort = $("#menu-cont .menu-box").size()+1;
-	console.log(sort);
-	
-
-	//1.1 清空栏目添加/编辑模态框中输入框中的数据
-	imenu.clearMenuModal();
-
-	//2. 填充1中获取的数据到模态框中
-
-
-	//3. 打开添加栏目的模态框
-	$('#addMenuModal').modal('toggle');
-}
-
-// <span data-para-place='11#{menu.place}' data-para-id='11#{menu.parentId}' data-para-sort="#{menu.sort}"></span>
-imenu.openEditFirstMenuModal = function () {
-	//1. 获取/定义一级栏目中相关的数据
-	var dataEle = $(this).parents(".menu-tools-cont").children("span");
-	var id = $(dataEle).data("para-id");
-	var sort = $(dataEle).data("para-sort");
-	var place = $(dataEle).data("para-place");
-
-	//2. 清空模态框中原有的垃圾数据
-	imenu.clearMenuModal();
-
-	//3. 填充1中获取到的当前栏目的数据
-
-	//4. 打开模态框
-	$('#addMenuModal').modal('toggle');
-}
-
-
-
-
-//模态框的添加
-imenu.addModal = function(){
-	// $('#myModal').modal('toggle')
-//栏目管理模态框的添加
-    imenu.doAddModal('.icon-add','.au-menu-count','#addModal');
-    imenu.doAddModal('.icon-edit','.au-menu-count','#addModal');
-//栏目管理模态框的添加
-    imenu.doAddModal('.icon-add','.au-role-count','#addModal');
-    imenu.doAddModal('.icon-edit','.au-role-count','#addModal');
-}
-
-/**
- * target 表示点击的是添加按钮还是编辑按钮
- *
- */
-imenu.doAddModal = function(target,parent,href){
-    $(target,$(parent)).attr({href:href,'data-toggle':"modal"});
-}
-
-//模态框部分内容自动填充
-imenu.autoFill = function(index){
-    $(document).on('click','.icon-add',function(){
-        var eleFirst = $('span:eq(0)',$(this).parents('.page-third-title'));
-        var eleSecond = $('span:eq(0)',$('dd:last',$(this).parents('.menu-items-count')));
-        getTarget(0).val('');
-        getTarget(1).val('1');
-        getTarget(3).val('');
+        //2 清空栏目添加/编辑模态框中输入框中的数据
+        imenu.clearMenuModal();
+        
+        //3. 填充1中获取的数据到模态框中
         if($(this).hasClass('first-add')){
-            getTarget(2).val('1');
-            getTarget(4).val(parseInt(eleFirst.attr('data-para-place'))+1);           
+            id = '';
+            addOrEdit = 1;
+            labelRank = 1;
+            pId = ''
+            sort = $('#menu-cont .menu-box').size()+1;
         }else if($(this).hasClass('second-add')){
-            getTarget(2).val('2');
-            getTarget(4).val(parseInt(eleSecond.attr('data-para-place'))+1); 
+            id = '';
+            addOrEdit = 1;
+            labelRank = 2;
+            pId = ''
+            sort = $('.menu-item',$(this).parents('.menu-box')).size()+1;
+        }else if($(this).hasClass('first-edit')){
+            id = imenu.getTarget(this).data('para-id');
+            addOrEdit = 2;
+            labelRank = 1;            
+            pId = '';
+            sort = imenu.getTarget(this).data('para-sort');
+            labelName = $(this).parents('.menu-tools-cont').siblings('.title-cont').html();
+        }else if($(this).hasClass('second-edit')){
+            id = imenu.getTarget(this).data('para-id');
+            addOrEdit = 2;
+            labelRank = 2;            
+            pId = imenu.getTarget(this).data('para-parent-id');
+            sort = imenu.getTarget(this).data('para-sort');
         }
+
+
+        //4. 打开添加栏目的模态框
+        imenu.getInput(0).val(id);
+        imenu.getInput(2).val(labelRank);
+        imenu.getInput(1).val(addOrEdit);
+        imenu.getInput(3).val(pId);
+        imenu.getInput(4).val(sort);
+        $('#addMenuModal').modal('toggle');  
     })
 }
 
-var getTarget = function(index){
-    return $('input:eq('+index+')',$('.modal'));
+// <span data-para-place='11#{menu.place}' data-para-id='11#{menu.parentId}' data-para-sort="#{menu.sort}"></span>
+//imenu.openEditMenuModal = function () {
+//    $(document).on('click','.au-menu-count .menu-tools-box',function(){
+//        //1. 获取/定义一级栏目中相关的数据
+//        var dataEle = $(this).parents(".menu-tools-cont").children("span");
+//        var id = $(dataEle).data("para-id");
+//        var sort = $(dataEle).data("para-sort");
+//        var place = $(dataEle).data("para-place");
+//
+//        //2. 清空模态框中原有的垃圾数据
+//        imenu.clearMenuModal();
+//
+//        //3. 填充1中获取到的当前栏目的数据
+//
+//        //4. 打开模态框
+//        $('#addMenuModal').modal('toggle');
+//    })
+//	
+//}
+
+/**
+ * 用于模态框输入限制的验证
+ */
+imenu.modalIverify = function(){
+    $(document).on('focus','.modal-container .form-control',function(){
+        $(this).parents('.modal-box,.modal-box-exc').next().html('此字段必填').css('color','#1b9af7');
+   })
+   $(document).on('blur','.modal-container .form-control',function(){
+       if(v.isNull($(this).val())){
+           $(this).parents('.modal-box,.modal-box-exc').next().html('此内容不能为空').css('color','#ff0000');
+       }else{
+            $(this).parents('.modal-box,.modal-box-exc').next().html('')
+        }
+   })
 }
+
+/**
+ * 用于模态框输入限制的验证
+ */
+//imenu.modalIverify = function(){
+//    $("#lanmu-modal-form").validate({
+//        errorClass: "label.error-tips",
+//        rules:{
+//            lanmuName:{
+//                required: true
+//            },
+//            lanmuIcon:{
+//                required: true
+//            },
+//            lanmuPower:{
+//                required: true
+//            },
+//            lanmuAddress:{
+//                required: true
+//            },
+//            lanmuDes:{
+//                required: true
+//            }
+//        },
+//        messages:{
+//            lanmuName:{
+//                required: '此内容不能为空'
+//            },
+//            lanmuIcon:{
+//                required: '此内容不能为空'
+//            },
+//            lanmuPower:{
+//                required: '此内容不能为空'
+//            },
+//            lanmuAddress:{
+//                required: '此内容不能为空'
+//            },
+//            lanmuDes:{
+//                required: '此内容不能为空'
+//            }
+//        }
+//    })
+//}
+
+
+
+
+
 

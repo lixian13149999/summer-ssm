@@ -276,63 +276,87 @@ body {
 .body-menus-count .au-role-box .menu-tools-cont a {
   padding-left: 8px;
 }
-.modal-content {
+.modal-container {
   border-radius: 0;
-  width: 350px;
+  width: 450px;
+  margin-top: 120px;
 }
-.modal-content .modal-title {
+.modal-container .modal-title {
   height: 60px;
   line-height: 60px;
   font-size: 1.1em;
-  text-indent: 1em;
+  text-indent: 2em;
 }
-.modal-content .modal-box {
+.modal-container .modal-box {
   height: 50px;
   line-height: 50px;
-  width: 300px;
+  width: 350px;
   text-align: right;
 }
-.modal-content .modal-box .input-text,
-.modal-content .modal-box textarea {
-  border: 1px solid #ccc;
-  box-shadow: 0 0 1px #ccc;
-}
-.modal-content .modal-box .input-text:focus,
-.modal-content .modal-box textarea:focus {
-  outline: none;
-  border: 1px solid #337ab7;
-  box-shadow: 0 0 1px #337ab7;
-}
-.modal-content .modal-box .input-tips {
+.modal-container .modal-box .input-tips {
   vertical-align: top;
   display: inline-block;
   height: 50px;
   line-height: 50px;
 }
-.modal-content .modal-box .input-text {
+.modal-container .modal-box .input-text {
+  display: inline-block;
   width: 200px;
-  height: 30px;
-  line-height: 30px;
 }
-.modal-content .modal-box .input-area {
-  font-size: 12px;
-  line-height: 20px;
-  width: 200px;
-  height: 50px;
-  overflow: hidden;
-  resize: none;
-}
-.modal-content .modal-box .chose {
+.modal-container .chose {
   display: inline-block;
   width: 200px;
   text-align: left;
 }
-.modal-content .button-box {
+.modal-container .modal-box-exc {
+  width: 350px;
+  height: 90px;
+  line-height: 90px;
+  text-align: right;
+}
+.modal-container .modal-box-exc .input-tips {
+  vertical-align: top;
+  display: inline-block;
+  height: 90px;
+  line-height: 90px;
+}
+.modal-container .modal-box-exc .input-text {
+  display: inline-block;
+  width: 200px;
+  margin: 5px 0;
+  height: 80px;
+}
+.modal-container .modal-box-exc .input-text textarea {
+  resize: none;
+}
+.modal-container .modal-box-exc .input-text .form-control {
   width: 100%;
-  margin-bottom: 10px;
+  height: 80px;
+}
+.modal-container .error-tips {
+  height: 20px;
+  line-height: 20px;
+  text-indent: 158px;
+  color: #ff0000;
+}
+.modal-container .button-box {
+  width: 100%;
+  margin: 20px 0 30px;
   text-align: center;
 }
-.modal-content .button-box .modal-button {
-  width: 100px;
-  border-radius: 0;
+.modal-container .button-box .modal-button {
+  padding: 0;
+  margin: 0;
+  width: 60px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+}
+.modal-container .modal-input-tips {
+  vertical-align: top;
+  display: inline-block;
+}
+.modal-container .modal-input-text {
+  display: inline-block;
+  width: 200px;
 }
