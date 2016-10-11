@@ -21,7 +21,7 @@ h4.page-title 栏目管理
 							i.menu-icon.icon.icon-tool
 							a.title-cont #{menu.name}
 							span.menu-tools-cont
-								span()
+								span(data-para-place='#{menu.place}' data-para-id='#{menu.id}' data-para-sort='#{menu.sort}')
 								a.menu-tools-box.second-add(href="javascript:void(0)")
 									i.icon.icon-add.hover-primary
 								a.menu-tools-box.first-edit(href="javascript:void(0)")
@@ -35,7 +35,7 @@ h4.page-title 栏目管理
 								dd.menu-item(data-page-click="menu-item")
 									a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") #{item.name}
 									span.menu-tools-cont
-										span()
+										span(data-para-place='#{item.place}' data-para-id='#{item.id}' data-para-parent-id='#{item.parentId}' data-para-sort='#{item.sort}')
 										a.menu-tools-box.second-edit(href="javascript:void(0)")
 											i.icon.icon-edit.hover-warning
 										a.menu-tools-box(href="javascript:void(0)")

@@ -17,7 +17,7 @@ $(function(){
     imenu.showOrHideHandle();
     
     //栏目添加按钮模态框
-    imenu.openAddMenuModal();
+    imenu.openMenuModal();
     
     //模态框错误提示
     imenu.modalIverify();
@@ -269,9 +269,22 @@ imenu.getTarget = function(ele){
     }
 
 /**
- * 用于开启添加一级栏目的模态框
+ * 打开添加栏目的模态框
  */
-imenu.openAddMenuModal = function(){
+imenu.openNoDataMenuModal = function(id,labelRank,addOrEdit,pId,sort){
+    imenu.getInput(0).val(id);
+    imenu.getInput(2).val(labelRank);
+    imenu.getInput(1).val(addOrEdit);
+    imenu.getInput(3).val(pId);
+    imenu.getInput(4).val(sort);
+    $('#addMenuModal').modal('toggle'); 
+}
+        
+
+/**
+ * 用于开启栏目管理的模态框
+ */
+imenu.openMenuModal = function(){
     $(document).on('click','.au-menu-count .menu-tools-box',function(){
         //1. 获取/生成要设置的相关数据
         var id;
@@ -292,35 +305,32 @@ imenu.openAddMenuModal = function(){
             labelRank = 1;
             pId = ''
             sort = $('#menu-cont .menu-box').size()+1;
+            imenu.openNoDataMenuModal(id,labelRank,addOrEdit,pId,sort);
         }else if($(this).hasClass('second-add')){
             id = '';
             addOrEdit = 1;
             labelRank = 2;
             pId = ''
             sort = $('.menu-item',$(this).parents('.menu-box')).size()+1;
+            imenu.openNoDataMenuModal(id,labelRank,addOrEdit,pId,sort);
         }else if($(this).hasClass('first-edit')){
             id = imenu.getTarget(this).data('para-id');
             addOrEdit = 2;
             labelRank = 1;            
             pId = '';
             sort = imenu.getTarget(this).data('para-sort');
-            labelName = $(this).parents('.menu-tools-cont').siblings('.title-cont').html();
+            imenu.openNoDataMenuModal(id,labelRank,addOrEdit,pId,sort);
         }else if($(this).hasClass('second-edit')){
             id = imenu.getTarget(this).data('para-id');
             addOrEdit = 2;
             labelRank = 2;            
             pId = imenu.getTarget(this).data('para-parent-id');
             sort = imenu.getTarget(this).data('para-sort');
+            imenu.openNoDataMenuModal(id,labelRank,addOrEdit,pId,sort);
         }
 
 
-        //4. 打开添加栏目的模态框
-        imenu.getInput(0).val(id);
-        imenu.getInput(2).val(labelRank);
-        imenu.getInput(1).val(addOrEdit);
-        imenu.getInput(3).val(pId);
-        imenu.getInput(4).val(sort);
-        $('#addMenuModal').modal('toggle');  
+         
     })
 }
 
@@ -349,13 +359,13 @@ imenu.openAddMenuModal = function(){
  */
 imenu.modalIverify = function(){
     $(document).on('focus','.modal-container .form-control',function(){
-        $(this).parents('.modal-box,.modal-box-exc').next().html('此字段必填').css('color','#1b9af7');
+        $(this).parents('.modal-box,.modal-box-exc').next('.error-tips').html('此字段必填').css('color','#1b9af7');
    })
    $(document).on('blur','.modal-container .form-control',function(){
        if(v.isNull($(this).val())){
-           $(this).parents('.modal-box,.modal-box-exc').next().html('此内容不能为空').css('color','#ff0000');
+           $(this).parents('.modal-box,.modal-box-exc').next('.error-tips').html('此内容不能为空').css('color','#ff0000');
        }else{
-            $(this).parents('.modal-box,.modal-box-exc').next().html('')
+            $(this).parents('.modal-box,.modal-box-exc').next('.error-tips').html('')
         }
    })
 }
