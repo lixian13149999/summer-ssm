@@ -1,0 +1,67 @@
+//- 此jade文件中集合了项目中所有的模态框
+
+//- 栏目的添加/编辑模态框开始
+
+#addMenuModal.modal.fade.bs-example-modal-sm(aria-hidden="true")
+	.modal-dialog.modal-sm
+		form#menu_modal_form.modal-content.modal-container(action="javascript:imenu.addOrEditMenu()")
+			.modal-title 栏目添加/编辑
+			.modal-box
+				span 栏目ID
+				span.input-text
+					input#menu_id.form-control(type="text" name="menuId" readonly)
+			.modal-box
+				span 执行的操作
+				span.input-text
+					input#menu_will_todo.form-control(type="text" name="menuWillTodo" readonly)
+			.modal-box
+				span 栏目级别
+				span.input-text
+					input#menu_laver.form-control(type="text" name="menuLaver" readonly)
+			.modal-box
+				span 父级ID
+				span.input-text
+					input#menu_parent_id.form-control(type="text" name="menuParentId" readonly)
+			.modal-box
+				span 栏目顺序
+				span.input-text
+					input#menu_sort.form-control(type="text" name="menuSort" readonly)
+
+			.modal-box
+				span 栏目名称
+				span.input-text
+					input#menu_name.form-control(type="text" name="menuName")
+			.error-tips 错误提示
+			.modal-box
+				span 栏目图标
+				span.input-text
+					input#menu_icon.form-control(type="text" name="menuIcon")
+			.error-tips 错误提示
+			.modal-box
+				span 权限标识
+				span.input-text
+					input#menu_permission.form-control(type="text" name="menuPermission")
+			.error-tips 错误提示
+			.modal-box
+				span 链接地址
+				span.input-text
+					input#menu_href.form-control(type="text" name="menuHref")
+			.error-tips 错误提示
+			.modal-box
+				span.input-tips 栏目简介
+				span.input-text
+					textarea#menu_description.form-control(name="menuescription")
+			.error-tips 错误提示
+			.modal-box
+				span 是否显示
+				span#menu_is_show.chose
+					label 是
+						input(name="isShow" type="radio" value="1" checked) 
+					label 否
+						input(name="isShow" type="radio" value="2") 
+			.error-tips 错误提示
+			.button-box
+				button.button.button-primary.modal-button.submit-button 提交
+				button.button.modal-button(data-dismiss="modal") 关闭
+
+

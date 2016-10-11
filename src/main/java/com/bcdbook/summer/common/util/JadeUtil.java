@@ -147,7 +147,7 @@ public class JadeUtil {
 			return false;
 		
 		String ctx = ContextParameter.getContextPath();
-		String staticCtx = ctx+"/static";
+		String staticCtx = ctx+"static/";
 		model.put("staticCtx", staticCtx);
 		
 		return true;
@@ -189,6 +189,7 @@ public class JadeUtil {
 		}
 		return html;
 	}
+	
 	/**
 	 * @Description: 当视图返回值为html页面时,需要执行的封装方法
 	 * @param @param req

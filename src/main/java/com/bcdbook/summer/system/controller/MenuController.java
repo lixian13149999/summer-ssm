@@ -44,7 +44,7 @@ public class MenuController {
 		Menu menu = new Menu();
 		menu.setDelFlag(Global.DEL_FLAG_NORMAL);
 		menu.setPlace(Menu.PLACE_FOREGROUND);
-		menu.setParentId("first");
+		menu.setParentId(Menu.FIRST_MENU);
 		List<Menu> menus = menuService.findList(menu);
 		if(menus==null)
 			return BackMsg.error("get foreground menu error");
@@ -59,7 +59,7 @@ public class MenuController {
 		Menu menu = new Menu();
 		menu.setDelFlag(Global.DEL_FLAG_NORMAL);
 		menu.setPlace(Menu.PLACE_BACKER);
-		menu.setParentId("first");
+		menu.setParentId(Menu.FIRST_MENU);
 		List<Menu> menus = menuService.findList(menu);
 		if(menus==null)
 			return BackMsg.error("get backer menu error");

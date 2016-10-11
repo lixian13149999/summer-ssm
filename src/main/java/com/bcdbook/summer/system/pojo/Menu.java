@@ -17,6 +17,7 @@ public class Menu extends DataEntity<Menu> {
 	
 	public static final Integer PLACE_FOREGROUND = 1;
 	public static final Integer PLACE_BACKER = 2;
+	public static final String FIRST_MENU = "first";
 	
 	private Integer place;//栏目位置,前台栏目/后台栏目,1表示前台,2表示后台
 	private String parentId;//父级菜单id

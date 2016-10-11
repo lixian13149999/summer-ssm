@@ -126,6 +126,18 @@ vd.init = function(eleId, inputType, hasMsg) {
 //                        }
 //                    }
 //                }
+            },
+            menuName:{
+                required: true
+            },
+            menuIcon:{
+                required: true
+            },
+            menuPermission:{
+                required: true
+            },
+            menuHref:{
+                required: true
             }
         },
         messages: {
@@ -157,6 +169,18 @@ vd.init = function(eleId, inputType, hasMsg) {
                 email: "请输入正确的邮箱"
 //                	,
 //                remote:"此邮箱已经被绑定,请重新输入"
+            },
+            menuName:{
+                required: "栏目名称不能为空"
+            },
+            menuIcon:{
+                required: "栏目图标不能为空"
+            },
+            menuPermission:{
+                required: "栏目权限标识不能为空"
+            },
+            menuHref:{
+                required: "栏目连接地址不能为空"
             }
         }
     });
