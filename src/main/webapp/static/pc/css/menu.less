@@ -8,7 +8,7 @@
     margin-top: 14px;
     padding: 0 30px 30px;
     
-    .au-role-count,.au-menu-count{
+    .au-power-count,.au-menu-count{
         display: table-cell;
 //        min-height: 
     }
@@ -20,6 +20,9 @@
         margin-bottom: 0px;
         width: 320px;
         .menu-box{
+            &:first-child{
+                border-top:0px;
+            }
             .menu{
                 .menu-title{
                     padding-left: 20px;
@@ -47,49 +50,32 @@
     }
     
     
-    .au-role-count{
+    .au-power-count{
         border: solid @line-color-light 1px;
         border-left: 0px;
         width: 700px;
     }
-    
-//<div class="au-role-box">
-//    <a href="" class="role-text">
-//        <i class="icon icon-add role-icon"></i>
-//        添加
-//    </a>
-//    <a href="" class="role-code">user:add</a>
-//    <a class="role-info">用户添加权限</a>
-//    <span class="menu-tools-cont">
-//        <a href="">
-//            <i class="icon icon-edit hover-warning"></i>
-//        </a>
-//        <a href="">
-//            <i class="icon icon-grip hover-warning"></i>
-//        </a>
-//    </span>
-//</div>    
-    
-    .au-role-box{
+        
+    .au-power-box{
         height: 35px;
         line-height: 35px;
         padding-left: 20px;
         border-bottom: solid @line-color-light 1px;
-        .role-icon{
+        .power-icon{
             margin-right: 10px;
         }
-        .role-text,.role-code,.role-info{
+        .power-text,.power-code,.power-info{
             display: inline-block;
             
         }
-        .role-text{
+        .power-text{
             min-width: 150px;
         }
-        .role-code{
+        .power-code{
             min-width: 100px;
             color: @font-color-deep;
         }
-        .role-info{
+        .power-info{
             color: @font-color-light;
             
         }

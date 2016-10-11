@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bcdbook.summer.common.persistence.Page;
 import com.bcdbook.summer.system.pojo.Menu;
-import com.bcdbook.summer.system.pojo.Power;
 import com.bcdbook.summer.system.service.MenuService;
 
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
@@ -42,43 +43,55 @@ public class MenuController {
 	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
 	@ResponseBody
 	public String listForeground(HttpServletRequest req,HttpServletResponse resp){
+		//创建栏目对象,用于封装查询条件
 		Menu menu = new Menu();
-		menu.setDelFlag(Global.DEL_FLAG_NORMAL);
-		menu.setPlace(Menu.PLACE_FOREGROUND);
-		menu.setParentId(Menu.FIRST_MENU);
-		List<Menu> menus = menuService.findList(menu);
+		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
+		menu.setPlace(Menu.PLACE_FOREGROUND);//设置前后台区分为前台
+		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
+		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
+		//验证返回值的合法性
 		if(menus==null)
-			return BackMsg.error("get foreground menu error");
+			return BackMsg.error("get backer menu error");
+
+		//创建值域对象,设置要返回到页面的值
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("menus", menus);
+		//生成要返回的代码块
+		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
 		
-		return BackMsg.success(menus, "get foreground menu success");
+		//返回相应的值到前台
+		return BackMsg.success(html, "get backer menu success");
 	}
 	
 	//,params="fn=saveUsers"
+	/**
+	    * @Discription 获取后台栏目列表的方法
+	    * @author lason       
+	    * @created 2016年10月11日 下午8:56:58     
+	    * @param req
+	    * @param resp
+	    * @return
+	 */
 	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
 	@ResponseBody
 	public String list(HttpServletRequest req,HttpServletResponse resp){
+		//创建栏目对象,用于封装查询条件
 		Menu menu = new Menu();
-		menu.setDelFlag(Global.DEL_FLAG_NORMAL);
-		menu.setPlace(Menu.PLACE_BACKER);
-		menu.setParentId(Menu.FIRST_MENU);
-		List<Menu> menus = menuService.findList(menu);
+		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
+		menu.setPlace(Menu.PLACE_BACKER);//设置前后台区分为后台
+		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
+		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
+		//验证返回值的合法性
 		if(menus==null)
 			return BackMsg.error("get backer menu error");
-		
-		for (Menu menu2 : menus) {
-			System.out.println(menu2);
-		}
-		
-		
+
+		//创建值域对象,设置要返回到页面的值
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("menus", menus);
-		
-		String path = req.getSession().getServletContext().getRealPath("/");
-		System.out.println(path);
-		
+		//生成要返回的代码块
 		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
-		System.out.println(html);
 		
+		//返回相应的值到前台
 		return BackMsg.success(html, "get backer menu success");
 	}
 	
@@ -127,7 +140,7 @@ public class MenuController {
 		if(StringUtils.isNull(menuStr))
 			return BackMsg.error("request value is null");
 		
-		JSONObject menuJson = JSONObject.parseObject(menuStr);
+		JSONObject menuJson = JSON.parseObject(menuStr);
 		if(menuJson==null)
 			return BackMsg.error("menuJson is null");
 		

@@ -161,7 +161,7 @@ body {
   margin-top: 14px;
   padding: 0 30px 30px;
 }
-.body-menus-count .au-role-count,
+.body-menus-count .au-power-count,
 .body-menus-count .au-menu-count {
   display: table-cell;
 }
@@ -225,6 +225,9 @@ body {
 .body-menus-count .au-menu-count .menu-box .menu .activ {
   background-color: #f4f5f9;
 }
+.body-menus-count .au-menu-count .menu-box:first-child {
+  border-top: 0px;
+}
 .body-menus-count .au-menu-count .menu-box .menu .menu-title {
   padding-left: 20px;
 }
@@ -244,36 +247,36 @@ body {
   display: inline-block;
   padding-left: 8px;
 }
-.body-menus-count .au-role-count {
+.body-menus-count .au-power-count {
   border: solid #e7e7eb 1px;
   border-left: 0px;
   width: 700px;
 }
-.body-menus-count .au-role-box {
+.body-menus-count .au-power-box {
   height: 35px;
   line-height: 35px;
   padding-left: 20px;
   border-bottom: solid #e7e7eb 1px;
 }
-.body-menus-count .au-role-box .role-icon {
+.body-menus-count .au-power-box .power-icon {
   margin-right: 10px;
 }
-.body-menus-count .au-role-box .role-text,
-.body-menus-count .au-role-box .role-code,
-.body-menus-count .au-role-box .role-info {
+.body-menus-count .au-power-box .power-text,
+.body-menus-count .au-power-box .power-code,
+.body-menus-count .au-power-box .power-info {
   display: inline-block;
 }
-.body-menus-count .au-role-box .role-text {
+.body-menus-count .au-power-box .power-text {
   min-width: 150px;
 }
-.body-menus-count .au-role-box .role-code {
+.body-menus-count .au-power-box .power-code {
   min-width: 100px;
   color: #333333;
 }
-.body-menus-count .au-role-box .role-info {
+.body-menus-count .au-power-box .power-info {
   color: #8d8d8d;
 }
-.body-menus-count .au-role-box .menu-tools-cont a {
+.body-menus-count .au-power-box .menu-tools-cont a {
   padding-left: 8px;
 }
 .modal-container {
