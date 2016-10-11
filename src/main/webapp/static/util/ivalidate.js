@@ -138,6 +138,9 @@ vd.init = function(eleId, inputType, hasMsg) {
             },
             menuHref:{
                 required: true
+            },
+            menuDscription:{
+                required: true
             }
         },
         messages: {
@@ -181,6 +184,9 @@ vd.init = function(eleId, inputType, hasMsg) {
             },
             menuHref:{
                 required: "栏目连接地址不能为空"
+            },
+            menuDscription:{
+                required: "栏目简介不能为空"
             }
         }
     });

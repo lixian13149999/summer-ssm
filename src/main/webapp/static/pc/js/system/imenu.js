@@ -18,12 +18,9 @@ $(function(){
     
     //栏目添加按钮模态框
     imenu.openMenuModal();
-    
-    //模态框错误提示
-    // imenu.modalIverify();
 
     // 加入栏目添加/编辑的模态框表单校验
-    vd.init("menu_modal_form", 2, 1);
+    vd.init("menu_modal_form", 1, 1);
 });
 
 imenu.clickMenu = function(){
@@ -196,24 +193,17 @@ $(document).ready(function() {
  */
 imenu.clearMenuModal = function () {
 	$('#addMenuModal .form-control').val('');
-    $('#addMenuModal .error-tips').html('');
-    $('.chose :radio').removeAttr('checked');
-    $('.chose input:eq(0)').prop('checked',true);
-}
-
-/**
- * 用于获取模态框各input元素
- */
-imenu.getInput = function(index){
-    return $('input:eq('+index+')',$('.modal'));
+    $('#addMenuModal .error-msg-label').html('');
+    $('.input-radio :radio').removeAttr('checked');
+    $('.input-radio input:eq(0)').prop('checked',true);
 }
 
 /**
  * 用于获取目标span元素，得到自动填充的信息
  */
 imenu.getTarget = function(ele){
-        return $(ele).parents('.menu-tools-cont').children('span');
-    }
+    return $(ele).parents('.menu-tools-cont').children('span');
+}
 
 /**
  * 打开添加栏目的模态框
@@ -240,8 +230,6 @@ imenu.openMenuModal = function(){
         var pId;
         var labelRank;
         var sort; 
-        var labelName;
-        var labelIcon;
 
         //2 清空栏目添加/编辑模态框中输入框中的数据
         imenu.clearMenuModal();
@@ -250,10 +238,8 @@ imenu.openMenuModal = function(){
 
         //一级栏目的添加
         if($(this).hasClass('first-add')){
-            id = '';
             addOrEdit = 1;
             labelRank = 1;
-            pId = ''
             sort = $('#menu-cont .menu-box').size()+1;
 
             $("#menu_will_todo").val(addOrEdit);
@@ -261,28 +247,42 @@ imenu.openMenuModal = function(){
             $("#menu_sort").val(sort);
 
             $('#addMenuModal').modal('toggle'); 
-            // imenu.openNoDataMenuModal(id,labelRank,addOrEdit,pId,sort);
         }else if($(this).hasClass('second-add')){
-            id = '';
             addOrEdit = 1;
             labelRank = 2;
-            pId = ''
             sort = $('.menu-item',$(this).parents('.menu-box')).size()+1;
-            // imenu.openNoDataMenuModal(id,labelRank,addOrEdit,pId,sort);
+            
+            $("#menu_will_todo").val(addOrEdit);
+            $("#menu_laver").val(labelRank);
+            $("#menu_sort").val(sort);
+            
+            $('#addMenuModal').modal('toggle'); 
         }else if($(this).hasClass('first-edit')){
             id = imenu.getTarget(this).data('para-id');
             addOrEdit = 2;
-            labelRank = 1;            
-            pId = '';
+            labelRank = 1;
             sort = imenu.getTarget(this).data('para-sort');
-            // imenu.openNoDataMenuModal(id,labelRank,addOrEdit,pId,sort);
+            
+            $("#menu_id").val(id);
+            $("#menu_will_todo").val(addOrEdit);
+            $("#menu_laver").val(labelRank);
+            $("#menu_sort").val(sort);
+            
+            $('#addMenuModal').modal('toggle'); 
         }else if($(this).hasClass('second-edit')){
             id = imenu.getTarget(this).data('para-id');
             addOrEdit = 2;
             labelRank = 2;            
             pId = imenu.getTarget(this).data('para-parent-id');
             sort = imenu.getTarget(this).data('para-sort');
-            // imenu.openNoDataMenuModal(id,labelRank,addOrEdit,pId,sort);
+            
+            $("#menu_id").val(id);
+            $("#menu_will_todo").val(addOrEdit);
+            $("#menu_laver").val(labelRank);
+            $("#menu_parent_id").val(pId)
+            $("#menu_sort").val(sort);
+            
+            $('#addMenuModal').modal('toggle'); 
         }
 
 
@@ -339,8 +339,7 @@ imenu.addOrEditMenu = function () {
 		err: function(jqXHR, textStatus, errorThrown) {
 			console.log('error ' + textStatus + " " + errorThrown);
 		}
-	})
-	
+	})	
 }
 
 // <span data-para-place='11#{menu.place}' data-para-id='11#{menu.parentId}' data-para-sort="#{menu.sort}"></span>

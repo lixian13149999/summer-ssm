@@ -352,108 +352,85 @@
     </div>
 
     <!--模态框开始-->
-    <div class="modal fade bs-example-modal-sm" id="addMenuModal" aria-hidden="true">
+    <div class="modal fade bs-example-modal-sm" id="addMenuModal" aria-hidden="true">-->-->
         <div class="modal-dialog modal-sm">
-            <div class="modal-content modal-container" id="lanmu-modal-form">
-               <div class="modal-title">
-                   栏目添加或编辑
-               </div>
-               <div class="modal-box hide">
-                   <span>栏目ID&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input type="text" class="form-control" readonly>
-                   </span>
-               </div>
-               <div class="modal-box hide">
-                   <span>执行的操作&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input type="text" class="form-control" readonly>
-                   </span>
-               </div>
-               <div class="modal-box hide">
-                   <span>栏目级别&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input type="text" class="form-control" readonly>
-                   </span>
-               </div>
-               <div class="modal-box hide">
-                   <span>父级ID&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input type="text" class="form-control" readonly>
-                   </span>
-               </div>
-               <div class="modal-box hide">
-                   <span>栏目顺序&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input type="text" class="form-control" readonly>
-                   </span>
-               </div>
-               <div class="modal-box">
-                   <span>栏目名称&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input name="lanmuName" type="text" class="form-control">
-                   </span>
-               </div>
-               <div class="error-tips">
-                   错误提示
-               </div>
-               <div class="modal-box">
-                   <span>栏目图标&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input name="lanmuIcon" type="text" class="form-control">
-                   </span>
-               </div>
-               <div class="error-tips">
-                   错误提示
-               </div>
-               <div class="modal-box">
-                   <span>权限标识&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input name="lanmuPower" type="text" class="form-control">
-                   </span>
-               </div>
-               <div class="error-tips">
-                   错误提示
-               </div>
-               <div class="modal-box">
-                   <span>链接地址&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <input name="lanmuAddress" type="text" class="form-control">
-                   </span>
-               </div>
-               <div class="error-tips">
-                   错误提示
-               </div>
-               <div class="modal-box-exc">
-                   <span class="input-tips">栏目简介&nbsp;&nbsp;&nbsp;</span>
-                   <span class="input-text">
-                       <textarea name="lanmuDes" class="form-control"></textarea>
-                   </span>
-               </div>
-               <div class="error-tips">
-                   错误提示
-               </div>
-               <div class="modal-box">
-                   <span>是否显示&nbsp;&nbsp;&nbsp;</span>
-                   <span class="chose">
-                       <label>
-                           <input name="YES/NO" type="radio" value="YES" checked />&nbsp;&nbsp;是
-                       </label>&nbsp;&nbsp;&nbsp; 
-                       <label>
-                           <input name="YES/NO" type="radio" value="NO" />&nbsp;&nbsp;否
-                       </label> 
-                   </span>
-               </div>
-               <div class="error-tips">
-                   错误提示
-               </div>
-               <div class="button-box">
-               <button class="button button-primary modal-button submit-button">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <button class="button modal-button" data-dismiss="modal">关闭</button>
-               </div>              
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
+            <form class="modal-content modal-container" id='menu_modal_form' action="javascript:imenu.addOrEditMenu()">
+                <div class="modal-title">
+                栏目添加/编辑
+                </div>
+                <!--根据后台数据填充的输入框-->
+                <div class="menu-modal-input page-form hide">
+                    <label for="menu_id" class="input-tips">栏目ID</label>
+                    <input id='menu_id' class='form-control' type="text" name="menuId" readonly>
+                    <label class="error-msg-label"></label>
+                </div>
+                <div class="menu-modal-input page-form hide">
+                    <label for="menu_will_todo" class="input-tips">执行的操作</label>
+                    <input id='menu_will_todo' class='form-control' type="text" name="menuWillTodo" readonly>
+                    <label class="error-msg-label"></label>
+                </div>
+                <div class="menu-modal-input page-form hide">
+                    <label for="menu_laver" class="input-tips">栏目级别</label>
+                    <input id='menu_laver' class='form-control' type="text" name="menuLaver" readonly>
+                    <label class="error-msg-label"></label>
+                </div>
+                <div class="menu-modal-input page-form hide">
+                    <label for="menu_parent_id" class="input-tips">父级ID</label>
+                    <input id='menu_parent_id' class='form-control' type="text" name="menuParentId" readonly>
+                    <label class="error-msg-label"></label>
+                </div>
+                <div class="menu-modal-input page-form hide">
+                    <label for="menu_sort" class="input-tips">栏目顺序</label>
+                    <input id='menu_sort' class='form-control' type="text" name="menuSort" readonly>
+                    <label class="error-msg-label"></label>
+                </div>
+                <!--用户填充的输入框-->
+                <div class="menu-modal-input page-form">
+                    <label for="menu_name" class="input-tips">栏目名称</label>
+                    <input id='menu_name' class='form-control' type="text" name="menuName">
+                    <label class="error-msg-label"></label>
+                </div>
+                <div class="menu-modal-input page-form">
+                    <label for="menu_icon" class="input-tips">栏目图标</label>
+                    <input id='menu_icon' class='form-control' type="text" name="menuIcon">
+                    <label class="error-msg-label"></label>
+                </div>
+                <div class="menu-modal-input page-form">
+                    <label for="menu_permission" class="input-tips">权限标识</label>
+                    <input id='menu_permission' class='form-control' type="text" name="menuPermission">
+                    <label class="error-msg-label"></label>
+                </div>
+                <div class="menu-modal-input page-form">
+                    <label for="menu_href" class="input-tips">连接地址</label>
+                    <input id='menu_href' class='form-control' type="text" name="menuHref">
+                    <label class="error-msg-label"></label>
+                </div>
+                
+                <div class="menu-modal-input page-form input-textarea">
+                    <label for="menu_description" class="input-tips">栏目简介</label>
+                    <textarea id='menu_description' class='form-control' type="text" name="menuDscription"></textarea>
+                    <label class="error-msg-label"></label>
+                </div>
+                <div class="menu-modal-input page-form input-radio">
+                    <label class="input-tips">是否显示</label>
+                    <label for="show">
+                        <input id="show" name="isShow" type="radio" value="1" checked/>是
+                    </label> 
+                    <label for="hide">
+                        <input id="hide" name="isShow" type="radio" value="1"/>否
+                    </label> 
+                    <label class="error-msg-label"></label>
+                </div>
+                
+                <div class="button-box">
+                    <button class="button button-primary modal-button">提交</button>
+                    <button class="button modal-button" data-dismiss="modal">关闭</button>
+                </div>   
+
+            </form>
+        </div>
+   </div>
+    
     <!--模态框结束-->
 
     <!-- 底部开始 -->
