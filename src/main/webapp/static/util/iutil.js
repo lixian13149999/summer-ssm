@@ -6,3 +6,10 @@ iutil.isSuccess = function (data) {
 	}
 	return false;
 }
+
+//此方法用于封装表单中的数据
+//传入值不定量
+//返回一个封装好的对象
+iutil.parseValue = function () {
+	
+}

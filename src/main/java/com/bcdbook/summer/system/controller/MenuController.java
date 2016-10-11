@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.JadeUtil;
@@ -75,7 +76,7 @@ public class MenuController {
 		String path = req.getSession().getServletContext().getRealPath("/");
 		System.out.println(path);
 		
-		String html = JadeUtil.getBodyView("pc/system/menu/au_list.jade", model);
+		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
 		System.out.println(html);
 		
 		return BackMsg.success(html, "get backer menu success");
@@ -121,24 +122,35 @@ public class MenuController {
 	 */
 	@RequestMapping(value="/add",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String add(HttpServletRequest req,HttpServletResponse resp,Menu menu){
-		//验证参数的合法性
-		if(menu==null)
-			return BackMsg.error("menu is null");
+	public String add(HttpServletRequest req,HttpServletResponse resp){
+		String menuStr = req.getParameter("menu");
+		if(StringUtils.isNull(menuStr))
+			return BackMsg.error("request value is null");
 		
-		//执行添加栏目的方法,并返回栏目的id
-		String menuId = menuService.addBackId(menu);
-		if(StringUtils.isNull(menuId))
-			return BackMsg.error("add menu error");
-			
-		//根据传入的添加后返回的栏目id获取栏目对象
-		Menu dbMenu = menuService.get(menuId);
-		//如果根据返回的栏目id获取到的栏目对象为空,直接返回错误信息
-		if(dbMenu==null)
-			return BackMsg.error("add menu error");
+		JSONObject menuJson = JSONObject.parseObject(menuStr);
+		if(menuJson==null)
+			return BackMsg.error("menuJson is null");
 		
-		//如果返回的栏目信息不为空,返回栏目对象,并返回添加成功的信息
-		return BackMsg.success(dbMenu, "add menu success");
+		System.out.println(menuStr);
+//		//验证参数的合法性
+//		if(menu==null)
+//			return BackMsg.error("menu is null");
+//		
+//		//执行添加栏目的方法,并返回栏目的id
+//		String menuId = menuService.addBackId(menu);
+//		if(StringUtils.isNull(menuId))
+//			return BackMsg.error("add menu error");
+//			
+//		//根据传入的添加后返回的栏目id获取栏目对象
+//		Menu dbMenu = menuService.get(menuId);
+//		//如果根据返回的栏目id获取到的栏目对象为空,直接返回错误信息
+//		if(dbMenu==null)
+//			return BackMsg.error("add menu error");
+//		
+//		//如果返回的栏目信息不为空,返回栏目对象,并返回添加成功的信息
+//		return BackMsg.success(dbMenu, "add menu success");
+		
+		return null;
 	}
 	
 	/**

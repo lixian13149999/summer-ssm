@@ -6,23 +6,23 @@
 	.modal-dialog.modal-sm
 		form#menu_modal_form.modal-content.modal-container(action="javascript:imenu.addOrEditMenu()")
 			.modal-title 栏目添加/编辑
-			.menu-modal-input.page-form.hide
+			.menu-modal-input.page-form
 				label.input-tips(for="menu_id") 栏目ID
 				input#menu_id.form-control(type="text" name="menuId" readonly)
 				label.error-msg-label(for="menu_id")
-			.menu-modal-input.page-form.hide
+			.menu-modal-input.page-form
 				label.input-tips(for="menu_will_todo") 执行的操作
 				input#menu_will_todo.form-control(type="text" name="menuWillTodo" readonly)
 				label.error-msg-label(for="menu_will_todo")
-			.menu-modal-input.page-form.hide
+			.menu-modal-input.page-form
 				label.input-tips(for="menu_laver") 栏目级别
 				input#menu_laver.form-control(type="text" name="menuLaver" readonly)
 				label.error-msg-label(for="menu_laver")
-			.menu-modal-input.page-form.hide
+			.menu-modal-input.page-form
 				label.input-tips(for="menu_parent_id") 父级ID
 				input#menu_parent_id.form-control(type="text" name="menuParentId" readonly)
 				label.error-msg-label(for="menu_parent_id")
-			.menu-modal-input.page-form.hide
+			.menu-modal-input.page-form
 				label.input-tips(for="menu_sort") 栏目顺序
 				input#menu_sort.form-control(type="text" name="menuSort" readonly)
 				label.error-msg-label(for="menu_sort")
@@ -56,6 +56,6 @@
 					| 否
 				label.error-msg-label
 			.button-box
-				.button.button-primary.modal-button 提交
-				.button.modal-button(data-dismiss="modal") 关闭
+				button.button.button-primary.modal-button 提交
+				button.button.modal-button(data-dismiss="modal") 关闭
 
