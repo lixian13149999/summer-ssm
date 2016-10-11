@@ -167,6 +167,15 @@ imenu.openMenuModal = function(){
 imenu.addOrEditMenu = function () {
 	console.log("进入提交方法");
 
+	var a = iutil.parseValue({
+		id:"#menu_id",
+		name:"id"
+	},{
+		id:"#menu_will_todo",
+		name:"willTodo"
+	});
+	console.log(a);
+
 	//1. 获取并封装模态框中输入框的内容
 	var id = $("#menu_id").val();
 	var willTodo = $("#menu_will_todo").val();
