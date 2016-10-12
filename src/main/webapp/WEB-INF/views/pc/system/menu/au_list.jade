@@ -4,9 +4,9 @@ each menu,index in menus
 		dl.menu
 			dt.menu-title
 				i.menu-icon.icon.icon-tool
-				a.title-cont #{menu.name}
+				a.title-cont(href="javascript:void(0)") #{menu.name}
 				span.menu-tools-cont
-					span(data-para-place='#{menu.place}' data-para-id='#{menu.id}' data-para-sort='#{menu.sort}')
+					span(data-para-place='#{menu.place}' data-para-parent-id='#{menu.parentId}' data-para-name='#{menu.name}' data-para-description='#{menu.description}' data-para-href='#{menu.href}' data-para-target='#{menu.target}' data-para-icon='#{menu.icon}' data-para-sort='#{menu.sort}' data-para-permission='#{menu.permission}' data-para-is-show='#{menu.isShow}' data-para-id='#{menu.id}' data-para-del-flag='#{menu.delFlag}' data-para-remark='#{menu.remark}' data-para-page='#{menu.page}' data-para-creatby='#{menu.creatBy}' data-para-createtime='#{menu.createTime}' data-para-updateby='#{menu.updateBy}' data-para-update-time='#{menu.updateTime}')
 					a.menu-tools-box.second-add(href="javascript:void(0)")
 						i.icon.icon-add.hover-primary
 					a.menu-tools-box.first-edit(href="javascript:void(0)")
@@ -20,7 +20,7 @@ each menu,index in menus
 					dd.menu-item(data-page-click="menu-item")
 						a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") #{item.name}
 						span.menu-tools-cont
-							span(data-para-place='#{item.place}' data-para-id='#{item.id}' data-para-parent-id='#{item.parentId}' data-para-sort='#{item.sort}')
+							span(data-para-place='#{item.place}' data-para-parent-id='#{item.parentId}' data-para-name='#{item.name}' data-para-description='#{item.description}' data-para-href='#{item.href}' data-para-target='#{item.target}' data-para-icon='#{item.icon}' data-para-sort='#{item.sort}' data-para-permission='#{item.permission}' data-para-is-show='#{item.isShow}' data-para-id='#{item.id}' data-para-del-flag='#{item.delFlag}' data-para-remark='#{item.remark}' data-para-page='#{item.page}' data-para-creatby='#{item.creatBy}' data-para-createtime='#{item.createTime}' data-para-updateby='#{item.updateBy}' data-para-update-time='#{item.updateTime}')
 							a.menu-tools-box.second-edit(href="javascript:void(0)")
 								i.icon.icon-edit.hover-warning
 							a.menu-tools-box(href="javascript:void(0)")

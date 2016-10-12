@@ -116,7 +116,7 @@
                                         <i class="menu-icon icon icon-tool"></i>
                                         <a href="javascript:void(0)" class="title-cont">用户管理/设置</a>
                                         <span class="menu-tools-cont">
-                                            <span data-para-place='11#{menu.place}' data-para-id='11#{menu.id}' data-para-sort='11#{menu.sort}'></span>
+                                            <span data-para-place='#{menu.place}' data-para-parent-id='#{menu.parentId}' data-para-name='#{menu.name}' data-para-description='#{menu.description}' data-para-href='#{menu.href}' data-para-target='#{menu.target}' data-para-icon='#{menu.icon}' data-para-sort='#{menu.sort}' data-para-permission='#{menu.permission}' data-para-is-show='#{menu.isShow}' data-para-id='#{menu.id}' data-para-del-flag='#{menu.delFlag}' data-para-remark='#{menu.remark}' data-para-page='#{menu.page}' data-para-creatby='#{menu.creatBy}' data-para-createtime='#{menu.createTime}' data-para-updateby='#{menu.updateBy}' data-para-update-time='#{menu.updateTime}'></span>
                                             <a href="javascript:void(0)" class="menu-tools-box second-add">
                                                 <i class="icon icon-add hover-primary"></i>
                                             </a>
@@ -135,7 +135,7 @@
                                         <dd data-page-click="menu-item" class="menu-item activ">
                                             <a data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)" class="item-cont">用户列表</a>
                                             <span class="menu-tools-cont">
-                                               <span data-para-place='11#{item.place}' data-para-id='11#{item.id}' data-para-parent-id='11#{menu.id}' data-para-sort='11#{item.sort}'></span>
+                                               <span data-para-place='#{item.place}' data-para-parent-id='#{item.parentId}' data-para-name='#{item.name}' data-para-description='#{item.description}' data-para-href='#{item.href}' data-para-target='#{item.target}' data-para-icon='#{item.icon}' data-para-sort='#{item.sort}' data-para-permission='#{item.permission}' data-para-is-show='#{item.isShow}' data-para-id='#{item.id}' data-para-del-flag='#{item.delFlag}' data-para-remark='#{item.remark}' data-para-page='#{item.page}' data-para-creatby='#{item.creatBy}' data-para-createtime='#{item.createTime}' data-para-updateby='#{item.updateBy}' data-para-update-time='#{item.updateTime}'></span>
                                                 <a class="menu-tools-box second-edit">
                                                     <i class="icon icon-edit hover-warning"></i>
                                                 </a>
@@ -291,16 +291,19 @@
                             <div class="au-power-box">
                                 <a class="power-text">
                                     <i class="icon icon-add power-icon"></i>
-                                    添加
+                                    权限名称
                                 </a>
-                                <a href="javascript:void(0)" class="power-code">user:add</a>
-                                <a class="power-info">用户添加权限</a>
+                                <a href="javascript:void(0)" class="power-code">权限标识</a>
+                                <a class="power-info">备注信息</a>
                                 <span class="menu-tools-cont">
-                                    <a href="javascript:void(0)">
+                                    <a class="menu-tools-box">
                                         <i class="icon icon-edit hover-warning"></i>
                                     </a>
-                                    <a href="javascript:void(0)" class="handle hide">
-                                        <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                    <a class="menu-tools-box">
+                                        <i class="icon icon-delete hover-danger"></i>
+                                    </a>
+                                    <a href="javascript:void(0)" class="menu-tools-box handle hide">
+                                        <i class="icon icon-grip hover-warning menu-move-handle"></i>
                                     </a>
                                 </span>
                             </div>
@@ -309,16 +312,19 @@
                             <div class="au-power-box">
                                 <a class="power-text">
                                     <i class="icon icon-add power-icon"></i>
-                                    添加
+                                    权限名称
                                 </a>
-                                <a href="javascript:void(0)" class="power-code">user:add</a>
-                                <a class="power-info">用户添加权限</a>
+                                <a href="javascript:void(0)" class="power-code">权限标识</a>
+                                <a class="power-info">备注信息</a>
                                 <span class="menu-tools-cont">
-                                    <a href="javascript:void(0)">
+                                    <a class="menu-tools-box first-edit">
                                         <i class="icon icon-edit hover-warning"></i>
                                     </a>
-                                    <a href="javascript:void(0)" class="handle hide">
-                                        <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                    <a class="menu-tools-box">
+                                        <i class="icon icon-delete hover-danger"></i>
+                                    </a>
+                                    <a href="javascript:void(0)" class="menu-tools-box handle hide">
+                                        <i class="icon icon-grip hover-warning menu-move-handle"></i>
                                     </a>
                                 </span>
                             </div>
@@ -327,16 +333,19 @@
                             <div class="au-power-box">
                                 <a class="power-text">
                                     <i class="icon icon-add power-icon"></i>
-                                    添加
+                                    权限名称
                                 </a>
-                                <a href="javascript:void(0)" class="power-code">user:add</a>
-                                <a class="power-info">用户添加权限</a>
+                                <a href="javascript:void(0)" class="power-code">权限标识</a>
+                                <a class="power-info">备注信息</a>
                                 <span class="menu-tools-cont">
-                                    <a href="javascript:void(0)">
+                                    <a class="menu-tools-box first-edit">
                                         <i class="icon icon-edit hover-warning"></i>
                                     </a>
-                                    <a href="javascript:void(0)" class="handle hide">
-                                        <i class="icon icon-grip hover-warning item-move-handle"></i>
+                                    <a class="menu-tools-box">
+                                        <i class="icon icon-delete hover-danger"></i>
+                                    </a>
+                                    <a href="javascript:void(0)" class="menu-tools-box handle hide">
+                                        <i class="icon icon-grip hover-warning menu-move-handle"></i>
                                     </a>
                                 </span>
                             </div>
@@ -358,27 +367,27 @@
                 栏目添加/编辑
                 </div>
                 <!--根据后台数据填充的输入框-->
-                <div class="menu-modal-input page-form hide">
+                <div class="menu-modal-input page-form">
                     <label for="menu_id" class="input-tips">栏目ID</label>
                     <input id='menu_id' class='form-control' type="text" name="menuId" readonly>
                     <label class="error-msg-label"></label>
                 </div>
-                <div class="menu-modal-input page-form hide">
+                <div class="menu-modal-input page-form">
                     <label for="menu_will_todo" class="input-tips">执行的操作</label>
                     <input id='menu_will_todo' class='form-control' type="text" name="menuWillTodo" readonly>
                     <label class="error-msg-label"></label>
                 </div>
-                <div class="menu-modal-input page-form hide">
+                <div class="menu-modal-input page-form">
                     <label for="menu_laver" class="input-tips">栏目级别</label>
                     <input id='menu_laver' class='form-control' type="text" name="menuLaver" readonly>
                     <label class="error-msg-label"></label>
                 </div>
-                <div class="menu-modal-input page-form hide">
+                <div class="menu-modal-input page-form">
                     <label for="menu_parent_id" class="input-tips">父级ID</label>
                     <input id='menu_parent_id' class='form-control' type="text" name="menuParentId" readonly>
                     <label class="error-msg-label"></label>
                 </div>
-                <div class="menu-modal-input page-form hide">
+                <div class="menu-modal-input page-form">
                     <label for="menu_sort" class="input-tips">栏目顺序</label>
                     <input id='menu_sort' class='form-control' type="text" name="menuSort" readonly>
                     <label class="error-msg-label"></label>
