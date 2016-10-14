@@ -24,7 +24,7 @@ imain.changePageTitleStyle = function(){
 
 imain.testAddMenuList = function () {
     $.ajax({
-        url: ctx + "menu/list?b",
+        url: ctx + "menu?b",
         type: 'GET',
         dataType: "json",
         data: {},

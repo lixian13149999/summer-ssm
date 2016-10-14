@@ -1,5 +1,6 @@
 package com.bcdbook.summer.system.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
+import com.bcdbook.summer.common.context.ContextParameter;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.Menu;
@@ -31,6 +33,73 @@ public class MenuController {
 	private MenuService menuService;
 	
 	/**
+	 * @Description: 获取前台栏目的集合
+	 * @param @param req
+	 * @param @param resp
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年10月12日
+	 */
+	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
+	@ResponseBody
+	public String listForeground(HttpServletRequest req,HttpServletResponse resp){
+		//创建栏目对象,用于封装查询条件
+		Menu menu = new Menu();
+		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
+		menu.setPlace(Menu.PLACE_FOREGROUND);//设置前后台区分为前台
+		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
+		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
+		//验证返回值的合法性
+		if(menus==null)
+			return BackMsg.error("get backer menu error");
+
+		//创建值域对象,设置要返回到页面的值
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("menus", menus);
+		//生成要返回的代码块
+		String html = JadeUtil.getBodyView("pc/system/menu/au_list.jade", model);
+		
+		//返回相应的值到前台
+		return BackMsg.success(html, "get backer menu success");
+	}
+
+	/**
+	 * @Description: 获取后台栏目的集合
+	 * @param @param req
+	 * @param @param resp
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年10月12日
+	 */
+	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
+	@ResponseBody
+	public String listBack(HttpServletRequest req,HttpServletResponse resp){
+		//创建栏目对象,用于封装查询条件
+		Menu menu = new Menu();
+		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
+		menu.setPlace(Menu.PLACE_BACKER);//设置前后台区分为后台
+		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
+		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
+		//验证返回值的合法性
+		if(menus==null)
+			return BackMsg.error("get backer menu error");
+
+		//创建值域对象,设置要返回到页面的值
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("menus", menus);
+		//生成要返回的代码块
+		String html = JadeUtil.getBodyView("pc/system/menu/au_list.jade", model);
+		
+		//返回相应的值到前台
+		return BackMsg.success(html, "get backer menu success");
+	}
+	
+	
+	/**
 	 * @Description: 获取前台栏目
 	 * @param @param req
 	 * @param @param resp
@@ -40,9 +109,9 @@ public class MenuController {
 	 * @author lason
 	 * @date 2016年10月9日
 	 */
-	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
+	@RequestMapping(method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
 	@ResponseBody
-	public String listForeground(HttpServletRequest req,HttpServletResponse resp){
+	public String foreground(HttpServletRequest req,HttpServletResponse resp){
 		//创建栏目对象,用于封装查询条件
 		Menu menu = new Menu();
 		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
@@ -72,9 +141,9 @@ public class MenuController {
 	    * @param resp
 	    * @return
 	 */
-	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
+	@RequestMapping(method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
 	@ResponseBody
-	public String list(HttpServletRequest req,HttpServletResponse resp){
+	public String back(HttpServletRequest req,HttpServletResponse resp){
 		//创建栏目对象,用于封装查询条件
 		Menu menu = new Menu();
 		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
@@ -136,34 +205,49 @@ public class MenuController {
 	@RequestMapping(value="/add",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String add(HttpServletRequest req,HttpServletResponse resp){
+		//获取表单中封装的数据
 		String menuStr = req.getParameter("menu");
+		//验证参数的合法性
 		if(StringUtils.isNull(menuStr))
 			return BackMsg.error("request value is null");
 		
+		//把获取到的数据转成json
 		JSONObject menuJson = JSON.parseObject(menuStr);
 		if(menuJson==null)
 			return BackMsg.error("menuJson is null");
 		
-		System.out.println(menuStr);
-//		//验证参数的合法性
-//		if(menu==null)
-//			return BackMsg.error("menu is null");
-//		
-//		//执行添加栏目的方法,并返回栏目的id
-//		String menuId = menuService.addBackId(menu);
-//		if(StringUtils.isNull(menuId))
-//			return BackMsg.error("add menu error");
-//			
-//		//根据传入的添加后返回的栏目id获取栏目对象
-//		Menu dbMenu = menuService.get(menuId);
-//		//如果根据返回的栏目id获取到的栏目对象为空,直接返回错误信息
-//		if(dbMenu==null)
-//			return BackMsg.error("add menu error");
-//		
-//		//如果返回的栏目信息不为空,返回栏目对象,并返回添加成功的信息
-//		return BackMsg.success(dbMenu, "add menu success");
+		Menu menu = new Menu();
+		menu.setPlace(menuJson.getInteger("foregroundOrBack"));//前台还是后天
+		menu.setSort(menuJson.getInteger("sort"));//栏目顺序
 		
-		return null;
+		menu.setName(menuJson.getString("name"));//栏目名称
+		menu.setIcon(menuJson.getString("icon"));//栏目图标
+		menu.setPermission(menuJson.getString("permission"));//栏目的权限标识
+		menu.setHref(menuJson.getString("href"));//连接地址
+		menu.setDescription(menuJson.getString("description"));//栏目简介
+		menu.setIsShow(menuJson.getInteger("isShow"));//是否显示
+		
+		int laver = menuJson.getInteger("laver");//栏目的级别
+		//根据栏目的级别,设置栏目的父级id
+		if(laver==1){
+			menu.setParentId(Menu.FIRST_MENU);
+		}else if(laver==2){
+			menu.setParentId(menuJson.getString("parentId"));
+		}
+		
+		int addMenuOk = menuService.add(menu);
+		
+		//如果添加栏目正常,则返回新刷新的列表
+		if(addMenuOk==1){
+			try {
+				resp.sendRedirect(ContextParameter.getContextPath()+"menu/list?b");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//如果添加不成功,则返回错误信息
+		return BackMsg.error("add menu error");
 	}
 	
 	/**

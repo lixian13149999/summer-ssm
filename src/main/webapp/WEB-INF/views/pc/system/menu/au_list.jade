@@ -3,7 +3,7 @@ each menu,index in menus
 	.menu-box
 		dl.menu
 			dt.menu-title
-				i.menu-icon.icon.icon-tool
+				i.menu-icon.icon(class="#{menu.icon}")
 				a.title-cont(href="javascript:void(0)") #{menu.name}
 				span.menu-tools-cont
 					span(data-para-place='#{menu.place}' data-para-parent-id='#{menu.parentId}' data-para-name='#{menu.name}' data-para-description='#{menu.description}' data-para-href='#{menu.href}' data-para-target='#{menu.target}' data-para-icon='#{menu.icon}' data-para-sort='#{menu.sort}' data-para-permission='#{menu.permission}' data-para-is-show='#{menu.isShow}' data-para-id='#{menu.id}' data-para-del-flag='#{menu.delFlag}' data-para-remark='#{menu.remark}' data-para-page='#{menu.page}' data-para-creatby='#{menu.creatBy}' data-para-createtime='#{menu.createTime}' data-para-updateby='#{menu.updateBy}' data-para-update-time='#{menu.updateTime}')

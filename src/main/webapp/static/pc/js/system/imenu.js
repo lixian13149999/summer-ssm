@@ -116,6 +116,7 @@ imenu.openMenuModal = function(){
             labelRank = 1;
             sort = $('#menu-cont .menu-box').size()+1;
 
+            $("#foreground_or_back").val(2);
             $("#menu_will_todo").val(addOrEdit);
             $("#menu_laver").val(labelRank);
             $("#menu_sort").val(sort);
@@ -126,20 +127,26 @@ imenu.openMenuModal = function(){
             labelRank = 2;
             sort = $('.menu-item',$(this).parents('.menu-box')).size()+1;
             
+            $("#foreground_or_back").val(2);
             $("#menu_will_todo").val(addOrEdit);
             $("#menu_laver").val(labelRank);
             $("#menu_sort").val(sort);
+
+            var menuParentId = $(this).siblings("span").data("para-id");
+            $("#menu_parent_id").val(menuParentId)
             
             $('#addMenuModal').modal('toggle'); 
         }else if($(this).hasClass('first-edit')){
-            id = imenu.getTarget(this).data('para-id');
-            addOrEdit = 2;
-            labelRank = 1;
-            sort = imenu.getTarget(this).data('para-sort');
+            var menuEle = $(this).siblings("span");
+            var id = $(menuEle).data('para-id');
+            var parentId = $(menuEle).data('para-parent-id');
+            var sort = $(menuEle).data('para-sort');
             
+            $("#foreground_or_back").val(2)
             $("#menu_id").val(id);
-            $("#menu_will_todo").val(addOrEdit);
-            $("#menu_laver").val(labelRank);
+            $("#menu_will_todo").val(2);
+            $("#menu_laver").val(1);
+            $("#menu_parent_id").val(parentId);
             $("#menu_sort").val(sort);
             
             $('#addMenuModal').modal('toggle'); 
@@ -156,7 +163,7 @@ imenu.openMenuModal = function(){
             $("#menu_parent_id").val(pId)
             $("#menu_sort").val(sort);
             
-            $('#addMenuModal').modal('toggle'); 
+            $('#addMenuModal').modal('toggle');
         }
 
 
@@ -165,44 +172,45 @@ imenu.openMenuModal = function(){
 }
 
 imenu.addOrEditMenu = function () {
-	console.log("进入提交方法");
+	// console.log("进入提交方法");
 
-	var a = iutil.parseValue({
+    //1. 获取并封装模态框中输入框的内容
+	var menu = iutil.parseValue({
+        id:"#foreground_or_back",
+        name:"foregroundOrBack"
+    },{
 		id:"#menu_id",
 		name:"id"
 	},{
-		id:"#menu_will_todo",
-		name:"willTodo"
+        id:"#menu_laver",
+        name:"laver"
+    },{
+        id:"#menu_parent_id",
+        name:"parentId"
+    },{
+        id:"#menu_sort",
+        name:"sort"
+    },{
+        id:"#menu_name",
+        name:"name"
+    },{
+        id:"#menu_icon",
+        name:"icon"
+    },{
+        id:"#menu_permission",
+        name:"permission"
+    },{
+        id:"#menu_href",
+        name:"href"
+    },{
+		id:"#menu_description",
+		name:"description"
 	});
-	console.log(a);
+	
+    var isShow = $("input[name='isShow']:checked").val();
+    menu.isShow = isShow;
 
-	//1. 获取并封装模态框中输入框的内容
-	var id = $("#menu_id").val();
-	var willTodo = $("#menu_will_todo").val();
-	var laver = $("#menu_laver").val();
-	var parentId = $("#menu_parent_id").val();
-	var sort = $("#menu_sort").val();
-
-	var name = $("#menu_name").val();
-	var icon = $("#menu_icon").val();
-	var permission = $("#menu_permission").val();
-	var href = $("#menu_href").val();
-	var description = $("#menu_description").val();
-
-	var menu = new Object();
-	menu.id = id;
-	menu.willTodo = willTodo;
-	menu.laver = laver;
-	menu.parentId = parentId;
-	menu.sort = sort;
-
-	menu.name = name;
-	menu.icon = icon;
-	menu.permission = permission;
-	menu.href = href;
-	menu.description = description;
-
-	console.log(willTodo);
+    var willTodo = $("#menu_will_todo").val();
 	var url;
 	if(willTodo==="1"){
 		url="menu/add";
@@ -219,12 +227,16 @@ imenu.addOrEditMenu = function () {
 			menu:JSON.stringify(menu)
 		},
 		success: function(data) {
-			console.log(data);
-			// $("#column_list").html(data);
-			// console.log(data);
+			cb(data);
 		},
 		err: function(jqXHR, textStatus, errorThrown) {
 			console.log('error ' + textStatus + " " + errorThrown);
 		}
-	})	
+	});
+    function cb (data) {
+        if(iutil.isSuccess(data)){
+            $("#menu-cont").html(data.data);
+        }
+        $('#addMenuModal').modal('toggle');
+    }
 }
