@@ -112,24 +112,20 @@ imenu.openMenuModal = function(){
 
         //一级栏目的添加
         if($(this).hasClass('first-add')){
-            addOrEdit = 1;
-            labelRank = 1;
             sort = $('#menu-cont .menu-box').size()+1;
 
             $("#foreground_or_back").val(2);
-            $("#menu_will_todo").val(addOrEdit);
-            $("#menu_laver").val(labelRank);
+            $("#menu_will_todo").val(1);
+            $("#menu_laver").val(1);
             $("#menu_sort").val(sort);
 
             $('#addMenuModal').modal('toggle'); 
         }else if($(this).hasClass('second-add')){
-            addOrEdit = 1;
-            labelRank = 2;
             sort = $('.menu-item',$(this).parents('.menu-box')).size()+1;
             
             $("#foreground_or_back").val(2);
-            $("#menu_will_todo").val(addOrEdit);
-            $("#menu_laver").val(labelRank);
+            $("#menu_will_todo").val(1);
+            $("#menu_laver").val(2);
             $("#menu_sort").val(sort);
 
             var menuParentId = $(this).siblings("span").data("para-id");
@@ -138,9 +134,18 @@ imenu.openMenuModal = function(){
             $('#addMenuModal').modal('toggle'); 
         }else if($(this).hasClass('first-edit')){
             var menuEle = $(this).siblings("span");
+
             var id = $(menuEle).data('para-id');
             var parentId = $(menuEle).data('para-parent-id');
             var sort = $(menuEle).data('para-sort');
+
+            var menuName = $(menuEle).data('para-name');
+            var menuIcon = $(menuEle).data('para-icon');
+            var menuPermission = $(menuEle).data('para-permission');
+            var menuHref = $(menuEle).data('para-href');
+            var menuDscription = $(menuEle).data('para-description');
+
+            var isShow = $(menuEle).data('para-is-show');
             
             $("#foreground_or_back").val(2)
             $("#menu_id").val(id);
@@ -148,26 +153,56 @@ imenu.openMenuModal = function(){
             $("#menu_laver").val(1);
             $("#menu_parent_id").val(parentId);
             $("#menu_sort").val(sort);
-            
+
+            $("#menu_name").val(menuName);
+            $("#menu_icon").val(menuIcon);
+            $("#menu_permission").val(menuPermission);
+            $("#menu_href").val(menuHref);
+            $("#menu_description").val(menuDscription);
+
+            $("input[name='isShow']").each(function (index,ele){
+                if(isShow == $(ele).val()){
+                    $(ele).click();
+                }
+            });
+
             $('#addMenuModal').modal('toggle'); 
         }else if($(this).hasClass('second-edit')){
-            id = imenu.getTarget(this).data('para-id');
-            addOrEdit = 2;
-            labelRank = 2;            
-            pId = imenu.getTarget(this).data('para-parent-id');
-            sort = imenu.getTarget(this).data('para-sort');
+            var menuEle = $(this).siblings("span");
+
+            var id = $(menuEle).data('para-id');
+            var parentId = $(menuEle).data('para-parent-id');
+            var sort = $(menuEle).data('para-sort');
+
+            var menuName = $(menuEle).data('para-name');
+            var menuIcon = $(menuEle).data('para-icon');
+            var menuPermission = $(menuEle).data('para-permission');
+            var menuHref = $(menuEle).data('para-href');
+            var menuDscription = $(menuEle).data('para-description');
+
+            var isShow = $(menuEle).data('para-is-show');
             
+            $("#foreground_or_back").val(2)
             $("#menu_id").val(id);
-            $("#menu_will_todo").val(addOrEdit);
-            $("#menu_laver").val(labelRank);
-            $("#menu_parent_id").val(pId)
+            $("#menu_will_todo").val(2);
+            $("#menu_laver").val(2);
+            $("#menu_parent_id").val(parentId);
             $("#menu_sort").val(sort);
+
+            $("#menu_name").val(menuName);
+            $("#menu_icon").val(menuIcon);
+            $("#menu_permission").val(menuPermission);
+            $("#menu_href").val(menuHref);
+            $("#menu_description").val(menuDscription);
+
+            $("input[name='isShow']").each(function (index,ele){
+                if(isShow == $(ele).val()){
+                    $(ele).click();
+                }
+            });
             
             $('#addMenuModal').modal('toggle');
         }
-
-
-         
     })
 }
 

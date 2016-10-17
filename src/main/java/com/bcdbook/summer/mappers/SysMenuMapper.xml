@@ -158,10 +158,10 @@
 		    	description = #{description},
 		    </if>
 		    <if test="href != null and !&quot;&quot;.equals(href.trim())">
-		    	and href = #{href}
+		    	href = #{href},
 		    </if>
 		    <if test="target != null and !&quot;&quot;.equals(target.trim())">
-		    	and target = #{target}
+		    	target = #{target},
 		    </if>
 		    <if test="icon != null and !&quot;&quot;.equals(icon.trim())">
 		    	icon = #{icon},

@@ -217,15 +217,8 @@ public class MenuController {
 			return BackMsg.error("menuJson is null");
 		
 		Menu menu = new Menu();
-		menu.setPlace(menuJson.getInteger("foregroundOrBack"));//前台还是后天
-		menu.setSort(menuJson.getInteger("sort"));//栏目顺序
-		
-		menu.setName(menuJson.getString("name"));//栏目名称
-		menu.setIcon(menuJson.getString("icon"));//栏目图标
-		menu.setPermission(menuJson.getString("permission"));//栏目的权限标识
-		menu.setHref(menuJson.getString("href"));//连接地址
-		menu.setDescription(menuJson.getString("description"));//栏目简介
-		menu.setIsShow(menuJson.getInteger("isShow"));//是否显示
+		int place = menuJson.getInteger("foregroundOrBack");
+		menu.setPlace(place);//前台还是后台
 		
 		int laver = menuJson.getInteger("laver");//栏目的级别
 		//根据栏目的级别,设置栏目的父级id
@@ -235,12 +228,28 @@ public class MenuController {
 			menu.setParentId(menuJson.getString("parentId"));
 		}
 		
+		menu.setSort(menuJson.getInteger("sort"));//栏目顺序
+		
+		menu.setName(menuJson.getString("name"));//栏目名称
+		menu.setIcon(menuJson.getString("icon"));//栏目图标
+		menu.setPermission(menuJson.getString("permission"));//栏目的权限标识
+		menu.setHref(menuJson.getString("href"));//连接地址
+		menu.setDescription(menuJson.getString("description"));//栏目简介
+		menu.setIsShow(menuJson.getInteger("isShow"));//是否显示
+		
 		int addMenuOk = menuService.add(menu);
+
+		String redirectUrl = null;
+		if(place==Menu.PLACE_FOREGROUND){
+			redirectUrl = "menu/list?f";
+		}else if(place==Menu.PLACE_BACKER){
+			redirectUrl = "menu/list?b";
+		}
 		
 		//如果添加栏目正常,则返回新刷新的列表
 		if(addMenuOk==1){
 			try {
-				resp.sendRedirect(ContextParameter.getContextPath()+"menu/list?b");
+				resp.sendRedirect(ContextParameter.getContextPath()+redirectUrl);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -263,19 +272,60 @@ public class MenuController {
 	 */
 	@RequestMapping(value="/update",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String update(HttpServletRequest req,HttpServletResponse resp,Menu menu){
+	public String update(HttpServletRequest req,HttpServletResponse resp){
+		//获取表单中封装的数据
+		String menuStr = req.getParameter("menu");
 		//验证参数的合法性
-		if(menu==null)
-			return BackMsg.error("menu is null");
+		if(StringUtils.isNull(menuStr))
+			return BackMsg.error("request value is null");
 		
-		//执行栏目的更新方法
+		//把获取到的数据转成json
+		JSONObject menuJson = JSON.parseObject(menuStr);
+		if(menuJson==null)
+			return BackMsg.error("menuJson is null");
+		
+		Menu menu = new Menu();
+		int place = menuJson.getInteger("foregroundOrBack");
+		menu.setPlace(place);//前台还是后台
+		menu.setId(menuJson.getString("id"));//设置栏目的id
+		
+		int laver = menuJson.getInteger("laver");//栏目的级别
+		//根据栏目的级别,设置栏目的父级id
+		if(laver==1){
+			menu.setParentId(Menu.FIRST_MENU);
+		}else if(laver==2){
+			menu.setParentId(menuJson.getString("parentId"));
+		}
+		
+		menu.setSort(menuJson.getInteger("sort"));//栏目顺序
+		
+		menu.setName(menuJson.getString("name"));//栏目名称
+		menu.setIcon(menuJson.getString("icon"));//栏目图标
+		menu.setPermission(menuJson.getString("permission"));//栏目的权限标识
+		menu.setHref(menuJson.getString("href"));//连接地址
+		menu.setDescription(menuJson.getString("description"));//栏目简介
+		menu.setIsShow(menuJson.getInteger("isShow"));//是否显示
+		
 		int updateOk = menuService.update(menu);
 		
-		//如果执行更新操作出错,则返回错误信息
-		if(updateOk!=1)
-			return BackMsg.error("update menu error");
+		String redirectUrl = null;
+		if(place==Menu.PLACE_FOREGROUND){
+			redirectUrl = "menu/list?f";
+		}else if(place==Menu.PLACE_BACKER){
+			redirectUrl = "menu/list?b";
+		}
 		
-		return BackMsg.success(menu, "update menu success");
+		//如果添加栏目正常,则返回新刷新的列表
+		if(updateOk==1){
+			try {
+				resp.sendRedirect(ContextParameter.getContextPath()+redirectUrl);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//如果添加不成功,则返回错误信息
+		return BackMsg.error("add menu error");
 	}
 	
 	/**
