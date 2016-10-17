@@ -181,7 +181,7 @@ public class MenuController {
 			//创建一个新的栏目对象,用于修改排序,过滤掉其他无用的信息
 			Menu auMenu = new Menu();
 			auMenu.setId(menu.getId());//设置id
-			auMenu.setSort(auMenu.getSort());//设置顺序
+			auMenu.setSort(menu.getSort());//设置顺序
 			
 			//执行更新操作
 			menuService.update(auMenu);

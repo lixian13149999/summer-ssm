@@ -26,3 +26,25 @@ iutil.parseValue = function () {
 		return data;
 	}
 }
+
+iutil.parseData = function () {
+	var ele;
+
+	var data = new Object();
+	if(v.isNull(arguments)||arguments.length<1){
+		return undefined;
+	}else{
+		for (var i = 0; i < arguments.length; i++) {
+			if (i == 0) {
+				ele = arguments[i];
+			}else{
+				var item = arguments[i];
+
+				// var iname = item.objName;
+				// var ivalue = $(ele).data(item.dataName);
+				data[item.objName] = $(ele).data(item.dataName);
+			}
+		};
+		return data;
+	}
+}

@@ -211,42 +211,46 @@ imenu.addOrEditMenu = function () {
 	// console.log("进入提交方法");
 
     //1. 获取并封装模态框中输入框的内容
-	var menu = iutil.parseValue({
-        id:"#foreground_or_back",
-        name:"foregroundOrBack"
-    },{
-		id:"#menu_id",
-		name:"id"
-	},{
-        id:"#menu_laver",
-        name:"laver"
-    },{
-        id:"#menu_parent_id",
-        name:"parentId"
-    },{
-        id:"#menu_sort",
-        name:"sort"
-    },{
-        id:"#menu_name",
-        name:"name"
-    },{
-        id:"#menu_icon",
-        name:"icon"
-    },{
-        id:"#menu_permission",
-        name:"permission"
-    },{
-        id:"#menu_href",
-        name:"href"
-    },{
-		id:"#menu_description",
-		name:"description"
-	});
-	
-    var isShow = $("input[name='isShow']:checked").val();
-    menu.isShow = isShow;
+	// var menu = iutil.parseValue({
+ //        id:"#foreground_or_back",
+ //        name:"foregroundOrBack"
+ //    },{
+	// 	id:"#menu_id",
+	// 	name:"id"
+	// },{
+ //        id:"#menu_laver",
+ //        name:"laver"
+ //    },{
+ //        id:"#menu_parent_id",
+ //        name:"parentId"
+ //    },{
+ //        id:"#menu_sort",
+ //        name:"sort"
+ //    },{
+ //        id:"#menu_name",
+ //        name:"name"
+ //    },{
+ //        id:"#menu_icon",
+ //        name:"icon"
+ //    },{
+ //        id:"#menu_permission",
+ //        name:"permission"
+ //    },{
+ //        id:"#menu_href",
+ //        name:"href"
+ //    },{
+	// 	id:"#menu_description",
+	// 	name:"description"
+	// });
 
-    var willTodo = $("#menu_will_todo").val();
+    var menu = iform.parse("menu_modal_form");
+    // console.log(menu);
+	
+    // var isShow = $("input[name='isShow']:checked").val();
+    // menu.isShow = isShow;
+
+    var willTodo = menu.willTodo;
+    // console.log(willTodo);
 	var url;
 	if(willTodo==="1"){
 		url="menu/add";
