@@ -79,10 +79,11 @@ $(document).ready(function() {
  * 用于模态框的初始化
  */
 imenu.clearMenuModal = function () {
-	$('#addMenuModal .form-control').val('');
-    $('#addMenuModal .error-msg-label').html('');
+    $('#addMenuModal .page-form').removeClass('has-error');//添加模态框错误样式（红色边框）清除
+	$('#addMenuModal .form-control').val('');//添加模态框的输入框内容清空
+    $('#addMenuModal .error-msg-label').html('');//添加模态框错误提示内容清空
     $('.input-radio :radio').removeAttr('checked');
-    $('.input-radio input:eq(0)').prop('checked',true);
+    $('.input-radio input:eq(0)').prop('checked',true);//添加模态框初始化显示为是
 }
 
 /**

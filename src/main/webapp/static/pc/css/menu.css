@@ -344,3 +344,15 @@ body {
   line-height: 35px;
   font-size: 14px;
 }
+#deleteMenuModal {
+  margin-top: 200px;
+}
+#deleteMenuModal .modal-container {
+  width: 350px;
+}
+#deleteMenuModal .modal-container .delete-modal-content {
+  height: 80px;
+  padding-top: 40px;
+  font-size: 1.1em;
+  text-align: center;
+}

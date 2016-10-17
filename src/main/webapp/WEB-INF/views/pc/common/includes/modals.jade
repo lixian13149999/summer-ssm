@@ -1,7 +1,12 @@
 //- 此jade文件中集合了项目中所有的模态框
-
-
-
+//- 栏目的删除模态框开始
+#deleteMenuModal.modal.fade.bs-example-modal-sm(aria-hidden="true")
+	.modal-dialog.modal-sm
+		.modal-content.modal-container
+			.delete-modal-content 确定要删除此栏目吗？
+			.button-box
+				button.button.button-primary.modal-button 提交
+				button.button.modal-button(data-dismiss="modal") 关闭
 
 //- 栏目的添加/编辑模态框开始
 
@@ -65,4 +70,3 @@
 			.button-box
 				button.button.button-primary.modal-button 提交
 				button.button.modal-button(data-dismiss="modal") 关闭
-
