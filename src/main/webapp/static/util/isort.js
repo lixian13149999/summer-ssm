@@ -164,6 +164,8 @@ isort.movePower = function(){
 }
 
 
+
+
 $(function(){
 	//监听一级栏目移动的方法
 	isort.moveFirstMenu();

@@ -53,6 +53,7 @@ public class Global {
 	public static final Boolean FALSE = false;
 	
 	public static final String ONLINE_USER = "onlineUser";
+	public static final String USER_MENUS = "userMenu";
 	
 	/**
 	 * 上传文件基础虚拟路径

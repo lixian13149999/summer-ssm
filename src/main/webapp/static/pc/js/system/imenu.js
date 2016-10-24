@@ -13,6 +13,9 @@ $(function(){
     //栏目添加按钮模态框
     imenu.openMenuModal();
 
+    //删除栏目的监听器
+    imenu.deleteMenuListener();
+
     // 加入栏目添加/编辑的模态框表单校验
     vd.init("menu_modal_form", 1, 1);
 });
@@ -89,9 +92,9 @@ imenu.clearMenuModal = function () {
 /**
  * 用于获取目标span元素，得到自动填充的信息
  */
-imenu.getTarget = function(ele){
-    return $(ele).parents('.menu-tools-cont').children('span');
-}
+// imenu.getTarget = function(ele){
+//     return $(ele).parents('.menu-tools-cont').children('span');
+// }
 
 /**
  * 用于开启栏目管理的模态框
@@ -211,43 +214,11 @@ imenu.addOrEditMenu = function () {
 	// console.log("进入提交方法");
 
     //1. 获取并封装模态框中输入框的内容
-	// var menu = iutil.parseValue({
- //        id:"#foreground_or_back",
- //        name:"foregroundOrBack"
- //    },{
-	// 	id:"#menu_id",
-	// 	name:"id"
-	// },{
- //        id:"#menu_laver",
- //        name:"laver"
- //    },{
- //        id:"#menu_parent_id",
- //        name:"parentId"
- //    },{
- //        id:"#menu_sort",
- //        name:"sort"
- //    },{
- //        id:"#menu_name",
- //        name:"name"
- //    },{
- //        id:"#menu_icon",
- //        name:"icon"
- //    },{
- //        id:"#menu_permission",
- //        name:"permission"
- //    },{
- //        id:"#menu_href",
- //        name:"href"
- //    },{
-	// 	id:"#menu_description",
-	// 	name:"description"
-	// });
-
     var menu = iform.parse("menu_modal_form");
     // console.log(menu);
 	
-    // var isShow = $("input[name='isShow']:checked").val();
-    // menu.isShow = isShow;
+    var isShow = $("input[name='isShow']:checked").val();
+    menu.isShow = isShow;
 
     var willTodo = menu.willTodo;
     // console.log(willTodo);
@@ -280,3 +251,59 @@ imenu.addOrEditMenu = function () {
         $('#addMenuModal').modal('toggle');
     }
 }
+
+// (data-toggle="modal" data-target="#deleteModal" data-backdrop="false" data-keyboard="false")
+imenu.deleteMenuListener = function () {
+    $(document).on('click','[data-tools-icon="delete-menu"]',function () {
+        var menuLaver = $(this).data("menu-laver");
+        if(menuLaver==="first"){
+            var childrens = $(this).parents("dl.menu").eq(0).find("dd.menu-item");
+            if(childrens.length>0){
+                imessenger.error("此一级栏目下有二级栏目,请先删除二级栏目");
+            }else{
+                var menuId = $(this).siblings("span").data("para-id");
+                ibootbox.confirm({
+                    text:"确认删除此栏目?",
+                    fun:"imenu.deleteMenu('"+menuId+"')"
+                });
+            }
+        }else if(menuLaver==="second"){
+            var menuId = $(this).siblings("span").data("para-id");
+            ibootbox.confirm({
+                text:"确认删除此栏目?",
+                fun:"imenu.deleteMenu('"+menuId+"')"
+            });
+        }else{
+            imessenger.error("系统错误");
+        }
+    })
+}
+
+imenu.deleteMenu = function (menuId) {
+    $.ajax({
+        url: "menu/delete",
+        type: 'POST',
+        data: {
+            menuId:menuId
+        },
+        success: function(data) {
+            cb(data);
+        },
+        err: function(jqXHR, textStatus, errorThrown) {
+            console.log('error ' + textStatus + " " + errorThrown);
+        }
+    });
+    function cb (data) {
+        if(iutil.isSuccess(data)){
+            $("#menu-cont").html(data.data);
+        }else{
+            imessenger.error("系统错误");
+        }
+    }
+}
+
+
+
+
+
+

@@ -11,7 +11,7 @@ each menu,index in menus
 						i.icon.icon-add.hover-primary
 					a.menu-tools-box.first-edit(href="javascript:void(0)")
 						i.icon.icon-edit.hover-warning
-					a.menu-tools-box(href="javascript:void(0)" data-toggle="modal" data-target="#deleteMenuModal")
+					a.menu-tools-box(data-tools-icon="delete-menu" data-menu-laver="first" href="javascript:void(0)")
 						i.icon.icon-delete.hover-danger
 					a.menu-tools-box.handle.hide(href="javascript:void(0)")
 						i.icon.icon-grip.hover-warning.menu-move-handle
@@ -23,7 +23,8 @@ each menu,index in menus
 							span(data-para-place='#{item.place}' data-para-parent-id='#{item.parentId}' data-para-name='#{item.name}' data-para-description='#{item.description}' data-para-href='#{item.href}' data-para-target='#{item.target}' data-para-icon='#{item.icon}' data-para-sort='#{item.sort}' data-para-permission='#{item.permission}' data-para-is-show='#{item.isShow}' data-para-id='#{item.id}' data-para-del-flag='#{item.delFlag}' data-para-remark='#{item.remark}' data-para-page='#{item.page}' data-para-creatby='#{item.creatBy}' data-para-createtime='#{item.createTime}' data-para-updateby='#{item.updateBy}' data-para-update-time='#{item.updateTime}')
 							a.menu-tools-box.second-edit(href="javascript:void(0)")
 								i.icon.icon-edit.hover-warning
-							a.menu-tools-box(href="javascript:void(0)" data-toggle="modal" data-target="#deleteMenuModal")
+							a.menu-tools-box(data-tools-icon="delete-menu" data-menu-laver="second" href="javascript:void(0)")
 								i.icon.icon-delete.hover-danger
 							a.menu-tools-box.handle.hide(href="javascript:void(0)")
 								i.icon.icon-grip.hover-warning.item-move-handle
+

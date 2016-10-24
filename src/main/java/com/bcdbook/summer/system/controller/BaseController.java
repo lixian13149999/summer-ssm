@@ -1,11 +1,14 @@
 package com.bcdbook.summer.system.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.event.MenuListener;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,7 @@ import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.SessionUtil;
+import com.bcdbook.summer.system.pojo.Menu;
 import com.bcdbook.summer.system.pojo.User;
 import com.bcdbook.summer.system.service.MenuService;
 import com.bcdbook.summer.system.service.UserService;
@@ -42,10 +46,10 @@ public class BaseController {
 	public ModelAndView index(HttpServletRequest req,HttpServletResponse resp,Model model){
 //		Menu menu = new Menu();
 //		menu.setParentId("first");
-//		List<Menu> userMenus = menuService.findList(menu);
+		List<Menu> userMenus = (List<Menu>) req.getSession().getAttribute(Global.USER_MENUS);
 		
 		ModelAndView mv = JadeUtil.getView("pc/index.jade");
-//		mv.addObject("onlineMenus", userMenus);
+		mv.addObject("userMenus", userMenus);
 		
 		return mv;
 	}
@@ -99,7 +103,9 @@ public class BaseController {
 		if(!SessionUtil.refresh(req, Global.ONLINE_USER, onlineUser))
 			return BackMsg.error("signin error");
 		
-		HttpSession session = req.getSession();
+		List<Menu> menuList = menuService.listBackMenus();
+		SessionUtil.refresh(req, Global.USER_MENUS, menuList);
+//		HttpSession session = req.getSession();
 //		List<User> userList = userService.findList(user);
 //		if(userList.size()!=1)
 //			return BackMsg.error("user not exist or too more");

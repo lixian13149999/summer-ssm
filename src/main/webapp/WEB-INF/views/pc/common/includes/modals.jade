@@ -1,12 +1,12 @@
 //- 此jade文件中集合了项目中所有的模态框
 //- 栏目的删除模态框开始
-#deleteMenuModal.modal.fade.bs-example-modal-sm(aria-hidden="true")
+#deleteModal.page-delete-modal.modal.fade.bs-example-modal-sm
 	.modal-dialog.modal-sm
 		.modal-content.modal-container
-			.delete-modal-content 确定要删除此栏目吗？
+			#page-delete-modal-text.delete-modal-content 确定要删除此栏目吗？
 			.button-box
-				button.button.button-primary.modal-button 提交
-				button.button.modal-button(data-dismiss="modal") 关闭
+				button.button.button-primary.modal-button(data-page-confirm="true") 确定
+				button.button.modal-button(data-page-confirm="false") 取消
 
 //- 栏目的添加/编辑模态框开始
 
@@ -14,27 +14,27 @@
 	.modal-dialog.modal-sm
 		form#menu_modal_form.modal-content.modal-container(action="javascript:imenu.addOrEditMenu()")
 			.modal-title 栏目添加/编辑
-			.menu-modal-input.page-form
+			.menu-modal-input.page-form.hide
 				label.input-tips(for="foreground_or_back") 前台/后台
 				input#foreground_or_back.form-control(type="text" value='2' name="foregroundOrBack" readonly)
 				label.error-msg-label(for="foreground_or_back")
-			.menu-modal-input.page-form
+			.menu-modal-input.page-form.hide
 				label.input-tips(for="menu_id") 栏目ID
 				input#menu_id.form-control(type="text" name="id" readonly)
 				label.error-msg-label(for="menu_id")
-			.menu-modal-input.page-form
+			.menu-modal-input.page-form.hide
 				label.input-tips(for="menu_will_todo") 执行的操作
 				input#menu_will_todo.form-control(type="text" name="willTodo" readonly)
 				label.error-msg-label(for="menu_will_todo")
-			.menu-modal-input.page-form
+			.menu-modal-input.page-form.hide
 				label.input-tips(for="menu_laver") 栏目级别
 				input#menu_laver.form-control(type="text" name="laver" readonly)
 				label.error-msg-label(for="menu_laver")
-			.menu-modal-input.page-form
+			.menu-modal-input.page-form.hide
 				label.input-tips(for="menu_parent_id") 父级ID
 				input#menu_parent_id.form-control(type="text" name="parentId" readonly)
 				label.error-msg-label(for="menu_parent_id")
-			.menu-modal-input.page-form
+			.menu-modal-input.page-form.hide
 				label.input-tips(for="menu_sort") 栏目顺序
 				input#menu_sort.form-control(type="text" name="sort" readonly)
 				label.error-msg-label(for="menu_sort")
@@ -56,12 +56,12 @@
 				label.error-msg-label(for="menu_href")
 			.menu-modal-input.page-form.input-textarea
 				label.input-tips(for="menu_description") 栏目简介
-				textarea#menu_description.form-control(type="text" name="dscription")
+				textarea#menu_description.form-control(type="text" name="description")
 				label.error-msg-label(for="menu_description")
 			.menu-modal-input.page-form.input-radio
 				label.input-tips 是否显示
 				label(for="show")
-					input(name="isShow" type="radio" value="1" checked)
+					input(name="isShow" type="radio" value="1")
 					| 是
 				label(for="hide")
 					input(name="isShow" type="radio" value="2")

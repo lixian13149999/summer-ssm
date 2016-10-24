@@ -237,6 +237,8 @@ public class MenuController {
 		menu.setDescription(menuJson.getString("description"));//栏目简介
 		menu.setIsShow(menuJson.getInteger("isShow"));//是否显示
 		
+		System.out.println(menu);
+		
 		int addMenuOk = menuService.add(menu);
 
 		String redirectUrl = null;
@@ -306,6 +308,8 @@ public class MenuController {
 		menu.setDescription(menuJson.getString("description"));//栏目简介
 		menu.setIsShow(menuJson.getInteger("isShow"));//是否显示
 		
+		System.out.println(menu);
+		
 		int updateOk = menuService.update(menu);
 		
 		String redirectUrl = null;
@@ -351,6 +355,11 @@ public class MenuController {
 		if(deleteOk!=1)
 			return BackMsg.error("delete menu error");
 		
+		try {
+			resp.sendRedirect(ContextParameter.getContextPath()+"menu/list?b");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return BackMsg.success("delete menu success");
 	}
 }
