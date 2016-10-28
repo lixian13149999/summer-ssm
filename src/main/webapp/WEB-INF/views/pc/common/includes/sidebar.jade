@@ -7,19 +7,4 @@
                     a.title-cont(href="javascript:void(0)") #{menu.name}
                     each item,index2 in menu.childs
                         dd.menu-item(data-page-click="menu-item")
-                            a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") #{item.name}
-
-//- .sidebar-cont(data-cont="menu-cont")
-//-     .menu-box
-//-         dl.menu
-//-             dt.menu-title
-//-                 i.menu-icon.icon.icon-tool
-//-                 a.title-cont(href="javascript:void(0)") 用户管理
-//-             dd.menu-item.activ(data-page-click="menu-item")
-//-                 a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:imain.testAddMenuList()") 栏目管理
-//-             dd.menu-item(data-page-click="menu-item")
-//-                 a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") 用户列表
-//-             dd.menu-item(data-page-click="menu-item")
-//-                 a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") 用户列表
-//-             dd.menu-item(data-page-click="menu-item")
-//-                 a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") 用户列表
+                            a.item-cont(data-menu-side="item" data-menu="item" data-body-mapping="#{item.href}" href="javascript:void(0)") #{item.name}
