@@ -80,7 +80,7 @@ public class MailUtil {
             // 设置邮件抄送者地址  
             List<String> toCCs = mailSenderInfo.getToCarbonCopyAddress();  
             if(toCCs != null && toCCs.size() > 0){  
-                InternetAddress[] toCC = new InternetAddress[toCCs.size()];  
+                InternetAddress[] toCC = new InternetAddress[toCCs.size()];
                 // 设置邮件消息的发送者  
                 for (int i = 0; i < toCCs.size(); i++) {  
                     toCC[i] = new InternetAddress(toCCs.get(i));  

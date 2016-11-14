@@ -28,6 +28,28 @@ imain.changePageTitleStyle = function(){
 imain.openPage = function () {
     $(document).on('click','[data-menu-side="item"]',function () {
         var href = $(this).data("body-mapping");
+
+        $.ajax({
+            url: ctx + href,
+            type: 'GET',
+            dataType: "json",
+            data: {},
+            async: false,
+            success: function(data) {
+                if(iutil.isSuccess(data)){
+                    cb(data);
+                }
+                
+            },
+            error: function() {
+                console.log('pathExcel error2')
+            }
+        });
+
+        function cb (backData) {
+            $("#product_main_body").html(backData.data);
+        }
+
         console.log(href);
         console.log("打开页面");
     })
