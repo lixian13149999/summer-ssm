@@ -33,7 +33,7 @@ public class MenuController {
 	private MenuService menuService;
 	
 	/**
-	 * @Description: 获取前台栏目的集合
+	 * @Description: 获取前台栏目的集合(只有栏目部分的数据)
 	 * @param @param req
 	 * @param @param resp
 	 * @param @return   
@@ -45,28 +45,11 @@ public class MenuController {
 	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
 	@ResponseBody
 	public String listForeground(HttpServletRequest req,HttpServletResponse resp){
-		//创建栏目对象,用于封装查询条件
-		Menu menu = new Menu();
-		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
-		menu.setPlace(Menu.PLACE_FOREGROUND);//设置前后台区分为前台
-		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
-		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
-		//验证返回值的合法性
-		if(menus==null)
-			return BackMsg.error("get backer menu error");
-
-		//创建值域对象,设置要返回到页面的值
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("menus", menus);
-		//生成要返回的代码块
-		String html = JadeUtil.getBodyView("pc/system/menu/au_list.jade", model);
-		
-		//返回相应的值到前台
-		return BackMsg.success(html, "get backer menu success");
+		return menuService.listMenus(Menu.PLACE_FOREGROUND,"pc/system/menu/au_list.jade");
 	}
 
 	/**
-	 * @Description: 获取后台栏目的集合
+	 * @Description: 获取后台栏目的集合(只有栏目部分的数据)
 	 * @param @param req
 	 * @param @param resp
 	 * @param @return   
@@ -78,29 +61,12 @@ public class MenuController {
 	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
 	@ResponseBody
 	public String listBack(HttpServletRequest req,HttpServletResponse resp){
-		//创建栏目对象,用于封装查询条件
-		Menu menu = new Menu();
-		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
-		menu.setPlace(Menu.PLACE_BACKER);//设置前后台区分为后台
-		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
-		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
-		//验证返回值的合法性
-		if(menus==null)
-			return BackMsg.error("get backer menu error");
-
-		//创建值域对象,设置要返回到页面的值
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("menus", menus);
-		//生成要返回的代码块
-		String html = JadeUtil.getBodyView("pc/system/menu/au_list.jade", model);
-		
-		//返回相应的值到前台
-		return BackMsg.success(html, "get backer menu success");
+		return menuService.listMenus(Menu.PLACE_BACKER,"pc/system/menu/au_list.jade");
 	}
 	
 	
 	/**
-	 * @Description: 获取前台栏目
+	 * @Description: 获取前台栏目(栏目整个页面)
 	 * @param @param req
 	 * @param @param resp
 	 * @param @return   
@@ -112,29 +78,30 @@ public class MenuController {
 	@RequestMapping(method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
 	@ResponseBody
 	public String foreground(HttpServletRequest req,HttpServletResponse resp){
-		//创建栏目对象,用于封装查询条件
-		Menu menu = new Menu();
-		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
-		menu.setPlace(Menu.PLACE_FOREGROUND);//设置前后台区分为前台
-		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
-		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
-		//验证返回值的合法性
-		if(menus==null)
-			return BackMsg.error("get backer menu error");
-
-		//创建值域对象,设置要返回到页面的值
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("menus", menus);
-		//生成要返回的代码块
-		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
-		
-		//返回相应的值到前台
-		return BackMsg.success(html, "get backer menu success");
+		return menuService.listMenus(Menu.PLACE_FOREGROUND,"pc/system/menu/list.jade");
+//		//创建栏目对象,用于封装查询条件
+//		Menu menu = new Menu();
+//		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
+//		menu.setPlace(Menu.PLACE_FOREGROUND);//设置前后台区分为前台
+//		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
+//		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
+//		//验证返回值的合法性
+//		if(menus==null)
+//			return BackMsg.error("get backer menu error");
+//
+//		//创建值域对象,设置要返回到页面的值
+//		Map<String, Object> model = new HashMap<String, Object>();
+//		model.put("menus", menus);
+//		//生成要返回的代码块
+//		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
+//		
+//		//返回相应的值到前台
+//		return BackMsg.success(html, "get backer menu success");
 	}
 	
 	//,params="fn=saveUsers"
 	/**
-	    * @Discription 获取后台栏目列表的方法
+	    * @Discription 获取后台栏目列表的方法(栏目整个页面)
 	    * @author lason       
 	    * @created 2016年10月11日 下午8:56:58     
 	    * @param req
@@ -144,27 +111,39 @@ public class MenuController {
 	@RequestMapping(method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
 	@ResponseBody
 	public String back(HttpServletRequest req,HttpServletResponse resp){
-		//创建栏目对象,用于封装查询条件
-		Menu menu = new Menu();
-		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
-		menu.setPlace(Menu.PLACE_BACKER);//设置前后台区分为后台
-		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
-		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
-		//验证返回值的合法性
-		if(menus==null)
-			return BackMsg.error("get backer menu error");
-
-		//创建值域对象,设置要返回到页面的值
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("menus", menus);
-		//生成要返回的代码块
-		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
-		
-		//返回相应的值到前台
-		return BackMsg.success(html, "get backer menu success");
+		return menuService.listMenus(Menu.PLACE_BACKER,"pc/system/menu/list.jade");
+//		//创建栏目对象,用于封装查询条件
+//		Menu menu = new Menu();
+//		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
+//		menu.setPlace(Menu.PLACE_BACKER);//设置前后台区分为后台
+//		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
+//		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
+//		//验证返回值的合法性
+//		if(menus==null)
+//			return BackMsg.error("get backer menu error");
+//
+//		//创建值域对象,设置要返回到页面的值
+//		Map<String, Object> model = new HashMap<String, Object>();
+//		model.put("menus", menus);
+//		//生成要返回的代码块
+//		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
+//		
+//		//返回相应的值到前台
+//		return BackMsg.success(html, "get backer menu success");
 	}
 	
 	
+	/**
+	 * @Description: 栏目排序的方法
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param menus
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年12月9日
+	 */
 //	,produces = "application/json; charset=UTF-8"
 	@RequestMapping(value="/sequence",method={RequestMethod.POST},produces = "application/json; charset=UTF-8")
 	@ResponseBody
