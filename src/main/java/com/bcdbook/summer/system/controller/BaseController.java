@@ -41,11 +41,25 @@ public class BaseController {
 	@Resource
 	private MenuService menuService;
 	
-	
+	/**
+	 * @Description: 登录成功后返回的主页面
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param model
+	 * @param @return   
+	 * @return ModelAndView  
+	 * @throws
+	 * @author lason
+	 * @date 2016年12月9日
+	 */
 	@RequestMapping(method = {RequestMethod.GET}) 
 	public ModelAndView index(HttpServletRequest req,HttpServletResponse resp,Model model){
 //		Menu menu = new Menu();
 //		menu.setParentId("first");
+		/*
+		 * 从session中获取用户的栏目集合,
+		 * 这里的集合是属于当前用户的,并已去除重复
+		 */
 		List<Menu> userMenus = (List<Menu>) req.getSession().getAttribute(Global.USER_MENUS);
 		
 		ModelAndView mv = JadeUtil.getView("pc/index.jade");
@@ -164,6 +178,34 @@ public class BaseController {
 			return BackMsg.error("signup error");
 		
 		return BackMsg.success(JSON.toJSONString(newUser), "signup success");
+	}
+	
+	/**
+	 * @Description: 退出登录的方法
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param model
+	 * @param @return   
+	 * @return ModelAndView  
+	 * @throws
+	 * @author lason
+	 * @date 2016年12月9日
+	 */
+	@RequestMapping(value="/logout",method={RequestMethod.GET})
+	public ModelAndView logout(HttpServletRequest req,HttpServletResponse resp,Model model){
+		//清除session中的用户
+		SessionUtil.remove(req, Global.ONLINE_USER);
+		
+		
+		//创建map集合,用于jade页面数据的设定
+		Map<String, Boolean> pageData = new HashMap<String, Boolean>();
+		//标注默认操作者是否有账号
+		//默认为有时,返回登录页面,并在页面中显示"请注册"连接,)
+		//否则显示注册页面,并显示请登录连接
+		pageData.put("hasUser", true);
+		
+		ModelAndView mv = JadeUtil.getView("pc/system/sign/signin.jade",pageData);
+		return mv;
 	}
 	
 	/**

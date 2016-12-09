@@ -24,6 +24,8 @@
 	        <mvc:exclude-mapping path="/signin" />
 	        <!-- 注册页面 -->
 	        <mvc:exclude-mapping path="/signup" />
+	        <!-- 退出登录页面 -->
+	        <mvc:exclude-mapping path="/logout" />
 	        
 	        <!-- 用于检查用户名是否可以使用 -->
 	        <mvc:exclude-mapping path="/user/userNameCanUse" />

@@ -24,6 +24,9 @@ itop.getUserIntd = function() {
 	var email = user_datas.data('para-email'); //邮箱
 	var phone = user_datas.data('para-phone'); //电话
 	var depart_remark = user_datas.data('para-depart_remark'); //部门
+	var ctx = user_datas.data('para-ctx');
+
+	console.log(ctx);
 
 	return '<div class="user-intd-box">' +
 		'<div class="intd-top">' +
@@ -38,7 +41,7 @@ itop.getUserIntd = function() {
 		'<div class="intd-body"></div>' +
 		'<div class="intd-foot">' +
 		'<a class="intd-foot-msg hover-default">发起申请</a>' +
-		'<a class="intd-foot-icon" href="/logout">' +
+		'<a class="intd-foot-icon" href="'+ctx+'logout">' +
 		'<i class="icon hover-default icon-exit"></i>'
 		// '<i data-para-_id=' + _id + ' class="iconfont hover_default icon-class-exit user_exit_button_tip"></i>'
 	'+</a></div>' +

@@ -44,8 +44,8 @@ public class SessionUtil {
 	
 	/**
 	 * @Description: 删除session中对应的数据
-	 * @param @param req
-	 * @param @param key
+	 * @param @param req(request对象)
+	 * @param @param key(要删除的数据在session中的key值)
 	 * @param @return   
 	 * @return boolean  
 	 * @throws
