@@ -45,7 +45,7 @@ public class MenuController {
 	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
 	@ResponseBody
 	public String listForeground(HttpServletRequest req,HttpServletResponse resp){
-		return menuService.listMenus(Menu.PLACE_FOREGROUND,"pc/system/menu/au_list.jade");
+		return this.listMenus(Menu.PLACE_FOREGROUND,"pc/system/menu/au_list.jade");
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class MenuController {
 	@RequestMapping(value="/list",method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
 	@ResponseBody
 	public String listBack(HttpServletRequest req,HttpServletResponse resp){
-		return menuService.listMenus(Menu.PLACE_BACKER,"pc/system/menu/au_list.jade");
+		return this.listMenus(Menu.PLACE_BACKER,"pc/system/menu/au_list.jade");
 	}
 	
 	
@@ -78,25 +78,7 @@ public class MenuController {
 	@RequestMapping(method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="f")
 	@ResponseBody
 	public String foreground(HttpServletRequest req,HttpServletResponse resp){
-		return menuService.listMenus(Menu.PLACE_FOREGROUND,"pc/system/menu/list.jade");
-//		//创建栏目对象,用于封装查询条件
-//		Menu menu = new Menu();
-//		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
-//		menu.setPlace(Menu.PLACE_FOREGROUND);//设置前后台区分为前台
-//		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
-//		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
-//		//验证返回值的合法性
-//		if(menus==null)
-//			return BackMsg.error("get backer menu error");
-//
-//		//创建值域对象,设置要返回到页面的值
-//		Map<String, Object> model = new HashMap<String, Object>();
-//		model.put("menus", menus);
-//		//生成要返回的代码块
-//		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
-//		
-//		//返回相应的值到前台
-//		return BackMsg.success(html, "get backer menu success");
+		return this.listMenus(Menu.PLACE_FOREGROUND,"pc/system/menu/list.jade");
 	}
 	
 	//,params="fn=saveUsers"
@@ -111,26 +93,49 @@ public class MenuController {
 	@RequestMapping(method={RequestMethod.GET},produces = "application/json; charset=UTF-8",params="b")
 	@ResponseBody
 	public String back(HttpServletRequest req,HttpServletResponse resp){
-		return menuService.listMenus(Menu.PLACE_BACKER,"pc/system/menu/list.jade");
-//		//创建栏目对象,用于封装查询条件
-//		Menu menu = new Menu();
-//		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
-//		menu.setPlace(Menu.PLACE_BACKER);//设置前后台区分为后台
-//		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
-//		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
-//		//验证返回值的合法性
-//		if(menus==null)
-//			return BackMsg.error("get backer menu error");
-//
-//		//创建值域对象,设置要返回到页面的值
-//		Map<String, Object> model = new HashMap<String, Object>();
-//		model.put("menus", menus);
-//		//生成要返回的代码块
-//		String html = JadeUtil.getBodyView("pc/system/menu/list.jade", model);
-//		
-//		//返回相应的值到前台
-//		return BackMsg.success(html, "get backer menu success");
+		return this.listMenus(Menu.PLACE_BACKER,"pc/system/menu/list.jade");
 	}
+	
+	/**
+	 * @Description: 根据传入的栏目类型,前台栏目/后台栏目以及要渲染的页面链接地址,返回组合好的页面
+	 * @param @param placeForeground
+	 * @param @param jadeUrl
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lason
+	 * @date 2016年12月14日
+	 */
+	private String listMenus(Integer placeForeground,String jadeUrl){
+		//创建栏目对象,用于封装查询条件
+		Menu menu = new Menu();
+		menu.setDelFlag(Global.DEL_FLAG_NORMAL);//设置删除标识为未删除
+		
+		//判断是获取前台栏目还是后台栏目,并根据传入值不同,获取不同的栏目集合
+		if(placeForeground == Menu.PLACE_BACKER){
+			menu.setPlace(Menu.PLACE_BACKER);//设置前后台区分为后台
+		}else if(placeForeground == Menu.PLACE_FOREGROUND){
+			menu.setPlace(Menu.PLACE_FOREGROUND);//设置前后台区分为前台
+		}else{
+			return BackMsg.error("not is foreground or back please check the input value");
+		}
+		
+		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
+		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
+		//验证返回值的合法性
+		if(menus==null)
+			return BackMsg.error("get menus error");
+
+		//创建值域对象,设置要返回到页面的值
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("menus", menus);
+		//生成要返回的代码块
+		String html = JadeUtil.getBodyView(jadeUrl, model);
+		
+		//返回相应的值到前台
+		return BackMsg.success(html, "get backer menu success");
+	}
+	
 	
 	
 	/**
