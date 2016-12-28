@@ -1,0 +1,45 @@
+@import "./include/theme.less";
+@import "./include/main.less";
+
+.body-menus-count{
+    .au-power-count{
+        border: solid @line-color-light 1px;
+        border-left: 0px;
+        width: 700px;
+    }
+        
+    .au-power-box{
+        height: 35px;
+        line-height: 35px;
+        padding-left: 20px;
+        border-bottom: solid @line-color-light 1px;
+
+        &:hover{
+            background-color: @base-activ-bg-color;
+        }
+        
+        .power-icon{
+            margin-right: 10px;
+        }
+        .power-text,.power-code,.power-info{
+            display: inline-block;
+            
+        }
+        .power-text{
+            min-width: 150px;
+        }
+        .power-code{
+            min-width: 100px;
+            color: @font-color-deep;
+        }
+        .power-info{
+            color: @font-color-light;
+            
+        }
+        .menu-tools-cont{
+            a{
+                padding-left: 8px;
+            }
+        }
+    }
+}

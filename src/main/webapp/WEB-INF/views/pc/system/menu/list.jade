@@ -2,9 +2,9 @@ h4.page-title 栏目管理
 .page-second-title-content
 	ul.tab-navs
 		li.tab-nav.checked
-			a(href="javascript:void(0)") 前台栏目
-		li.tab-nav
 			a(href="javascript:void(0)") 后台栏目
+		li.tab-nav
+			a(href="javascript:void(0)") 前台栏目
 .body-menus-count
 	.au-menu-count
 		.page-third-title 栏目管理
@@ -19,8 +19,9 @@ h4.page-title 栏目管理
 	.au-power-count
 		.page-third-title 权限管理
 			span.menu-tools-cont
-				a.menu-tools-box(href="javascript:void(0)")
+				span#power_data_menu_id(data-para-id="")
+				a#power_tools_add.menu-tools-box(href="javascript:void(0)")
 					i.icon.icon-add.hover-primary
 				a.menu-tools-box(href="javascript:void(0)" data-flex-icon="flex")
 					i.icon.icon-move.hover-warning
-		.au-power-boxes.menu-content
+		#power-cont.au-power-boxes.menu-content

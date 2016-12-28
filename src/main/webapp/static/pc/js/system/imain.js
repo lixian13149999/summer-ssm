@@ -4,29 +4,30 @@
  */
 var imain = new Object();
 
-$(function(){
+$(function() {
     //加入头部弹出框的监听方法(微信/个人信息)
     ipopover.listenerPromptCont();
     //加入beaut输入框的监听方法(输入框中属性提示上移效果)
     iform.listenerFormControl();
-    
+
+    //二级页面头部title切换效果
     imain.changePageTitleStyle();
 
     //监听加载页面的方法(通过栏目的点击,加载一个新的页面)
     imain.openPage();
 })
 
-imain.changePageTitleStyle = function(){
-    $(document).on('click','.page-second-title-content .tab-navs .tab-nav',function(){
-        $('.page-second-title-content .tab-navs .tab-nav').each(function(index,ele){
+imain.changePageTitleStyle = function() {
+    $(document).on('click', '.page-second-title-content .tab-navs .tab-nav', function() {
+        $('.page-second-title-content .tab-navs .tab-nav').each(function(index, ele) {
             $(ele).removeClass('checked');
         });
         $(this).addClass('checked');
     });
 }
 
-imain.openPage = function () {
-    $(document).on('click','[data-menu-side="item"]',function () {
+imain.openPage = function() {
+    $(document).on('click', '[data-menu-side="item"]', function() {
         var href = $(this).data("body-mapping");
 
         $.ajax({
@@ -36,17 +37,17 @@ imain.openPage = function () {
             data: {},
             async: false,
             success: function(data) {
-                if(iutil.isSuccess(data)){
+                if (iutil.isSuccess(data)) {
                     cb(data);
                 }
-                
+
             },
             error: function() {
                 console.log('pathExcel error2')
             }
         });
 
-        function cb (backData) {
+        function cb(backData) {
             $("#product_main_body").html(backData.data);
         }
 
@@ -55,7 +56,7 @@ imain.openPage = function () {
     })
 }
 
-imain.testAddMenuList = function () {
+imain.testAddMenuList = function() {
     $.ajax({
         url: ctx + "menu?b",
         type: 'GET',
@@ -63,17 +64,17 @@ imain.testAddMenuList = function () {
         data: {},
         async: false,
         success: function(data) {
-            if(iutil.isSuccess(data)){
+            if (iutil.isSuccess(data)) {
                 cb(data);
             }
-            
+
         },
         error: function() {
             console.log('pathExcel error2')
         }
     });
 
-    function cb (backData) {
+    function cb(backData) {
         $("#product_main_body").html(backData.data);
     }
 }

@@ -31,7 +31,7 @@ public class TestPower {
 //	private int isShow;//是否显示
 	@Test
 	public void add(){
-		Power power = new Power("b7db0192e52644b3935f65193fef57b6","权限名称2.","权限简介2.","icon",0,"user:add",1);
+		Power power = new Power("98468f2cc6c544e88cae68062c5b13e6","权限名称2","权限简介2","icon",0,"menu:add",1);
 		powerService.add(power);
 //		for (int i = 1; i < 6; i++) {
 //			Power power = new Power("b7db0192e52644b3935f65193fef57b6","权限名称2."+i,"权限简介2."+i,"icon"+i,i,"user:add"+i,1);
@@ -90,7 +90,7 @@ public class TestPower {
 	
 	@Test
 	public void get(){
-		Power p = powerService.get("2bcc839808824d8db664c9fce372ec41");
+		Power p = powerService.get("14294b8447f645229f23e2aecac2ebe1");
 		System.out.println(p);
 		
 	}

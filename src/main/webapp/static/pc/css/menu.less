@@ -18,12 +18,17 @@
         .imenu();
         margin-top: 0px;
         margin-bottom: 0px;
-        width: 320px;
+        width: 280px;
         // &:first-child{
         //     border-top:0px;
         // }
+        .menu-content{
+            margin-top: -1px;
+        }
+
         .menu-box{
             // border-top:0px;
+
             .menu{
                 .menu-title{
                     padding-left: 20px;
@@ -31,6 +36,7 @@
                 .menu-item{
                     .item-cont{
                         padding-left: 48px;
+                        min-width: 170px;
                     }
                 }
             }
@@ -50,43 +56,6 @@
         .menu-tools-box {
             display: inline-block;
             padding-left: 8px;
-        }
-    }
-    
-    
-    .au-power-count{
-        border: solid @line-color-light 1px;
-        border-left: 0px;
-        width: 700px;
-    }
-        
-    .au-power-box{
-        height: 35px;
-        line-height: 35px;
-        padding-left: 20px;
-        border-bottom: solid @line-color-light 1px;
-        .power-icon{
-            margin-right: 10px;
-        }
-        .power-text,.power-code,.power-info{
-            display: inline-block;
-            
-        }
-        .power-text{
-            min-width: 150px;
-        }
-        .power-code{
-            min-width: 100px;
-            color: @font-color-deep;
-        }
-        .power-info{
-            color: @font-color-light;
-            
-        }
-        .menu-tools-cont{
-            a{
-                padding-left: 8px;
-            }
         }
     }
 }
@@ -165,7 +134,7 @@
     // margin-top:200px;
     .modal-container{
         width:350px;
-        .box-shadow(0, 0, 250px, 50px, #999);
+        .box-shadow(0, 30px, 250px, 50px, #999);
         .delete-modal-content{
             height:80px;
             padding-top:40px;

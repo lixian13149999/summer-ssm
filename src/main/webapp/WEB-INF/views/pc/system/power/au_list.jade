@@ -1,24 +1,25 @@
 script(type='text/javascript',src='#{staticCtx}util/isort.js')
-each power,index in powers
-	.au-power-count
-		.page-third-title 权限管理
+
+//- .au-power-count
+//- 	.page-third-title 权限管理
+//- 		span.menu-tools-cont
+//- 			a.menu-tools-box(href="javascript:void(0)")
+//- 				i.icon.icon-add.hover-primary
+//- 			a.menu-tools-box(href="javascript:void(0)" data-flex-icon="flex")
+//- 				i.icon.icon-move.hover-warning
+.au-power-boxes.menu-content
+	each power,index in powers
+		.au-power-box
+			a.power-text(href="javascript:void(0)")
+				i.icon.power-icon(class="#{power.icon}")
+				| #{power.name}
+			a.power-code(href="javascript:void(0)") #{power.permission}
+			a.power-info(href="javascript:void(0)") #{power.remark}
 			span.menu-tools-cont
+				span(data-para-menu-id='#{power.menuId}' data-para-name='#{power.name}' data-para-description='#{power.description}' data-para-icon='#{power.icon}' data-para-sort='#{power.sort}' data-para-permission='#{power.permission}' data-para-is-show='#{power.isShow}' data-para-id='#{power.id}' data-para-del-flag='#{power.delFlag}' data-para-remark='#{power.remark}' data-para-page='#{power.page}' data-para-creatby='#{power.creatBy}' data-para-createtime='#{power.createTime}' data-para-updateby='#{power.updateBy}' data-para-update-time='#{power.updateTime}')
 				a.menu-tools-box(href="javascript:void(0)")
-					i.icon.icon-add.hover-primary
-				a.menu-tools-box(href="javascript:void(0)" data-flex-icon="flex")
-					i.icon.icon-move.hover-warning
-		.au-power-boxes.menu-content
-			.au-power-box
-				a.power-text(href="javascript:void(0)")
-					i.icon.icon-add.power-icon
-					| #{power.name}
-				a.power-code(href="javascript:void(0)") #{power.permission}
-				a.power-info(href="javascript:void(0)") #{power.remark}
-				span.menu-tools-cont
-					span(data-para-menu-id='#{power.menuId}' data-para-name='#{power.name}' data-para-description='#{power.description}' data-para-icon='#{power.icon}' data-para-sort='#{power.sort}' data-para-permission='#{power.permission}' data-para-is-show='#{power.isShow}' data-para-id='#{power.id}' data-para-del-flag='#{power.delFlag}' data-para-remark='#{power.remark}' data-para-page='#{power.page}' data-para-creatby='#{power.creatBy}' data-para-createtime='#{power.createTime}' data-para-updateby='#{power.updateBy}' data-para-update-time='#{power.updateTime}')
-					a.menu-tools-box(href="javascript:void(0)")
-						i.icon.icon-edit.hover-warning
-					a.menu-tools-box(href="javascript:void(0)")
-						i.icon.icon-delete.hover-danger
-					a.menu-tools-box.handle.hide(href="javascript:void(0)")
-						i.icon.icon-grip.hover-warning.menu-move-handle
+					i.icon.icon-edit.hover-warning
+				a.menu-tools-box(href="javascript:void(0)")
+					i.icon.icon-delete.hover-danger
+				a.menu-tools-box.handle.hide(href="javascript:void(0)")
+					i.icon.icon-grip.hover-warning.menu-move-handle

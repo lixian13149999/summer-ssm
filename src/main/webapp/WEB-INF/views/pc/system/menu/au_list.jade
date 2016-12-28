@@ -18,7 +18,7 @@ each menu,index in menus
 			.menu-items-count
 				each item,index2 in menu.childs
 					dd.menu-item(data-page-click="menu-item")
-						a.item-cont(data-menu="item" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") #{item.name}
+						a.item-cont(data-proj-click="menu" data-body-mapping="/pages/demo/demobox.html" href="javascript:void(0)") #{item.name}
 						span.menu-tools-cont
 							span(data-para-place='#{item.place}' data-para-parent-id='#{item.parentId}' data-para-name='#{item.name}' data-para-description='#{item.description}' data-para-href='#{item.href}' data-para-target='#{item.target}' data-para-icon='#{item.icon}' data-para-sort='#{item.sort}' data-para-permission='#{item.permission}' data-para-is-show='#{item.isShow}' data-para-id='#{item.id}' data-para-del-flag='#{item.delFlag}' data-para-remark='#{item.remark}' data-para-page='#{item.page}' data-para-creatby='#{item.creatBy}' data-para-createtime='#{item.createTime}' data-para-updateby='#{item.updateBy}' data-para-update-time='#{item.updateTime}')
 							a.menu-tools-box.second-edit(href="javascript:void(0)")
