@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 设置映射的dao类 -->
+<mapper namespace="com.bcdbook.summer.common.tools.dao.FileDao">
+	<!-- 设置映射的数据模型 -->
+	<resultMap id="File" type="com.bcdbook.summer.common.tools.pojo.File">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+		
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="source_name" property="sourceName" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="src" property="src" jdbcType="VARCHAR" />
+		<result column="size" property="size" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="suffix" property="suffix" jdbcType="VARCHAR" />
+		<result column="pojo_id" property="pojoId" jdbcType="VARCHAR" />
+		<result column="pojo_type" property="pojoType" jdbcType="INTEGER" />
+		
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 定义查询的所有参数 -->
+	<sql id="FileColumns">
+		id, del_flag, sort, source_name, name, src, size,type,suffix,pojo_id,pojo_type, create_time, create_by, update_time, update_by, remark
+	</sql>
+	
+	<!-- 定义所有条件 -->
+	<sql id="FileCondition">	
+		<where>
+			<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="true">
+		    	and del_flag = 1
+		    </if>
+		    
+		    <if test="sort != null and sort != 0">
+		    	and sort = #{sort}
+		    </if>
+		    <if test="sourceName != null and !&quot;&quot;.equals(sourceName.trim())">
+		    	and source_name = #{sourceName}
+		    </if>
+		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
+		    	and name = #{name}
+		    </if>
+		    <if test="src != null and !&quot;&quot;.equals(src.trim())">
+		    	and src = #{src}
+		    </if>
+		    <if test="size != null and size != 0">
+		    	and size = #{size}
+		    </if>
+		    <if test="type != null and type != 0">
+		    	and type = #{type}
+		    </if>
+		    <if test="suffix != null and !&quot;&quot;.equals(suffix.trim())">
+		    	and suffix = #{suffix}
+		    </if>
+		    <if test="pojoId != null and !&quot;&quot;.equals(pojoId.trim())">
+		    	and pojo_id = #{pojoId}
+		    </if>
+		    <if test="pojoType != null and pojoType != 0">
+		    	and pojo_type = #{pojoType}
+		    </if>
+		    	    
+			<if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+	    </where>
+	</sql>
+	
+	<!-- 添加 -->
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.common.tools.pojo.File">
+		insert into sys_file (id, del_flag, sort, source_name, name, src, size,type,suffix,pojo_id,pojo_type, create_time, create_by, update_time, update_by, remark)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=INTEGER},
+			
+			#{sort,jdbcType=INTEGER},
+			#{sourceName,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{src,jdbcType=VARCHAR},
+			#{size,jdbcType=INTEGER},
+			#{type,jdbcType=INTEGER},
+			#{suffix,jdbcType=VARCHAR},
+			#{pojoId,jdbcType=VARCHAR},
+			#{pojoType,jdbcType=INTEGER},
+			
+			#{createTime,jdbcType=VARCHAR},
+			#{createBy,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{updateBy,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- 删除(根据id) -->
+<!-- 	<delete id="delete" parameterType="java.lang.String">
+		delete from sys_file
+		where id = #{id,jdbcType=VARCHAR}
+	</delete> -->
+	<!-- 删除(根据实体类条件) -->
+<!-- 	<delete id="deleteByCondition" parameterType="com.bcdbook.summer.common.tools.pojo.File">
+		delete from sys_file
+		<include refid="FileCondition" />
+	</delete> -->
+	
+ 	<!-- 伪删除(根据id) -->
+	<update id="delete" parameterType="java.lang.String">
+		update sys_file
+		<set>
+			del_flag = 2
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<!-- 伪删除(根据实体类条件) -->
+	<update id="deleteByCondition" parameterType="com.bcdbook.summer.common.tools.pojo.File">
+		update sys_file
+		<set>
+			del_flag = 2
+		</set>
+		<include refid="FileCondition" />
+	</update>
+	
+	<!-- 修改权限 -->
+	<update id="update" parameterType="com.bcdbook.summer.common.tools.pojo.File">
+		update sys_file
+		<set>
+		    <if test="delFlag != null and delFlag != 0">
+		    	del_flag = #{delFlag},
+		    </if>
+		    
+		   	<if test="sort != null and sort != 0">
+		    	sort = #{sort},
+		    </if>
+		    <if test="sourceName != null and !&quot;&quot;.equals(sourceName.trim())">
+		    	source_name = #{sourceName},
+		    </if>
+		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
+		    	name = #{name},
+		    </if>
+		    <if test="src != null and !&quot;&quot;.equals(src.trim())">
+		    	src = #{src},
+		    </if>
+		    <if test="size != null and size != 0">
+		    	size = #{size},
+		    </if>
+		    <if test="type != null and type != 0">
+		    	type = #{type},
+		    </if>
+		    <if test="suffix != null and !&quot;&quot;.equals(suffix.trim())">
+		    	suffix = #{suffix},
+		    </if>
+		    <if test="pojoId != null and !&quot;&quot;.equals(pojoId.trim())">
+		    	pojo_id = #{pojoId},
+		    </if>
+		    <if test="pojoType != null and pojoType != 0">
+		    	pojo_type = #{pojoType},
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	create_time = #{createTime},
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	create_by = #{createBy},
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	update_time = #{updateTime},
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	update_by = #{updateBy},
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	remark = #{remark},
+		    </if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 查询(根据id) -->		
+	<select id="get" resultMap="File" parameterType="java.lang.String">
+		select
+		<include refid="FileColumns" />
+		from sys_file
+		where id = #{id,jdbcType=VARCHAR}
+		and del_flag = 1
+	</select>
+	
+	<!-- 查询(根据实体类条件) -->
+	<select id="getByCondition" resultMap="File" parameterType="com.bcdbook.summer.common.tools.pojo.File">
+		select
+		<include refid="FileColumns" />
+		from sys_file
+		<include refid="FileCondition" />
+	</select>
+	
+	<!-- 查询(根据集合) -->
+	<select id="findList" resultMap="File" parameterType="com.bcdbook.summer.common.tools.pojo.File">
+		select
+		<include refid="FileColumns" />
+		from sys_file
+		<include refid="FileCondition" />
+  		order by sort 
+		<if test="page != null">
+	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
+	    </if>
+	</select>
+		
+	<!-- 查询所有数据 -->
+	<select id="findAllList" resultMap="File" parameterType="com.bcdbook.summer.common.tools.pojo.File">
+		select
+		<include refid="FileColumns" />
+		from sys_file where 1=1 
+		order by sort 
+	</select>
+	
+	<!-- 根据实体类条件,符合数据的数量 -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.bcdbook.summer.common.tools.pojo.File">
+		select count(*) from sys_file
+		<include refid="FileCondition" />
+	</select>
+</mapper>

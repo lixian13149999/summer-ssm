@@ -20,6 +20,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	
 //	private final Logger logger = LoggerFactory.getLogger(CommonInterceptor.class);
 	private static Logger logger = Logger.getLogger(CommonInterceptor.class);
+	//修改gd一点东西测试一下
 	
 	public static final String LAST_PAGE = "com.alibaba.lastPage";
 

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 设置映射的dao类 -->
+<mapper namespace="com.bcdbook.summer.wechat.dao.WechatMaterialDao">
+	<!-- 全局配置开始=======start -->
+	<!-- 设置映射的数据模型 -->
+	<resultMap id="WechatMaterial" type="com.bcdbook.summer.wechat.pojo.WechatMaterial">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+		
+		<result column="msg_type" property="msgType" jdbcType="VARCHAR" />
+		<result column="keyword" property="keyword" jdbcType="VARCHAR" />
+		<result column="media_id" property="mediaId" jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="parent_media_id" property="parentMediaId" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="thumb_media_id" property="thumbMediaId" jdbcType="VARCHAR" />
+		<result column="show_cover_pic" property="showCoverPic" jdbcType="INTEGER" />
+		<result column="author" property="author" jdbcType="VARCHAR" />
+		<result column="digest" property="digest" jdbcType="VARCHAR" />
+		<result column="content_source_url" property="contentSourceUrl" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+		<result column="hq_music_url" property="hqMusicUrl" jdbcType="VARCHAR" />
+		
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 定义查询的所有参数 -->
+	<sql id="WechatMaterialColumns">
+		id, del_flag,
+		msg_type, keyword, media_id, content, name, url, description,parent_media_id, title, thumb_media_id, show_cover_pic, author, digest, content_source_url, sort, pic_url, hq_music_url,
+		create_time, create_by, update_time, update_by, remark
+	</sql>
+	<!-- 定义所有条件 -->
+	<sql id="WechatMaterialCondition">
+		<where>
+	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="true">
+		    	and del_flag = 1
+		    </if>
+		     
+		    <if test="msgType != null and !&quot;&quot;.equals(msgType.trim())">
+		    	and msg_type = #{msgType}
+		    </if>
+		    <if test="keyword != null and !&quot;&quot;.equals(keyword.trim())">
+		    	and keyword = #{keyword}
+		    </if>
+		    <if test="mediaId != null and !&quot;&quot;.equals(mediaId.trim())">
+		    	and media_id = #{mediaId}
+		    </if>
+		    <if test="content != null and !&quot;&quot;.equals(content.trim())">
+		    	and content = #{content}
+		    </if>
+		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
+		    	and name = #{name}
+		    </if>
+		    <if test="url != null and !&quot;&quot;.equals(url.trim())">
+		    	and url = #{url}
+		    </if>
+		    <if test="description != null and !&quot;&quot;.equals(description.trim())">
+		    	and description = #{description}
+		    </if>
+		    <if test="parentMediaId != null and !&quot;&quot;.equals(parentMediaId.trim())">
+		    	and parent_media_id = #{parentMediaId}
+		    </if>
+		    <if test="title != null and !&quot;&quot;.equals(title.trim())">
+		    	and title = #{title}
+		    </if>
+		    <if test="thumbMediaId != null and !&quot;&quot;.equals(thumbMediaId.trim())">
+		    	and thumb_media_id = #{thumbMediaId}
+		    </if>
+		    <if test="showCoverPic != null and showCoverPic != 0">
+		    	and show_cover_pic = #{showCoverPic}
+		    </if>
+		    <if test="author != null and !&quot;&quot;.equals(author.trim())">
+		    	and author = #{author}
+		    </if>
+		    <if test="digest != null and !&quot;&quot;.equals(digest.trim())">
+		    	and digest = #{digest}
+		    </if>
+		    <if test="contentSourceUrl != null and !&quot;&quot;.equals(contentSourceUrl.trim())">
+		    	and content_source_url = #{contentSourceUrl}
+		    </if>
+		    <if test="sort != null and sort != 0">
+		    	and sort = #{sort}
+		    </if>
+		    <if test="picUrl != null and !&quot;&quot;.equals(picUrl.trim())">
+		    	and pic_url = #{picUrl}
+		    </if>
+		    <if test="hqMusicUrl != null and !&quot;&quot;.equals(hqMusicUrl.trim())">
+		    	and hq_music_url = #{hqMusicUrl}
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+	    </where>
+	</sql>
+	<!-- 全局配置结束========end -->
+	
+	<!-- 添加 -->
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
+		insert into wech_material (id, del_flag, msg_type, keyword, media_id, content, name, url, description,parent_media_id, title, thumb_media_id, show_cover_pic, author, digest, content_source_url, sort, pic_url, hq_music_url, create_time, create_by, update_time, update_by, remark)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=INTEGER},
+			
+			#{msgType,jdbcType=VARCHAR},
+			#{keyword,jdbcType=VARCHAR},
+			#{mediaId,jdbcType=VARCHAR},
+			#{content,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{url,jdbcType=VARCHAR},
+			#{description,jdbcType=VARCHAR},
+			#{parentMediaId,jdbcType=VARCHAR},
+			#{title,jdbcType=VARCHAR},
+			#{thumbMediaId,jdbcType=VARCHAR},
+			#{showCoverPic,jdbcType=INTEGER},
+			#{author,jdbcType=VARCHAR},
+			#{digest,jdbcType=VARCHAR},
+			#{contentSourceUrl,jdbcType=VARCHAR},
+			#{sort,jdbcType=INTEGER},
+			#{picUrl,jdbcType=VARCHAR},
+			#{hqMusicUrl,jdbcType=VARCHAR},
+			
+			#{createTime,jdbcType=VARCHAR},
+			#{createBy,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{updateBy,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- 伪删除(根据id) -->
+	<update id="delete" parameterType="java.lang.String">
+		update wech_material
+		<set>
+			del_flag = 2
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<!-- 伪删除(根据实体类条件) -->
+	<update id="deleteByCondition" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
+		update wech_material
+		<set>
+			del_flag = 2
+		</set>
+		<include refid="WechatMaterialCondition" />
+	</update>
+	
+	<!-- 修改权限 -->
+	<update id="update" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
+		update wech_material
+		<set>
+		    <if test="delFlag != null and delFlag != 0">
+		    	del_flag = #{delFlag},
+		    </if>
+		    
+		    <if test="msgType != null and !&quot;&quot;.equals(msgType.trim())">
+		    	msg_type = #{msgType},
+		    </if>
+		    <if test="keyword != null and !&quot;&quot;.equals(keyword.trim())">
+		    	keyword = #{keyword},
+		    </if>
+		    <if test="mediaId != null and !&quot;&quot;.equals(mediaId.trim())">
+		    	media_id = #{mediaId},
+		    </if>
+		    <if test="content != null and !&quot;&quot;.equals(content.trim())">
+		    	content = #{content},
+		    </if>
+		    <if test="name != null and !&quot;&quot;.equals(name.trim())">
+		    	name = #{name},
+		    </if>
+		    <if test="url != null and !&quot;&quot;.equals(url.trim())">
+		    	url = #{url},
+		    </if>
+		    <if test="description != null and !&quot;&quot;.equals(description.trim())">
+		    	description = #{description},
+		    </if>
+		    <if test="parentMediaId != null and !&quot;&quot;.equals(parentMediaId.trim())">
+		    	parent_media_id = #{parentMediaId},
+		    </if>
+		    <if test="title != null and !&quot;&quot;.equals(title.trim())">
+		    	title = #{title},
+		    </if>
+		    <if test="thumbMediaId != null and !&quot;&quot;.equals(thumbMediaId.trim())">
+		    	thumb_media_id = #{thumbMediaId},
+		    </if>
+		    <if test="showCoverPic != null and showCoverPic != 0">
+		    	show_cover_pic = #{showCoverPic},
+		    </if>
+		    <if test="author != null and !&quot;&quot;.equals(author.trim())">
+		    	author = #{author},
+		    </if>
+		    <if test="digest != null and !&quot;&quot;.equals(digest.trim())">
+		    	digest = #{digest},
+		    </if>
+		    <if test="contentSourceUrl != null and !&quot;&quot;.equals(contentSourceUrl.trim())">
+		    	content_source_url = #{contentSourceUrl},
+		    </if>
+		    <if test="sort != null and sort != 0">
+		    	sort = #{sort},
+		    </if>
+		    <if test="picUrl != null and !&quot;&quot;.equals(picUrl.trim())">
+		    	pic_url = #{picUrl},
+		    </if>
+		    <if test="hqMusicUrl != null and !&quot;&quot;.equals(hqMusicUrl.trim())">
+		    	hq_music_url = #{hqMusicUrl},
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	create_time = #{createTime},
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	create_by = #{createBy},
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	update_time = #{updateTime},
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	update_by = #{updateBy},
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	remark = #{remark},
+		    </if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 查询(根据id) -->
+	<select id="get" resultMap="WechatMaterial" parameterType="java.lang.String">
+		select
+		<include refid="WechatMaterialColumns" />
+		from wech_material
+		where id = #{id,jdbcType=VARCHAR} 
+		and del_flag = 1
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="getByCondition" resultMap="WechatMaterial" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
+		select
+		<include refid="WechatMaterialColumns" />
+		from wech_material
+		<include refid="WechatMaterialCondition" /> 
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="findList" resultMap="WechatMaterial" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
+		select
+		<include refid="WechatMaterialColumns" />
+		from wech_material
+		<include refid="WechatMaterialCondition" /> 
+	    order by sort
+	    <if test="page != null">
+	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
+	    </if>
+	</select>
+	<!-- 查询所有数据 -->
+	<select id="findAllList" resultMap="WechatMaterial" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
+		select
+		<include refid="WechatMaterialColumns" />
+		from wech_material where 1=1 
+		order by create_time
+	</select>
+	<!-- 根据实体类条件,符合数据的数量 -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.bcdbook.summer.wechat.pojo.WechatMaterial">
+		select count(*) from wech_material
+		<include refid="WechatMaterialCondition" />
+	</select>
+</mapper>

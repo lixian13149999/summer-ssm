@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 设置映射的dao类 -->
+<mapper namespace="com.bcdbook.summer.wechat.dao.WechatLocationDao">
+	<!-- 全局配置开始=======start -->
+	<!-- 设置映射的数据模型 -->
+	<resultMap id="Location" type="com.bcdbook.summer.wechat.pojo.Location">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+		
+		<result column="open_id" property="openId" jdbcType="VARCHAR" />
+		<result column="latitude" property="latitude" jdbcType="DOUBLE" />
+		<result column="longitude" property="longitude" jdbcType="DOUBLE" />
+		<result column="loc_precision" property="locPrecision" jdbcType="DOUBLE" />
+		<result column="label" property="label" jdbcType="VARCHAR" />
+				
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 定义查询的所有参数 -->
+	<sql id="LocationColumns">
+		id, del_flag,
+		open_id, latitude, longitude, loc_precision, label,
+		create_time, create_by, update_time, update_by, remark
+	</sql>
+	<!-- 定义所有条件 -->
+	<sql id="LocationCondition">
+		<where>
+	    	<if test="id != null and !&quot;&quot;.equals(id.trim())">
+		    	and id = #{id}
+		    </if>
+		    <if test="true">
+		    	and del_flag = 1
+		    </if>
+		     
+		    <if test="openId != null and !&quot;&quot;.equals(openId.trim())">
+		    	and open_id = #{openId}
+		    </if>
+		    <if test="latitude != null and latitude != 0">
+		    	and latitude = #{latitude}
+		    </if>
+		    <if test="longitude != null and longitude != 0">
+		    	and longitude = #{longitude}
+		    </if>
+		    <if test="locPrecision != null and locPrecision != 0">
+		    	and loc_precision = #{locPrecision}
+		    </if>
+		    <if test="label != null and !&quot;&quot;.equals(label.trim())">
+		    	and label = #{label}
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	and create_time = #{createTime}
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	and create_by = #{createBy}
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	and update_time = #{updateTime}
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	and update_by = #{updateBy}
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	and remark = #{remark}
+		    </if>
+	    </where>
+	</sql>
+	<!-- 全局配置结束========end -->
+	
+	<!-- 添加 -->
+	<insert id="insert" useGeneratedKeys="false" keyProperty="id" parameterType="com.bcdbook.summer.wechat.pojo.Location">
+		insert into wech_location (id, del_flag, open_id, latitude, longitude, loc_precision, label, create_time, create_by, update_time, update_by, remark)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=INTEGER},
+			
+			#{openId,jdbcType=VARCHAR},
+			#{latitude,jdbcType=DOUBLE},
+			#{longitude,jdbcType=DOUBLE},
+			#{locPrecision,jdbcType=DOUBLE},
+			#{label,jdbcType=VARCHAR},
+			
+			#{createTime,jdbcType=VARCHAR},
+			#{createBy,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR},
+			#{updateBy,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- 伪删除(根据id) -->
+	<update id="delete" parameterType="java.lang.String">
+		update wech_location
+		<set>
+			del_flag = 2
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<!-- 伪删除(根据实体类条件) -->
+	<update id="deleteByCondition" parameterType="com.bcdbook.summer.wechat.pojo.Location">
+		update wech_location
+		<set>
+			del_flag = 2
+		</set>
+		<include refid="LocationCondition" />
+	</update>
+	
+	<!-- 修改权限 -->
+	<update id="update" parameterType="com.bcdbook.summer.wechat.pojo.Location">
+		update wech_location
+		<set>
+		    <if test="delFlag != null and delFlag != 0">
+		    	del_flag = #{delFlag},
+		    </if>
+		    
+		    <if test="openId != null and !&quot;&quot;.equals(openId.trim())">
+		    	open_id = #{openId},
+		    </if>
+		    <if test="latitude != null and latitude != 0">
+		    	latitude = #{latitude},
+		    </if>
+		    <if test="longitude != null and longitude != 0">
+		    	longitude = #{longitude},
+		    </if>
+		     <if test="locPrecision != null and locPrecision != 0">
+		    	loc_precision = #{locPrecision},
+		    </if>
+		    <if test="label != null and !&quot;&quot;.equals(label.trim())">
+		    	label = #{label},
+		    </if>
+		    
+		    <if test="createTime != null and !&quot;&quot;.equals(createTime.trim())">
+		    	create_time = #{createTime},
+		    </if>
+		    <if test="createBy != null and !&quot;&quot;.equals(createBy.trim())">
+		    	create_by = #{createBy},
+		    </if>
+		    <if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
+		    	update_time = #{updateTime},
+		    </if>
+		    <if test="updateBy != null and !&quot;&quot;.equals(updateBy.trim())">
+		    	update_by = #{updateBy},
+		    </if>
+		    <if test="remark != null and !&quot;&quot;.equals(remark.trim())">
+		    	remark = #{remark},
+		    </if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 查询(根据id) -->
+	<select id="get" resultMap="Location" parameterType="java.lang.String">
+		select
+		<include refid="LocationColumns" />
+		from wech_location
+		where id = #{id,jdbcType=VARCHAR} 
+		and del_flag = 1
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="getByCondition" resultMap="Location" parameterType="com.bcdbook.summer.wechat.pojo.Location">
+		select
+		<include refid="LocationColumns" />
+		from wech_location
+		<include refid="LocationCondition" /> 
+	</select>
+	<!-- 查询(根据实体类条件) -->
+	<select id="findList" resultMap="Location" parameterType="com.bcdbook.summer.wechat.pojo.Location">
+		select
+		<include refid="LocationColumns" />
+		from wech_location
+		<include refid="LocationCondition" /> 
+	    order by create_time
+	    <if test="page != null">
+	    	LIMIT #{page.lineStart,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
+	    </if>
+	</select>
+	<!-- 查询所有数据 -->
+	<select id="findAllList" resultMap="Location" parameterType="com.bcdbook.summer.wechat.pojo.Location">
+		select
+		<include refid="LocationColumns" />
+		from wech_location where 1=1 
+		order by create_time
+	</select>
+	<!-- 根据实体类条件,符合数据的数量 -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.bcdbook.summer.wechat.pojo.Location">
+		select count(*) from wech_location
+		<include refid="LocationCondition" />
+	</select>
+</mapper>
