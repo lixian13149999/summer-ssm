@@ -1,18 +1,12 @@
 package com.bcdbook.summer.system.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.bcdbook.summer.common.backmsg.BackMsg;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.persistence.service.CrudService;
-import com.bcdbook.summer.common.util.JadeUtil;
-import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.dao.MenuDao;
 import com.bcdbook.summer.system.pojo.Menu;
 
