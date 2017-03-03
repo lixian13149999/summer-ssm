@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.config.Global;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -19,7 +19,7 @@ import com.bcdbook.summer.common.config.Global;
 public class TestBackMsg {
 	private static Logger logger = Logger.getLogger(Global.class);
 	
-	private static BackMsg backMsg = new BackMsg();
+	private static Resp backMsg = new Resp();
 	
 	@Test
 	public void testGetBackMsg(){
@@ -28,12 +28,12 @@ public class TestBackMsg {
 		
 		String msg = backMsg.getMsg(1, 2,list ,"error_msg");
 		System.out.println(msg);
-		System.out.println(BackMsg.error());
-		System.out.println(BackMsg.error("这是错误提示信息"));
-		System.out.println(BackMsg.success());
-		System.out.println(BackMsg.success("这是成功提示信息"));
-		System.out.println(BackMsg.success(new Date()));
-		System.out.println(BackMsg.success("",""));
+		System.out.println(Resp.error());
+		System.out.println(Resp.error("这是错误提示信息"));
+		System.out.println(Resp.success());
+		System.out.println(Resp.success("这是成功提示信息"));
+		System.out.println(Resp.success(new Date()));
+		System.out.println(Resp.success("",""));
 	}
 	
 //	public static void main(String[] args) {

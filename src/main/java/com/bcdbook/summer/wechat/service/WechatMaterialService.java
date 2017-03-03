@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.persistence.service.CrudService;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.wechat.dao.WechatMaterialDao;
@@ -159,7 +159,7 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 	 */
 	public String list(String accessToken, String type, int offset, int count) {
 		if(StringUtils.isNull(accessToken))
-			return BackMsg.error("accessToken is null");
+			return Resp.error("accessToken is null");
 		
 		//对传入的数值参数进行合法化处理
 		offset = offset<0 ? 0 : offset;
@@ -201,21 +201,21 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 				||StringUtils.isNull(mediaId)
 				||StringUtils.isNull(type)
 				||StringUtils.isNull(keyword))
-			return BackMsg.error("input value has null");
+			return Resp.error("input value has null");
 		
 		//限定这个方法只处理文图素材和视频素材
 		if(!type.equals(WechatMaterial.NEWS)
 				&&!type.equals(WechatMaterial.VIDEO))
-			return BackMsg.error("method wechatMaterialService.getAndSave() need backMaterial type is news or video");
+			return Resp.error("method wechatMaterialService.getAndSave() need backMaterial type is news or video");
 		
 		//检查关键字是否被占用
 		if(keywordIsExist(keyword))
-			return BackMsg.error("keyword is exist");
+			return Resp.error("keyword is exist");
 		
 		//调用获取素材的方法,获取素材
 		String materialStr = get(accessToken, mediaId);
 		if(materialStr==null)
-			return BackMsg.error("get materialStr has error");
+			return Resp.error("get materialStr has error");
 		
 		//把获取到的String字符串,转成json
 		JSONObject materialJson = JSON.parseObject(materialStr);
@@ -231,12 +231,12 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		//如果获取的不是文图消息,并且不是视频消息
 		if(type.equals(WechatMaterial.NEWS))
 			//根据保存的成功与否,返回相应的数据
-			return saveNewsMaterialFromGet(accessToken,wm, materialJson)?BackMsg.success("saveNews success") : BackMsg.error("saveNews error");
+			return saveNewsMaterialFromGet(accessToken,wm, materialJson)?Resp.success("saveNews success") : Resp.error("saveNews error");
 		
 		if(type.equals(WechatMaterial.VIDEO))
-			return saveVideoMaterialFromGet(wm, materialJson)?BackMsg.success("saveVideo success") : BackMsg.error("saveVideo error");
+			return saveVideoMaterialFromGet(wm, materialJson)?Resp.success("saveVideo success") : Resp.error("saveVideo error");
 		
-		return BackMsg.error("type is not news or video, please use port 'wechat/material/listAndSave'");
+		return Resp.error("type is not news or video, please use port 'wechat/material/listAndSave'");
 	}
 	
 	
@@ -260,14 +260,14 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 				||StringUtils.isNull(mediaId)
 				||StringUtils.isNull(type)
 				||StringUtils.isNull(keyword))
-			return BackMsg.error("input value has null");
+			return Resp.error("input value has null");
 		//对传入的数值参数进行合法化处理
 		offset = offset<0 ? 0 : offset;
 		count = (count<1||count>20) ? 20 : count;
 		
 		//检查关键字是否被占用
 		if(keywordIsExist(keyword))
-			return BackMsg.error("keyword is exist");
+			return Resp.error("keyword is exist");
 		
 		//获取素材列表
 		String materialsStr = list(accessToken, type, offset, count);
@@ -306,7 +306,7 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		}
 		
 		//根据保存的成功与否,返回相应的数据
-		return saveOk?BackMsg.success("saveImage success") : BackMsg.error("saveImage error");
+		return saveOk?Resp.success("saveImage success") : Resp.error("saveImage error");
 	}
 	
 	/**
@@ -490,11 +490,11 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		//参数合法性校验
 		if(StringUtils.isNull(keyword)
 				||StringUtils.isNull(content))
-			return BackMsg.error("addTextMaterial error keyword or content is null");
+			return Resp.error("addTextMaterial error keyword or content is null");
 		
 		//检查关键字是否被占用
 		if(keywordIsExist(keyword))
-			return BackMsg.error("keyword is exist");
+			return Resp.error("keyword is exist");
 		
 		//创建素材对象,用于保存微信的素材
 		WechatMaterial wechatMaterial = new WechatMaterial();
@@ -503,7 +503,7 @@ public class WechatMaterialService extends CrudService<WechatMaterialDao, Wechat
 		wechatMaterial.setMsgType(WechatMaterial.TEXT);
 		
 		//根据保存方法的返回结果,封装并返回相应的提示信息
-		return add(wechatMaterial)==1?BackMsg.success("addTextMaterial success"):BackMsg.success("addTextMaterial error");
+		return add(wechatMaterial)==1?Resp.success("addTextMaterial success"):Resp.success("addTextMaterial error");
 	}
 	
 	/**

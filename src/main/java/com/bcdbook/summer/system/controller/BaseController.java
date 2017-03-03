@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.SessionUtil;
@@ -103,16 +103,16 @@ public class BaseController {
 //		System.out.println(user);
 		//参数合法性验证
 		if(user==null)
-			return BackMsg.error("request user is null");
+			return Resp.error("request user is null");
 		
 		//执行验证的相关操作,如果验证通过,返回一个user对象
 		User onlineUser = userService.signin(user);
 //		System.out.println(onlineUser);
 		if(onlineUser==null)
-			return BackMsg.error("signin error");
+			return Resp.error("signin error");
 		
 		if(!SessionUtil.refresh(req, Global.ONLINE_USER, onlineUser))
-			return BackMsg.error("signin error");
+			return Resp.error("signin error");
 		
 		List<Menu> menuList = menuService.listBackMenus();
 		SessionUtil.refresh(req, Global.USER_MENUS, menuList);
@@ -131,7 +131,7 @@ public class BaseController {
 		
 		
 //		System.out.println(user);
-		return BackMsg.success("signin success");
+		return Resp.success("signin success");
 	}
 	
 	/**
@@ -172,9 +172,9 @@ public class BaseController {
 		User newUser = userService.signup(user);
 		
 		if(newUser==null)
-			return BackMsg.error("signup error");
+			return Resp.error("signup error");
 		
-		return BackMsg.success(JSON.toJSONString(newUser), "signup success");
+		return Resp.success(JSON.toJSONString(newUser), "signup success");
 	}
 	
 	/**

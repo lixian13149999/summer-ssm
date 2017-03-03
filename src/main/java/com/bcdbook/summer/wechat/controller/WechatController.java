@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.SessionUtil;
 import com.bcdbook.summer.common.util.StringUtils;
@@ -203,42 +203,42 @@ public class WechatController {
 		//获取微信重定向时附带的参数
 		String state = req.getParameter("state");
 		if(StringUtils.isNull(code))
-			return BackMsg.error("code is null");
+			return Resp.error("code is null");
 		
 		String backData = WechatUtil.getWebAccessTokenAndOpenId(code);
 		//验证参数的合法性
 		if(StringUtils.isNull(backData))
-			return BackMsg.error("backData is null");
+			return Resp.error("backData is null");
 		
 		//把通过code换取来的数据转换成json格式
 		JSONObject jsonData = JSON.parseObject(backData);
 		//如果返回的数据是错误的,则直接返回null
 		if(!StringUtils.isNull(jsonData.getString("errmsg")))
-			return BackMsg.error("get webAccessToken error");
+			return Resp.error("get webAccessToken error");
 		
 		String openId = jsonData.getString("openid");
 		//验证获取的openId的合法性
 		if(StringUtils.isNull(openId))
-			return BackMsg.error("openId is null");
+			return Resp.error("openId is null");
 		//创建user对象,以便于查询
 		User user = new User();
 		user.setOpenId(openId);//封装查询参数到用于查询的对象中
 		List<User> userList = userService.findList(user);
 		//检测获取到的用户集合是否合法
 		if(userList==null||userList.size()!=1)
-			return BackMsg.error("userList error");
+			return Resp.error("userList error");
 		
 		//从集合中获取一个登录验证成功的User对象
 		User onlineUser = userList.get(0);
 		if(onlineUser==null)
-			return BackMsg.error("onlineUser is null");
+			return Resp.error("onlineUser is null");
 		if(onlineUser.getWechatState()==User.UNBOUND)
-			return BackMsg.error("此用户未绑定微信,请先绑定");
+			return Resp.error("此用户未绑定微信,请先绑定");
 		
 		//把User写入到session
 		if(!SessionUtil.refresh(req, Global.ONLINE_USER, onlineUser))
-			return BackMsg.error("refresh session error");
+			return Resp.error("refresh session error");
 		
-		return BackMsg.success("wechat signin success");
+		return Resp.success("wechat signin success");
 	}
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.system.pojo.Power;
@@ -33,7 +33,7 @@ public class PowerController {
 	public String listForeground(HttpServletRequest req,HttpServletResponse resp){
 		String menuId = req.getParameter("menuId");
 		if(StringUtils.isNull(menuId)){
-			return BackMsg.error("menuId is null");
+			return Resp.error("menuId is null");
 		}
 		
 		Power power = new Power();
@@ -49,7 +49,7 @@ public class PowerController {
 		
 		System.out.println(html);
 		//返回相应的值到前台
-		return BackMsg.success(html, "get backer power success");
+		return Resp.success(html, "get backer power success");
 	}
 	
 //	/**

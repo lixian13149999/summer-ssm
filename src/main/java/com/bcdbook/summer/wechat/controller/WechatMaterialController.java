@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.util.StringUtils;
 import com.bcdbook.summer.wechat.pojo.WechatMaterial;
 import com.bcdbook.summer.wechat.service.WechatMaterialService;
@@ -46,7 +46,7 @@ public class WechatMaterialController {
 		//从请求中获取参数
 		String mediaId = req.getParameter("mediaId");//获取素材的id
 		if(StringUtils.isNull(mediaId))
-			return BackMsg.error("mediaId is null");
+			return Resp.error("mediaId is null");
 		
 		return wechatMaterialService.get(wechatService.getAccessToken(),mediaId);
 	}
@@ -73,7 +73,7 @@ public class WechatMaterialController {
 		String countStr = req.getParameter("count");//想要获取素材的数量
 		
 		if(StringUtils.isNull(type))
-			return BackMsg.error("type is null,this port nede 3 parameters type,offset and count");
+			return Resp.error("type is null,this port nede 3 parameters type,offset and count");
 		
 		//把获取到的参数进行转换成int类型
 		int offsetSource = offsetStr==null?0:Integer.parseInt(offsetStr);
@@ -109,16 +109,16 @@ public class WechatMaterialController {
 		//验证参数的合法性
 		if(StringUtils.isNull(type)
 				||StringUtils.isNull(keyword))
-			return BackMsg.error("type or keyword is null,this port nede 6 parameters type(1), keyword(1), mediaId(0), content(0), offset(0) and count(0)");
+			return Resp.error("type or keyword is null,this port nede 6 parameters type(1), keyword(1), mediaId(0), content(0), offset(0) and count(0)");
 		
 		//检查关键字是否存在
 		if(wechatMaterialService.keywordIsExist(keyword))
-			return BackMsg.error("keyword is exist please chenge keyword or delete dbMaterial");
+			return Resp.error("keyword is exist please chenge keyword or delete dbMaterial");
 		
 		String accessToken = wechatService.getAccessToken();//获取accessToken
 		//验证accessToken的合法性
 		if(StringUtils.isNull(accessToken))
-			return BackMsg.error("accessToken is null please check methed wechatService.getAccessToken()");
+			return Resp.error("accessToken is null please check methed wechatService.getAccessToken()");
 		
 		//获取并分页值的相关信息
 		String offsetStr = req.getParameter("offset");//获取起始值
@@ -136,34 +136,34 @@ public class WechatMaterialController {
 		switch (type) {
 			case WechatMaterial.TEXT:
 				if(StringUtils.isNull(content))
-					return BackMsg.error("if type is text,the parameter of content can't be null");
+					return Resp.error("if type is text,the parameter of content can't be null");
 				//调用添加文本素材的方法进行具体的添加操作
 				return wechatMaterialService.saveTextMaterial(keyword,content);
 			case WechatMaterial.IMAGE:
 				if(StringUtils.isNull(mediaId))
-					return BackMsg.error("if type is image,the parameter of mediaId can't be null");
+					return Resp.error("if type is image,the parameter of mediaId can't be null");
 				//通过列表请求的方式添加图片素材
 				return wechatMaterialService.listAndSave(accessToken, mediaId, type, keyword, offset, count);
 			case WechatMaterial.VOICE:
 				if(StringUtils.isNull(mediaId))
-					return BackMsg.error("if type is image,the parameter of mediaId can't be null");
+					return Resp.error("if type is image,the parameter of mediaId can't be null");
 				//通过列表请求的方式添加语音素材
 				return wechatMaterialService.listAndSave(accessToken, mediaId, type, keyword, offset, count);
 			case WechatMaterial.VIDEO:
 				if(StringUtils.isNull(mediaId))
-					return BackMsg.error("if type is image,the parameter of mediaId can't be null");
+					return Resp.error("if type is image,the parameter of mediaId can't be null");
 				//通过单个请求的方式添加视频素材
 				return wechatMaterialService.getAndSave(accessToken, mediaId, type, keyword);
 			case WechatMaterial.MUSIC:
-				return BackMsg.success("music material can't be add now");
+				return Resp.success("music material can't be add now");
 			case WechatMaterial.NEWS:
 				if(StringUtils.isNull(mediaId))
-					return BackMsg.error("if type is image,the parameter of mediaId can't be null");
+					return Resp.error("if type is image,the parameter of mediaId can't be null");
 				//通过单个请求的方式添加文图消息素材
 				return wechatMaterialService.getAndSave(accessToken, mediaId, type, keyword);
 			default:
 				//解析无法识别类型的消息
-				return BackMsg.error("the type of you pass con't be identify");
+				return Resp.error("the type of you pass con't be identify");
 		}
 	}
 
@@ -185,11 +185,11 @@ public class WechatMaterialController {
 		if(StringUtils.isNull(mediaId)
 				||StringUtils.isNull(type)
 				||StringUtils.isNull(keyword))
-			return BackMsg.error("this port nede 3 parameters mediaId,type and keyword");
+			return Resp.error("this port nede 3 parameters mediaId,type and keyword");
 		
 		if(!type.equals(WechatMaterial.NEWS)
 				&&!type.equals(WechatMaterial.VIDEO))
-			return BackMsg.error("this port need type is news or video");
+			return Resp.error("this port need type is news or video");
 		
 		return wechatMaterialService.getAndSave(wechatService.getAccessToken(),mediaId,type,keyword);
 	}

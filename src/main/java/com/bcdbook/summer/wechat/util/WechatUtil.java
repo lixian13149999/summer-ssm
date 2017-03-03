@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.context.ContextParameter;
 import com.bcdbook.summer.common.util.JsonUtil;
 import com.bcdbook.summer.common.util.SHA1;
@@ -238,7 +238,7 @@ public class WechatUtil {
 		//验证参数的合法性
 		if(StringUtils.isNull(accessToken)
 				||StringUtils.isNull(openId))
-			return BackMsg.error("accessToken or openId is null");
+			return Resp.error("accessToken or openId is null");
 		
 		//拼接请求参数
 		String url = "https://api.weixin.qq.com/cgi-bin/user/info"

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.context.ContextParameter;
 import com.bcdbook.summer.common.util.JadeUtil;
@@ -117,14 +117,14 @@ public class MenuController {
 		}else if(placeForeground == Menu.PLACE_FOREGROUND){
 			menu.setPlace(Menu.PLACE_FOREGROUND);//设置前后台区分为前台
 		}else{
-			return BackMsg.error("not is foreground or back please check the input value");
+			return Resp.error("not is foreground or back please check the input value");
 		}
 		
 		menu.setParentId(Menu.FIRST_MENU);//设置栏目等级为一级栏目
 		List<Menu> menus = menuService.findList(menu);//根据封装好的条件查询出一级栏目的集合
 		//验证返回值的合法性
 		if(menus==null)
-			return BackMsg.error("get menus error");
+			return Resp.error("get menus error");
 
 		//创建值域对象,设置要返回到页面的值
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -133,7 +133,7 @@ public class MenuController {
 		String html = JadeUtil.getBodyView(jadeUrl, model);
 		
 		//返回相应的值到前台
-		return BackMsg.success(html, "get backer menu success");
+		return Resp.success(html, "get backer menu success");
 	}
 	
 	
@@ -155,7 +155,7 @@ public class MenuController {
 	public String sequence(HttpServletRequest req,HttpServletResponse resp,@RequestBody List<Menu> menus){
 		//验证参数的合法性
 		if(menus==null||menus.size()<1)
-			return BackMsg.error("menus is null");
+			return Resp.error("menus is null");
 		
 		//循环其中栏目相关信息,并修改
 		for (Menu menu : menus) {
@@ -172,7 +172,7 @@ public class MenuController {
 		}
 		
 		//返回操作成功的相关信息
-		return BackMsg.success("栏目从新排序完成");
+		return Resp.success("栏目从新排序完成");
 	}
 
 	/**
@@ -193,12 +193,12 @@ public class MenuController {
 		String menuStr = req.getParameter("menu");
 		//验证参数的合法性
 		if(StringUtils.isNull(menuStr))
-			return BackMsg.error("request value is null");
+			return Resp.error("request value is null");
 		
 		//把获取到的数据转成json
 		JSONObject menuJson = JSON.parseObject(menuStr);
 		if(menuJson==null)
-			return BackMsg.error("menuJson is null");
+			return Resp.error("menuJson is null");
 		
 		Menu menu = new Menu();
 		int place = menuJson.getInteger("foregroundOrBack");
@@ -242,7 +242,7 @@ public class MenuController {
 		}
 		
 		//如果添加不成功,则返回错误信息
-		return BackMsg.error("add menu error");
+		return Resp.error("add menu error");
 	}
 	
 	/**
@@ -263,12 +263,12 @@ public class MenuController {
 		String menuStr = req.getParameter("menu");
 		//验证参数的合法性
 		if(StringUtils.isNull(menuStr))
-			return BackMsg.error("request value is null");
+			return Resp.error("request value is null");
 		
 		//把获取到的数据转成json
 		JSONObject menuJson = JSON.parseObject(menuStr);
 		if(menuJson==null)
-			return BackMsg.error("menuJson is null");
+			return Resp.error("menuJson is null");
 		
 		Menu menu = new Menu();
 		int place = menuJson.getInteger("foregroundOrBack");
@@ -313,7 +313,7 @@ public class MenuController {
 		}
 		
 		//如果添加不成功,则返回错误信息
-		return BackMsg.error("add menu error");
+		return Resp.error("add menu error");
 	}
 	
 	/**
@@ -332,18 +332,18 @@ public class MenuController {
 	public String delete(HttpServletRequest req,HttpServletResponse resp,String menuId){
 		//验证参数的合法性
 		if(StringUtils.isNull(menuId))
-			return BackMsg.error("menu is null");
+			return Resp.error("menu is null");
 		
 		//执行删除操作,并判断删除操作是否执行OK
 		int deleteOk = menuService.delete(menuId);
 		if(deleteOk!=1)
-			return BackMsg.error("delete menu error");
+			return Resp.error("delete menu error");
 		
 		try {
 			resp.sendRedirect(ContextParameter.getContextPath()+"menu/list?b");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return BackMsg.success("delete menu success");
+		return Resp.success("delete menu success");
 	}
 }

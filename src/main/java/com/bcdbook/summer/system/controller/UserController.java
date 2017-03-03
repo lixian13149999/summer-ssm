@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.config.Global;
 import com.bcdbook.summer.common.util.JadeUtil;
 import com.bcdbook.summer.common.util.SessionUtil;
@@ -72,7 +72,7 @@ public class UserController {
 	@ResponseBody
 	public String userIsExist(HttpServletRequest req,HttpServletResponse resp,User user){
 		if(user==null)
-			return BackMsg.error("reqest user is null");
+			return Resp.error("reqest user is null");
 		
 		//根据前台传入的用户对象,从数据库中获取user
 		User dbUser = userService.getByCondition(user);
@@ -80,7 +80,7 @@ public class UserController {
 //		System.out.println(dbUser);
 		//如果用户不存在,返回true,否则返回false
 		
-		return dbUser==null?BackMsg.success(false):BackMsg.success(true);
+		return dbUser==null?Resp.success(false):Resp.success(true);
 	}
 	
 	@RequestMapping(value="/checkEmailIsSingle",method = {RequestMethod.GET},produces = "application/json; charset=UTF-8") 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bcdbook.summer.common.backmsg.BackMsg;
+import com.bcdbook.summer.common.backmsg.Resp;
 import com.bcdbook.summer.common.tools.service.MailService;
 import com.bcdbook.summer.common.util.IdGen;
 import com.bcdbook.summer.common.util.StringUtils;
@@ -45,13 +45,13 @@ public class MailController {
 		//判断获取到的参数是否合法,如果不合法,直接返会错误信息
 		if(StringUtils.isNull(userId)
 				||StringUtils.isNull(emailAddr))
-			return BackMsg.error("request userId is null or emailAddr is null");
+			return Resp.error("request userId is null or emailAddr is null");
 		
 		//通过传入的用户id,获取对应的用户
 		User user = userService.get(userId);
 		//判断对应的用户是否存在,如果不存在,直接返回错误信息
 		if(user==null)
-			return BackMsg.error("user is not exit");
+			return Resp.error("user is not exit");
 		
 		//获取一个用于验证的编码
 		String accessToken = IdGen.uuid();
@@ -62,6 +62,6 @@ public class MailController {
 		//更新用户相关信息,以便于后期验证时调用
 		userService.update(user);
 		
-		return mailService.sendVerifyEmail(user)?BackMsg.success(true, "send verify email success"):BackMsg.error("send verify email fail");
+		return mailService.sendVerifyEmail(user)?Resp.success(true, "send verify email success"):Resp.error("send verify email fail");
 	}
 }
